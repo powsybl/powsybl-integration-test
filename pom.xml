@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    Copyright (c) 2019, RTE (http://www.rte-france.com)
+    Copyright (c) 2022, RTE (http://www.rte-france.com)
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
     file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -41,24 +41,12 @@
 
     <properties>
         <java.version>11</java.version>
-
-        <jafama.version>2.3.1</jafama.version>
-        <junit-jupiter.version>5.5.2</junit-jupiter.version>
-        <slf4jtoys.version>1.6.2</slf4jtoys.version>
         <powsybl-core.version>4.7.0</powsybl-core.version>
         <powsybl-open-loadflow.version>0.17.0</powsybl-open-loadflow.version>
     </properties>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>buildnumber-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>templating-maven-plugin</artifactId>
-            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -100,10 +88,6 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
         </dependency>
         <dependency>
             <groupId>com.powsybl</groupId>
