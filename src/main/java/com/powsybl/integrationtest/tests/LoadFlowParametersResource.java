@@ -5,8 +5,8 @@ import com.powsybl.loadflow.json.JsonLoadFlowParameters;
 
 
 public enum LoadFlowParametersResource {
-    BASIC("/LoadFLowParametersBasic.json"),
-    STANDARD("/LoadFLowParametersStandard.json");
+    BASIC("/LoadFlowParametersBasic.json"),
+    STANDARD("/LoadFlowParametersStandard.json");
 
     private final LoadFlowParameters parameters;
 
