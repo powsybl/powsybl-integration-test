@@ -4,12 +4,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-package com.powsybl.integrationtest;
+package com.powsybl.integrationtest.tests;
 
 import com.powsybl.iidm.network.Network;
-import com.powsybl.iidm.network.test.EurostagTutorialExample1Factory;
 import com.powsybl.loadflow.LoadFlow;
-import com.powsybl.loadflow.LoadFlowParameters;
 import com.powsybl.loadflow.LoadFlowResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,10 +22,13 @@ public final class LoadFlowIntegrationTest {
     }
 
     public static void main(String[] args) {
-        Network network = EurostagTutorialExample1Factory.create();
-        LoadFlowParameters parameters = new LoadFlowParameters().setNoGeneratorReactiveLimits(true)
-                                             .setDistributedSlack(false);
-        LoadFlowResult result = LoadFlow.run(network, parameters);
-        LOGGER.info("Load flow result isOk : {}.", result.isOk());
+        for (MatPowerNetworkResource networkResource : MatPowerNetworkResource.values()) {
+            Network network = networkResource.getNetwork();
+            for (LoadFlowParametersResource parameterType : LoadFlowParametersResource.values()) {
+                LOGGER.info("Running load flow on network " + networkResource.name() + " with parameters : " + parameterType.name());
+                LoadFlowResult result = LoadFlow.run(network, parameterType.getParameters());
+                LOGGER.info("Load flow result isOk : {}.", result.isOk());
+            }
+        }
     }
 }

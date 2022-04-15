@@ -51,7 +51,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                    <mainClass>com.powsybl.integrationtest.LoadFlowIntegrationTest</mainClass>
+                    <mainClass>com.powsybl.integrationtest.IntegrationTestsLauncher</mainClass>
                     <cleanupDaemonThreads>false</cleanupDaemonThreads>
                 </configuration>
             </plugin>
@@ -103,6 +103,16 @@
         <dependency>
             <groupId>com.powsybl</groupId>
             <artifactId>powsybl-config-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.powsybl</groupId>
+            <artifactId>powsybl-matpower-converter</artifactId>
+            <version>${powsybl-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.powsybl</groupId>
+            <artifactId>powsybl-triple-store-impl-rdf4j</artifactId>
+            <version>3.3.0</version>
         </dependency>
     </dependencies>
 </project>
