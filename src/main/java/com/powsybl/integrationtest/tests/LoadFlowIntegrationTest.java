@@ -39,8 +39,8 @@ public final class LoadFlowIntegrationTest {
     }
 
     static void compareBranches(Network test, Network reference) {
-        for (Branch testBranch : test.getBranches()) {
-            Branch refBranch = reference.getBranch(testBranch.getId());
+        for (Branch<?> testBranch : test.getBranches()) {
+            Branch<?> refBranch = reference.getBranch(testBranch.getId());
             if (testBranch.getTerminal1().isConnected() && testBranch.getTerminal1().getBusView().getBus().isInMainConnectedComponent()) {
                 assertEquals(testBranch.getTerminal1().getP(), refBranch.getTerminal1().getP(), DELTA_P,
                         "Branch from test and branch from reference are different on terminal1 P, branch id : " + testBranch.getId());
@@ -116,7 +116,7 @@ public final class LoadFlowIntegrationTest {
         for (MatPowerNetworkResource networkResource : MatPowerNetworkResource.values()) {
             Network network = networkResource.getNetwork();
             for (LoadFlowParametersResource parameterType : LoadFlowParametersResource.values()) {
-                LOGGER.info("Running load flow on network " + networkResource.name() + " with parameters : " + parameterType.name());
+                LOGGER.info("Running load flow on network {} with parameters {} : ", networkResource.name(), parameterType.name());
                 LoadFlowResult result = LoadFlow.run(network, parameterType.getParameters());
                 LOGGER.info("Load flow result isOk : {}.", result.isOk());
 
