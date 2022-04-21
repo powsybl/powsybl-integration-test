@@ -16,8 +16,7 @@ import com.powsybl.loadflow.LoadFlowResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * @author Bertrand Rix <bertrand.rix at artelys.com>
  */
@@ -34,7 +33,7 @@ public final class LoadFlowIntegrationTest {
     static void compareBuses(Network test, Network reference) {
         for (Bus bus : test.getBusView().getBuses()) {
             Bus refBus = reference.getBusView().getBus(bus.getId());
-            assertTrue(Math.abs(bus.getV() - refBus.getV()) < DELTA_V,
+            assertEquals(bus.getV(), refBus.getV(), DELTA_V,
                     "Bus from test and bus from reference are different, bus id : " + bus.getId());
         }
     }
@@ -43,11 +42,11 @@ public final class LoadFlowIntegrationTest {
         for (Branch testBranch : test.getBranches()) {
             Branch refBranch = reference.getBranch(testBranch.getId());
             if (testBranch.getTerminal1().isConnected() && testBranch.getTerminal1().getBusView().getBus().isInMainConnectedComponent()) {
-                assertTrue(Math.abs(testBranch.getTerminal1().getP() - refBranch.getTerminal1().getP()) < DELTA_P,
+                assertEquals(testBranch.getTerminal1().getP(), refBranch.getTerminal1().getP(), DELTA_P,
                         "Branch from test and branch from reference are different on terminal1 P, branch id : " + testBranch.getId());
             }
             if (testBranch.getTerminal2().isConnected() && testBranch.getTerminal2().getBusView().getBus().isInMainConnectedComponent()) {
-                assertTrue(Math.abs(testBranch.getTerminal2().getP() - refBranch.getTerminal2().getP()) < DELTA_P,
+                assertEquals(testBranch.getTerminal2().getP(), refBranch.getTerminal2().getP(), DELTA_P,
                         "Branch from test and branch from reference are different on terminal2 P, branch id : " + testBranch.getId());
             }
         }
@@ -57,7 +56,7 @@ public final class LoadFlowIntegrationTest {
         for (Load testLoad : test.getLoads()) {
             Load refLoad = reference.getLoad(testLoad.getId());
             if (testLoad.getTerminal().getBusView().getBus() != null && testLoad.getTerminal().getBusView().getBus().isInMainConnectedComponent()) {
-                assertTrue(Math.abs(testLoad.getTerminal().getP() - refLoad.getTerminal().getP()) < DELTA_P, "Load from test and load from reference are different on terminal P, load id : " + testLoad.getId());
+                assertEquals(testLoad.getTerminal().getP(), refLoad.getTerminal().getP(), DELTA_P, "Load from test and load from reference are different on terminal P, load id : " + testLoad.getId());
             }
         }
     }
@@ -66,7 +65,7 @@ public final class LoadFlowIntegrationTest {
         for (Generator testGenerator : test.getGenerators()) {
             Generator refGenerator = reference.getGenerator(testGenerator.getId());
             if (testGenerator.getTerminal().getBusView().getBus() != null && testGenerator.getTerminal().getBusView().getBus().isInMainConnectedComponent()) {
-                assertTrue(Math.abs(testGenerator.getTerminal().getP() - refGenerator.getTerminal().getP()) < DELTA_P,
+                assertEquals(testGenerator.getTerminal().getP(), refGenerator.getTerminal().getP(), DELTA_P,
                         "Generator from test and generator from reference are different on terminal P, load id : " + testGenerator.getId());
             }
         }
@@ -76,7 +75,7 @@ public final class LoadFlowIntegrationTest {
         for (VscConverterStation testConverter : test.getVscConverterStations()) {
             VscConverterStation refConverter = reference.getVscConverterStation(testConverter.getId());
             if (testConverter.getTerminal().getBusView().getBus() != null && testConverter.getTerminal().getBusView().getBus().isInMainConnectedComponent()) {
-                assertTrue(Math.abs(testConverter.getTerminal().getP() - refConverter.getTerminal().getP()) < DELTA_P,
+                assertEquals(testConverter.getTerminal().getP(), refConverter.getTerminal().getP(), DELTA_P,
                         "VCSConverter from test and VCSConverter from reference are different on terminal P, VCSConverter id : " + testConverter.getId());
             }
         }
@@ -86,7 +85,7 @@ public final class LoadFlowIntegrationTest {
         for (LccConverterStation testConverter : test.getLccConverterStations()) {
             LccConverterStation refConverter = reference.getLccConverterStation(testConverter.getId());
             if (testConverter.getTerminal().getBusView().getBus() != null && testConverter.getTerminal().getBusView().getBus().isInMainConnectedComponent()) {
-                assertTrue(Math.abs(testConverter.getTerminal().getP() - refConverter.getTerminal().getP()) < DELTA_P,
+                assertEquals(testConverter.getTerminal().getP(), refConverter.getTerminal().getP(), DELTA_P,
                         "LCCConverter from test and LCCConverter from reference are different on terminal P, LCCConverter id : " + testConverter.getId());
             }
         }
@@ -97,9 +96,9 @@ public final class LoadFlowIntegrationTest {
             TwoWindingsTransformer refTwt = reference.getTwoWindingsTransformer(testTwt.getId());
             if (testTwt.getRatioTapChanger() != null && testTwt.getRatioTapChanger().isRegulating() && testTwt.getRatioTapChanger().getRegulationTerminal() != null
                 && testTwt.getRatioTapChanger().getRegulationTerminal().isConnected()) {
-                assertTrue(Math.abs(testTwt.getRatioTapChanger().getTapPosition() - refTwt.getRatioTapChanger().getTapPosition()) < DELTA_P,
+                assertEquals(testTwt.getRatioTapChanger().getTapPosition(), refTwt.getRatioTapChanger().getTapPosition(), DELTA_P,
                         "TwoWindingsTransformer from test and TwoWindingsTransformer from reference have different TapPosition, TwoWindingsTransformer id : " + testTwt.getId());
-                assertTrue(Math.abs(testTwt.getRatioTapChanger().getTargetV() - refTwt.getRatioTapChanger().getTargetV()) < DELTA_P,
+                assertEquals(testTwt.getRatioTapChanger().getTargetV(), refTwt.getRatioTapChanger().getTargetV(), DELTA_P,
                         "TwoWindingsTransformer from test and TwoWindingsTransformer from reference have different TargetV, TwoWindingsTransformer id : " + testTwt.getId());
             }
         }
