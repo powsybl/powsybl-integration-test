@@ -42,6 +42,7 @@
     <properties>
         <java.version>11</java.version>
         <powsybl-dependencies.version>1.2.0</powsybl-dependencies.version>
+        <junit-jupiter.version>5.5.2</junit-jupiter.version>
     </properties>
 
     <build>
@@ -107,12 +108,16 @@
         <dependency>
             <groupId>com.powsybl</groupId>
             <artifactId>powsybl-matpower-converter</artifactId>
-            <version>${powsybl-core.version}</version>
         </dependency>
         <dependency>
             <groupId>com.powsybl</groupId>
             <artifactId>powsybl-triple-store-impl-rdf4j</artifactId>
             <version>3.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
         </dependency>
     </dependencies>
 </project>
