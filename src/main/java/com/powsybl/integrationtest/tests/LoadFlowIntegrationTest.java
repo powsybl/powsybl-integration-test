@@ -16,7 +16,11 @@ import com.powsybl.loadflow.LoadFlowResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 /**
  * @author Bertrand Rix <bertrand.rix at artelys.com>
  */
@@ -27,14 +31,15 @@ public final class LoadFlowIntegrationTest {
 
     static final double DELTA_P = 1e-3;
 
+    static List<String> detectedDifferences;
+
     private LoadFlowIntegrationTest() {
     }
 
     static void compareBuses(Network test, Network reference) {
         for (Bus bus : test.getBusView().getBuses()) {
             Bus refBus = reference.getBusView().getBus(bus.getId());
-            assertEquals(bus.getV(), refBus.getV(), DELTA_V,
-                    "Bus from test and bus from reference are different, bus id : " + bus.getId());
+            registerIfDifferent(bus.getV(), refBus.getV(), DELTA_V, "Bus from test and bus from reference are different, bus id : " + bus.getId());
         }
     }
 
@@ -42,11 +47,11 @@ public final class LoadFlowIntegrationTest {
         for (Branch<?> testBranch : test.getBranches()) {
             Branch<?> refBranch = reference.getBranch(testBranch.getId());
             if (testBranch.getTerminal1().isConnected() && testBranch.getTerminal1().getBusView().getBus().isInMainConnectedComponent()) {
-                assertEquals(testBranch.getTerminal1().getP(), refBranch.getTerminal1().getP(), DELTA_P,
+                registerIfDifferent(testBranch.getTerminal1().getP(), refBranch.getTerminal1().getP(), DELTA_P,
                         "Branch from test and branch from reference are different on terminal1 P, branch id : " + testBranch.getId());
             }
             if (testBranch.getTerminal2().isConnected() && testBranch.getTerminal2().getBusView().getBus().isInMainConnectedComponent()) {
-                assertEquals(testBranch.getTerminal2().getP(), refBranch.getTerminal2().getP(), DELTA_P,
+                registerIfDifferent(testBranch.getTerminal2().getP(), refBranch.getTerminal2().getP(), DELTA_P,
                         "Branch from test and branch from reference are different on terminal2 P, branch id : " + testBranch.getId());
             }
         }
@@ -56,7 +61,7 @@ public final class LoadFlowIntegrationTest {
         for (Load testLoad : test.getLoads()) {
             Load refLoad = reference.getLoad(testLoad.getId());
             if (testLoad.getTerminal().getBusView().getBus() != null && testLoad.getTerminal().getBusView().getBus().isInMainConnectedComponent()) {
-                assertEquals(testLoad.getTerminal().getP(), refLoad.getTerminal().getP(), DELTA_P, "Load from test and load from reference are different on terminal P, load id : " + testLoad.getId());
+                registerIfDifferent(testLoad.getTerminal().getP(), refLoad.getTerminal().getP(), DELTA_P, "Load from test and load from reference are different on terminal P, load id : " + testLoad.getId());
             }
         }
     }
@@ -65,7 +70,7 @@ public final class LoadFlowIntegrationTest {
         for (Generator testGenerator : test.getGenerators()) {
             Generator refGenerator = reference.getGenerator(testGenerator.getId());
             if (testGenerator.getTerminal().getBusView().getBus() != null && testGenerator.getTerminal().getBusView().getBus().isInMainConnectedComponent()) {
-                assertEquals(testGenerator.getTerminal().getP(), refGenerator.getTerminal().getP(), DELTA_P,
+                registerIfDifferent(testGenerator.getTerminal().getP(), refGenerator.getTerminal().getP(), DELTA_P,
                         "Generator from test and generator from reference are different on terminal P, load id : " + testGenerator.getId());
             }
         }
@@ -75,7 +80,7 @@ public final class LoadFlowIntegrationTest {
         for (VscConverterStation testConverter : test.getVscConverterStations()) {
             VscConverterStation refConverter = reference.getVscConverterStation(testConverter.getId());
             if (testConverter.getTerminal().getBusView().getBus() != null && testConverter.getTerminal().getBusView().getBus().isInMainConnectedComponent()) {
-                assertEquals(testConverter.getTerminal().getP(), refConverter.getTerminal().getP(), DELTA_P,
+                registerIfDifferent(testConverter.getTerminal().getP(), refConverter.getTerminal().getP(), DELTA_P,
                         "VCSConverter from test and VCSConverter from reference are different on terminal P, VCSConverter id : " + testConverter.getId());
             }
         }
@@ -85,7 +90,7 @@ public final class LoadFlowIntegrationTest {
         for (LccConverterStation testConverter : test.getLccConverterStations()) {
             LccConverterStation refConverter = reference.getLccConverterStation(testConverter.getId());
             if (testConverter.getTerminal().getBusView().getBus() != null && testConverter.getTerminal().getBusView().getBus().isInMainConnectedComponent()) {
-                assertEquals(testConverter.getTerminal().getP(), refConverter.getTerminal().getP(), DELTA_P,
+                registerIfDifferent(testConverter.getTerminal().getP(), refConverter.getTerminal().getP(), DELTA_P,
                         "LCCConverter from test and LCCConverter from reference are different on terminal P, LCCConverter id : " + testConverter.getId());
             }
         }
@@ -96,9 +101,9 @@ public final class LoadFlowIntegrationTest {
             TwoWindingsTransformer refTwt = reference.getTwoWindingsTransformer(testTwt.getId());
             if (testTwt.getRatioTapChanger() != null && testTwt.getRatioTapChanger().isRegulating() && testTwt.getRatioTapChanger().getRegulationTerminal() != null
                 && testTwt.getRatioTapChanger().getRegulationTerminal().isConnected()) {
-                assertEquals(testTwt.getRatioTapChanger().getTapPosition(), refTwt.getRatioTapChanger().getTapPosition(), DELTA_P,
+                registerIfDifferent(testTwt.getRatioTapChanger().getTapPosition(), refTwt.getRatioTapChanger().getTapPosition(), DELTA_P,
                         "TwoWindingsTransformer from test and TwoWindingsTransformer from reference have different TapPosition, TwoWindingsTransformer id : " + testTwt.getId());
-                assertEquals(testTwt.getRatioTapChanger().getTargetV(), refTwt.getRatioTapChanger().getTargetV(), DELTA_P,
+                registerIfDifferent(testTwt.getRatioTapChanger().getTargetV(), refTwt.getRatioTapChanger().getTargetV(), DELTA_P,
                         "TwoWindingsTransformer from test and TwoWindingsTransformer from reference have different TargetV, TwoWindingsTransformer id : " + testTwt.getId());
             }
         }
@@ -112,7 +117,14 @@ public final class LoadFlowIntegrationTest {
                                    null);
     }
 
+    static void registerIfDifferent(double reference, double value, double delta, String differenceInfo) {
+        if (Math.abs(reference - value) > delta) {
+            detectedDifferences.add(differenceInfo);
+        }
+    }
+
     public static void main(String[] args) {
+        boolean differencesDetected = false;
         for (MatPowerNetworkResource networkResource : MatPowerNetworkResource.values()) {
             Network network = networkResource.getNetwork();
             for (LoadFlowParametersResource parameterType : LoadFlowParametersResource.values()) {
@@ -120,6 +132,7 @@ public final class LoadFlowIntegrationTest {
                 LoadFlowResult result = LoadFlow.run(network, parameterType.getParameters());
                 LOGGER.info("Load flow result isOk : {}.", result.isOk());
 
+                detectedDifferences = new ArrayList<>();
                 //Load reference and compare
                 Network ref = loadReference(networkResource.name(), parameterType.name());
                 compareBuses(network, ref);
@@ -130,7 +143,12 @@ public final class LoadFlowIntegrationTest {
                 compareLccConverterStations(network, ref);
                 compareTwoWindingTransformers(network, ref);
 
+                for (String differenceInfo : detectedDifferences) {
+                    LOGGER.warn(differenceInfo);
+                }
+                differencesDetected |= detectedDifferences.size() > 0;
             }
         }
+        assertFalse(differencesDetected, "Differences have been detected between the test network and the reference.");
     }
 }
