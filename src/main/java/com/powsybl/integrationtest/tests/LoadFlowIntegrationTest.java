@@ -146,7 +146,7 @@ public final class LoadFlowIntegrationTest {
                 for (String differenceInfo : detectedDifferences) {
                     LOGGER.warn(differenceInfo);
                 }
-                differencesDetected |= detectedDifferences.size() > 0;
+                differencesDetected |= !detectedDifferences.isEmpty();
             }
         }
         assertFalse(differencesDetected, "Differences have been detected between the test network and the reference.");
