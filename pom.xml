@@ -41,8 +41,7 @@
 
     <properties>
         <java.version>11</java.version>
-        <powsybl-core.version>4.7.0</powsybl-core.version>
-        <powsybl-open-loadflow.version>0.17.0</powsybl-open-loadflow.version>
+        <powsybl-dependencies.version>1.2.0</powsybl-dependencies.version>
     </properties>
 
     <build>
@@ -76,8 +75,8 @@
         <dependencies>
             <dependency>
                 <groupId>com.powsybl</groupId>
-                <artifactId>powsybl-core</artifactId>
-                <version>${powsybl-core.version}</version>
+                <artifactId>powsybl-dependencies</artifactId>
+                <version>${powsybl-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -100,12 +99,10 @@
         <dependency>
             <groupId>com.powsybl</groupId>
             <artifactId>powsybl-open-loadflow</artifactId>
-            <version>${powsybl-open-loadflow.version}</version>
         </dependency>
         <dependency>
             <groupId>com.powsybl</groupId>
             <artifactId>powsybl-config-classic</artifactId>
-            <version>${powsybl-core.version}</version>
         </dependency>
     </dependencies>
 </project>
