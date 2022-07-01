@@ -42,6 +42,7 @@
     <properties>
         <java.version>11</java.version>
         <powsybl-dependencies.version>1.2.0</powsybl-dependencies.version>
+        <junit-jupiter.version>5.5.2</junit-jupiter.version>
     </properties>
 
     <build>
@@ -51,7 +52,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                    <mainClass>com.powsybl.integrationtest.LoadFlowIntegrationTest</mainClass>
+                    <mainClass>com.powsybl.integrationtest.IntegrationTestsLauncher</mainClass>
                     <cleanupDaemonThreads>false</cleanupDaemonThreads>
                 </configuration>
             </plugin>
@@ -103,6 +104,15 @@
         <dependency>
             <groupId>com.powsybl</groupId>
             <artifactId>powsybl-config-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.powsybl</groupId>
+            <artifactId>powsybl-matpower-converter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
         </dependency>
     </dependencies>
 </project>
