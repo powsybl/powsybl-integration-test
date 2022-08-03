@@ -1,0 +1,13 @@
+{
+  "version" : "1.2",
+  "isOK" : true,
+  "metrics" : { },
+  "componentResults" : [ {
+    "connectedComponentNum" : 0,
+    "synchronousComponentNum" : 0,
+    "status" : "CONVERGED",
+    "iterationCount" : 3,
+    "slackBusId" : "VL-1320_0",
+    "slackBusActivePowerMismatch" : -3.1958795850314914
+  } ]
+}

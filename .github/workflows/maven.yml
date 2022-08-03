@@ -3,6 +3,9 @@ name: CI
 on:
   push:
   workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
 
 jobs:
   build:
@@ -25,7 +28,7 @@ jobs:
         run: mvn --batch-mode -Pjacoco install
 
       - name: Run load flow integration test
-        run: mvn exec:java -D"exec.mainClass"="com.powsybl.integrationtest.LoadFlowIntegrationTest"
+        run: mvn verify
 
       - name: Run SonarCloud analysis
         if: matrix.os == 'ubuntu-latest'
