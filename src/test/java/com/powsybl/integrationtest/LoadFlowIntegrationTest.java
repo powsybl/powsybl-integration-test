@@ -6,13 +6,14 @@
  */
 package com.powsybl.integrationtest;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.powsybl.commons.datasource.ResourceDataSource;
 import com.powsybl.commons.datasource.ResourceSet;
+import com.powsybl.commons.json.JsonUtil;
 import com.powsybl.iidm.import_.Importers;
 import com.powsybl.iidm.network.*;
 import com.powsybl.iidm.network.impl.NetworkFactoryImpl;
-import com.powsybl.integrationtest.tests.LoadFlowParametersResource;
-import com.powsybl.integrationtest.tests.MatPowerNetworkResource;
+import com.powsybl.integrationtest.tests.*;
 import com.powsybl.loadflow.LoadFlow;
 import com.powsybl.loadflow.LoadFlowResult;
 import com.powsybl.loadflow.json.*;
@@ -21,6 +22,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -197,35 +200,45 @@ public final class LoadFlowIntegrationTest {
         }
     }
 
+    public static boolean runTestCase(LoadFlowTestCase testCase) {
+        LOGGER.info("Running test case : {}", testCase.getId());
+        LOGGER.info("Running load flow on network {} : ", testCase.getNetwork().getNameOrId());
+
+        LoadFlowResult result = LoadFlow.run(testCase.getNetwork(), testCase.getParameters());
+        LOGGER.info("Load flow result isOk : {}.", result.isOk());
+
+        detectedDifferences = new ArrayList<>();
+        //Compare result to reference
+        compareResults(result, testCase.getResultRef());
+        compareBuses(testCase.getNetwork(), testCase.getNetworkRef());
+        compareBranches(testCase.getNetwork(), testCase.getNetworkRef());
+        compareLoads(testCase.getNetwork(), testCase.getNetworkRef());
+        compareGenerators(testCase.getNetwork(), testCase.getNetworkRef());
+        compareVcsConverterStations(testCase.getNetwork(), testCase.getNetworkRef());
+        compareLccConverterStations(testCase.getNetwork(), testCase.getNetworkRef());
+        compareTwoWindingTransformers(testCase.getNetwork(), testCase.getNetworkRef());
+
+        for (String differenceInfo : detectedDifferences) {
+            LOGGER.warn(differenceInfo);
+        }
+        return detectedDifferences.isEmpty();
+    }
+
     @Test
     void loadFlowIntegrationTests() {
-        boolean differencesDetected = false;
-        for (MatPowerNetworkResource networkResource : MatPowerNetworkResource.values()) {
-            Network network = networkResource.getNetwork();
-            for (LoadFlowParametersResource parameterType : LoadFlowParametersResource.values()) {
-                LOGGER.info("Running load flow on network {} with parameters {}: ", networkResource.name(), parameterType.name());
-                LoadFlowResult result = LoadFlow.run(network, parameterType.getParameters());
-                LOGGER.info("Load flow result isOk : {}.", result.isOk());
+        ObjectMapper objectMapper = JsonUtil.createObjectMapper().registerModule(new IntegrationTestModule());
+        try (InputStream stream  = getClass().getClassLoader().getResourceAsStream("loadFlowTestPlan.json")) {
+            LoadFlowTestPlanJson testPlan = objectMapper.readValue(stream, LoadFlowTestPlanJson.class);
 
-                detectedDifferences = new ArrayList<>();
-                //Load reference and compare
-                Network ref = loadNetworkReference(networkResource.name(), parameterType.name());
-                LoadFlowResult resultRef = loadResultReference(networkResource.name(), parameterType.name());
-                compareResults(result, resultRef);
-                compareBuses(network, ref);
-                compareBranches(network, ref);
-                compareLoads(network, ref);
-                compareGenerators(network, ref);
-                compareVcsConverterStations(network, ref);
-                compareLccConverterStations(network, ref);
-                compareTwoWindingTransformers(network, ref);
-
-                for (String differenceInfo : detectedDifferences) {
-                    LOGGER.warn(differenceInfo);
-                }
-                differencesDetected |= !detectedDifferences.isEmpty();
+            boolean differencesDetected = false;
+            for (LoadFlowTestCaseJson testCaseDescription : testPlan.getTestCases()) {
+                LoadFlowTestCase testCase = LoadFlowTestCase.loadFromJson(testCaseDescription);
+                differencesDetected |= !runTestCase(testCase);
             }
+            assertFalse(differencesDetected, "Differences have been detected between the test network and the reference.");
+
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
         }
-        assertFalse(differencesDetected, "Differences have been detected between the test network and the reference.");
     }
 }

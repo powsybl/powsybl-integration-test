@@ -1,0 +1,33 @@
+{
+  "version" : "1.0",
+  "testCases" : [
+    {
+      "id" : "CASE1888_BASIC",
+      "network" : "case1888rte.mat",
+      "parameters" : "LoadFlowParametersBasic.json",
+      "networkRef" : "loadflowreferences/NetworkReference_CASE1888RTE_BASIC.xiidm",
+      "resultRef" : "loadflowreferences/LoadFlowResult_CASE1888RTE_BASIC.json"
+    },
+    {
+      "id" : "CASE6515_BASIC",
+      "network" : "case6515rte.mat",
+      "parameters" : "LoadFlowParametersBasic.json",
+      "networkRef" : "loadflowreferences/NetworkReference_CASE6515RTE_BASIC.xiidm",
+      "resultRef" : "loadflowreferences/LoadFlowResult_CASE6515RTE_BASIC.json"
+    },
+    {
+      "id" : "CASE1888_STANDARD",
+      "network" : "case1888rte.mat",
+      "parameters" : "LoadFlowParametersStandard.json",
+      "networkRef" : "loadflowreferences/NetworkReference_CASE1888RTE_STANDARD.xiidm",
+      "resultRef" : "loadflowreferences/LoadFlowResult_CASE1888RTE_STANDARD.json"
+    },
+    {
+      "id" : "CASE6515_STANDARD",
+      "network" : "case6515rte.mat",
+      "parameters" : "LoadFlowParametersStandard.json",
+      "networkRef" : "loadflowreferences/NetworkReference_CASE6515RTE_STANDARD.xiidm",
+      "resultRef" : "loadflowreferences/LoadFlowResult_CASE6515RTE_STANDARD.json"
+    }
+  ]
+}
