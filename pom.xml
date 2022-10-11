@@ -37,6 +37,12 @@
             <organization>ARTELYS</organization>
             <organizationUrl>http://www.artelys.com</organizationUrl>
         </developer>
+        <developer>
+            <name>Arthur Michaut</name>
+            <email>arthur.michaut@artelys.com</email>
+            <organization>ARTELYS</organization>
+            <organizationUrl>http://www.artelys.com</organizationUrl>
+        </developer>
     </developers>
 
     <properties>

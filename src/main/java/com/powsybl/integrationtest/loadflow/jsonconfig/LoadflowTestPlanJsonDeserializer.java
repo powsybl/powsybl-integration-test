@@ -4,7 +4,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-package com.powsybl.integrationtest.tests;
+package com.powsybl.integrationtest.loadflow.jsonconfig;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
@@ -19,26 +19,25 @@ import java.util.List;
 /**
  * @author Bertrand Rix <bertrand.rix at artelys.com>
  */
-public class LoadFlowTestPlanJsonDeserializer extends StdDeserializer<LoadFlowTestPlanJson> {
+public class LoadflowTestPlanJsonDeserializer extends StdDeserializer<LoadflowTestPlanJson> {
 
-    protected LoadFlowTestPlanJsonDeserializer() {
-        super(LoadFlowTestPlanJson.class);
+    protected LoadflowTestPlanJsonDeserializer() {
+        super(LoadflowTestPlanJson.class);
     }
 
     @Override
-    public LoadFlowTestPlanJson deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
+    public LoadflowTestPlanJson deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
         String version = null;
-        List<LoadFlowTestCaseJson> testCases = null;
+        List<LoadflowTestCaseJson> testCases = null;
         while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
             switch (jsonParser.getCurrentName()) {
                 case "version":
                     jsonParser.nextToken(); // skip
                     version = jsonParser.getValueAsString();
                     break;
-
                 case "testCases":
                     jsonParser.nextToken();
-                    testCases = jsonParser.readValueAs(new TypeReference<ArrayList<LoadFlowTestCaseJson>>() { });
+                    testCases = jsonParser.readValueAs(new TypeReference<ArrayList<LoadflowTestCaseJson>>() { });
                     break;
 
                 default:
@@ -50,6 +49,6 @@ public class LoadFlowTestPlanJsonDeserializer extends StdDeserializer<LoadFlowTe
             //Only 1.0 version is supported for now
             throw new AssertionError("Version different than 1.0 not supported.");
         }
-        return new LoadFlowTestPlanJson(testCases);
+        return new LoadflowTestPlanJson(testCases);
     }
 }

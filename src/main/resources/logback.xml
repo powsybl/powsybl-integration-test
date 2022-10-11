@@ -16,7 +16,7 @@
     <root level="OFF">
         <appender-ref ref="STDOUT" />
     </root>
-    <logger name="com.powsybl.integrationtest" level="INFO" additivity="false">
+    <logger name="com.powsybl.integrationtest" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT" />
     </logger>
 </configuration>
