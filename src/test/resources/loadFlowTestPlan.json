@@ -2,32 +2,88 @@
   "version" : "1.0",
   "testCases" : [
     {
-      "id" : "CASE1888_BASIC",
-      "inputNetwork" : "case1888rte.mat",
-      "inputParameters" : "LoadFlowParametersBasic.json",
-      "expectedNetwork" : "loadflowreferences/NetworkReference_CASE1888RTE_BASIC.xiidm",
-      "expectedResults" : "loadflowreferences/LoadFlowResult_CASE1888RTE_BASIC.json"
-    },
-    {
       "id" : "CASE6515_BASIC",
-      "inputNetwork" : "case6515rte.mat",
-      "inputParameters" : "LoadFlowParametersBasic.json",
-      "expectedNetwork" : "loadflowreferences/NetworkReference_CASE6515RTE_BASIC.xiidm",
-      "expectedResults" : "loadflowreferences/LoadFlowResult_CASE6515RTE_BASIC.json"
-    },
-    {
-      "id" : "CASE1888_STANDARD",
-      "inputNetwork" : "case1888rte.mat",
-      "inputParameters" : "LoadFlowParametersStandard.json",
-      "expectedNetwork" : "loadflowreferences/NetworkReference_CASE1888RTE_STANDARD.xiidm",
-      "expectedResults" : "loadflowreferences/LoadFlowResult_CASE1888RTE_STANDARD.json"
+      "inputNetwork" : "networks/case6515rte.mat",
+      "inputParameters" : "parameters/LoadFlowParametersBasic.json",
+      "expectedNetwork" : "loadflowreferences/loadflow_6515rte_basic.xiidm",
+      "expectedResults" : "loadflowreferences/loadflow_6515rte_basic.json"
     },
     {
       "id" : "CASE6515_STANDARD",
-      "inputNetwork" : "case6515rte.mat",
-      "inputParameters" : "LoadFlowParametersStandard.json",
-      "expectedNetwork" : "loadflowreferences/NetworkReference_CASE6515RTE_STANDARD.xiidm",
-      "expectedResults" : "loadflowreferences/LoadFlowResult_CASE6515RTE_STANDARD.json"
+      "inputNetwork" : "networks/case6515rte.mat",
+      "inputParameters" : "parameters/LoadFlowParametersStandard.json",
+      "expectedNetwork" : "loadflowreferences/loadflow_6515rte_standard.xiidm",
+      "expectedResults" : "loadflowreferences/loadflow_6515rte_standard.json"
+    },
+    {
+      "id" : "micro-t1-basic",
+      "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T1_Assembled_Complete_v2.zip",
+      "inputParameters" : "parameters/LoadFlowParametersBasic.json",
+      "expectedNetwork" : "loadflowreferences/loadflow_microgrid-t1-assembled_basic.xiidm",
+      "expectedResults" : "loadflowreferences/loadflow_microgrid-t1-assembled_basic.json"
+    },
+    {
+      "id" : "micro-t1-basic",
+      "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T1_Assembled_Complete_v2.zip",
+      "inputParameters" : "parameters/LoadFlowParametersStandard.json",
+      "expectedNetwork" : "loadflowreferences/loadflow_microgrid-t1-assembled_standard.xiidm",
+      "expectedResults" : "loadflowreferences/loadflow_microgrid-t1-assembled_standard.json"
+    },
+    {
+      "id" : "micro-t2-basic",
+      "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T2_Assembled_Complete_v2.zip",
+      "inputParameters" : "parameters/LoadFlowParametersBasic.json",
+      "expectedNetwork" : "loadflowreferences/loadflow_microgrid-t2-assembled_basic.xiidm",
+      "expectedResults" : "loadflowreferences/loadflow_microgrid-t2-assembled_basic.json"
+    },
+    {
+      "id" : "micro-t2-standard",
+      "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T2_Assembled_Complete_v2.zip",
+      "inputParameters" : "parameters/LoadFlowParametersStandard.json",
+      "expectedNetwork" : "loadflowreferences/loadflow_microgrid-t2-assembled_standard.xiidm",
+      "expectedResults" : "loadflowreferences/loadflow_microgrid-t2-assembled_standard.json"
+    },
+    {
+      "id" : "micro-t3-basic",
+      "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T3_Assembled_Complete_v2.zip",
+      "inputParameters" : "parameters/LoadFlowParametersBasic.json",
+      "expectedNetwork" : "loadflowreferences/loadflow_microgrid-t3-assembled_basic.xiidm",
+      "expectedResults" : "loadflowreferences/loadflow_microgrid-t3-assembled_basic.json"
+    },
+    {
+      "id" : "micro-t3-standard",
+      "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T3_Assembled_Complete_v2.zip",
+      "inputParameters" : "parameters/LoadFlowParametersStandard.json",
+      "expectedNetwork" : "loadflowreferences/loadflow_microgrid-t3-assembled_standard.xiidm",
+      "expectedResults" : "loadflowreferences/loadflow_microgrid-t3-assembled_standard.json"
+    },
+    {
+      "id" : "micro-t4BB-basic",
+      "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T4_Assembled_BB_Complete_v2.zip",
+      "inputParameters" : "parameters/LoadFlowParametersBasic.json",
+      "expectedNetwork" : "loadflowreferences/loadflow_microgrid-t4-assembledBB_basic.xiidm",
+      "expectedResults" : "loadflowreferences/loadflow_microgrid-t4-assembledBB_basic.json"
+    },
+    {
+      "id" : "micro-t3BB-standard",
+      "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T4_Assembled_BB_Complete_v2.zip",
+      "inputParameters" : "parameters/LoadFlowParametersStandard.json",
+      "expectedNetwork" : "loadflowreferences/loadflow_microgrid-t4-assembledBB_standard.xiidm",
+      "expectedResults" : "loadflowreferences/loadflow_microgrid-t4-assembledBB_standard.json"
+    },
+    {
+      "id" : "micro-t4NB-basic",
+      "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T4_Assembled_NB_Complete_v2.zip",
+      "inputParameters" : "parameters/LoadFlowParametersBasic.json",
+      "expectedNetwork" : "loadflowreferences/loadflow_microgrid-t4-assembledNB_basic.xiidm",
+      "expectedResults" : "loadflowreferences/loadflow_microgrid-t4-assembledNB_basic.json"
+    },
+    {
+      "id" : "micro-t3NB-standard",
+      "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T4_Assembled_NB_Complete_v2.zip",
+      "inputParameters" : "parameters/LoadFlowParametersStandard.json",
+      "expectedNetwork" : "loadflowreferences/loadflow_microgrid-t4-assembledNB_standard.xiidm",
+      "expectedResults" : "loadflowreferences/loadflow_microgrid-t4-assembledNB_standard.json"
     }
   ]
 }

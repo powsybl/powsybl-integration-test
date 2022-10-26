@@ -1,0 +1,16 @@
+{
+  "parameters": [
+    {
+      "testCaseName": "loadflow_6515rte_test",
+      "networkPath": "<path-to-your-workspace>/src/test/resources/networks/case6515rte.mat",
+      "lfParametersPath": "<path-to-your-workspace>/src/test/resources/parameters/LoadFlowParametersBasic.json",
+      "outputPath": "<path-to-where-you-want-to-output>"
+    },
+    {
+      "testCaseName": "loadflow_6515rte_test2",
+      "networkPath": "<path-to-your-workspace>/src/test/resources/networks/case6515rte.mat",
+      "lfParametersPath": "<path-to-your-workspace>/src/test/resources/parameters/LoadFlowParametersStandard.json",
+      "outputPath": "<path-to-where-you-want-to-output>"
+    }
+  ]
+}

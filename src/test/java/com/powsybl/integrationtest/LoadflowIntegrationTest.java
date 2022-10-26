@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
@@ -28,7 +29,7 @@ import java.util.StringJoiner;
 public class LoadflowIntegrationTest {
 
     @Test
-    void runLoadflowTests() throws IOException {
+    void runLoadflowTests() throws IOException, URISyntaxException {
         LoadflowTestRunner runner = new LoadflowTestRunner();
         LoadflowTestPlanReader reader = new LoadflowTestPlanReader();
         try (InputStream res = getClass().getClassLoader().getResourceAsStream("loadFlowTestPlan.json")) {

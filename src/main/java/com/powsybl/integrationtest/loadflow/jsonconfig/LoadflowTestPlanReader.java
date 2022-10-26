@@ -23,6 +23,8 @@ import com.powsybl.loadflow.json.LoadFlowResultDeserializer;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -39,7 +41,7 @@ public class LoadflowTestPlanReader implements TestPlanReader<LoadflowComputatio
     }
 
     @Override
-    public TestPlan<LoadflowComputationParameters, LoadflowComputationResults, LoadflowTestCase> extractTestPlan(InputStream input) throws IOException {
+    public TestPlan<LoadflowComputationParameters, LoadflowComputationResults, LoadflowTestCase> extractTestPlan(InputStream input) throws IOException, URISyntaxException {
         LoadflowTestPlanJson lftpJson = objectMapper.readValue(input, LoadflowTestPlanJson.class);
         List<LoadflowTestCase> testCases = new ArrayList<>();
         for (LoadflowTestCaseJson testCaseJson : lftpJson.getTestCases()) {
@@ -55,17 +57,19 @@ public class LoadflowTestPlanReader implements TestPlanReader<LoadflowComputatio
      * @return the built LoadflowTestCase
      * @throws IOException if provided information is not reachable for some reason
      */
-    private static LoadflowTestCase buildFromJson(LoadflowTestCaseJson testCaseJson) throws IOException {
+    private static LoadflowTestCase buildFromJson(LoadflowTestCaseJson testCaseJson) throws IOException, URISyntaxException {
         Class<LoadflowTestPlanReader> cls = LoadflowTestPlanReader.class;
 
         LoadFlowParameters inputParameters = JsonLoadFlowParameters.read(
                 Objects.requireNonNull(cls.getResourceAsStream("/" + testCaseJson.getInputParameters())));
-        Network inputNetwork = Importers.loadNetwork(testCaseJson.getInputNetwork(),
-                Objects.requireNonNull(cls.getResourceAsStream("/" + testCaseJson.getInputNetwork())));
+        Path networkFilePath = Path.of(Objects.requireNonNull(
+                cls.getResource("/" + testCaseJson.getInputNetwork())).toURI());
+        Network inputNetwork = Importers.loadNetwork(Objects.requireNonNull(networkFilePath));
         LoadFlowResult expectedResults = LoadFlowResultDeserializer.read(
                 Objects.requireNonNull(cls.getResourceAsStream("/" + testCaseJson.getExpectedResults())));
-        Network expectedNetwork = Importers.loadNetwork(testCaseJson.getExpectedNetwork(),
-                Objects.requireNonNull(cls.getResourceAsStream("/" + testCaseJson.getExpectedNetwork())));
+        Path expectedNetworkPath = Path.of(Objects.requireNonNull(
+                cls.getResource("/" + testCaseJson.getExpectedNetwork())).toURI());
+        Network expectedNetwork = Importers.loadNetwork(Objects.requireNonNull(expectedNetworkPath));
 
         return new LoadflowTestCase(testCaseJson.getId(),
                 new LoadflowComputationParameters(inputNetwork, inputParameters),

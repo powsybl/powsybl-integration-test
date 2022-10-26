@@ -13,6 +13,7 @@ import com.powsybl.integrationtest.model.TestPlan;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
 
 /**
  * A component that reads files and outputs
@@ -30,5 +31,5 @@ public interface TestPlanReader<P extends ComputationParameters, R extends Compu
      * @throws IllegalArgumentException if file does not comply to the expected format
      * @throws IOException              if file cannot be read correctly
      */
-    TestPlan<P, R, T> extractTestPlan(InputStream input) throws IOException;
+    TestPlan<P, R, T> extractTestPlan(InputStream input) throws IOException, URISyntaxException;
 }
