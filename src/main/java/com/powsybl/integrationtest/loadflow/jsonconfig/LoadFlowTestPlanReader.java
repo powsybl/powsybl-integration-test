@@ -12,9 +12,9 @@ import com.powsybl.commons.json.JsonUtil;
 import com.powsybl.iidm.import_.Importers;
 import com.powsybl.iidm.network.Network;
 import com.powsybl.integrationtest.jsonconfig.TestPlanReader;
-import com.powsybl.integrationtest.loadflow.model.LoadflowComputationParameters;
-import com.powsybl.integrationtest.loadflow.model.LoadflowComputationResults;
-import com.powsybl.integrationtest.loadflow.model.LoadflowTestCase;
+import com.powsybl.integrationtest.loadflow.model.LoadFlowComputationParameters;
+import com.powsybl.integrationtest.loadflow.model.LoadFlowComputationResults;
+import com.powsybl.integrationtest.loadflow.model.LoadFlowTestCase;
 import com.powsybl.integrationtest.model.TestPlan;
 import com.powsybl.loadflow.LoadFlowParameters;
 import com.powsybl.loadflow.LoadFlowResult;
@@ -32,33 +32,34 @@ import java.util.Objects;
 /**
  * @author Arthur Michaut <arthur.michaut at artelys.com>
  */
-public class LoadflowTestPlanReader implements TestPlanReader<LoadflowComputationParameters, LoadflowComputationResults, LoadflowTestCase> {
+public class LoadFlowTestPlanReader implements TestPlanReader<LoadFlowComputationParameters, LoadFlowComputationResults, LoadFlowTestCase> {
 
     private final ObjectMapper objectMapper;
 
-    public LoadflowTestPlanReader() {
-        objectMapper = JsonUtil.createObjectMapper().registerModule(new LoadflowTestCaseModule());
+    public LoadFlowTestPlanReader() {
+        objectMapper = JsonUtil.createObjectMapper().registerModule(new LoadFlowTestCaseModule());
     }
 
     @Override
-    public TestPlan<LoadflowComputationParameters, LoadflowComputationResults, LoadflowTestCase> extractTestPlan(InputStream input) throws IOException, URISyntaxException {
-        LoadflowTestPlanJson lftpJson = objectMapper.readValue(input, LoadflowTestPlanJson.class);
-        List<LoadflowTestCase> testCases = new ArrayList<>();
-        for (LoadflowTestCaseJson testCaseJson : lftpJson.getTestCases()) {
+    public TestPlan<LoadFlowComputationParameters, LoadFlowComputationResults, LoadFlowTestCase> extractTestPlan(InputStream input)
+            throws IOException, URISyntaxException {
+        LoadFlowTestPlanJson lftpJson = objectMapper.readValue(input, LoadFlowTestPlanJson.class);
+        List<LoadFlowTestCase> testCases = new ArrayList<>();
+        for (LoadFlowTestCaseJson testCaseJson : lftpJson.getTestCases()) {
             testCases.add(buildFromJson(testCaseJson));
         }
         return new TestPlan<>(testCases);
     }
 
     /**
-     * Build a LoadflowTestCase using its JSON representation
+     * Build a {@link LoadFlowTestCase} using its JSON representation
      *
-     * @param testCaseJson JSON representation of a LoadflowTestCase
-     * @return the built LoadflowTestCase
+     * @param testCaseJson JSON representation of a {@link LoadFlowTestCase}
+     * @return the built LoadFlowTestCase
      * @throws IOException if provided information is not reachable for some reason
      */
-    private static LoadflowTestCase buildFromJson(LoadflowTestCaseJson testCaseJson) throws IOException, URISyntaxException {
-        Class<LoadflowTestPlanReader> cls = LoadflowTestPlanReader.class;
+    private static LoadFlowTestCase buildFromJson(LoadFlowTestCaseJson testCaseJson) throws IOException, URISyntaxException {
+        Class<LoadFlowTestPlanReader> cls = LoadFlowTestPlanReader.class;
 
         LoadFlowParameters inputParameters = JsonLoadFlowParameters.read(
                 Objects.requireNonNull(cls.getResourceAsStream("/" + testCaseJson.getInputParameters())));
@@ -71,18 +72,18 @@ public class LoadflowTestPlanReader implements TestPlanReader<LoadflowComputatio
                 cls.getResource("/" + testCaseJson.getExpectedNetwork())).toURI());
         Network expectedNetwork = Importers.loadNetwork(Objects.requireNonNull(expectedNetworkPath));
 
-        return new LoadflowTestCase(testCaseJson.getId(),
-                new LoadflowComputationParameters(inputNetwork, inputParameters),
-                new LoadflowComputationResults(expectedNetwork, expectedResults));
+        return new LoadFlowTestCase(testCaseJson.getId(),
+                new LoadFlowComputationParameters(inputNetwork, inputParameters),
+                new LoadFlowComputationResults(expectedNetwork, expectedResults));
     }
 
     /**
-     * A JSON serialization module for Loadflow configuration objects
+     * A JSON serialization module for LoadFlow configuration objects
      */
-    static class LoadflowTestCaseModule extends SimpleModule {
-        public LoadflowTestCaseModule() {
-            addDeserializer(LoadflowTestCaseJson.class, new LoadflowTestCaseJsonDeserializer());
-            addDeserializer(LoadflowTestPlanJson.class, new LoadflowTestPlanJsonDeserializer());
+    static class LoadFlowTestCaseModule extends SimpleModule {
+        public LoadFlowTestCaseModule() {
+            addDeserializer(LoadFlowTestCaseJson.class, new LoadFlowTestCaseJsonDeserializer());
+            addDeserializer(LoadFlowTestPlanJson.class, new LoadFlowTestPlanJsonDeserializer());
         }
     }
 }

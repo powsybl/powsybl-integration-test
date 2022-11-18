@@ -11,14 +11,14 @@ import java.util.List;
 /**
  * @author Bertrand Rix <bertrand.rix at artelys.com>
  */
-public class LoadflowTestPlanJson {
-    List<LoadflowTestCaseJson> testCases;
+public class LoadFlowTestPlanJson {
+    List<LoadFlowTestCaseJson> testCases;
 
-    public LoadflowTestPlanJson(List<LoadflowTestCaseJson> testCases) {
+    public LoadFlowTestPlanJson(List<LoadFlowTestCaseJson> testCases) {
         this.testCases = testCases;
     }
 
-    public List<LoadflowTestCaseJson> getTestCases() {
+    public List<LoadFlowTestCaseJson> getTestCases() {
         return testCases;
     }
 }

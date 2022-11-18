@@ -4,7 +4,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-package com.powsybl.integrationtest.creation.loadflow;
+package com.powsybl.integrationtest.creation.security;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonFactory;
@@ -15,14 +15,13 @@ import java.nio.file.Path;
 import java.util.List;
 
 /**
- * Parameters used by the Loadflow test cases creator. Made to be loaded from a JSON file
+ * Parameters used by the SA test cases creator. Made to be loaded from a JSON file
  *
  * @author Arthur Michaut <arthur.michaut at artelys.com>
  */
-class LoadflowTestcaseCreatorParameters {
+public class SATestcaseCreatorParameters {
 
-    @JsonProperty
-    List<Parameters> parameters;
+    private List<Parameters> parameters;
 
     public List<Parameters> getParameters() {
         return parameters;
@@ -38,7 +37,10 @@ class LoadflowTestcaseCreatorParameters {
         @JsonProperty
         private Path networkPath;
         @JsonProperty
-        private Path lfParametersPath;
+        private Path saParametersPath;
+        @JsonProperty
+        private Path contingenciesListPath;
+        private Path stateMonitorsListPath;
         @JsonProperty
         private Path outputPath;
 
@@ -60,13 +62,31 @@ class LoadflowTestcaseCreatorParameters {
             this.networkPath = networkPath;
         }
 
-        public Path getLfParametersPath() {
-            return lfParametersPath;
+        public Path getSAParametersPath() {
+            return saParametersPath;
         }
 
         @SuppressWarnings("unused")
-        public void setLfParametersPath(Path lfParametersPath) {
-            this.lfParametersPath = lfParametersPath;
+        public void setSAParametersPath(Path saParametersPath) {
+            this.saParametersPath = saParametersPath;
+        }
+
+        public Path getContingenciesListPath() {
+            return contingenciesListPath;
+        }
+
+        @SuppressWarnings("unused")
+        public void setContingenciesListPath(Path contingenciesListPath) {
+            this.contingenciesListPath = contingenciesListPath;
+        }
+
+        public Path getStateMonitorsListPath() {
+            return stateMonitorsListPath;
+        }
+
+        @SuppressWarnings("unused")
+        public void setStateMonitorsPath(Path stateMonitorsPath) {
+            this.stateMonitorsListPath = stateMonitorsPath;
         }
 
         public Path getOutputPath() {
@@ -77,18 +97,17 @@ class LoadflowTestcaseCreatorParameters {
         public void setOutputPath(Path outputPath) {
             this.outputPath = outputPath;
         }
-
     }
 
     /**
-     * Load the content of provided JSON file and produce {@link LoadflowTestcaseCreatorParameters} from it
+     * Load SA test case creation parameters from a file
      *
-     * @param inputFilePath path to the file to use as input
-     * @return the LoadflowTestcaseCreatorParameters built from provided input file
-     * @throws IOException if file can not be loaded or read
+     * @param inputFilePath path to the input file
+     * @return {@link SATestcaseCreatorParameters} loaded from input file
      */
-    static LoadflowTestcaseCreatorParameters load(Path inputFilePath) throws IOException {
+    static SATestcaseCreatorParameters load(Path inputFilePath) throws IOException {
         final ObjectMapper mapper = new ObjectMapper(new JsonFactory());
-        return mapper.readValue(inputFilePath.toFile(), LoadflowTestcaseCreatorParameters.class);
+        return mapper.readValue(inputFilePath.toFile(), SATestcaseCreatorParameters.class);
     }
+
 }

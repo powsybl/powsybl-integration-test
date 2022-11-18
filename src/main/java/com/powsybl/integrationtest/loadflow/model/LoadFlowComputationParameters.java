@@ -18,13 +18,13 @@ import java.util.Objects;
  *
  * @author Arthur Michaut <arthur.michaut at artelys.com>
  */
-public class LoadflowComputationParameters implements ComputationParameters {
+public class LoadFlowComputationParameters implements ComputationParameters {
 
     private final Network network;
 
     private final LoadFlowParameters parameters;
 
-    public LoadflowComputationParameters(Network network, LoadFlowParameters parameters) {
+    public LoadFlowComputationParameters(Network network, LoadFlowParameters parameters) {
         this.network = Objects.requireNonNull(network);
         this.parameters = Objects.requireNonNull(parameters);
     }

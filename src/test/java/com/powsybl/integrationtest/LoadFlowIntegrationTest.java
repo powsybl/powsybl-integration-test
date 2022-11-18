@@ -6,11 +6,11 @@
  */
 package com.powsybl.integrationtest;
 
-import com.powsybl.integrationtest.loadflow.jsonconfig.LoadflowTestPlanReader;
-import com.powsybl.integrationtest.loadflow.model.LoadflowComputationParameters;
-import com.powsybl.integrationtest.loadflow.model.LoadflowComputationResults;
-import com.powsybl.integrationtest.loadflow.model.LoadflowTestCase;
-import com.powsybl.integrationtest.loadflow.model.LoadflowTestRunner;
+import com.powsybl.integrationtest.loadflow.jsonconfig.LoadFlowTestPlanReader;
+import com.powsybl.integrationtest.loadflow.model.LoadFlowComputationParameters;
+import com.powsybl.integrationtest.loadflow.model.LoadFlowComputationResults;
+import com.powsybl.integrationtest.loadflow.model.LoadFlowTestCase;
+import com.powsybl.integrationtest.loadflow.model.LoadFlowTestRunner;
 import com.powsybl.integrationtest.model.TestPlan;
 import org.junit.jupiter.api.Test;
 
@@ -22,20 +22,20 @@ import java.util.List;
 import java.util.StringJoiner;
 
 /**
- * Test to check that Loadflow computations outputs are as expected.
+ * Test to check that LoadFlow computations outputs are as expected.
  *
  * @author Arthur Michaut <arthur.michaut at artelys.com>
  */
-public class LoadflowIntegrationTest {
+public class LoadFlowIntegrationTest {
 
     @Test
-    void runLoadflowTests() throws IOException, URISyntaxException {
-        LoadflowTestRunner runner = new LoadflowTestRunner();
-        LoadflowTestPlanReader reader = new LoadflowTestPlanReader();
+    void runLoadFlowTests() throws IOException, URISyntaxException {
+        LoadFlowTestRunner runner = new LoadFlowTestRunner();
+        LoadFlowTestPlanReader reader = new LoadFlowTestPlanReader();
         try (InputStream res = getClass().getClassLoader().getResourceAsStream("loadFlowTestPlan.json")) {
-            TestPlan<LoadflowComputationParameters, LoadflowComputationResults, LoadflowTestCase> testPlan = reader.extractTestPlan(res);
+            TestPlan<LoadFlowComputationParameters, LoadFlowComputationResults, LoadFlowTestCase> testPlan = reader.extractTestPlan(res);
             List<String> errors = new ArrayList<>();
-            for (LoadflowTestCase testCase : testPlan.getTestCases()) {
+            for (LoadFlowTestCase testCase : testPlan.getTestCases()) {
                 errors.addAll(runner.runTests(testCase));
             }
             if (!errors.isEmpty()) {

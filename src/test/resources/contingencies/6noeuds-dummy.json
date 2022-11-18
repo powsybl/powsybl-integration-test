@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "name": "contingencies",
+  "contingencies": [
+    {
+      "id": "contingency",
+      "elements": [
+        {
+          "id": "NO_N_1",
+          "type": "LINE"
+        }
+      ]
+    }
+  ]
+}

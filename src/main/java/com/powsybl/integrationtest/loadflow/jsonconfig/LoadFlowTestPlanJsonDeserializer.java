@@ -19,16 +19,16 @@ import java.util.List;
 /**
  * @author Bertrand Rix <bertrand.rix at artelys.com>
  */
-public class LoadflowTestPlanJsonDeserializer extends StdDeserializer<LoadflowTestPlanJson> {
+public class LoadFlowTestPlanJsonDeserializer extends StdDeserializer<LoadFlowTestPlanJson> {
 
-    protected LoadflowTestPlanJsonDeserializer() {
-        super(LoadflowTestPlanJson.class);
+    protected LoadFlowTestPlanJsonDeserializer() {
+        super(LoadFlowTestPlanJson.class);
     }
 
     @Override
-    public LoadflowTestPlanJson deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
+    public LoadFlowTestPlanJson deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
         String version = null;
-        List<LoadflowTestCaseJson> testCases = null;
+        List<LoadFlowTestCaseJson> testCases = null;
         while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
             switch (jsonParser.getCurrentName()) {
                 case "version":
@@ -37,7 +37,7 @@ public class LoadflowTestPlanJsonDeserializer extends StdDeserializer<LoadflowTe
                     break;
                 case "testCases":
                     jsonParser.nextToken();
-                    testCases = jsonParser.readValueAs(new TypeReference<ArrayList<LoadflowTestCaseJson>>() { });
+                    testCases = jsonParser.readValueAs(new TypeReference<ArrayList<LoadFlowTestCaseJson>>() { });
                     break;
 
                 default:
@@ -45,10 +45,10 @@ public class LoadflowTestPlanJsonDeserializer extends StdDeserializer<LoadflowTe
             }
         }
 
-        if (version == null || !version.equals("1.0")) {
+        if (!"1.0".equals(version)) {
             //Only 1.0 version is supported for now
             throw new AssertionError("Version different than 1.0 not supported.");
         }
-        return new LoadflowTestPlanJson(testCases);
+        return new LoadFlowTestPlanJson(testCases);
     }
 }

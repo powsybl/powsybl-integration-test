@@ -11,19 +11,19 @@ import com.powsybl.integrationtest.model.TestCase;
 import java.util.Objects;
 
 /**
- * A {@link TestCase} for Loadflow computations. Contains {@link LoadflowComputationParameters} to be used for the
- * computation and {@link LoadflowComputationResults} that are the expected results of the computation using the
+ * A {@link TestCase} for LoadFlow computations. Contains {@link LoadFlowComputationParameters} to be used for the
+ * computation and {@link LoadFlowComputationResults} that are the expected results of the computation using the
  * provided parameters.
  *
  * @author Arthur Michaut <arthur.michaut at artelys.com>
  */
-public class LoadflowTestCase implements TestCase<LoadflowComputationParameters, LoadflowComputationResults> {
+public class LoadFlowTestCase implements TestCase<LoadFlowComputationParameters, LoadFlowComputationResults> {
 
     private final String id;
-    private final LoadflowComputationParameters parameters;
-    private final LoadflowComputationResults expectedResults;
+    private final LoadFlowComputationParameters parameters;
+    private final LoadFlowComputationResults expectedResults;
 
-    public LoadflowTestCase(String id, LoadflowComputationParameters parameters, LoadflowComputationResults expectedResults) {
+    public LoadFlowTestCase(String id, LoadFlowComputationParameters parameters, LoadFlowComputationResults expectedResults) {
         this.id = Objects.requireNonNull(id);
         this.parameters = Objects.requireNonNull(parameters);
         this.expectedResults = Objects.requireNonNull(expectedResults);
@@ -35,12 +35,12 @@ public class LoadflowTestCase implements TestCase<LoadflowComputationParameters,
     }
 
     @Override
-    public LoadflowComputationParameters getParameters() {
+    public LoadFlowComputationParameters getParameters() {
         return parameters;
     }
 
     @Override
-    public LoadflowComputationResults getExpectedResults() {
+    public LoadFlowComputationResults getExpectedResults() {
         return expectedResults;
     }
 }

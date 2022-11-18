@@ -1,55 +1,51 @@
-/**
- * Copyright (c) 2022, RTE (http://www.rte-france.com)
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
-package com.powsybl.integrationtest.loadflow.model;
+package com.powsybl.integrationtest.utils;
 
 import com.powsybl.iidm.network.*;
-import com.powsybl.integrationtest.model.AbstractTestRunner;
-import com.powsybl.integrationtest.model.ComputationRunner;
-import com.powsybl.loadflow.LoadFlow;
-import com.powsybl.loadflow.LoadFlowResult;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
+import static com.powsybl.integrationtest.utils.CompareUtils.assertDeltaMax;
 
 /**
- * A service that can perform Loadflow results comparison.
- * Feed it with a {@link LoadflowTestCase} and let it check if actual results are equal to those expected.
+ * A component that can compare two provided networks and return a list of string containing a message for each
+ * spotted difference.
  *
  * @author Arthur Michaut <arthur.michaut at artelys.com>
  */
-public class LoadflowTestRunner extends AbstractTestRunner<LoadflowComputationParameters, LoadflowComputationResults> {
+public class NetworksComparator {
 
-    private final double deltaV = 1e-9;
-    private final double deltaP = 1e-9;
-    private final double deltaQ = 1e-9;
-    private final double deltaAngle = 1e-9;
-    private final double deltaSlackPowerMismatch = 1e-9;
+    private final double deltaV;
+    private final double deltaAngle;
+    private final double deltaP;
+    private final double deltaQ;
 
-    @Override
-    protected ComputationRunner<LoadflowComputationParameters, LoadflowComputationResults> getComputationRunner() {
-        return parameters -> {
-            LoadFlowResult result = LoadFlow.run(parameters.getNetwork(), parameters.getParameters());
-            return new LoadflowComputationResults(parameters.getNetwork(), result);
-        };
+    public NetworksComparator(double deltaV, double deltaAngle, double deltaP, double deltaQ) {
+        this.deltaV = deltaV;
+        this.deltaAngle = deltaAngle;
+        this.deltaP = deltaP;
+        this.deltaQ = deltaQ;
     }
 
-    @Override
-    protected List<String> performIdentityChecks(String logPrefix, LoadflowComputationResults actual, LoadflowComputationResults expected) {
-        List<String> errors = new ArrayList<>();
-        errors.addAll(compareResults(logPrefix, actual.getResult(), expected.getResult()));
-        errors.addAll(compareBuses(logPrefix, actual.getNetwork(), expected.getNetwork()));
-        errors.addAll(compareBranches(logPrefix, actual.getNetwork(), expected.getNetwork()));
-        errors.addAll(compareLoads(logPrefix, actual.getNetwork(), expected.getNetwork()));
-        errors.addAll(compareGenerators(logPrefix, actual.getNetwork(), expected.getNetwork()));
-        errors.addAll(compareVcsConverterStations(logPrefix, actual.getNetwork(), expected.getNetwork()));
-        errors.addAll(compareLccConverterStations(logPrefix, actual.getNetwork(), expected.getNetwork()));
-        errors.addAll(compareTwoWindingTransformers(logPrefix, actual.getNetwork(), expected.getNetwork()));
-        return errors;
+    /**
+     * Check all the differences between a network and another one.
+     *
+     * @param logPrefix      a prefix to add to all generated error messages
+     * @param aNetwork       a network
+     * @param anotherNetwork another network
+     * @return a list containing error message. An error message will be added to the list for each found difference
+     *         between {@code aNetwork} and {@code anotherNetwork}.
+     */
+    public List<String> compareNetworks(String logPrefix, Network aNetwork, Network anotherNetwork) {
+        List<String> errorMessages = new ArrayList<>();
+        errorMessages.addAll(compareBuses(logPrefix, aNetwork.getNetwork(), anotherNetwork.getNetwork()));
+        errorMessages.addAll(compareBranches(logPrefix, aNetwork.getNetwork(), anotherNetwork.getNetwork()));
+        errorMessages.addAll(compareLoads(logPrefix, aNetwork.getNetwork(), anotherNetwork.getNetwork()));
+        errorMessages.addAll(compareGenerators(logPrefix, aNetwork.getNetwork(), anotherNetwork.getNetwork()));
+        errorMessages.addAll(compareVcsConverterStations(logPrefix, aNetwork.getNetwork(), anotherNetwork.getNetwork()));
+        errorMessages.addAll(compareLccConverterStations(logPrefix, aNetwork.getNetwork(), anotherNetwork.getNetwork()));
+        errorMessages.addAll(compareTwoWindingTransformers(logPrefix, aNetwork.getNetwork(), anotherNetwork.getNetwork()));
+        return errorMessages;
     }
 
     private List<String> compareBuses(String logPrefix, Network test, Network reference) {
@@ -160,64 +156,5 @@ public class LoadflowTestRunner extends AbstractTestRunner<LoadflowComputationPa
             }
         }
         return errors;
-    }
-
-    List<String> compareResults(String logPrefix, LoadFlowResult test, LoadFlowResult reference) {
-        List<String> errors = new ArrayList<>();
-        assertEquals(test.isOk(), reference.isOk(),
-                logPrefix + "LoadFlowResult reference and test isOk is different.", errors);
-        assertEquals(test.getComponentResults().size(), reference.getComponentResults().size(),
-                logPrefix + "LoadFlowResult reference and test component results are not the same size.", errors);
-
-        if (test.getComponentResults().size() == reference.getComponentResults().size()) {
-            for (int i = 0; i < test.getComponentResults().size(); ++i) {
-                assertEquals(test.getComponentResults().get(i).getStatus(),
-                        reference.getComponentResults().get(i).getStatus(),
-                        logPrefix + "Status has unexpected value for component #" + i, errors);
-                assertEquals(test.getComponentResults().get(i).getIterationCount(), reference.getComponentResults().get(i).getIterationCount(),
-                        logPrefix + "Iterations count has ", errors);
-                assertEquals(test.getComponentResults().get(i).getSlackBusId(),
-                        reference.getComponentResults().get(i).getSlackBusId(),
-                        logPrefix + "Slack bus id has unexpected value for component #" + i, errors);
-                assertDeltaMax(test.getComponentResults().get(i).getSlackBusActivePowerMismatch(),
-                        reference.getComponentResults().get(i).getSlackBusActivePowerMismatch(),
-                        deltaSlackPowerMismatch,
-                        logPrefix + "Slack power mismatch has unexpected value for component #" + i, errors);
-            }
-        }
-        return errors;
-    }
-
-    /**
-     * Check that values difference is smaller than {@code deltaV}. Since the {@link Comparable#compareTo} method is
-     * used for values comparison, it is advisable to use only numeric values in arguments.
-     * If difference bewteen the vlaues is greater than {@code deltaV}, {@code errMessage} gets added to {@code errors}
-     * list.
-     *
-     * @param value1     first value
-     * @param value2     second value
-     * @param deltaV     maximal tolerated difference between
-     * @param errMessage message to add to errors list if check fails
-     * @param errors     errors list
-     */
-    private void assertDeltaMax(double value1, double value2, double deltaV, String errMessage, List<String> errors) {
-        if (Math.abs(value1 - value2) > deltaV) {
-            errors.add(errMessage + " (expected " + value2 + " but had " + value1 + ")");
-        }
-    }
-
-    /**
-     * Check that provided values are equal
-     *
-     * @param value1     First value
-     * @param value2     Second value
-     * @param errMessage Message to add to {@code errors} if values are not equal.
-     * @param errors     errors list
-     * @param <T>        type of values to compare
-     */
-    private <T> void assertEquals(T value1, T value2, String errMessage, List<String> errors) {
-        if (!Objects.equals(value1, value2)) {
-            errors.add(errMessage);
-        }
     }
 }

@@ -18,12 +18,12 @@ import java.util.Objects;
  *
  * @author Arthur Michaut <arthur.michaut at artelys.com>
  */
-public class LoadflowComputationResults implements ComputationResults {
+public class LoadFlowComputationResults implements ComputationResults {
 
     private final Network network;
     private final LoadFlowResult result;
 
-    public LoadflowComputationResults(Network network, LoadFlowResult result) {
+    public LoadFlowComputationResults(Network network, LoadFlowResult result) {
         this.network = Objects.requireNonNull(network);
         this.result = Objects.requireNonNull(result);
     }

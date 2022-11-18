@@ -1,0 +1,15 @@
+[
+  {
+    "contingencyContext": {
+      "contingencyId": "contingency",
+      "contextType": "ALL"
+    },
+    "branchIds": [
+      "S_SO_1","S_SE_2"
+    ],
+    "voltageLevelIds": [
+      "NO_poste"
+    ],
+    "threeWindingsTransformerIds": []
+  }
+]

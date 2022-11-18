@@ -10,9 +10,9 @@ import com.powsybl.iidm.export.Exporters;
 import com.powsybl.iidm.import_.Importers;
 import com.powsybl.iidm.network.Network;
 import com.powsybl.iidm.xml.XMLExporter;
-import com.powsybl.integrationtest.loadflow.model.LoadflowComputationParameters;
-import com.powsybl.integrationtest.loadflow.model.LoadflowComputationResults;
-import com.powsybl.integrationtest.loadflow.model.LoadflowComputationRunner;
+import com.powsybl.integrationtest.loadflow.model.LoadFlowComputationParameters;
+import com.powsybl.integrationtest.loadflow.model.LoadFlowComputationResults;
+import com.powsybl.integrationtest.loadflow.model.LoadFlowComputationRunner;
 import com.powsybl.loadflow.LoadFlowParameters;
 import com.powsybl.loadflow.json.JsonLoadFlowParameters;
 import com.powsybl.loadflow.json.LoadFlowResultSerializer;
@@ -30,19 +30,19 @@ import java.util.Properties;
  *
  * @author Arthur Michaut <arthur.michaut at artelys.com>
  */
-public class LoadflowTestcaseCreator {
+public class LoadFlowTestcaseCreator {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoadflowTestcaseCreator.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoadFlowTestcaseCreator.class);
 
-    private final LoadflowComputationRunner runner;
+    private final LoadFlowComputationRunner runner;
 
-    public LoadflowTestcaseCreator(LoadflowComputationRunner runner) {
+    public LoadFlowTestcaseCreator(LoadFlowComputationRunner runner) {
         this.runner = runner;
     }
 
     public void createResults(String exportName, Path outputDir, Network network, LoadFlowParameters lfParameters) {
-        LoadflowComputationParameters parameters = new LoadflowComputationParameters(network, lfParameters);
-        LoadflowComputationResults results = runner.computeResults(parameters);
+        LoadFlowComputationParameters parameters = new LoadFlowComputationParameters(network, lfParameters);
+        LoadFlowComputationResults results = runner.computeResults(parameters);
         // Export network
         Properties properties = new Properties();
         properties.put(XMLExporter.ANONYMISED, "false");
@@ -58,10 +58,10 @@ public class LoadflowTestcaseCreator {
                 || !Files.isReadable(parametersFilePath)) {
             throw new IOException("Invalid parameters file : " + args[0]);
         }
-        LoadflowTestcaseCreatorParameters params = LoadflowTestcaseCreatorParameters.load(parametersFilePath);
+        LoadFlowTestcaseCreatorParameters params = LoadFlowTestcaseCreatorParameters.load(parametersFilePath);
 
-        for (LoadflowTestcaseCreatorParameters.Parameters parameters : params.getParameters()) {
-            LoadflowTestcaseCreator creator = new LoadflowTestcaseCreator(new LoadflowComputationRunner());
+        for (LoadFlowTestcaseCreatorParameters.Parameters parameters : params.getParameters()) {
+            LoadFlowTestcaseCreator creator = new LoadFlowTestcaseCreator(new LoadFlowComputationRunner());
 
             Network network = Importers.loadNetwork(parameters.getNetworkPath());
             LoadFlowParameters lfParams = JsonLoadFlowParameters.read(parameters.getLfParametersPath());

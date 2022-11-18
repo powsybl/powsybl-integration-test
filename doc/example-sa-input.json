@@ -1,0 +1,12 @@
+{
+  "parameters": [
+    {
+      "testCaseName": "6noeuds_dummy",
+      "networkPath": "<path-to-your-workspace>/src/test/resources/networks/reseau_6noeuds.xiidm",
+      "saParametersPath": "<path-to-your-workspace>/src/test/resources/parameters/SAParametersBasic.json",
+      "contingenciesListPath": "<path-to-your-workspace>/src/test/resources/contingencies/6noeuds-dummy.json",
+      "stateMonitorsListPath": "<path-to-your-workspace>/src/test/resources/statemonitors/6noeuds-dummy.json",
+      "outputPath": "<path-to-where-you-want-to-output>"
+    }
+  ]
+}
