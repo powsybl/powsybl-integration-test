@@ -8,7 +8,7 @@
     "status" : "CONVERGED",
     "iterationCount" : 4,
     "slackBusId" : "VL-4705_9",
-    "slackBusActivePowerMismatch" : -14.875357543461476,
+    "slackBusActivePowerMismatch" : -14.88742946398851,
     "distributedActivePower" : 0.0
   } ]
 }

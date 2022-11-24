@@ -37,7 +37,7 @@
       "expectedResults" : "loadflowreferences/loadflow_microgrid-t1-assembled_basic.json"
     },
     {
-      "id" : "micro-t1-basic",
+      "id" : "micro-t1-standard",
       "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T1_Assembled_Complete_v2.zip",
       "inputParameters" : "parameters/LoadFlowParametersStandard.json",
       "expectedNetwork" : "loadflowreferences/loadflow_microgrid-t1-assembled_standard.xiidm",
@@ -79,7 +79,7 @@
       "expectedResults" : "loadflowreferences/loadflow_microgrid-t4-assembledBB_basic.json"
     },
     {
-      "id" : "micro-t3BB-standard",
+      "id" : "micro-t4BB-standard",
       "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T4_Assembled_BB_Complete_v2.zip",
       "inputParameters" : "parameters/LoadFlowParametersStandard.json",
       "expectedNetwork" : "loadflowreferences/loadflow_microgrid-t4-assembledBB_standard.xiidm",
@@ -93,7 +93,7 @@
       "expectedResults" : "loadflowreferences/loadflow_microgrid-t4-assembledNB_basic.json"
     },
     {
-      "id" : "micro-t3NB-standard",
+      "id" : "micro-t4NB-standard",
       "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T4_Assembled_NB_Complete_v2.zip",
       "inputParameters" : "parameters/LoadFlowParametersStandard.json",
       "expectedNetwork" : "loadflowreferences/loadflow_microgrid-t4-assembledNB_standard.xiidm",

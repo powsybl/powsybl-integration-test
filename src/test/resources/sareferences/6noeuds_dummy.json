@@ -1,8 +1,8 @@
 {
-  "version" : "1.2",
+  "version" : "1.3",
   "preContingencyResult" : {
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ {
         "subjectId" : "S_SE_1",
         "limitType" : "CURRENT",
@@ -80,8 +80,8 @@
         "type" : "GENERATOR"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ {
         "subjectId" : "NO_N_1",
         "limitType" : "CURRENT",
@@ -131,8 +131,8 @@
         "type" : "GENERATOR"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ {
         "subjectId" : "NO_N_1",
         "limitType" : "CURRENT",
@@ -182,8 +182,8 @@
         "type" : "GENERATOR"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ ],
       "actionsTaken" : [ ]
     },
@@ -218,8 +218,8 @@
         "type" : "GENERATOR"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ ],
       "actionsTaken" : [ ]
     },
@@ -254,8 +254,8 @@
         "type" : "BRANCH"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ ],
       "actionsTaken" : [ ]
     },
@@ -282,8 +282,8 @@
         "type" : "BRANCH"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ ],
       "actionsTaken" : [ ]
     },
@@ -318,8 +318,8 @@
         "type" : "BRANCH"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ {
         "subjectId" : "SE_NE_1",
         "limitType" : "CURRENT",
@@ -399,8 +399,8 @@
         "type" : "BRANCH"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ {
         "subjectId" : "S_SE_1",
         "limitType" : "CURRENT",
@@ -450,8 +450,8 @@
         "type" : "BRANCH"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ {
         "subjectId" : "NE_NO_1",
         "limitType" : "CURRENT",
@@ -576,8 +576,8 @@
         "type" : "BRANCH"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ {
         "subjectId" : "SE_NE_1",
         "limitType" : "CURRENT",
@@ -657,8 +657,8 @@
         "type" : "BRANCH"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ ],
       "actionsTaken" : [ ]
     },
@@ -693,8 +693,8 @@
         "type" : "BRANCH"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ ],
       "actionsTaken" : [ ]
     },
@@ -729,8 +729,8 @@
         "type" : "BRANCH"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ ],
       "actionsTaken" : [ ]
     },
@@ -765,8 +765,8 @@
         "type" : "BRANCH"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ ],
       "actionsTaken" : [ ]
     },
@@ -801,8 +801,8 @@
         "type" : "BRANCH"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ {
         "subjectId" : "SE_NE_2",
         "limitType" : "CURRENT",
@@ -852,8 +852,8 @@
         "type" : "BRANCH"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ {
         "subjectId" : "SE_NE_1",
         "limitType" : "CURRENT",
@@ -903,8 +903,8 @@
         "type" : "BRANCH"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ ],
       "actionsTaken" : [ ]
     },
@@ -939,8 +939,8 @@
         "type" : "HVDC_LINE"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ ],
       "actionsTaken" : [ ]
     },
@@ -975,8 +975,8 @@
         "type" : "HVDC_LINE"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ ],
       "actionsTaken" : [ ]
     },
@@ -1011,8 +1011,8 @@
         "type" : "LOAD"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ {
         "subjectId" : "NO_N_1",
         "limitType" : "CURRENT",
@@ -1167,8 +1167,8 @@
         "type" : "LOAD"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ {
         "subjectId" : "NO_N_1",
         "limitType" : "CURRENT",
@@ -1263,8 +1263,8 @@
         "type" : "LOAD"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ ],
       "actionsTaken" : [ ]
     },
@@ -1302,8 +1302,8 @@
         "type" : "LINE"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ ],
       "actionsTaken" : [ ]
     },
@@ -1341,60 +1341,14 @@
         "type" : "LINE"
       } ]
     },
+    "status" : "MAX_ITERATION_REACHED",
     "limitViolationsResult" : {
-      "computationOk" : false,
       "limitViolations" : [ ],
       "actionsTaken" : [ ]
     },
     "networkResult" : {
       "branchResults" : [ ],
       "busResults" : [ ],
-      "threeWindingsTransformerResults" : [ ]
-    }
-  }, {
-    "contingency" : {
-      "id" : "[NO_N_2, NO_N_1]",
-      "elements" : [ {
-        "id" : "NO_N_2",
-        "type" : "LINE"
-      }, {
-        "id" : "NO_N_1",
-        "type" : "LINE"
-      } ]
-    },
-    "limitViolationsResult" : {
-      "computationOk" : true,
-      "limitViolations" : [ {
-        "subjectId" : "NE_NO_1",
-        "limitType" : "CURRENT",
-        "limit" : 400.0,
-        "limitReduction" : 1.0,
-        "value" : 518.8149052184222,
-        "side" : "ONE"
-      }, {
-        "subjectId" : "NE_NO_1",
-        "limitType" : "CURRENT",
-        "acceptableDuration" : 1,
-        "limit" : 500.00003051757807,
-        "limitReduction" : 1.0,
-        "value" : 518.8149052184212,
-        "side" : "TWO"
-      } ],
-      "actionsTaken" : [ ]
-    },
-    "networkResult" : {
-      "branchResults" : [ ],
-      "busResults" : [ {
-        "voltageLevelId" : "SE_poste",
-        "busId" : "SE_poste_0",
-        "v" : 406.4500427246094,
-        "angle" : -0.686655659441058
-      }, {
-        "voltageLevelId" : "SE_poste",
-        "busId" : "SE_poste_1",
-        "v" : 406.4500427246094,
-        "angle" : -0.686655659441058
-      } ],
       "threeWindingsTransformerResults" : [ ]
     }
   }, {
@@ -1408,8 +1362,8 @@
         "type" : "LINE"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ {
         "subjectId" : "NE_NO_1",
         "limitType" : "CURRENT",
@@ -1453,27 +1407,6 @@
     }
   }, {
     "contingency" : {
-      "id" : "[S_SE_2, S_SE_1]",
-      "elements" : [ {
-        "id" : "S_SE_2",
-        "type" : "LINE"
-      }, {
-        "id" : "S_SE_1",
-        "type" : "LINE"
-      } ]
-    },
-    "limitViolationsResult" : {
-      "computationOk" : false,
-      "limitViolations" : [ ],
-      "actionsTaken" : [ ]
-    },
-    "networkResult" : {
-      "branchResults" : [ ],
-      "busResults" : [ ],
-      "threeWindingsTransformerResults" : [ ]
-    }
-  }, {
-    "contingency" : {
       "id" : "[SO_NO_2, SO_NO_1]",
       "elements" : [ {
         "id" : "SO_NO_2",
@@ -1483,8 +1416,8 @@
         "type" : "LINE"
       } ]
     },
+    "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "computationOk" : true,
       "limitViolations" : [ ],
       "actionsTaken" : [ ]
     },
@@ -1509,6 +1442,73 @@
         "v" : 406.4500427246094,
         "angle" : -0.008116033419834714
       } ],
+      "threeWindingsTransformerResults" : [ ]
+    }
+  }, {
+    "contingency" : {
+      "id" : "[NO_N_2, NO_N_1]",
+      "elements" : [ {
+        "id" : "NO_N_2",
+        "type" : "LINE"
+      }, {
+        "id" : "NO_N_1",
+        "type" : "LINE"
+      } ]
+    },
+    "status" : "CONVERGED",
+    "limitViolationsResult" : {
+      "limitViolations" : [ {
+        "subjectId" : "NE_NO_1",
+        "limitType" : "CURRENT",
+        "limit" : 400.0,
+        "limitReduction" : 1.0,
+        "value" : 518.8149052184222,
+        "side" : "ONE"
+      }, {
+        "subjectId" : "NE_NO_1",
+        "limitType" : "CURRENT",
+        "acceptableDuration" : 1,
+        "limit" : 500.00003051757807,
+        "limitReduction" : 1.0,
+        "value" : 518.8149052184212,
+        "side" : "TWO"
+      } ],
+      "actionsTaken" : [ ]
+    },
+    "networkResult" : {
+      "branchResults" : [ ],
+      "busResults" : [ {
+        "voltageLevelId" : "SE_poste",
+        "busId" : "SE_poste_0",
+        "v" : 406.4500427246094,
+        "angle" : -0.686655659441058
+      }, {
+        "voltageLevelId" : "SE_poste",
+        "busId" : "SE_poste_1",
+        "v" : 406.4500427246094,
+        "angle" : -0.686655659441058
+      } ],
+      "threeWindingsTransformerResults" : [ ]
+    }
+  }, {
+    "contingency" : {
+      "id" : "[S_SE_2, S_SE_1]",
+      "elements" : [ {
+        "id" : "S_SE_2",
+        "type" : "LINE"
+      }, {
+        "id" : "S_SE_1",
+        "type" : "LINE"
+      } ]
+    },
+    "status" : "MAX_ITERATION_REACHED",
+    "limitViolationsResult" : {
+      "limitViolations" : [ ],
+      "actionsTaken" : [ ]
+    },
+    "networkResult" : {
+      "branchResults" : [ ],
+      "busResults" : [ ],
       "threeWindingsTransformerResults" : [ ]
     }
   } ],

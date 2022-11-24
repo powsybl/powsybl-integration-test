@@ -1,0 +1,112 @@
+{
+  "parameters": [
+    {
+      "testCaseName": "loadflow_6n_basic",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\reseau_6noeuds.xiidm",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersBasic.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    },
+    {
+      "testCaseName": "loadflow_6n_standard",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\reseau_6noeuds.xiidm",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersStandard.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    },
+    {
+      "testCaseName": "loadflow_6515rte_basic",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\case6515rte.mat",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersBasic.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    },
+    {
+      "testCaseName": "loadflow_6515rte_standard",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\case6515rte.mat",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersStandard.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    },
+    {
+      "testCaseName": "loadflow_1888rte_basic",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\case1888rte.mat",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersBasic.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    },
+    {
+      "testCaseName": "loadflow_1888rte_standard",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\case1888rte.mat",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersStandard.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    },
+    {
+      "testCaseName": "loadflow_microgrid-bc-assembled_basic",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_BC_Assembled_v2.zip",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersBasic.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    },
+    {
+      "testCaseName": "loadflow_microgrid-bc-assembled_standard",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_BC_Assembled_v2.zip",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersStandard.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    },
+    {
+      "testCaseName": "loadflow_microgrid-t1-assembled_basic",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_T1_Assembled_Complete_v2.zip",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersBasic.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    },
+    {
+      "testCaseName": "loadflow_microgrid-t1-assembled_standard",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_T1_Assembled_Complete_v2.zip",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersStandard.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    },
+    {
+      "testCaseName": "loadflow_microgrid-t2-assembled_basic",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_T2_Assembled_Complete_v2.zip",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersBasic.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    },
+    {
+      "testCaseName": "loadflow_microgrid-t2-assembled_standard",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_T2_Assembled_Complete_v2.zip",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersStandard.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    },
+    {
+      "testCaseName": "loadflow_microgrid-t3-assembled_basic",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_T3_Assembled_Complete_v2.zip",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersBasic.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    },
+    {
+      "testCaseName": "loadflow_microgrid-t3-assembled_standard",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_T3_Assembled_Complete_v2.zip",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersStandard.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    },
+    {
+      "testCaseName": "loadflow_microgrid-t4-assembledBB_basic",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_T4_Assembled_BB_Complete_v2.zip",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersBasic.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    },
+    {
+      "testCaseName": "loadflow_microgrid-t4-assembledBB_standard",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_T4_Assembled_BB_Complete_v2.zip",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersStandard.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    },
+    {
+      "testCaseName": "loadflow_microgrid-t4-assembledNB_basic",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_T4_Assembled_NB_Complete_v2.zip",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersBasic.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    },
+    {
+      "testCaseName": "loadflow_microgrid-t4-assembledNB_standard",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_T4_Assembled_NB_Complete_v2.zip",
+      "lfParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\LoadFlowParametersStandard.json",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\loadflowreferences"
+    }
+  ]
+}

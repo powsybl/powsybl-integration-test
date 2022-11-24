@@ -56,6 +56,9 @@ public class SecurityAnalysisTestRunner
         final String preLF = logPrefix + " [pre-contingency]";
         PreContingencyResult actPreRes = actualResults.getPreContingencyResult();
         PreContingencyResult expPreRes = expectedResults.getPreContingencyResult();
+        assertEquals(actPreRes.getStatus(), expPreRes.getStatus(),
+                preLF + " Unexpected pre-contingencies result status. Expected [" + actPreRes.getStatus()
+                        + "], but was [" + expPreRes.getStatus() + "]", errorMessages);
         errorMessages.addAll(compareNetworkResults(preLF, actPreRes.getNetworkResult(), expPreRes.getNetworkResult()));
         errorMessages.addAll(compareLimitViolations(preLF, actPreRes.getLimitViolationsResult(), expPreRes.getLimitViolationsResult()));
         // Compare post-contingency results
@@ -71,6 +74,9 @@ public class SecurityAnalysisTestRunner
             final String postLF = logPrefix + " [contingency " + contingencyId + "]";
             PostContingencyResult actPostRes = actualPCResults.get(contingencyId);
             PostContingencyResult expPostRes = expectedPCResults.get(contingencyId);
+            assertEquals(actPostRes.getStatus(), expPostRes.getStatus(),
+                    postLF + " Unexpected post-contingencies result status. Expected ["
+                            + actPostRes.getStatus() + "], but was [" + expPostRes.getStatus() + "]", errorMessages);
             errorMessages.addAll(compareNetworkResults(postLF, actPostRes.getNetworkResult(), expPostRes.getNetworkResult()));
             errorMessages.addAll(compareLimitViolations(postLF, actPostRes.getLimitViolationsResult(), expPostRes.getLimitViolationsResult()));
         }
@@ -204,9 +210,6 @@ public class SecurityAnalysisTestRunner
                                                       LimitViolationsResult reference) {
         ArrayList<String> errorMessages = new ArrayList<>();
         final String prefix = "[SA LV result]" + logPrefix;
-        assertEquals(result.isComputationOk(), reference.isComputationOk(),
-                prefix + " Unexpected computation status. Expected " + reference.isComputationOk()
-                        + " but was" + result.isComputationOk(), errorMessages);
         // Index limits to be able to compare them
         Map<String, LimitViolation> resultLimits = extractIndexedResults(result.getLimitViolations(),
             lv -> lv.getSubjectId() + '/' + lv.getLimitType().toString() + lv.getSide());
