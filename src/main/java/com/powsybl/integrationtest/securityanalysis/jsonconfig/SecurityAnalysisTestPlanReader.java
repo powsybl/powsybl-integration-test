@@ -10,9 +10,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.powsybl.commons.json.JsonUtil;
 import com.powsybl.contingency.Contingency;
-import com.powsybl.contingency.DefaultContingencyList;
+import com.powsybl.contingency.contingency.list.DefaultContingencyList;
 import com.powsybl.contingency.json.ContingencyJsonModule;
-import com.powsybl.iidm.import_.Importers;
 import com.powsybl.iidm.network.Network;
 import com.powsybl.integrationtest.jsonconfig.TestPlanReader;
 import com.powsybl.integrationtest.model.TestPlan;
@@ -54,7 +53,7 @@ public class SecurityAnalysisTestPlanReader implements
         // Load network from resources
         String network = testCaseJson.getInputNetwork();
         Path networkPath = Path.of(Objects.requireNonNull(cls.getResource("/" + network)).toURI());
-        Network iNetwork = Importers.loadNetwork(Objects.requireNonNull(networkPath));
+        Network iNetwork = Network.read(Objects.requireNonNull(networkPath));
         // Load input params from resources
         String parameters = testCaseJson.getInputParameters();
         Path paramPath = Path.of(Objects.requireNonNull(cls.getResource("/" + parameters)).toURI());
@@ -74,7 +73,7 @@ public class SecurityAnalysisTestPlanReader implements
         // Load reference network from resources
         network = testCaseJson.getExpectedNetwork();
         networkPath = Path.of(Objects.requireNonNull(cls.getResource("/" + network)).toURI());
-        Network refNetwork = Importers.loadNetwork(Objects.requireNonNull(networkPath));
+        Network refNetwork = Network.read(Objects.requireNonNull(networkPath));
         // Load reference results from resources
         String results = testCaseJson.getExpectedResults();
         Path resultsPath = Path.of(Objects.requireNonNull(cls.getResource("/" + results)).toURI());

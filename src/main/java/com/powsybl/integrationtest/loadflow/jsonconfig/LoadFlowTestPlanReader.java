@@ -9,7 +9,6 @@ package com.powsybl.integrationtest.loadflow.jsonconfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.powsybl.commons.json.JsonUtil;
-import com.powsybl.iidm.import_.Importers;
 import com.powsybl.iidm.network.Network;
 import com.powsybl.integrationtest.jsonconfig.TestPlanReader;
 import com.powsybl.integrationtest.loadflow.model.LoadFlowComputationParameters;
@@ -65,12 +64,12 @@ public class LoadFlowTestPlanReader implements TestPlanReader<LoadFlowComputatio
                 Objects.requireNonNull(cls.getResourceAsStream("/" + testCaseJson.getInputParameters())));
         Path networkFilePath = Path.of(Objects.requireNonNull(
                 cls.getResource("/" + testCaseJson.getInputNetwork())).toURI());
-        Network inputNetwork = Importers.loadNetwork(Objects.requireNonNull(networkFilePath));
+        Network inputNetwork = Network.read(Objects.requireNonNull(networkFilePath));
         LoadFlowResult expectedResults = LoadFlowResultDeserializer.read(
                 Objects.requireNonNull(cls.getResourceAsStream("/" + testCaseJson.getExpectedResults())));
         Path expectedNetworkPath = Path.of(Objects.requireNonNull(
                 cls.getResource("/" + testCaseJson.getExpectedNetwork())).toURI());
-        Network expectedNetwork = Importers.loadNetwork(Objects.requireNonNull(expectedNetworkPath));
+        Network expectedNetwork = Network.read(Objects.requireNonNull(expectedNetworkPath));
 
         return new LoadFlowTestCase(testCaseJson.getId(),
                 new LoadFlowComputationParameters(inputNetwork, inputParameters),

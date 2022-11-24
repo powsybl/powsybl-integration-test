@@ -39,10 +39,13 @@ public class SATestcaseCreatorParameters {
         @JsonProperty
         private Path saParametersPath;
         @JsonProperty
-        private Path contingenciesListPath;
-        private Path stateMonitorsListPath;
+        private Path contingenciesOutputPath;
+        @JsonProperty
+        private Path stateMonitorsOutputPath;
         @JsonProperty
         private Path outputPath;
+        @JsonProperty
+        private int stateMonitorsRate;
 
         public String getTestCaseName() {
             return testCaseName;
@@ -71,22 +74,22 @@ public class SATestcaseCreatorParameters {
             this.saParametersPath = saParametersPath;
         }
 
-        public Path getContingenciesListPath() {
-            return contingenciesListPath;
+        public Path getContingenciesOutputPath() {
+            return contingenciesOutputPath;
         }
 
         @SuppressWarnings("unused")
-        public void setContingenciesListPath(Path contingenciesListPath) {
-            this.contingenciesListPath = contingenciesListPath;
+        public void setContingenciesOutputPath(Path contingenciesOutputPath) {
+            this.contingenciesOutputPath = contingenciesOutputPath;
         }
 
-        public Path getStateMonitorsListPath() {
-            return stateMonitorsListPath;
+        public Path getStateMonitorsOutputPath() {
+            return stateMonitorsOutputPath;
         }
 
         @SuppressWarnings("unused")
         public void setStateMonitorsPath(Path stateMonitorsPath) {
-            this.stateMonitorsListPath = stateMonitorsPath;
+            this.stateMonitorsOutputPath = stateMonitorsPath;
         }
 
         public Path getOutputPath() {
@@ -96,6 +99,14 @@ public class SATestcaseCreatorParameters {
         @SuppressWarnings("unused")
         public void setOutputPath(Path outputPath) {
             this.outputPath = outputPath;
+        }
+
+        public int getStateMonitorsRate() {
+            return stateMonitorsRate;
+        }
+
+        public void setStateMonitorsRate(int stateMonitorsRate) {
+            this.stateMonitorsRate = stateMonitorsRate;
         }
     }
 

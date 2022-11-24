@@ -6,8 +6,6 @@
  */
 package com.powsybl.integrationtest.creation.loadflow;
 
-import com.powsybl.iidm.export.Exporters;
-import com.powsybl.iidm.import_.Importers;
 import com.powsybl.iidm.network.Network;
 import com.powsybl.iidm.xml.XMLExporter;
 import com.powsybl.integrationtest.loadflow.model.LoadFlowComputationParameters;
@@ -46,7 +44,7 @@ public class LoadFlowTestcaseCreator {
         // Export network
         Properties properties = new Properties();
         properties.put(XMLExporter.ANONYMISED, "false");
-        Exporters.export("XIIDM", network, properties, outputDir.resolve(exportName));
+        network.write("XIIDM", properties, outputDir.resolve(exportName));
         // Export results
         LoadFlowResultSerializer.write(results.getResult(), outputDir.resolve(exportName + ".json"));
         LOGGER.info("Exported results to [" + outputDir + "], with name [" + exportName + "]");
@@ -63,7 +61,7 @@ public class LoadFlowTestcaseCreator {
         for (LoadFlowTestcaseCreatorParameters.Parameters parameters : params.getParameters()) {
             LoadFlowTestcaseCreator creator = new LoadFlowTestcaseCreator(new LoadFlowComputationRunner());
 
-            Network network = Importers.loadNetwork(parameters.getNetworkPath());
+            Network network = Network.read(parameters.getNetworkPath());
             LoadFlowParameters lfParams = JsonLoadFlowParameters.read(parameters.getLfParametersPath());
 
             Path outputDir = parameters.getOutputPath();

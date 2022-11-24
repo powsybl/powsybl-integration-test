@@ -2,6 +2,20 @@
   "version" : "1.0",
   "testCases" : [
     {
+      "id" : "6n-basic",
+      "inputNetwork" : "networks/reseau_6noeuds.xiidm",
+      "inputParameters" : "parameters/LoadFlowParametersBasic.json",
+      "expectedNetwork" : "loadflowreferences/loadflow_6n_basic.xiidm",
+      "expectedResults" : "loadflowreferences/loadflow_6n_basic.json"
+    },
+    {
+      "id" : "6n-standard",
+      "inputNetwork" : "networks/reseau_6noeuds.xiidm",
+      "inputParameters" : "parameters/LoadFlowParametersStandard.json",
+      "expectedNetwork" : "loadflowreferences/loadflow_6n_standard.xiidm",
+      "expectedResults" : "loadflowreferences/loadflow_6n_standard.json"
+    },
+    {
       "id" : "CASE6515_BASIC",
       "inputNetwork" : "networks/case6515rte.mat",
       "inputParameters" : "parameters/LoadFlowParametersBasic.json",

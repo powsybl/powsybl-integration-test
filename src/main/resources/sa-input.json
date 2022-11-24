@@ -1,0 +1,13 @@
+{
+  "parameters": [
+    {
+      "testCaseName": "6noeuds_dummy",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\reseau_6noeuds.xiidm",
+      "saParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\SAParametersBasic.json",
+      "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
+      "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
+      "stateMonitorsRate": "5"
+    }
+  ]
+}

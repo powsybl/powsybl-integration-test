@@ -5,8 +5,8 @@
       "id" : "6-noeuds-dummy",
       "inputNetwork" : "networks/reseau_6noeuds.xiidm",
       "inputParameters" : "parameters/SAParametersBasic.json",
-      "inputContingencies": "contingencies/6noeuds-dummy.json",
-      "inputStateMonitors": "statemonitors/6noeuds-dummy.json",
+      "inputContingencies": "contingencies/6noeuds_dummy.json",
+      "inputStateMonitors": "statemonitors/6noeuds_dummy.json",
       "expectedNetwork" : "sareferences/6noeuds_dummy.xiidm",
       "expectedResults" : "sareferences/6noeuds_dummy.json"
     }

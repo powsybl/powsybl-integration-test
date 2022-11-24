@@ -6,11 +6,16 @@
  */
 package com.powsybl.integrationtest.creation.security;
 
-import com.powsybl.contingency.ContingencyList;
-import com.powsybl.iidm.export.Exporters;
-import com.powsybl.iidm.import_.Importers;
-import com.powsybl.iidm.network.Network;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.powsybl.commons.json.JsonUtil;
+import com.powsybl.contingency.*;
+import com.powsybl.contingency.contingency.list.DefaultContingencyList;
+import com.powsybl.contingency.json.ContingencyJsonModule;
+import com.powsybl.iidm.network.*;
 import com.powsybl.iidm.xml.XMLExporter;
+import com.powsybl.integrationtest.creation.security.contingencies.EfficientContingenciesProvider;
+import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsProvider;
+import com.powsybl.integrationtest.creation.security.statemonitors.DefaultStateMonitorsProvider;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationParameters;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationResults;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationRunner;
@@ -22,16 +27,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * A component that creates SA test cases reference files.
  * Use the main method, linking to a parameters file to output your own reference files (network and results).
  *
  * @author Arthur Michaut <arthur.michaut at artelys.com>
+ * @author Théo Le Colleter <theo.lecolleter at artelys.com>
  */
 public class SATestcaseCreator {
 
@@ -39,20 +45,41 @@ public class SATestcaseCreator {
 
     private final SecurityAnalysisComputationRunner runner;
 
-    public SATestcaseCreator(SecurityAnalysisComputationRunner runner) {
+    private final ContingenciesProvider contingenciesProvider;
+
+    private final StateMonitorsProvider stateMonitorsProvider;
+
+    public SATestcaseCreator(SecurityAnalysisComputationRunner runner, ContingenciesProvider contingenciesProvider, StateMonitorsProvider stateMonitorsProvider) {
         this.runner = runner;
+        this.contingenciesProvider = contingenciesProvider;
+        this.stateMonitorsProvider = stateMonitorsProvider;
     }
 
-    public void createResults(String exportName, Network network, SecurityAnalysisParameters saParams,
-                              ContingencyList contingencyList, List<StateMonitor> stateMonitorList, Path outputDir)
+    public void createResults(String exportName, Network network, SecurityAnalysisParameters saParams, Path outputDir, Path outputDirContingencies, Path outputDirStateMonitors)
             throws IOException {
+        // Create a list of contingencies
+        final List<Contingency> contingencies = contingenciesProvider.getContingencies(network);
+        // Create a list of stateMonitors based on those contingencies
+        final List<StateMonitor> stateMonitors = stateMonitorsProvider.createStateMonitorList(network, contingencies);
+
+        // Export contingencies in a .json file
+        ObjectMapper mapper = JsonUtil.createObjectMapper();
+        mapper.registerModule(new ContingencyJsonModule());
+        DefaultContingencyList contingencyList = new DefaultContingencyList("contingencies", contingencies);
+        OutputStream outputStream = Files.newOutputStream(outputDirContingencies.resolve(exportName + ".json"));
+        mapper.writeValue(outputStream, contingencyList);
+
+        // Export state monitors in a .json file
+        OutputStream outputStreamStateMonitors = Files.newOutputStream(outputDirStateMonitors.resolve(exportName + ".json"));
+        mapper.writeValue(outputStreamStateMonitors, stateMonitors);
+
         SecurityAnalysisComputationParameters parameters = new SecurityAnalysisComputationParameters(network, saParams,
-                contingencyList.getContingencies(network), stateMonitorList);
+                contingencies, stateMonitors);
         SecurityAnalysisComputationResults results = runner.computeResults(parameters);
         // Export network
         Properties properties = new Properties();
         properties.put(XMLExporter.ANONYMISED, "false");
-        Exporters.export("XIIDM", network, properties, outputDir.resolve(exportName));
+        network.write("XIIDM", properties, outputDir.resolve(exportName));
         // Export results
         SecurityAnalysisResultExporters.getExporter("JSON").export(results.getResults(),
                 Files.newBufferedWriter(outputDir.resolve(exportName + ".json")));
@@ -67,16 +94,17 @@ public class SATestcaseCreator {
         }
         SATestcaseCreatorParameters params = SATestcaseCreatorParameters.load(parametersFilePath);
         for (SATestcaseCreatorParameters.Parameters parameters : params.getParameters()) {
-            SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner());
+            SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), new EfficientContingenciesProvider(), new DefaultStateMonitorsProvider(parameters.getStateMonitorsRate()));
 
-            Network network = Importers.loadNetwork(parameters.getNetworkPath());
+            Network network = Network.read(parameters.getNetworkPath());
             SecurityAnalysisParameters saParams = JsonSecurityAnalysisParameters.read(parameters.getSAParametersPath());
-            ContingencyList cList = ContingencyList.load(parameters.getContingenciesListPath());
-            List<StateMonitor> smList = StateMonitor.read(parameters.getStateMonitorsListPath());
 
+            String testCaseName = parameters.getTestCaseName();
             Path outputDir = parameters.getOutputPath();
+            Path outputDirContingencies = parameters.getContingenciesOutputPath();
+            Path outputDirStateMonitors = parameters.getStateMonitorsOutputPath();
             Files.createDirectories(outputDir);
-            creator.createResults(parameters.getTestCaseName(), network, saParams, cList, smList, outputDir);
+            creator.createResults(testCaseName, network, saParams, outputDir, outputDirContingencies, outputDirStateMonitors);
         }
     }
 }
