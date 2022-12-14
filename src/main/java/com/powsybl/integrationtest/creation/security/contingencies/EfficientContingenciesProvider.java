@@ -15,32 +15,48 @@ import com.powsybl.iidm.network.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.powsybl.contingency.Contingency.builder;
+import static com.powsybl.integrationtest.utils.SampleUtils.createSamples;
+
 /**
  * Efficient implementation for ContingenciesProvider.
  * Creates a list of contingencies with the following rules:
- * N-1 contingencies: Create a contingency for each {@link com.powsybl.contingency.ContingencyElementType} in the network.
+ * N-1 contingencies: Create contingencies for a subset of elements for each {@link com.powsybl.contingency.ContingencyElementType} in the network, where the subset size is given for each class of element.
  * N-2 contingencies: Create a contingency for each pair of line with same voltage levels.
  *
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
 public class EfficientContingenciesProvider implements ContingenciesProvider {
 
+    private HashMap<Class, Integer> contingenciesRate;
+
+    private Random r;
+
+    public EfficientContingenciesProvider(final HashMap<Class, Integer> contingenciesRate) {
+        this.contingenciesRate = contingenciesRate;
+
+        this.r = new Random();
+        this.r.setSeed(0);
+    }
+
     @Override
     public List<Contingency> getContingencies(final Network network) {
         List<Contingency> contingencies = new ArrayList<>();
+        HashMap<Class, List<Contingency>> contingenciesByClass = new HashMap<>();
         // Get and add every element of the network in a list of contingencies (N-1)
-        network.getGenerators().forEach(e -> contingencies.add(Contingency.generator(e.getId())));
-        network.getStaticVarCompensators().forEach(e -> contingencies.add(Contingency.staticVarCompensator(e.getId())));
-        network.getShuntCompensators().forEach(e -> contingencies.add(Contingency.shuntCompensator(e.getId())));
-        network.getBranches().forEach(e -> contingencies.add(Contingency.branch(e.getId())));
-        network.getHvdcLines().forEach(e -> contingencies.add(Contingency.hvdcLine(e.getId())));
-        //TODO: Add busbarSections once fixed
-//        network.getBusbarSections().forEach(e -> contingencies.add(Contingency.busbarSection(e.getId())));
-        network.getDanglingLines().forEach(e -> contingencies.add(Contingency.danglingLine(e.getId())));
-        network.getThreeWindingsTransformers().forEach(e -> contingencies.add(Contingency.threeWindingsTransformer(e.getId())));
-        network.getLoads().forEach(e -> contingencies.add(Contingency.load(e.getId())));
-        //TODO: Add switches?
-//        Iterable<Switch> switches = network.getSwitches();
+        network.getGenerators().forEach(e -> contingenciesByClass.computeIfAbsent(Generator.class, k -> new ArrayList<>()).add(Contingency.generator(e.getId())));
+        network.getStaticVarCompensators().forEach(e -> contingenciesByClass.computeIfAbsent(StaticVarCompensator.class, k -> new ArrayList<>()).add(Contingency.staticVarCompensator(e.getId())));
+        network.getShuntCompensators().forEach(e -> contingenciesByClass.computeIfAbsent(ShuntCompensator.class, k -> new ArrayList<>()).add(Contingency.shuntCompensator(e.getId())));
+        network.getBranches().forEach(e -> contingenciesByClass.computeIfAbsent(Branch.class, k -> new ArrayList<>()).add(Contingency.branch(e.getId())));
+        network.getHvdcLines().forEach(e -> contingenciesByClass.computeIfAbsent(HvdcLine.class, k -> new ArrayList<>()).add(Contingency.hvdcLine(e.getId())));
+        network.getBusbarSections().forEach(e -> contingenciesByClass.computeIfAbsent(BusbarSection.class, k -> new ArrayList<>()).add(Contingency.busbarSection(e.getId())));
+        network.getDanglingLines().forEach(e -> contingenciesByClass.computeIfAbsent(DanglingLine.class, k -> new ArrayList<>()).add(Contingency.danglingLine(e.getId())));
+        network.getThreeWindingsTransformers().forEach(e -> contingenciesByClass.computeIfAbsent(ThreeWindingsTransformer.class, k -> new ArrayList<>()).add(Contingency.threeWindingsTransformer(e.getId())));
+        network.getLoads().forEach(e -> contingenciesByClass.computeIfAbsent(Load.class, k -> new ArrayList<>()).add(Contingency.load(e.getId())));
+        network.getSwitches().forEach(e -> contingenciesByClass.computeIfAbsent(Switch.class, k -> new ArrayList<>()).add(builder(e.getId()).addSwitch(e.getId()).build()));
+
+        HashMap<Class, Set<Contingency>> contingenciesSampleByClass = createSamples(contingenciesByClass, contingenciesRate, r);
+        contingenciesSampleByClass.forEach((c, contingenciesList) -> contingencies.addAll(contingenciesList));
 
         // Create pairs of line for every parallel lines
         // For each set of voltage level, we store the list of lines with those voltage levels

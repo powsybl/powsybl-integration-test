@@ -7,7 +7,241 @@
       "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
       "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
       "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
-      "stateMonitorsRate": "5"
+      "rate": {
+        "stateMonitors": {
+          "branches": 5,
+          "threeWindingsTransformers": 5,
+          "voltageLevels": 5
+        },
+        "contingencies": {
+          "generators": 100,
+          "staticVarCompensators": 0,
+          "shuntCompensators": 10,
+          "branches": 10,
+          "hvdcLines": 10,
+          "busbarSections": 0,
+          "danglingLines": 10,
+          "threeWindingsTransformers": 10,
+          "loads": 10,
+          "switches": 0
+        }
+      }
+    },
+    {
+      "testCaseName": "case1888rte",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\case1888rte.mat",
+      "saParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\SAParametersBasic.json",
+      "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
+      "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
+      "rate": {
+        "stateMonitors": {
+          "branches": 5,
+          "threeWindingsTransformers": 5,
+          "voltageLevels": 5
+        },
+        "contingencies": {
+          "generators": 10,
+          "staticVarCompensators": 0,
+          "shuntCompensators": 10,
+          "branches": 10,
+          "hvdcLines": 10,
+          "busbarSections": 0,
+          "danglingLines": 10,
+          "threeWindingsTransformers": 10,
+          "loads": 10,
+          "switches": 0
+        }
+      }
+    },
+    {
+      "testCaseName": "case6515rte",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\case6515rte.mat",
+      "saParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\SAParametersBasic.json",
+      "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
+      "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
+      "rate": {
+        "stateMonitors": {
+          "branches": 5,
+          "threeWindingsTransformers": 5,
+          "voltageLevels": 5
+        },
+        "contingencies": {
+          "generators": 10,
+          "staticVarCompensators": 0,
+          "shuntCompensators": 10,
+          "branches": 10,
+          "hvdcLines": 10,
+          "busbarSections": 0,
+          "danglingLines": 10,
+          "threeWindingsTransformers": 10,
+          "loads": 10,
+          "switches": 0
+        }
+      }
+    },
+    {
+      "testCaseName": "micro-bc",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_BC_Assembled_v2.zip",
+      "saParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\SAParametersBasic.json",
+      "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
+      "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
+      "rate": {
+        "stateMonitors": {
+          "branches": 5,
+          "threeWindingsTransformers": 5,
+          "voltageLevels": 5
+        },
+        "contingencies": {
+          "generators": 10,
+          "staticVarCompensators": 0,
+          "shuntCompensators": 10,
+          "branches": 10,
+          "hvdcLines": 10,
+          "busbarSections": 0,
+          "danglingLines": 10,
+          "threeWindingsTransformers": 10,
+          "loads": 10,
+          "switches": 0
+        }
+      }
+    },
+    {
+      "testCaseName": "micro-t1",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_T1_Assembled_Complete_v2.zip",
+      "saParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\SAParametersBasic.json",
+      "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
+      "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
+      "rate": {
+        "stateMonitors": {
+          "branches": 5,
+          "threeWindingsTransformers": 5,
+          "voltageLevels": 5
+        },
+        "contingencies": {
+          "generators": 0,
+          "staticVarCompensators": 0,
+          "shuntCompensators": 10,
+          "branches": 10,
+          "hvdcLines": 10,
+          "busbarSections": 0,
+          "danglingLines": 10,
+          "threeWindingsTransformers": 10,
+          "loads": 10,
+          "switches": 0
+        }
+      }
+    },
+    {
+      "testCaseName": "micro-t2",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_T2_Assembled_Complete_v2.zip",
+      "saParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\SAParametersBasic.json",
+      "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
+      "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
+      "rate": {
+        "stateMonitors": {
+          "branches": 5,
+          "threeWindingsTransformers": 5,
+          "voltageLevels": 5
+        },
+        "contingencies": {
+          "generators": 10,
+          "staticVarCompensators": 0,
+          "shuntCompensators": 10,
+          "branches": 10,
+          "hvdcLines": 10,
+          "busbarSections": 0,
+          "danglingLines": 10,
+          "threeWindingsTransformers": 10,
+          "loads": 10,
+          "switches": 0
+        }
+      }
+    },
+    {
+      "testCaseName": "micro-t3",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_T3_Assembled_Complete_v2.zip",
+      "saParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\SAParametersBasic.json",
+      "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
+      "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
+      "rate": {
+        "stateMonitors": {
+          "branches": 5,
+          "threeWindingsTransformers": 5,
+          "voltageLevels": 5
+        },
+        "contingencies": {
+          "generators": 0,
+          "staticVarCompensators": 0,
+          "shuntCompensators": 10,
+          "branches": 10,
+          "hvdcLines": 10,
+          "busbarSections": 0,
+          "danglingLines": 10,
+          "threeWindingsTransformers": 10,
+          "loads": 10,
+          "switches": 0
+        }
+      }
+    },
+    {
+      "testCaseName": "micro-t4-bb",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_T4_Assembled_BB_Complete_v2.zip",
+      "saParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\SAParametersBasic.json",
+      "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
+      "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
+      "rate": {
+        "stateMonitors": {
+          "branches": 5,
+          "threeWindingsTransformers": 5,
+          "voltageLevels": 5
+        },
+        "contingencies": {
+          "generators": 10,
+          "staticVarCompensators": 0,
+          "shuntCompensators": 10,
+          "branches": 10,
+          "hvdcLines": 10,
+          "busbarSections": 0,
+          "danglingLines": 10,
+          "threeWindingsTransformers": 10,
+          "loads": 10,
+          "switches": 0
+        }
+      }
+    },
+    {
+      "testCaseName": "micro-t4-nb",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_T4_Assembled_NB_Complete_v2.zip",
+      "saParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\SAParametersBasic.json",
+      "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
+      "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
+      "rate": {
+        "stateMonitors": {
+          "branches": 5,
+          "threeWindingsTransformers": 5,
+          "voltageLevels": 5
+        },
+        "contingencies": {
+          "generators": 0,
+          "staticVarCompensators": 0,
+          "shuntCompensators": 10,
+          "branches": 10,
+          "hvdcLines": 10,
+          "busbarSections": 0,
+          "danglingLines": 10,
+          "threeWindingsTransformers": 10,
+          "loads": 10,
+          "switches": 0
+        }
+      }
     }
   ]
 }

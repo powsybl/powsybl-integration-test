@@ -1,0 +1,2 @@
+*/sareferences/* filter=lfs diff=lfs merge=lfs -text
+/src/test/resources/sareferences/case6515rte.json filter=lfs diff=lfs merge=lfs -text

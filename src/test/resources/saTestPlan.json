@@ -9,6 +9,69 @@
       "inputStateMonitors": "statemonitors/6noeuds_dummy.json",
       "expectedNetwork" : "sareferences/6noeuds_dummy.xiidm",
       "expectedResults" : "sareferences/6noeuds_dummy.json"
+    },
+    {
+      "id" : "case1888rte",
+      "inputNetwork" : "networks/case1888rte.mat",
+      "inputParameters" : "parameters/SAParametersBasic.json",
+      "inputContingencies": "contingencies/case1888rte.json",
+      "inputStateMonitors": "statemonitors/case1888rte.json",
+      "expectedNetwork" : "sareferences/case1888rte.xiidm",
+      "expectedResults" : "sareferences/case1888rte.json"
+    },
+    {
+      "id" : "micro-bc",
+      "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_BC_Assembled_v2.zip",
+      "inputParameters" : "parameters/SAParametersBasic.json",
+      "inputContingencies": "contingencies/micro-bc.json",
+      "inputStateMonitors": "statemonitors/micro-bc.json",
+      "expectedNetwork" : "sareferences/micro-bc.xiidm",
+      "expectedResults" : "sareferences/micro-bc.json"
+    },
+    {
+      "id" : "micro-t1",
+      "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T1_Assembled_Complete_v2.zip",
+      "inputParameters" : "parameters/SAParametersBasic.json",
+      "inputContingencies": "contingencies/micro-t1.json",
+      "inputStateMonitors": "statemonitors/micro-t1.json",
+      "expectedNetwork" : "sareferences/micro-t1.xiidm",
+      "expectedResults" : "sareferences/micro-t1.json"
+    },
+    {
+      "id" : "micro-t2",
+      "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T2_Assembled_Complete_v2.zip",
+      "inputParameters" : "parameters/SAParametersBasic.json",
+      "inputContingencies": "contingencies/micro-t2.json",
+      "inputStateMonitors": "statemonitors/micro-t2.json",
+      "expectedNetwork" : "sareferences/micro-t2.xiidm",
+      "expectedResults" : "sareferences/micro-t2.json"
+    },
+    {
+      "id" : "micro-t3",
+      "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T3_Assembled_Complete_v2.zip",
+      "inputParameters" : "parameters/SAParametersBasic.json",
+      "inputContingencies": "contingencies/micro-t3.json",
+      "inputStateMonitors": "statemonitors/micro-t3.json",
+      "expectedNetwork" : "sareferences/micro-t3.xiidm",
+      "expectedResults" : "sareferences/micro-t3.json"
+    },
+    {
+      "id" : "micro-t4-bb",
+      "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T4_Assembled_BB_Complete_v2.zip",
+      "inputParameters" : "parameters/SAParametersBasic.json",
+      "inputContingencies": "contingencies/micro-t4-bb.json",
+      "inputStateMonitors": "statemonitors/micro-t4-bb.json",
+      "expectedNetwork" : "sareferences/micro-t4-bb.xiidm",
+      "expectedResults" : "sareferences/micro-t4-bb.json"
+    },
+    {
+      "id" : "micro-t4-nb",
+      "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T4_Assembled_NB_Complete_v2.zip",
+      "inputParameters" : "parameters/SAParametersBasic.json",
+      "inputContingencies": "contingencies/micro-t4-nb.json",
+      "inputStateMonitors": "statemonitors/micro-t4-nb.json",
+      "expectedNetwork" : "sareferences/micro-t4-nb.xiidm",
+      "expectedResults" : "sareferences/micro-t4-nb.json"
     }
   ]
 }

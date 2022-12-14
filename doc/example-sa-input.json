@@ -4,9 +4,26 @@
       "testCaseName": "6noeuds_dummy",
       "networkPath": "<path-to-your-workspace>/src/test/resources/networks/reseau_6noeuds.xiidm",
       "saParametersPath": "<path-to-your-workspace>/src/test/resources/parameters/SAParametersBasic.json",
-      "contingenciesListPath": "<path-to-your-workspace>/src/test/resources/contingencies/6noeuds-dummy.json",
-      "stateMonitorsListPath": "<path-to-your-workspace>/src/test/resources/statemonitors/6noeuds-dummy.json",
-      "outputPath": "<path-to-where-you-want-to-output>"
+      "contingenciesOutputPath": "<path-to-your-workspace>/src/test/resources/contingencies/6noeuds-dummy.json",
+      "stateMonitorsOutputPath": "<path-to-your-workspace>/src/test/resources/statemonitors/6noeuds-dummy.json",
+      "outputPath": "<path-to-where-you-want-to-output>",
+      "rate": {
+        "stateMonitors": {
+          "branches": 5,
+          "threeWindingsTransformers": 5,
+          "voltageLevels": 5
+        },
+        "contingencies": {
+          "generators": 10,
+          "staticVarCompensators": 0,
+          "shuntCompensators": 10,
+          "branches": 10,
+          "hvdcLines": 10,
+          "busbarSections": 0,
+          "danglingLines": 10,
+          "threeWindingsTransformers": 10,
+          "loads": 10
+        }
     }
   ]
 }

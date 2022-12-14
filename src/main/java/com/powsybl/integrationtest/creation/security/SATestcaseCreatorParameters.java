@@ -9,9 +9,11 @@ package com.powsybl.integrationtest.creation.security;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.powsybl.iidm.network.*;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -31,6 +33,91 @@ public class SATestcaseCreatorParameters {
         this.parameters = parameters;
     }
 
+    static class StateMonitorsRate {
+        @JsonProperty
+        private int branches;
+        @JsonProperty
+        private int voltageLevels;
+        @JsonProperty
+        private int threeWindingsTransformers;
+
+        public int getBranchesRate() {
+            return  branches;
+        }
+
+        public int getVoltageLevelsRate() {
+            return voltageLevels;
+        }
+
+        public int getThreeWindingsTransformersRate() {
+            return threeWindingsTransformers;
+        }
+
+        public HashMap<Class, Integer> getRates() {
+            HashMap<Class, Integer> classRateHashMap = new HashMap<>();
+            classRateHashMap.put(Branch.class, branches);
+            classRateHashMap.put(VoltageLevel.class, voltageLevels);
+            classRateHashMap.put(ThreeWindingsTransformer.class, threeWindingsTransformers);
+
+            return classRateHashMap;
+        }
+    }
+
+    static class ContingenciesRate {
+        @JsonProperty
+        private int generators;
+        @JsonProperty
+        private int staticVarCompensators;
+        @JsonProperty
+        private int shuntCompensators;
+        @JsonProperty
+        private int branches;
+        @JsonProperty
+        private int hvdcLines;
+        @JsonProperty
+        private int busbarSections;
+        @JsonProperty
+        private int danglingLines;
+        @JsonProperty
+        private int threeWindingsTransformers;
+        @JsonProperty
+        private int loads;
+        @JsonProperty
+        private int switches;
+
+        public HashMap<Class, Integer> getRates() {
+            HashMap<Class, Integer> classRateHashMap = new HashMap<>();
+            classRateHashMap.put(Generator.class, generators);
+            classRateHashMap.put(StaticVarCompensator.class, staticVarCompensators);
+            classRateHashMap.put(ShuntCompensator.class, shuntCompensators);
+            classRateHashMap.put(Branch.class, branches);
+            classRateHashMap.put(HvdcLine.class, hvdcLines);
+            classRateHashMap.put(BusbarSection.class, busbarSections);
+            classRateHashMap.put(DanglingLine.class, danglingLines);
+            classRateHashMap.put(ThreeWindingsTransformer.class, threeWindingsTransformers);
+            classRateHashMap.put(Load.class, loads);
+            classRateHashMap.put(Switch.class, switches);
+
+            return classRateHashMap;
+        }
+    }
+
+    static class Rate {
+        @JsonProperty
+        private StateMonitorsRate stateMonitors;
+
+        @JsonProperty
+        private ContingenciesRate contingencies;
+
+        public StateMonitorsRate getStateMonitorsRate() {
+            return stateMonitors;
+        }
+
+        public ContingenciesRate getContingenciesRate() {
+            return contingencies;
+        }
+    }
+
     static class Parameters {
         @JsonProperty
         private String testCaseName;
@@ -45,7 +132,7 @@ public class SATestcaseCreatorParameters {
         @JsonProperty
         private Path outputPath;
         @JsonProperty
-        private int stateMonitorsRate;
+        private Rate rate;
 
         public String getTestCaseName() {
             return testCaseName;
@@ -101,12 +188,8 @@ public class SATestcaseCreatorParameters {
             this.outputPath = outputPath;
         }
 
-        public int getStateMonitorsRate() {
-            return stateMonitorsRate;
-        }
-
-        public void setStateMonitorsRate(int stateMonitorsRate) {
-            this.stateMonitorsRate = stateMonitorsRate;
+        public Rate getRate() {
+            return rate;
         }
     }
 

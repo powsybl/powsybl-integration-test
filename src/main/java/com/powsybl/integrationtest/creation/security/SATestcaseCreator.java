@@ -94,7 +94,9 @@ public class SATestcaseCreator {
         }
         SATestcaseCreatorParameters params = SATestcaseCreatorParameters.load(parametersFilePath);
         for (SATestcaseCreatorParameters.Parameters parameters : params.getParameters()) {
-            SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), new EfficientContingenciesProvider(), new DefaultStateMonitorsProvider(parameters.getStateMonitorsRate()));
+            SATestcaseCreatorParameters.Rate rate = parameters.getRate();
+            SATestcaseCreatorParameters.StateMonitorsRate stateMonitorsRate = rate.getStateMonitorsRate();
+            SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), new EfficientContingenciesProvider(rate.getContingenciesRate().getRates()), new DefaultStateMonitorsProvider(rate.getStateMonitorsRate().getRates()));
 
             Network network = Network.read(parameters.getNetworkPath());
             SecurityAnalysisParameters saParams = JsonSecurityAnalysisParameters.read(parameters.getSAParametersPath());

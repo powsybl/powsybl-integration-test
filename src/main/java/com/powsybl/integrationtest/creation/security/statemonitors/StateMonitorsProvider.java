@@ -19,9 +19,6 @@ import java.util.List;
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
 public interface StateMonitorsProvider {
-    public void setStateMonitorsRate(int stateMonitorsRate);
-
-    public void setSeed(int seed);
 
     /**
      * Create and return a list of StateMonitor with every element that can be monitored (branches, voltage levels, three windings transformers).
