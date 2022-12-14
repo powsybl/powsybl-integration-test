@@ -20,6 +20,15 @@
       "expectedResults" : "sareferences/case1888rte.json"
     },
     {
+      "id" : "case6515rte",
+      "inputNetwork" : "networks/case6515rte.mat",
+      "inputParameters" : "parameters/SAParametersBasic.json",
+      "inputContingencies": "contingencies/case6515rte.json",
+      "inputStateMonitors": "statemonitors/case6515rte.json",
+      "expectedNetwork" : "sareferences/case6515rte.xiidm",
+      "expectedResults" : "sareferences/case6515rte.json"
+    },
+    {
       "id" : "micro-bc",
       "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_BC_Assembled_v2.zip",
       "inputParameters" : "parameters/SAParametersBasic.json",
