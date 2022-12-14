@@ -40,7 +40,15 @@ public class SecurityAnalysisIntegrationTest {
             }
             if (!errors.isEmpty()) {
                 StringJoiner joiner = new StringJoiner("\n");
-                errors.forEach(joiner::add);
+                if (errors.size() > 100) {
+                    // Show only the 100 first errors
+                    for (int i = 0; i < 100; i++) {
+                        joiner.add(errors.get(i));
+                    }
+                    joiner.add("and " + (errors.size() - 100) + " more...");
+                } else {
+                    errors.forEach(joiner::add);
+                }
                 throw new IllegalStateException(joiner.toString());
             }
         }

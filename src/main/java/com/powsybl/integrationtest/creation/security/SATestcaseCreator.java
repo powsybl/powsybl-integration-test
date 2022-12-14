@@ -106,6 +106,8 @@ public class SATestcaseCreator {
             Path outputDirContingencies = parameters.getContingenciesOutputPath();
             Path outputDirStateMonitors = parameters.getStateMonitorsOutputPath();
             Files.createDirectories(outputDir);
+            Files.createDirectories(outputDirContingencies);
+            Files.createDirectories(outputDirStateMonitors);
             creator.createResults(testCaseName, network, saParams, outputDir, outputDirContingencies, outputDirStateMonitors);
         }
     }

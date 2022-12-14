@@ -35,8 +35,7 @@ public abstract class AbstractTestRunner<P extends ComputationParameters, R exte
             if (errors.isEmpty()) {
                 LOGGER.debug("... OK");
             } else {
-                errors.forEach(LOGGER::error);
-                LOGGER.error("... KO");
+                LOGGER.error("... KO (" + errors.size() + " errors)");
             }
         }
         return errors;

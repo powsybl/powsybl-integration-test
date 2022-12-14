@@ -72,6 +72,15 @@
       "inputStateMonitors": "statemonitors/micro-t4-nb.json",
       "expectedNetwork" : "sareferences/micro-t4-nb.xiidm",
       "expectedResults" : "sareferences/micro-t4-nb.json"
+    },
+    {
+      "id" : "realgrid",
+      "inputNetwork" : "networks/CGMES_v2.4.15_RealGridTestConfiguration_v2.zip",
+      "inputParameters" : "parameters/SAParametersBasic.json",
+      "inputContingencies": "contingencies/realgrid.json",
+      "inputStateMonitors": "statemonitors/realgrid.json",
+      "expectedNetwork" : "sareferences/realgrid.xiidm",
+      "expectedResults" : "sareferences/realgrid.json"
     }
   ]
 }

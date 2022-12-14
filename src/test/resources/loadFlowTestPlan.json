@@ -98,6 +98,20 @@
       "inputParameters" : "parameters/LoadFlowParametersStandard.json",
       "expectedNetwork" : "loadflowreferences/loadflow_microgrid-t4-assembledNB_standard.xiidm",
       "expectedResults" : "loadflowreferences/loadflow_microgrid-t4-assembledNB_standard.json"
+    },
+    {
+      "id" : "realgrid-basic",
+      "inputNetwork" : "networks/CGMES_v2.4.15_RealGridTestConfiguration_v2.zip",
+      "inputParameters" : "parameters/LoadFlowParametersBasic.json",
+      "expectedNetwork" : "loadflowreferences/loadflow_realgrid_basic.xiidm",
+      "expectedResults" : "loadflowreferences/loadflow_realgrid_basic.json"
+    },
+    {
+      "id" : "realgrid-standard",
+      "inputNetwork" : "networks/CGMES_v2.4.15_RealGridTestConfiguration_v2.zip",
+      "inputParameters" : "parameters/LoadFlowParametersStandard.json",
+      "expectedNetwork" : "loadflowreferences/loadflow_realgrid_standard.xiidm",
+      "expectedResults" : "loadflowreferences/loadflow_realgrid_standard.json"
     }
   ]
 }
