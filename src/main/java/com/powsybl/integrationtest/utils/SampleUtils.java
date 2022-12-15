@@ -25,11 +25,11 @@ public final class SampleUtils {
      * @param elementsList list of all elements.
      * @return A hashmap similar to the input, except that the associated list of elements is a reduced set (as it is a sample).
      */
-    public static <T> HashMap<Class, Set<T>> createSamples(HashMap<Class, List<T>> elementsList, HashMap<Class, Integer> rates, Random r) {
+    public static <T> HashMap<Class, Set<T>> createSamples(HashMap<Class, List<T>> elementsList, HashMap<Class, Double> rates, Random r) {
 
         HashMap<Class, Set<T>> sample = new HashMap<>();
         elementsList.forEach((clazz, elementIds) -> {
-            Set<T> elementsSample = createSample(elementIds, rates.getOrDefault(clazz, 0), r);
+            Set<T> elementsSample = createSample(elementIds, rates.getOrDefault(clazz, 0.0), r);
 
             // Add sample of this type of element to the sample
             sample.put(clazz, elementsSample);
@@ -47,7 +47,7 @@ public final class SampleUtils {
      * @return A subset of elements from the given list.
      * @param <T>
      */
-    public static <T> Set<T> createSample(List<T> elements, int rate, Random r) {
+    public static <T> Set<T> createSample(List<T> elements, double rate, Random r) {
         Set<T> elementsSample = new HashSet<>();
         // Shuffle the list with a random seed for reproducibility
         Collections.shuffle(elements, r);

@@ -25,11 +25,11 @@ import static com.powsybl.integrationtest.utils.SampleUtils.createSamples;
  */
 public class DefaultStateMonitorsProvider implements StateMonitorsProvider {
 
-    private HashMap<Class, Integer> stateMonitorsRate;
+    private HashMap<Class, Double> stateMonitorsRate;
 
     private Random r;
 
-    public DefaultStateMonitorsProvider(HashMap<Class, Integer> stateMonitorsRate) {
+    public DefaultStateMonitorsProvider(HashMap<Class, Double> stateMonitorsRate) {
         this.stateMonitorsRate = stateMonitorsRate;
 
         this.r = new Random();

@@ -35,26 +35,26 @@ public class SATestcaseCreatorParameters {
 
     static class StateMonitorsRate {
         @JsonProperty
-        private int branches;
+        private double branches;
         @JsonProperty
-        private int voltageLevels;
+        private double voltageLevels;
         @JsonProperty
-        private int threeWindingsTransformers;
+        private double threeWindingsTransformers;
 
-        public int getBranchesRate() {
+        public double getBranchesRate() {
             return  branches;
         }
 
-        public int getVoltageLevelsRate() {
+        public double getVoltageLevelsRate() {
             return voltageLevels;
         }
 
-        public int getThreeWindingsTransformersRate() {
+        public double getThreeWindingsTransformersRate() {
             return threeWindingsTransformers;
         }
 
-        public HashMap<Class, Integer> getRates() {
-            HashMap<Class, Integer> classRateHashMap = new HashMap<>();
+        public HashMap<Class, Double> getRates() {
+            HashMap<Class, Double> classRateHashMap = new HashMap<>();
             classRateHashMap.put(Branch.class, branches);
             classRateHashMap.put(VoltageLevel.class, voltageLevels);
             classRateHashMap.put(ThreeWindingsTransformer.class, threeWindingsTransformers);
@@ -65,28 +65,28 @@ public class SATestcaseCreatorParameters {
 
     static class ContingenciesRate {
         @JsonProperty
-        private int generators;
+        private double generators;
         @JsonProperty
-        private int staticVarCompensators;
+        private double staticVarCompensators;
         @JsonProperty
-        private int shuntCompensators;
+        private double shuntCompensators;
         @JsonProperty
-        private int branches;
+        private double branches;
         @JsonProperty
-        private int hvdcLines;
+        private double hvdcLines;
         @JsonProperty
-        private int busbarSections;
+        private double busbarSections;
         @JsonProperty
-        private int danglingLines;
+        private double danglingLines;
         @JsonProperty
-        private int threeWindingsTransformers;
+        private double threeWindingsTransformers;
         @JsonProperty
-        private int loads;
+        private double loads;
         @JsonProperty
-        private int switches;
+        private double switches;
 
-        public HashMap<Class, Integer> getRates() {
-            HashMap<Class, Integer> classRateHashMap = new HashMap<>();
+        public HashMap<Class, Double> getRates() {
+            HashMap<Class, Double> classRateHashMap = new HashMap<>();
             classRateHashMap.put(Generator.class, generators);
             classRateHashMap.put(StaticVarCompensator.class, staticVarCompensators);
             classRateHashMap.put(ShuntCompensator.class, shuntCompensators);

@@ -28,11 +28,11 @@ import static com.powsybl.integrationtest.utils.SampleUtils.createSamples;
  */
 public class EfficientContingenciesProvider implements ContingenciesProvider {
 
-    private HashMap<Class, Integer> contingenciesRate;
+    private HashMap<Class, Double> contingenciesRate;
 
     private Random r;
 
-    public EfficientContingenciesProvider(final HashMap<Class, Integer> contingenciesRate) {
+    public EfficientContingenciesProvider(final HashMap<Class, Double> contingenciesRate) {
         this.contingenciesRate = contingenciesRate;
 
         this.r = new Random();
