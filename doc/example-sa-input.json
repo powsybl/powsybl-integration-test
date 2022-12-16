@@ -7,23 +7,30 @@
       "contingenciesOutputPath": "<path-to-your-workspace>/src/test/resources/contingencies/6noeuds-dummy.json",
       "stateMonitorsOutputPath": "<path-to-your-workspace>/src/test/resources/statemonitors/6noeuds-dummy.json",
       "outputPath": "<path-to-where-you-want-to-output>",
-      "rate": {
-        "stateMonitors": {
-          "branches": 5,
-          "threeWindingsTransformers": 5,
-          "voltageLevels": 5
-        },
-        "contingencies": {
-          "generators": 10,
-          "staticVarCompensators": 0,
-          "shuntCompensators": 10,
-          "branches": 10,
-          "hvdcLines": 10,
-          "busbarSections": 0,
-          "danglingLines": 10,
-          "threeWindingsTransformers": 10,
-          "loads": 10
+      "providers": [
+        {
+          "name": "default",
+          "rate": {
+            "stateMonitors": {
+              "branches": 5,
+              "threeWindingsTransformers": 5,
+              "voltageLevels": 5
+            },
+            "contingencies": {
+              "generators": 10,
+              "staticVarCompensators": 0,
+              "shuntCompensators": 10,
+              "branches": 10,
+              "hvdcLines": 10,
+              "busbarSections": 0,
+              "danglingLines": 10,
+              "threeWindingsTransformers": 10,
+              "loads": 10,
+              "switches": 0
+            }
+          }
         }
+      ]
     }
   ]
 }

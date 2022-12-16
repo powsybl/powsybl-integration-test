@@ -1,0 +1,969 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iidm:network xmlns:iidm="http://www.powsybl.org/schema/iidm/1_8" xmlns:ctc="http://www.powsybl.org/schema/iidm/ext/cgmes_tap_changers/1_0" xmlns:clbn="http://www.powsybl.org/schema/iidm/ext/cgmes_line_boundary_node/1_0" xmlns:crc="http://www.powsybl.org/schema/iidm/ext/coordinated_reactive_control/1_0" xmlns:slt="http://www.powsybl.org/schema/iidm/ext/slack_terminal/1_5" xmlns:csshm="http://www.powsybl.org/schema/iidm/ext/cgmes_ssh_metadata/1_0" xmlns:bv="http://www.powsybl.org/schema/iidm/ext/base_voltage_mapping/1_0" xmlns:cc="http://www.powsybl.org/schema/iidm/ext/cim_characteristics/1_0" id="urn:uuid:3f7cf068-a142-49eb-8718-36cb6e4ede6b" caseDate="2017-10-02T09:30:00.000Z" forecastDistance="1546254" sourceFormat="CGMES" minimumValidationLevel="STEADY_STATE_HYPOTHESIS">
+    <iidm:property name="CGMESModelDetail" value="bus-branch"/>
+    <iidm:substation id="c49942d6-8b01-4b01-b5e8-f1180f84906c" name="PP_Amsterdam" country="NL" geographicalTags="TENNET TSO B.V.">
+        <iidm:property name="CGMES.regionName" value="NL"/>
+        <iidm:property name="CGMES.subRegionId" value="c1d5bfe48f8011e08e4d00247eb1f55e"/>
+        <iidm:property name="CGMES.regionId" value="c1d5bfe28f8011e08e4d00247eb1f55e"/>
+        <iidm:voltageLevel id="2a37dc57-2faf-464a-8175-bc415f9a635f" name="15.8" nominalV="15.75" lowVoltageLimit="14.175" highVoltageLimit="17.325" topologyKind="BUS_BREAKER">
+            <iidm:alias type="MergedVoltageLevel1">8d8a82ba-b5b0-4e94-861a-192af055f2b8</iidm:alias>
+            <iidm:busBreakerTopology>
+                <iidm:bus id="97d7d14a-7294-458f-a8d7-024700a08717" name="NL_TR_BUS2" v="16.0335" angle="0.0"/>
+                <iidm:bus id="6bdc33de-d027-49b7-b98f-3b3d87716615" name="N1230822413" v="16.01775" angle="-1.80521"/>
+                <iidm:switch id="5a094c9f-0af5-48dc-94e9-89c6c220023c" name="busbarcoupler 1" kind="BREAKER" retained="true" open="true" bus1="97d7d14a-7294-458f-a8d7-024700a08717" bus2="6bdc33de-d027-49b7-b98f-3b3d87716615">
+                    <iidm:alias type="CGMES.Terminal1">9f984b04-1736-43d2-9122-3a17fc8aea5f</iidm:alias>
+                    <iidm:alias type="CGMES.Terminal2">f04ec73d-b94a-4b7e-a3d6-b1234fc37385</iidm:alias>
+                </iidm:switch>
+            </iidm:busBreakerTopology>
+            <iidm:generator id="9c3b8f97-7972-477d-9dc8-87365cc0ad0e" name="NL-G1" energySource="OTHER" minP="300.0" maxP="1000.0" ratedS="1100.0" voltageRegulatorOn="true" targetP="600.492701" targetV="16.0335" targetQ="386.922556" bus="97d7d14a-7294-458f-a8d7-024700a08717" connectableBus="97d7d14a-7294-458f-a8d7-024700a08717" p="-570.39308" q="-279.32041">
+                <iidm:alias type="CGMES.Terminal1">faab7959-f9bf-421b-bc3f-d364e0c1388b</iidm:alias>
+                <iidm:property name="CGMES.normalPF" value="1.0"/>
+                <iidm:property name="CGMES.GeneratingUnit" value="049438a6-780a-44fe-a788-ebe385d98e25"/>
+                <iidm:property name="CGMES.RegulatingControl" value="04f338d3-3c0d-433f-a77b-e36dd256f0f0"/>
+                <iidm:minMaxReactiveLimits minQ="0.0" maxQ="600.0"/>
+            </iidm:generator>
+            <iidm:generator id="2844585c-0d35-488d-a449-685bcd57afbf" name="NL-G2" energySource="OTHER" minP="130.0" maxP="250.0" ratedS="250.0" voltageRegulatorOn="true" targetP="140.0" targetV="16.01775" targetQ="77.743" bus="6bdc33de-d027-49b7-b98f-3b3d87716615" connectableBus="6bdc33de-d027-49b7-b98f-3b3d87716615" p="-140.0" q="11.529825">
+                <iidm:alias type="CGMES.Terminal1">ae4b7cbe-349a-41c8-ace2-25ec26f14a64</iidm:alias>
+                <iidm:property name="CGMES.normalPF" value="0.0"/>
+                <iidm:property name="CGMES.GeneratingUnit" value="ca80ee09-3bed-4884-bc28-6dc89d067289"/>
+                <iidm:property name="CGMES.RegulatingControl" value="1b3c88f9-c2ca-4250-bd37-ae0efa2fb022"/>
+                <iidm:minMaxReactiveLimits minQ="0.0" maxQ="200.0"/>
+            </iidm:generator>
+            <iidm:generator id="1dc9afba-23b5-41a0-8540-b479ed8baf4b" name="NL-G3" energySource="OTHER" minP="130.0" maxP="250.0" ratedS="250.0" voltageRegulatorOn="true" targetP="150.0" targetV="16.01775" targetQ="83.296" bus="6bdc33de-d027-49b7-b98f-3b3d87716615" connectableBus="6bdc33de-d027-49b7-b98f-3b3d87716615" p="-150.0" q="11.529825">
+                <iidm:alias type="CGMES.Terminal1">f04ecab5-1a12-4cc0-ba56-b157ebf11a42</iidm:alias>
+                <iidm:property name="CGMES.normalPF" value="0.0"/>
+                <iidm:property name="CGMES.GeneratingUnit" value="b850063d-eae7-4675-bc98-4642d3076783"/>
+                <iidm:property name="CGMES.RegulatingControl" value="53e7a6c7-759b-4da2-898a-1c061d788670"/>
+                <iidm:minMaxReactiveLimits minQ="0.0" maxQ="200.0"/>
+            </iidm:generator>
+        </iidm:voltageLevel>
+        <iidm:voltageLevel id="c1d5bfea8f8011e08e4d00247eb1f55e" name="220.0" nominalV="220.0" lowVoltageLimit="198.0" highVoltageLimit="242.0" topologyKind="BUS_BREAKER">
+            <iidm:busBreakerTopology>
+                <iidm:bus id="795a117d-7caf-4fc2-a8d9-dc8f4cf2344a" name="NL_Busbar__4" v="224.398352" angle="-3.58441"/>
+                <iidm:bus id="afddd60d-f7e6-419a-a5c2-be28d29beaf9" name="NL-Busbar_2" v="224.398352" angle="-3.58441"/>
+                <iidm:switch id="5f5d40ae-d52d-4631-9285-b3ceefff784c" name="B1" kind="BREAKER" retained="true" open="false" bus1="795a117d-7caf-4fc2-a8d9-dc8f4cf2344a" bus2="afddd60d-f7e6-419a-a5c2-be28d29beaf9">
+                    <iidm:alias type="CGMES.Terminal2">5f40c3f7-9540-4e1b-aa97-6553d5524877</iidm:alias>
+                    <iidm:alias type="CGMES.Terminal1">8121d4c3-9cb2-47db-b40a-99678602bb2a</iidm:alias>
+                </iidm:switch>
+            </iidm:busBreakerTopology>
+            <iidm:load id="b1e03a8f-6a11-4454-af58-4a4a680e857f" name="NL-Load_3" loadType="UNDEFINED" p0="486.0" q0="230.0" bus="afddd60d-f7e6-419a-a5c2-be28d29beaf9" connectableBus="afddd60d-f7e6-419a-a5c2-be28d29beaf9" p="487.943271" q="231.379483">
+                <iidm:alias type="CGMES.Terminal1">fab54e9c-b12e-4e47-a9f2-fec4ef96c0c0</iidm:alias>
+            </iidm:load>
+        </iidm:voltageLevel>
+        <iidm:voltageLevel id="c1d5bfde8f8011e08e4d00247eb1f55e" name="400.0" nominalV="400.0" lowVoltageLimit="360.0" highVoltageLimit="440.0" topologyKind="BUS_BREAKER">
+            <iidm:busBreakerTopology>
+                <iidm:bus id="81b0e447-181e-4aec-8921-f1dd7813bebc" name="N1230992195" v="408.096252" angle="-5.5908"/>
+            </iidm:busBreakerTopology>
+            <iidm:load id="69add5b4-70bd-4360-8a93-286256c0d38b" name="NL-Load_1" loadType="UNDEFINED" p0="90.0" q0="280.0" bus="81b0e447-181e-4aec-8921-f1dd7813bebc" connectableBus="81b0e447-181e-4aec-8921-f1dd7813bebc" p="90.0" q="280.0">
+                <iidm:alias type="CGMES.Terminal1">f461fd2d-1e41-4a3e-8213-7cc33c77a089</iidm:alias>
+            </iidm:load>
+            <iidm:load id="25ab1b5b-6803-47e2-805a-ab7b2072e034" name="NL-Load_2" loadType="UNDEFINED" p0="10.0" q0="10.0" bus="81b0e447-181e-4aec-8921-f1dd7813bebc" connectableBus="81b0e447-181e-4aec-8921-f1dd7813bebc" p="10.0" q="10.0">
+                <iidm:alias type="CGMES.Terminal1">6dad1a97-6874-4206-a5a5-837e495325f8</iidm:alias>
+            </iidm:load>
+            <iidm:shunt id="fbfed7e3-3dec-4829-a286-029e73535685" name="NL-S1" sectionCount="1" voltageRegulatorOn="false" targetV="400.0" targetDeadband="0.5" bus="81b0e447-181e-4aec-8921-f1dd7813bebc" connectableBus="81b0e447-181e-4aec-8921-f1dd7813bebc" p="0.0" q="-52.044547">
+                <iidm:alias type="CGMES.Terminal1">a015f692-3fc5-4ec3-8d1d-977c7b499e7c</iidm:alias>
+                <iidm:property name="CGMES.RegulatingControl" value="613dfeb3-0161-4cec-aaa9-ccddd885771b"/>
+                <iidm:shuntLinearModel bPerSection="3.13E-4" gPerSection="0.0" maximumSectionCount="1"/>
+            </iidm:shunt>
+        </iidm:voltageLevel>
+        <iidm:twoWindingsTransformer id="80016742-31b3-432a-b00a-300667a1e572" name="NL_TR2_3" r="3.3468961518595046E-4" x="0.027560466411415293" g="0.003547489523809523" b="-0.027710349931972786" ratedU1="220.0" ratedU2="15.75" bus1="afddd60d-f7e6-419a-a5c2-be28d29beaf9" connectableBus1="afddd60d-f7e6-419a-a5c2-be28d29beaf9" voltageLevelId1="c1d5bfea8f8011e08e4d00247eb1f55e" bus2="97d7d14a-7294-458f-a8d7-024700a08717" connectableBus2="97d7d14a-7294-458f-a8d7-024700a08717" voltageLevelId2="2a37dc57-2faf-464a-8175-bc415f9a635f">
+            <iidm:alias type="CGMES.TransformerEnd1">c1d5c15e8f8011e08e4d00247eb1f55e</iidm:alias>
+            <iidm:alias type="CGMES.Terminal2">4f1c405f-07c9-4fb0-b64e-551896a29aa8</iidm:alias>
+            <iidm:alias type="CGMES.Terminal1">bd61b1f9-474d-424e-9709-42f75337c477</iidm:alias>
+            <iidm:alias type="CGMES.RatioTapChanger1">c1d5c1658f8011e08e4d00247eb1f55e</iidm:alias>
+            <iidm:alias type="CGMES.TransformerEnd2">c1d5c1678f8011e08e4d00247eb1f55e</iidm:alias>
+            <iidm:ratioTapChanger lowTapPosition="-15" tapPosition="5" targetDeadband="0.5" loadTapChangingCapabilities="true" regulating="false" targetV="0.0">
+                <iidm:terminalRef id="80016742-31b3-432a-b00a-300667a1e572" side="TWO"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.103448275862069"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.095890410958904"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.08843537414966"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.081081081081081"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0738255033557047"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0666666666666667"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0596026490066226"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0526315789473684"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0457516339869282"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0389610389610389"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.032258064516129"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0256410256410258"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.019108280254777"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0126582278481011"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0062893081761006"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9937888198757763"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9876543209876544"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9815950920245399"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9756097560975611"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9696969696969697"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9638554216867469"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9580838323353293"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9523809523809523"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9467455621301776"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9411764705882353"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.935672514619883"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9302325581395349"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9248554913294798"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9195402298850576"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9142857142857143"/>
+            </iidm:ratioTapChanger>
+            <iidm:currentLimits1 permanentLimit="3306.6">
+                <iidm:temporaryLimit name="16fbe0be-bbe1-4408-a6b0-cce7699ba7cb" acceptableDuration="20" value="3506.6"/>
+                <iidm:temporaryLimit name="f23e3627-cae0-406b-9693-a834eca242be" acceptableDuration="10" value="3706.6"/>
+            </iidm:currentLimits1>
+            <iidm:currentLimits2 permanentLimit="46188.0">
+                <iidm:temporaryLimit name="8c338191-2b7b-49a3-bacc-f92a33911b33" acceptableDuration="20" value="47188.0"/>
+                <iidm:temporaryLimit name="9218de73-31b2-45f8-8a42-e985de17b80d" acceptableDuration="10" value="49188.0"/>
+            </iidm:currentLimits2>
+        </iidm:twoWindingsTransformer>
+        <iidm:twoWindingsTransformer id="2184f365-8cd5-4b5d-8a28-9d68603bb6a4" name="NL_TR2_2" r="3.543757321797521E-4" x="0.0275602203990186" g="0.003547489523809523" b="-0.027710349931972786" ratedU1="220.0" ratedU2="15.75" bus1="795a117d-7caf-4fc2-a8d9-dc8f4cf2344a" connectableBus1="795a117d-7caf-4fc2-a8d9-dc8f4cf2344a" voltageLevelId1="c1d5bfea8f8011e08e4d00247eb1f55e" bus2="6bdc33de-d027-49b7-b98f-3b3d87716615" connectableBus2="6bdc33de-d027-49b7-b98f-3b3d87716615" voltageLevelId2="2a37dc57-2faf-464a-8175-bc415f9a635f">
+            <iidm:alias type="CGMES.Terminal1">1128e664-0653-448a-9068-e37f1a097c05</iidm:alias>
+            <iidm:alias type="CGMES.Terminal2">da232169-1c36-495a-8af6-a0d7d2b39f52</iidm:alias>
+            <iidm:alias type="CGMES.RatioTapChanger1">c1d5c1588f8011e08e4d00247eb1f55e</iidm:alias>
+            <iidm:alias type="CGMES.TransformerEnd1">c1d5c1518f8011e08e4d00247eb1f55e</iidm:alias>
+            <iidm:alias type="CGMES.TransformerEnd2">c1d5c15a8f8011e08e4d00247eb1f55e</iidm:alias>
+            <iidm:ratioTapChanger lowTapPosition="0" tapPosition="17" targetDeadband="0.5" loadTapChangingCapabilities="true" regulating="false" targetV="0.0">
+                <iidm:terminalRef id="2184f365-8cd5-4b5d-8a28-9d68603bb6a4" side="TWO"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1188811188811187"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1111111111111112"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.103448275862069"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.095890410958904"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.08843537414966"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.081081081081081"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0738255033557047"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0666666666666667"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0596026490066226"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0526315789473684"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0457516339869282"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0389610389610389"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.032258064516129"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0256410256410258"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.019108280254777"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0126582278481011"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0062893081761006"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9937888198757763"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9876543209876544"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9815950920245399"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9756097560975611"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9696969696969697"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9638554216867469"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9580838323353293"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9523809523809523"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9467455621301776"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9411764705882353"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.935672514619883"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9302325581395349"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9248554913294798"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9195402298850576"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9142857142857143"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9090909090909091"/>
+            </iidm:ratioTapChanger>
+            <iidm:currentLimits1 permanentLimit="3306.6">
+                <iidm:temporaryLimit name="9b1c2b26-e515-4638-8e50-824aa1f8c1cc" acceptableDuration="20" value="3406.6"/>
+                <iidm:temporaryLimit name="fa40a92e-5de9-4fac-8977-2d95aad8fc8a" acceptableDuration="10" value="3506.6"/>
+            </iidm:currentLimits1>
+            <iidm:currentLimits2 permanentLimit="46188.0">
+                <iidm:temporaryLimit name="7065c296-bf63-4cfc-bf69-cd236deb53f1" acceptableDuration="20" value="47188.0"/>
+                <iidm:temporaryLimit name="da2f831b-093d-4cd3-bc34-a910dfc7f7b0" acceptableDuration="10" value="48188.0"/>
+            </iidm:currentLimits2>
+        </iidm:twoWindingsTransformer>
+        <iidm:twoWindingsTransformer id="e8a7eaec-51d6-4571-b3d9-c36d52073c33" name="NL-TR2_1" r="0.4083750000000001" x="8.460149390000002" g="1.8595041322314046E-6" b="-1.4692561983471074E-5" ratedU1="400.0" ratedU2="220.0" bus1="81b0e447-181e-4aec-8921-f1dd7813bebc" connectableBus1="81b0e447-181e-4aec-8921-f1dd7813bebc" voltageLevelId1="c1d5bfde8f8011e08e4d00247eb1f55e" bus2="afddd60d-f7e6-419a-a5c2-be28d29beaf9" connectableBus2="afddd60d-f7e6-419a-a5c2-be28d29beaf9" voltageLevelId2="c1d5bfea8f8011e08e4d00247eb1f55e">
+            <iidm:alias type="CGMES.TransformerEnd2">c1d5c14d8f8011e08e4d00247eb1f55e</iidm:alias>
+            <iidm:alias type="CGMES.TransformerEnd1">c1d5c1448f8011e08e4d00247eb1f55e</iidm:alias>
+            <iidm:alias type="CGMES.RatioTapChanger1">c1d5c14b8f8011e08e4d00247eb1f55e</iidm:alias>
+            <iidm:alias type="CGMES.Terminal2">baa7aef1-afcd-4981-97c0-ccec7b5ad4e0</iidm:alias>
+            <iidm:alias type="CGMES.Terminal1">e3e0c496-5837-4f0f-a596-cc421940f73f</iidm:alias>
+            <iidm:ratioTapChanger lowTapPosition="-20" tapPosition="-2" targetDeadband="0.5" loadTapChangingCapabilities="true" regulating="false" targetV="0.0">
+                <iidm:terminalRef id="e8a7eaec-51d6-4571-b3d9-c36d52073c33" side="ONE"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1904761904761905"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.179245283018868"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1682242990654206"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1574074074074074"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.146788990825688"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1363636363636365"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1261261261261262"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1160714285714286"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1061946902654867"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0964912280701753"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0869565217391304"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0775862068965518"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0683760683760684"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0593220338983051"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.050420168067227"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0416666666666667"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0330578512396695"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0245901639344261"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.016260162601626"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0080645161290323"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9920634920634921"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.984251968503937"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9765625"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9689922480620154"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9615384615384615"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9541984732824427"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9469696969696969"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9398496240601504"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9328358208955223"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9259259259259258"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9191176470588235"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9124087591240875"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9057971014492753"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.8992805755395683"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.8928571428571428"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.8865248226950354"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.880281690140845"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.8741258741258741"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.8680555555555556"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.8620689655172414"/>
+            </iidm:ratioTapChanger>
+            <iidm:currentLimits1 permanentLimit="461.9">
+                <iidm:temporaryLimit name="768e3806-c8d3-4b6e-9ac2-77a9d0414509" acceptableDuration="20" value="481.9"/>
+                <iidm:temporaryLimit name="e3fac0eb-8f43-48bf-b0c1-2a895e02b1f4" acceptableDuration="10" value="491.9"/>
+            </iidm:currentLimits1>
+            <iidm:currentLimits2 permanentLimit="839.8">
+                <iidm:temporaryLimit name="d0fa3a33-fb96-48f8-80c3-363286d91dbb" acceptableDuration="20" value="849.8"/>
+                <iidm:temporaryLimit name="2f5b3907-a4dc-4d32-9021-ea45367d4613" acceptableDuration="10" value="859.8"/>
+            </iidm:currentLimits2>
+        </iidm:twoWindingsTransformer>
+    </iidm:substation>
+    <iidm:substation id="9df6213f-c5dc-477c-aab4-74721f7d1fdb" name="HVDC 1" geographicalTags="HVDC Zone">
+        <iidm:property name="CGMES.regionName" value="HVDC"/>
+        <iidm:property name="CGMES.subRegionId" value="0296d175-5169-48b8-b96a-1cb90f56fe21"/>
+        <iidm:property name="CGMES.regionId" value="fee15544-f707-4387-9dba-5bf20f37f118"/>
+        <iidm:voltageLevel id="c68f0a24-46cb-42aa-b91d-0b49b8310cc9" name="123.9" nominalV="123.9" lowVoltageLimit="111.51" highVoltageLimit="136.29" topologyKind="BUS_BREAKER">
+            <iidm:busBreakerTopology>
+                <iidm:bus id="b01fe92f-68ab-4123-ae45-f22d3e8daad1" name="NL_Busbar_HVDC2" v="124.427328" angle="-10.499"/>
+            </iidm:busBreakerTopology>
+            <iidm:vscConverterStation id="76eeb38f-a3ef-4444-9c65-6cb46a7a94da" name="VSC_2" voltageRegulatorOn="false" lossFactor="2.2222533" voltageSetpoint="0.0" reactivePowerSetpoint="-40.0" bus="b01fe92f-68ab-4123-ae45-f22d3e8daad1" connectableBus="b01fe92f-68ab-4123-ae45-f22d3e8daad1">
+                <iidm:alias type="CGMES.Terminal1">efdb79f6-ae2f-49ab-a561-397fb88faca7</iidm:alias>
+                <iidm:alias type="CGMES.ACDCConverterDCTerminal">a44c960a-3281-47a6-b064-ce88fe0139c0</iidm:alias>
+                <iidm:minMaxReactiveLimits minQ="-1.7976931348623157E308" maxQ="1.7976931348623157E308"/>
+            </iidm:vscConverterStation>
+        </iidm:voltageLevel>
+        <iidm:voltageLevel id="613bf445-d1a8-409a-95f8-45b41f9a2eec" name="220.0" nominalV="220.0" lowVoltageLimit="198.0" highVoltageLimit="242.0" topologyKind="BUS_BREAKER">
+            <iidm:busBreakerTopology>
+                <iidm:bus id="c142012a-b652-4c03-9c35-aa0833e71831" name="NL_PCC2" v="224.157402" angle="-3.63909"/>
+            </iidm:busBreakerTopology>
+        </iidm:voltageLevel>
+        <iidm:twoWindingsTransformer id="4ebd554c-1cdb-4f3d-8dd0-dfd4bda8e18c" name="NL_TR2_HVDC2" r="0.0" x="12.84945914693492" g="0.0" b="0.0" ratedU1="220.0" ratedU2="123.9" bus1="c142012a-b652-4c03-9c35-aa0833e71831" connectableBus1="c142012a-b652-4c03-9c35-aa0833e71831" voltageLevelId1="613bf445-d1a8-409a-95f8-45b41f9a2eec" bus2="b01fe92f-68ab-4123-ae45-f22d3e8daad1" connectableBus2="b01fe92f-68ab-4123-ae45-f22d3e8daad1" voltageLevelId2="c68f0a24-46cb-42aa-b91d-0b49b8310cc9">
+            <iidm:alias type="CGMES.RatioTapChanger1">f6b6428b-d201-4170-89f3-4f630c662b7c</iidm:alias>
+            <iidm:alias type="CGMES.TransformerEnd2">922f1973-62d7-4190-9556-39faa8ca39b8</iidm:alias>
+            <iidm:alias type="CGMES.TransformerEnd1">3581a7e1-95c0-4778-a108-1a6740abfacb</iidm:alias>
+            <iidm:alias type="CGMES.Terminal1">fd64173b-8fb5-4b66-afe5-9a832e6bcb45</iidm:alias>
+            <iidm:alias type="CGMES.Terminal2">5b52e14e-550a-4084-91cc-14ec5d38e042</iidm:alias>
+            <iidm:ratioTapChanger lowTapPosition="-15" tapPosition="-2" targetDeadband="0.5" loadTapChangingCapabilities="true" regulating="false" targetV="123.9">
+                <iidm:terminalRef id="4ebd554c-1cdb-4f3d-8dd0-dfd4bda8e18c" side="TWO"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.2307692307692308"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.2121212121212122"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1940298507462686"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1764705882352942"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1594202898550725"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1428571428571428"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1267605633802817"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1111111111111112"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.095890410958904"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.081081081081081"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0666666666666667"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0526315789473684"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0389610389610389"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0256410256410258"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0126582278481011"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9876543209876544"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9756097560975611"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9638554216867469"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9523809523809523"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9411764705882353"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9302325581395349"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9195402298850576"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9090909090909091"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.898876404494382"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.8888888888888888"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.8791208791208791"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.8695652173913044"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.8602150537634408"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.851063829787234"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.8421052631578947"/>
+            </iidm:ratioTapChanger>
+            <iidm:currentLimits1 permanentLimit="413.9">
+                <iidm:temporaryLimit name="96dd6a76-1229-4039-9674-db6fc6360533" acceptableDuration="20" value="413.9"/>
+                <iidm:temporaryLimit name="f0bd4e8f-5fec-4b25-a357-522a64f405b1" acceptableDuration="10" value="413.9"/>
+            </iidm:currentLimits1>
+            <iidm:currentLimits2 permanentLimit="734.9">
+                <iidm:temporaryLimit name="0ec5a078-3c99-4057-864a-65c5b1c5e404" acceptableDuration="20" value="734.9"/>
+                <iidm:temporaryLimit name="074059a7-9962-453c-bf4b-53911b220669" acceptableDuration="10" value="734.9"/>
+            </iidm:currentLimits2>
+        </iidm:twoWindingsTransformer>
+    </iidm:substation>
+    <iidm:substation id="7cd24a99-42b4-4f30-b30e-9a021fbcc870" name="HVDC 2" geographicalTags="HVDC Zone">
+        <iidm:property name="CGMES.regionName" value="HVDC"/>
+        <iidm:property name="CGMES.subRegionId" value="0296d175-5169-48b8-b96a-1cb90f56fe21"/>
+        <iidm:property name="CGMES.regionId" value="fee15544-f707-4387-9dba-5bf20f37f118"/>
+        <iidm:voltageLevel id="10dff29d-ff80-49dc-b34e-3a58603bf0c6" name="123.9" nominalV="123.9" lowVoltageLimit="111.51" highVoltageLimit="136.29" topologyKind="BUS_BREAKER">
+            <iidm:busBreakerTopology>
+                <iidm:bus id="ac772dd8-7910-443f-8af0-a7fca0fb57f9" name="NL_Busbar_HVDC1" v="124.334501" angle="12.53411"/>
+            </iidm:busBreakerTopology>
+            <iidm:vscConverterStation id="0f05e270-37ea-471d-89fe-aee8a55b932b" name="VSC1" voltageRegulatorOn="false" lossFactor="2.2727633" voltageSetpoint="0.0" reactivePowerSetpoint="40.0" bus="ac772dd8-7910-443f-8af0-a7fca0fb57f9" connectableBus="ac772dd8-7910-443f-8af0-a7fca0fb57f9">
+                <iidm:alias type="CGMES.Terminal1">385fa00a-808d-4973-a415-e93bcdfd3d52</iidm:alias>
+                <iidm:alias type="CGMES.ACDCConverterDCTerminal">846ca997-4c1e-4244-85a6-ad967450a2c8</iidm:alias>
+                <iidm:minMaxReactiveLimits minQ="-1.7976931348623157E308" maxQ="1.7976931348623157E308"/>
+            </iidm:vscConverterStation>
+        </iidm:voltageLevel>
+        <iidm:voltageLevel id="613bf445-d1a8-409a-95f8-45b41f9a0eec" name="220.0" nominalV="220.0" lowVoltageLimit="198.0" highVoltageLimit="242.0" topologyKind="BUS_BREAKER">
+            <iidm:busBreakerTopology>
+                <iidm:bus id="9f1860f9-2110-4a36-b0a0-f75126040d29" name="NL_PCC1" v="225.808184" angle="5.724049"/>
+            </iidm:busBreakerTopology>
+        </iidm:voltageLevel>
+        <iidm:twoWindingsTransformer id="69a301e8-f6b2-47ad-9f65-52f2eabc9917" name="NL_TR2_HVDC1" r="0.0" x="12.84945914693492" g="0.0" b="0.0" ratedU1="220.0" ratedU2="123.9" bus1="9f1860f9-2110-4a36-b0a0-f75126040d29" connectableBus1="9f1860f9-2110-4a36-b0a0-f75126040d29" voltageLevelId1="613bf445-d1a8-409a-95f8-45b41f9a0eec" bus2="ac772dd8-7910-443f-8af0-a7fca0fb57f9" connectableBus2="ac772dd8-7910-443f-8af0-a7fca0fb57f9" voltageLevelId2="10dff29d-ff80-49dc-b34e-3a58603bf0c6">
+            <iidm:alias type="CGMES.TransformerEnd1">9e4b16bb-c8fd-4dd7-84ee-c9bdfdf48664</iidm:alias>
+            <iidm:alias type="CGMES.TransformerEnd2">244df133-a500-423b-8a07-bfec41a98920</iidm:alias>
+            <iidm:alias type="CGMES.RatioTapChanger1">f11b9b1d-96df-4f20-af1c-a51d4cdb7467</iidm:alias>
+            <iidm:alias type="CGMES.Terminal2">44132906-2926-4018-b7d0-2997c0d0d678</iidm:alias>
+            <iidm:alias type="CGMES.Terminal1">a2a8f829-f6fd-441f-b4c1-b354316e141f</iidm:alias>
+            <iidm:ratioTapChanger lowTapPosition="-10" tapPosition="0" targetDeadband="0.5" loadTapChangingCapabilities="true" regulating="true" targetV="123.9">
+                <iidm:terminalRef id="69a301e8-f6b2-47ad-9f65-52f2eabc9917" side="TWO"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1428571428571428"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1267605633802817"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1111111111111112"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.095890410958904"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.081081081081081"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0666666666666667"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0526315789473684"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0389610389610389"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0256410256410258"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0126582278481011"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9876543209876544"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9756097560975611"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9638554216867469"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9523809523809523"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9411764705882353"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9302325581395349"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9195402298850576"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9090909090909091"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.898876404494382"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.8888888888888888"/>
+            </iidm:ratioTapChanger>
+            <iidm:currentLimits1 permanentLimit="413.9">
+                <iidm:temporaryLimit name="dd97621c-b564-4c5c-96e4-817b7e9f763f" acceptableDuration="20" value="413.9"/>
+                <iidm:temporaryLimit name="4a47f7f1-3dcd-43f2-8cbd-32556e8078d3" acceptableDuration="10" value="413.9"/>
+            </iidm:currentLimits1>
+            <iidm:currentLimits2 permanentLimit="734.9">
+                <iidm:temporaryLimit name="695a62ba-bc23-47e1-b2c1-2c4a588deaaa" acceptableDuration="20" value="734.9"/>
+                <iidm:temporaryLimit name="904683e1-92c2-4634-ba26-982da30ce40c" acceptableDuration="10" value="734.9"/>
+            </iidm:currentLimits2>
+        </iidm:twoWindingsTransformer>
+    </iidm:substation>
+    <iidm:substation id="87f7002b-056f-4a6a-a872-1744eea757e3" name="Anvers" country="BE" geographicalTags="ELIA-Anvers">
+        <iidm:property name="CGMES.regionName" value="BE"/>
+        <iidm:property name="CGMES.subRegionId" value="c1d5c0378f8011e08e4d00247eb1f55e"/>
+        <iidm:property name="CGMES.regionId" value="c1d5bfc68f8011e08e4d00247eb1f55e"/>
+        <iidm:voltageLevel id="d0486169-2205-40b2-895e-b672ecb9e5fc" name="220.0" nominalV="225.0" lowVoltageLimit="202.5" highVoltageLimit="247.5" topologyKind="BUS_BREAKER">
+            <iidm:busBreakerTopology>
+                <iidm:bus id="f70f6bad-eb8d-4b8f-8431-4ab93581514e" name="BE-Busbar_2" v="219.975369" angle="-5.37664"/>
+            </iidm:busBreakerTopology>
+            <iidm:load id="b1480a00-b427-4001-a26c-51954d2bb7e9" name="L-1230804819" loadType="UNDEFINED" p0="1.0" q0="0.0" bus="f70f6bad-eb8d-4b8f-8431-4ab93581514e" connectableBus="f70f6bad-eb8d-4b8f-8431-4ab93581514e" p="1.0" q="0.0">
+                <iidm:alias type="CGMES.Terminal1">b9376bea-c75d-49f3-94ca-6a71fa0086a5</iidm:alias>
+            </iidm:load>
+        </iidm:voltageLevel>
+    </iidm:substation>
+    <iidm:substation id="8070c4ef-99a0-4078-af8f-e938561ac198" name="BE_HVDC1" country="BE" geographicalTags="ELIA-Brussels">
+        <iidm:property name="CGMES.regionName" value="BE"/>
+        <iidm:property name="CGMES.subRegionId" value="c1d5bfc88f8011e08e4d00247eb1f55e"/>
+        <iidm:property name="CGMES.regionId" value="c1d5bfc68f8011e08e4d00247eb1f55e"/>
+        <iidm:voltageLevel id="bccf01d1-680c-4683-91b9-9d19748519cb" name="123.9" nominalV="124.0" lowVoltageLimit="111.6" highVoltageLimit="136.4" topologyKind="BUS_BREAKER">
+            <iidm:busBreakerTopology>
+                <iidm:bus id="5cae357a-731f-4ab1-b133-4f90795206c7" name="BE_HDC_BUS1" v="124.850153" angle="-1.92077"/>
+            </iidm:busBreakerTopology>
+        </iidm:voltageLevel>
+        <iidm:voltageLevel id="f43c6bf6-487d-49aa-8b8b-e87be99e14ec" name="225.0" nominalV="225.0" lowVoltageLimit="202.5" highVoltageLimit="247.5" topologyKind="BUS_BREAKER">
+            <iidm:busBreakerTopology>
+                <iidm:bus id="d4a4a5d7-8391-4afd-898d-f34fee81136f" name="N1230813974" v="224.170338" angle="-6.5412"/>
+            </iidm:busBreakerTopology>
+        </iidm:voltageLevel>
+        <iidm:twoWindingsTransformer id="d1494778-e194-4ee5-84ec-ac8024375e4f" name="TR2-1230813971" r="0.0" x="12.870209195298765" g="0.0" b="0.0" ratedU1="225.0" ratedU2="124.0" bus1="d4a4a5d7-8391-4afd-898d-f34fee81136f" connectableBus1="d4a4a5d7-8391-4afd-898d-f34fee81136f" voltageLevelId1="f43c6bf6-487d-49aa-8b8b-e87be99e14ec" bus2="5cae357a-731f-4ab1-b133-4f90795206c7" connectableBus2="5cae357a-731f-4ab1-b133-4f90795206c7" voltageLevelId2="bccf01d1-680c-4683-91b9-9d19748519cb">
+            <iidm:alias type="CGMES.Terminal1">3e077e04-686b-4569-9f34-7f9f843b2df0</iidm:alias>
+            <iidm:alias type="CGMES.TransformerEnd1">178c9972-6bb1-401b-ae0c-fed408956667</iidm:alias>
+            <iidm:alias type="CGMES.TransformerEnd2">8353c287-4da8-41e2-893b-591e2f02d822</iidm:alias>
+            <iidm:alias type="CGMES.RatioTapChanger1">078aad2d-c132-42fc-8b55-952d4f53f29d</iidm:alias>
+            <iidm:alias type="CGMES.Terminal2">1ac095e2-6fca-4e21-87c2-f75e6f35bfd4</iidm:alias>
+            <iidm:ratioTapChanger lowTapPosition="1" tapPosition="8" targetDeadband="0.5" loadTapChangingCapabilities="true" regulating="false" targetV="0.0">
+                <iidm:terminalRef id="d1494778-e194-4ee5-84ec-ac8024375e4f" side="TWO"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0526315789473684"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0416666666666667"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0309278350515465"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0204081632653061"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0101010101010102"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9900990099009901"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9803921568627451"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.970873786407767"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9615384615384615"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9523809523809523"/>
+            </iidm:ratioTapChanger>
+            <iidm:currentLimits1 permanentLimit="404.7">
+                <iidm:temporaryLimit name="fd609d71-8c32-402a-ba34-6e16b373f267" acceptableDuration="20" value="404.7"/>
+                <iidm:temporaryLimit name="658ef0f5-3800-4798-83b7-3f2fa0a13536" acceptableDuration="10" value="404.7"/>
+            </iidm:currentLimits1>
+            <iidm:currentLimits2 permanentLimit="734.3">
+                <iidm:temporaryLimit name="3096e9e2-ffe2-492f-8728-f7cdb36ff01c" acceptableDuration="20" value="734.3"/>
+                <iidm:temporaryLimit name="3b1412a4-1545-434a-a7cb-14da962ff8b7" acceptableDuration="10" value="734.3"/>
+            </iidm:currentLimits2>
+        </iidm:twoWindingsTransformer>
+    </iidm:substation>
+    <iidm:substation id="08ca4b0e-e5c7-44fd-b385-cb73c5d5b2fb" name="BE_HVDC2" country="BE" geographicalTags="ELIA-Brussels">
+        <iidm:property name="CGMES.regionName" value="BE"/>
+        <iidm:property name="CGMES.subRegionId" value="c1d5bfc88f8011e08e4d00247eb1f55e"/>
+        <iidm:property name="CGMES.regionId" value="c1d5bfc68f8011e08e4d00247eb1f55e"/>
+        <iidm:voltageLevel id="d966db16-ec73-4c00-a9bc-8aae3aaa0573" name="123.9" nominalV="124.0" lowVoltageLimit="111.6" highVoltageLimit="136.4" topologyKind="BUS_BREAKER">
+            <iidm:busBreakerTopology>
+                <iidm:bus id="f3c8e35e-744f-431a-8505-dfe3c275616a" name="BE_HVDC_BUS2" v="121.563345" angle="-10.1932"/>
+            </iidm:busBreakerTopology>
+        </iidm:voltageLevel>
+        <iidm:voltageLevel id="a7b130d2-2fb4-497e-a93e-2625f25d7b65" name="225.0" nominalV="225.0" lowVoltageLimit="202.5" highVoltageLimit="247.5" topologyKind="BUS_BREAKER">
+            <iidm:busBreakerTopology>
+                <iidm:bus id="3f8ff03c-11fb-4325-8f60-4459c1b1cc1d" name="N1230816286" v="219.907111" angle="-5.38255"/>
+            </iidm:busBreakerTopology>
+        </iidm:voltageLevel>
+        <iidm:twoWindingsTransformer id="b59c4282-a1f7-4ed2-a6de-2a5b97c03f64" name="TR2-1230814032" r="0.0" x="12.870209195298765" g="0.0" b="0.0" ratedU1="225.0" ratedU2="124.0" bus1="3f8ff03c-11fb-4325-8f60-4459c1b1cc1d" connectableBus1="3f8ff03c-11fb-4325-8f60-4459c1b1cc1d" voltageLevelId1="a7b130d2-2fb4-497e-a93e-2625f25d7b65" bus2="f3c8e35e-744f-431a-8505-dfe3c275616a" connectableBus2="f3c8e35e-744f-431a-8505-dfe3c275616a" voltageLevelId2="d966db16-ec73-4c00-a9bc-8aae3aaa0573">
+            <iidm:alias type="CGMES.Terminal2">f0af576c-c25c-4daa-b5f5-b84f71229ba7</iidm:alias>
+            <iidm:alias type="CGMES.Terminal1">65e95fda-30cc-4819-97ec-639c2cf62706</iidm:alias>
+            <iidm:alias type="CGMES.TransformerEnd2">31d64718-a677-4f17-a3c5-43664da52b1e</iidm:alias>
+            <iidm:alias type="CGMES.RatioTapChanger1">012bc254-6e99-4bf3-993f-228f2bfbe3d2</iidm:alias>
+            <iidm:alias type="CGMES.TransformerEnd1">bf57128f-e148-47d7-92fb-f6541fb62240</iidm:alias>
+            <iidm:ratioTapChanger lowTapPosition="1" tapPosition="2" targetDeadband="0.5" loadTapChangingCapabilities="true" regulating="false" targetV="0.0">
+                <iidm:terminalRef id="b59c4282-a1f7-4ed2-a6de-2a5b97c03f64" side="TWO"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0526315789473684"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0416666666666667"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0309278350515465"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0204081632653061"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0101010101010102"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9900990099009901"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9803921568627451"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.970873786407767"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9615384615384615"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9523809523809523"/>
+            </iidm:ratioTapChanger>
+            <iidm:currentLimits1 permanentLimit="404.7">
+                <iidm:temporaryLimit name="2dba0c81-c3a0-4b02-89b0-bf5583d1e0f9" acceptableDuration="20" value="404.7"/>
+                <iidm:temporaryLimit name="7e7bbede-fe30-47de-93f0-8ee9a9be4b87" acceptableDuration="10" value="404.7"/>
+            </iidm:currentLimits1>
+            <iidm:currentLimits2 permanentLimit="734.3">
+                <iidm:temporaryLimit name="193f3927-bb18-4609-9bb4-6834be75f1aa" acceptableDuration="20" value="734.3"/>
+                <iidm:temporaryLimit name="ae0a2ac9-4bc1-4a85-b1b3-ade3a06ba448" acceptableDuration="10" value="734.3"/>
+            </iidm:currentLimits2>
+        </iidm:twoWindingsTransformer>
+    </iidm:substation>
+    <iidm:substation id="37e14a0f-5e34-4647-a062-8bfd9305fa9d" name="PP_Brussels" country="BE" geographicalTags="ELIA-Brussels">
+        <iidm:property name="CGMES.regionName" value="BE"/>
+        <iidm:property name="CGMES.subRegionId" value="c1d5bfc88f8011e08e4d00247eb1f55e"/>
+        <iidm:property name="CGMES.regionId" value="c1d5bfc68f8011e08e4d00247eb1f55e"/>
+        <iidm:voltageLevel id="4ba71b59-ee2f-450b-9f7d-cc2f1cc5e386" name="10.5" nominalV="10.5" lowVoltageLimit="9.45" highVoltageLimit="11.55" topologyKind="BUS_BREAKER">
+            <iidm:busBreakerTopology>
+                <iidm:bus id="a81d08ed-f51d-4538-8d1e-fb2d0dbd128e" name="BE-Busbar_4" v="10.774578" angle="-4.73736"/>
+            </iidm:busBreakerTopology>
+            <iidm:generator id="3a3b27be-b18b-4385-b557-6735d733baf0" name="BE-G1" energySource="OTHER" minP="50.0" maxP="200.0" ratedS="300.0" voltageRegulatorOn="true" targetP="90.0" targetV="115.5" targetQ="100.256" bus="a81d08ed-f51d-4538-8d1e-fb2d0dbd128e" connectableBus="a81d08ed-f51d-4538-8d1e-fb2d0dbd128e" p="-90.0" q="43.241489">
+                <iidm:alias type="CGMES.Terminal1">beffa353-7d10-421d-9c08-036b744b1cee</iidm:alias>
+                <iidm:property name="CGMES.normalPF" value="0.0"/>
+                <iidm:property name="CGMES.GeneratingUnit" value="18993b11-2966-4bce-bab9-d86103f83b53"/>
+                <iidm:property name="CGMES.RegulatingControl" value="6ba406ce-78cf-4485-9b01-a34e584f1a8d"/>
+                <iidm:regulatingTerminal id="a708c3bc-465d-4fe7-b6ef-6fa6408a62b0" side="TWO"/>
+                <iidm:reactiveCapabilityCurve>
+                    <iidm:point p="-100.0" minQ="-200.0" maxQ="200.0"/>
+                    <iidm:point p="0.0" minQ="-300.0" maxQ="300.0"/>
+                    <iidm:point p="100.0" minQ="-200.0" maxQ="200.0"/>
+                </iidm:reactiveCapabilityCurve>
+            </iidm:generator>
+        </iidm:voltageLevel>
+        <iidm:voltageLevel id="8bbd7e74-ae20-4dce-8780-c20f8e18c2e0" name="110.0" nominalV="110.0" lowVoltageLimit="99.0" highVoltageLimit="121.0" topologyKind="BUS_BREAKER">
+            <iidm:busBreakerTopology>
+                <iidm:bus id="5c74cb26-ce2f-40c6-951d-89091eb781b6" name="BE-Busbar_6" v="115.5" angle="-7.05928"/>
+            </iidm:busBreakerTopology>
+            <iidm:load id="cb459405-cc14-4215-a45c-416789205904" name="BE-Load_1" loadType="UNDEFINED" p0="200.0" q0="90.0" bus="5c74cb26-ce2f-40c6-951d-89091eb781b6" connectableBus="5c74cb26-ce2f-40c6-951d-89091eb781b6" p="200.0" q="90.0">
+                <iidm:alias type="CGMES.Terminal1">cbdf1842-74ed-4fce-a5d4-0296c82cbc92</iidm:alias>
+            </iidm:load>
+            <iidm:shunt id="d771118f-36e9-4115-a128-cc3d9ce3e3da" name="BE_S1" sectionCount="1" voltageRegulatorOn="false" targetV="110.0" targetDeadband="0.5" bus="5c74cb26-ce2f-40c6-951d-89091eb781b6" connectableBus="5c74cb26-ce2f-40c6-951d-89091eb781b6" p="0.0" q="-330.75">
+                <iidm:alias type="CGMES.Terminal1">d5e2e58e-ccf6-47d9-b3bb-3088eb7a9b6c</iidm:alias>
+                <iidm:property name="CGMES.RegulatingControl" value="4d50f86d-0d12-4ca3-9430-56bb05f9eee6"/>
+                <iidm:shuntLinearModel bPerSection="0.024793" gPerSection="0.0" maximumSectionCount="1"/>
+            </iidm:shunt>
+        </iidm:voltageLevel>
+        <iidm:voltageLevel id="929ba893-c9dc-44d7-b1fd-30834bd3ab85" name="21.0" nominalV="21.0" lowVoltageLimit="18.9" highVoltageLimit="23.1" topologyKind="BUS_BREAKER">
+            <iidm:busBreakerTopology>
+                <iidm:bus id="f96d552a-618d-4d0c-a39a-2dea3c411dee" name="BE-Busbar_5" v="21.987" angle="-5.11757"/>
+            </iidm:busBreakerTopology>
+            <iidm:generator id="550ebe0d-f2b2-48c1-991f-cebea43a21aa" name="BE-G2" energySource="OTHER" minP="50.0" maxP="200.0" ratedS="300.0" voltageRegulatorOn="true" targetP="118.0" targetV="21.987" targetQ="18.720301" bus="f96d552a-618d-4d0c-a39a-2dea3c411dee" connectableBus="f96d552a-618d-4d0c-a39a-2dea3c411dee" p="-118.0" q="-96.822572">
+                <iidm:alias type="CGMES.Terminal1">4bb5407b-b4a5-416c-80ad-1a778ada2b9b</iidm:alias>
+                <iidm:property name="CGMES.normalPF" value="0.0"/>
+                <iidm:property name="CGMES.GeneratingUnit" value="5b7a4d43-09ec-4033-882d-64a76d557631"/>
+                <iidm:property name="CGMES.RegulatingControl" value="84bf5be8-eb59-4555-b131-fce4d2d7775d"/>
+                <iidm:minMaxReactiveLimits minQ="-200.0" maxQ="200.0"/>
+            </iidm:generator>
+        </iidm:voltageLevel>
+        <iidm:voltageLevel id="b10b171b-3bc5-4849-bb1f-61ed9ea1ec7c" name="225.0" nominalV="225.0" lowVoltageLimit="202.5" highVoltageLimit="247.5" topologyKind="BUS_BREAKER">
+            <iidm:busBreakerTopology>
+                <iidm:bus id="99b219f3-4593-428b-a4da-124a54630178" name="BE_TR_BUS4" v="224.114164" angle="-6.54843"/>
+            </iidm:busBreakerTopology>
+            <iidm:load id="1c6beed6-1acf-42e7-ba55-0cc9f04bddd8" name="BE-Load_2" loadType="UNDEFINED" p0="200.0" q0="50.0" bus="99b219f3-4593-428b-a4da-124a54630178" connectableBus="99b219f3-4593-428b-a4da-124a54630178" p="200.0" q="50.0">
+                <iidm:alias type="CGMES.Terminal1">a036b765-1669-4f64-acd3-1e8fbd513312</iidm:alias>
+            </iidm:load>
+        </iidm:voltageLevel>
+        <iidm:voltageLevel id="469df5f7-058f-4451-a998-57a48e8a56fe" name="380.0" nominalV="380.0" lowVoltageLimit="342.0" highVoltageLimit="418.0" topologyKind="BUS_BREAKER">
+            <iidm:busBreakerTopology>
+                <iidm:bus id="e44141af-f1dc-44d3-bfa4-b674e5c953d7" name="BE_TR_BUS2" v="412.633073" angle="-5.82972"/>
+            </iidm:busBreakerTopology>
+            <iidm:shunt id="002b0a40-3957-46db-b84a-30420083558f" name="BE_S2" sectionCount="1" voltageRegulatorOn="false" targetV="380.0" targetDeadband="0.5" bus="e44141af-f1dc-44d3-bfa4-b674e5c953d7" connectableBus="e44141af-f1dc-44d3-bfa4-b674e5c953d7" p="1.179128" q="-58.956389">
+                <iidm:alias type="CGMES.Terminal1">22af3121-1a66-4546-bd80-4371f417c644</iidm:alias>
+                <iidm:property name="CGMES.RegulatingControl" value="67971e8d-518a-408f-9e59-c7601da9a989"/>
+                <iidm:shuntLinearModel bPerSection="3.46E-4" gPerSection="7.0E-6" maximumSectionCount="1"/>
+            </iidm:shunt>
+        </iidm:voltageLevel>
+        <iidm:twoWindingsTransformer id="e482b89a-fa84-4ea9-8e70-a83d44790957" name="BE-TR2_3" r="9.481464576284766E-4" x="0.052911509061024486" g="0.0019138280377471303" b="-0.00917006295066167" ratedU1="110.34375" ratedU2="10.5" bus1="5c74cb26-ce2f-40c6-951d-89091eb781b6" connectableBus1="5c74cb26-ce2f-40c6-951d-89091eb781b6" voltageLevelId1="8bbd7e74-ae20-4dce-8780-c20f8e18c2e0" bus2="a81d08ed-f51d-4538-8d1e-fb2d0dbd128e" connectableBus2="a81d08ed-f51d-4538-8d1e-fb2d0dbd128e" voltageLevelId2="4ba71b59-ee2f-450b-9f7d-cc2f1cc5e386">
+            <iidm:alias type="CGMES.TransformerEnd2">35651e25-a77a-46a1-92f4-443d6acce90e</iidm:alias>
+            <iidm:alias type="CGMES.RatioTapChanger2">83cc66dd-8d93-4a2c-8103-f1f5a9cf7e2e</iidm:alias>
+            <iidm:alias type="CGMES.TransformerEnd1">f58281c5-862a-465e-97ec-d809be6e24ab</iidm:alias>
+            <iidm:alias type="CGMES.Terminal1">ca7974cf-b25e-4898-9221-7154233e5eb2</iidm:alias>
+            <iidm:alias type="CGMES.Terminal2">1182d878-2eaa-4eec-91be-ce7b2b1e7f9a</iidm:alias>
+            <iidm:ratioTapChanger lowTapPosition="1" tapPosition="14" targetDeadband="0.5" loadTapChangingCapabilities="true" regulating="true" targetV="10.815">
+                <iidm:terminalRef id="e482b89a-fa84-4ea9-8e70-a83d44790957" side="TWO"/>
+                <iidm:step r="-23.961600000000004" x="-23.961600000000004" g="31.512498947900024" b="31.512498947900024" rho="0.872"/>
+                <iidm:step r="-22.560000000000002" x="-22.560000000000002" g="29.132231404958688" b="29.132231404958688" rho="0.8799999999999999"/>
+                <iidm:step r="-21.145599999999998" x="-21.145599999999998" g="26.816005194383564" b="26.816005194383564" rho="0.888"/>
+                <iidm:step r="-19.718399999999992" x="-19.718399999999992" g="24.56154336734693" b="24.56154336734693" rho="0.896"/>
+                <iidm:step r="-18.278399999999994" x="-18.278399999999994" g="22.366669277155605" b="22.366669277155605" rho="0.904"/>
+                <iidm:step r="-16.825599999999994" x="-16.825599999999994" g="20.22930132348415" b="20.22930132348415" rho="0.9120000000000001"/>
+                <iidm:step r="-15.359999999999996" x="-15.359999999999996" g="18.14744801512287" b="18.14744801512287" rho="0.92"/>
+                <iidm:step r="-13.881600000000017" x="-13.881600000000017" g="16.119203329369824" b="16.119203329369824" rho="0.9279999999999999"/>
+                <iidm:step r="-12.390400000000012" x="-12.390400000000012" g="14.142742347870563" b="14.142742347870563" rho="0.936"/>
+                <iidm:step r="-10.886400000000007" x="-10.886400000000007" g="12.216317150244183" b="12.216317150244183" rho="0.944"/>
+                <iidm:step r="-9.36960000000001" x="-9.36960000000001" g="10.338252948238136" b="10.338252948238136" rho="0.952"/>
+                <iidm:step r="-7.8400000000000025" x="-7.8400000000000025" g="8.506944444444443" b="8.506944444444443" rho="0.96"/>
+                <iidm:step r="-6.297600000000003" x="-6.297600000000003" g="6.720852400792299" b="6.720852400792299" rho="0.9679999999999999"/>
+                <iidm:step r="-4.742400000000002" x="-4.742400000000002" g="4.978500403117447" b="4.978500403117447" rho="0.9760000000000001"/>
+                <iidm:step r="-3.1743999999999994" x="-3.1743999999999994" g="3.278471809108341" b="3.278471809108341" rho="0.9839999999999999"/>
+                <iidm:step r="-1.5936000000000061" x="-1.5936000000000061" g="1.6194068678460072" b="1.6194068678460072" rho="0.992"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0"/>
+                <iidm:step r="1.6064000000000078" x="1.6064000000000078" g="-1.5810027714789676" b="-1.5810027714789676" rho="1.008"/>
+                <iidm:step r="3.2256000000000062" x="3.2256000000000062" g="-3.1248062496124995" b="-3.1248062496124995" rho="1.016"/>
+                <iidm:step r="4.857599999999995" x="4.857599999999995" g="-4.632568359375" b="-4.632568359375" rho="1.024"/>
+                <iidm:step r="6.502399999999997" x="6.502399999999997" g="-6.105402319572139" b="-6.105402319572139" rho="1.032"/>
+                <iidm:step r="8.16000000000001" x="8.16000000000001" g="-7.544378698224863" b="-7.544378698224863" rho="1.04"/>
+                <iidm:step r="9.830400000000017" x="9.830400000000017" g="-8.950527358545557" b="-8.950527358545557" rho="1.048"/>
+                <iidm:step r="11.513600000000013" x="11.513600000000013" g="-10.324839302112043" b="-10.324839302112043" rho="1.056"/>
+                <iidm:step r="13.209600000000021" x="13.209600000000021" g="-11.66826841539942" b="-11.66826841539942" rho="1.064"/>
+                <iidm:step r="14.91840000000002" x="14.91840000000002" g="-12.981733125417705" b="-12.981733125417705" rho="1.072"/>
+                <iidm:step r="16.64000000000001" x="16.64000000000001" g="-14.266117969821678" b="-14.266117969821678" rho="1.08"/>
+                <iidm:step r="18.374400000000012" x="18.374400000000012" g="-15.5222750865052" b="-15.5222750865052" rho="1.088"/>
+                <iidm:step r="20.12160000000003" x="20.12160000000003" g="-16.751025627364292" b="-16.751025627364292" rho="1.096"/>
+                <iidm:step r="21.881600000000013" x="21.881600000000013" g="-17.953161100609126" b="-17.953161100609126" rho="1.104"/>
+                <iidm:step r="23.65440000000003" x="23.65440000000003" g="-19.129444645722295" b="-19.129444645722295" rho="1.112"/>
+                <iidm:step r="25.44000000000002" x="25.44000000000002" g="-20.280612244897966" b="-20.280612244897966" rho="1.12"/>
+                <iidm:step r="27.23840000000002" x="27.23840000000002" g="-21.407373874553603" b="-21.407373874553603" rho="1.1280000000000001"/>
+            </iidm:ratioTapChanger>
+            <iidm:currentLimits1 permanentLimit="1308.1">
+                <iidm:temporaryLimit name="2dd66c19-e568-4d59-b5cd-178e9245aeb0" acceptableDuration="20" value="1408.1"/>
+                <iidm:temporaryLimit name="8d86ea64-bff7-48c5-8c82-d4e8bf0639ae" acceptableDuration="10" value="1508.1"/>
+            </iidm:currentLimits1>
+            <iidm:currentLimits2 permanentLimit="13746.4">
+                <iidm:temporaryLimit name="b594021f-ff97-41ff-8786-8558100a28e2" acceptableDuration="20" value="14746.4"/>
+                <iidm:temporaryLimit name="996c1640-57fc-4084-850d-bc378467d1dc" acceptableDuration="10" value="15746.4"/>
+            </iidm:currentLimits2>
+        </iidm:twoWindingsTransformer>
+        <iidm:twoWindingsTransformer id="b94318f6-6d24-4f56-96b9-df2531ad6543" name="BE-TR2_2" r="0.2057" x="2.78472075" g="0.0" b="0.0" ratedU1="220.0" ratedU2="110.0" bus1="99b219f3-4593-428b-a4da-124a54630178" connectableBus1="99b219f3-4593-428b-a4da-124a54630178" voltageLevelId1="b10b171b-3bc5-4849-bb1f-61ed9ea1ec7c" bus2="5c74cb26-ce2f-40c6-951d-89091eb781b6" connectableBus2="5c74cb26-ce2f-40c6-951d-89091eb781b6" voltageLevelId2="8bbd7e74-ae20-4dce-8780-c20f8e18c2e0">
+            <iidm:alias type="CGMES.TransformerEnd1">81a18364-0397-48d3-b850-22a0e34b410f</iidm:alias>
+            <iidm:alias type="CGMES.Terminal1">4c19ace6-c825-4c5b-87d9-031e6e6a3379</iidm:alias>
+            <iidm:alias type="CGMES.Terminal2">ab7ece75-d726-48c8-a924-b0a9325e6d51</iidm:alias>
+            <iidm:alias type="CGMES.TransformerEnd2">664a19e1-1dc2-48d5-b265-c0630981e61c</iidm:alias>
+            <iidm:alias type="CGMES.RatioTapChanger1">955d9cd0-4a10-4031-b008-60c0dc340a07</iidm:alias>
+            <iidm:ratioTapChanger lowTapPosition="1" tapPosition="10" targetDeadband="0.5" loadTapChangingCapabilities="true" regulating="false" targetV="0.0">
+                <iidm:terminalRef id="b94318f6-6d24-4f56-96b9-df2531ad6543" side="TWO"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1764705882352942"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1594202898550725"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1428571428571428"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1267605633802817"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1111111111111112"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.095890410958904"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.081081081081081"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0666666666666667"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0526315789473684"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0389610389610389"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0256410256410258"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0126582278481011"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9876543209876544"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9756097560975611"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9638554216867469"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9523809523809523"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9411764705882353"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9302325581395349"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9195402298850576"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9090909090909091"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.898876404494382"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.8888888888888888"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.8791208791208791"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.8695652173913044"/>
+            </iidm:ratioTapChanger>
+            <iidm:currentLimits1 permanentLimit="1705.8">
+                <iidm:temporaryLimit name="3a790bfb-6523-4ff1-b145-ed09c8cadca1" acceptableDuration="20" value="1805.8"/>
+                <iidm:temporaryLimit name="097d5b38-285e-4ea5-b37c-373aef8a432d" acceptableDuration="10" value="1905.8"/>
+            </iidm:currentLimits1>
+            <iidm:currentLimits2 permanentLimit="3411.6">
+                <iidm:temporaryLimit name="e6c8f849-b05a-4ccd-92cd-59e1b5d03c39" acceptableDuration="20" value="3611.6"/>
+                <iidm:temporaryLimit name="ca3844f4-8c67-446c-a35b-7036b34f270a" acceptableDuration="10" value="3811.6"/>
+            </iidm:currentLimits2>
+        </iidm:twoWindingsTransformer>
+        <iidm:twoWindingsTransformer id="a708c3bc-465d-4fe7-b6ef-6fa6408a62b0" name="BE-TR2_1" r="0.20476920750000005" x="1.097992115" g="0.0" b="0.0" ratedU1="400.0" ratedU2="110.0" bus1="e44141af-f1dc-44d3-bfa4-b674e5c953d7" connectableBus1="e44141af-f1dc-44d3-bfa4-b674e5c953d7" voltageLevelId1="469df5f7-058f-4451-a998-57a48e8a56fe" bus2="5c74cb26-ce2f-40c6-951d-89091eb781b6" connectableBus2="5c74cb26-ce2f-40c6-951d-89091eb781b6" voltageLevelId2="8bbd7e74-ae20-4dce-8780-c20f8e18c2e0">
+            <iidm:alias type="CGMES.PhaseTapChanger1">6ebbef67-3061-4236-a6fd-6ccc4595f6c3</iidm:alias>
+            <iidm:alias type="CGMES.Terminal1">c3774d3f-f48c-4954-a0cf-b4572eb714fd</iidm:alias>
+            <iidm:alias type="CGMES.Terminal2">2cd21c77-b8b1-4896-95fb-240f45b9ac89</iidm:alias>
+            <iidm:alias type="CGMES.TransformerEnd1">49ca3fd4-1b54-4c5b-83fd-4dbd0f9fec9d</iidm:alias>
+            <iidm:alias type="CGMES.TransformerEnd2">1912224a-9e98-41aa-84cf-00875bce7264</iidm:alias>
+            <iidm:phaseTapChanger lowTapPosition="1" tapPosition="10" targetDeadband="35.0" regulationMode="ACTIVE_POWER_CONTROL" regulationValue="-65.0" regulating="true">
+                <iidm:terminalRef id="a708c3bc-465d-4fe7-b6ef-6fa6408a62b0" side="TWO"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9889363528682975" alpha="8.530765609948135"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9906788398452958" alpha="7.829076510059608"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9922778767136677" alpha="7.125016348901798"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9937313161588018" alpha="6.418786730238786"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9950371902099893" alpha="5.710593137499643"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.996193717496113" alpha="5.000644597558434"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9971993098884564" alpha="4.289153328819019"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9980525784828885" alpha="3.576334374997351"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9987523388778446" alpha="2.862405226111748"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9992976157091807" alpha="2.1475854282985036"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9996876464081226" alpha="1.4320961841646465"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9999218841540815" alpha="0.7161599454704085"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0" alpha="-0.0"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9999218841540815" alpha="-0.7161599454704085"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9996876464081226" alpha="-1.4320961841646465"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9992976157091807" alpha="-2.1475854282985036"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9987523388778446" alpha="-2.862405226111748"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9980525784828885" alpha="-3.576334374997351"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9971993098884564" alpha="-4.289153328819019"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.996193717496113" alpha="-5.000644597558434"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9950371902099893" alpha="-5.710593137499643"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9937313161588018" alpha="-6.418786730238786"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9922778767136677" alpha="-7.125016348901798"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9906788398452958" alpha="-7.829076510059608"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9889363528682975" alpha="-8.530765609948135"/>
+            </iidm:phaseTapChanger>
+            <iidm:currentLimits1 permanentLimit="938.2">
+                <iidm:temporaryLimit name="e073d90c-5225-4287-9f9a-f58b8875c7e7" acceptableDuration="20" value="958.2"/>
+                <iidm:temporaryLimit name="b1b1d2f1-2b2c-4b34-9e0d-e25a6954c017" acceptableDuration="10" value="998.2"/>
+            </iidm:currentLimits1>
+            <iidm:currentLimits2 permanentLimit="3411.6">
+                <iidm:temporaryLimit name="1c79b3b4-c87a-45b8-8662-08e27cef765e" acceptableDuration="20" value="3611.6"/>
+                <iidm:temporaryLimit name="44b9e31a-8f2e-423d-99c0-a4fa030cc605" acceptableDuration="10" value="3811.6"/>
+            </iidm:currentLimits2>
+        </iidm:twoWindingsTransformer>
+        <iidm:threeWindingsTransformer id="84ed55f4-61f5-4d9d-8755-bba7b877a246" name="BE-TR3_1" r1="0.898462" x1="17.204128" g1="0.0" b1="2.4375E-6" ratedU1="400.0" r2="1.070770247933884" x2="19.6664" g2="0.0" b2="0.0" ratedU2="220.0" r3="4.837006802721088" x3="21.760725623582765" g3="0.0" b3="0.0" ratedU3="21.0" ratedU0="400.0" bus1="e44141af-f1dc-44d3-bfa4-b674e5c953d7" connectableBus1="e44141af-f1dc-44d3-bfa4-b674e5c953d7" voltageLevelId1="469df5f7-058f-4451-a998-57a48e8a56fe" bus2="99b219f3-4593-428b-a4da-124a54630178" connectableBus2="99b219f3-4593-428b-a4da-124a54630178" voltageLevelId2="b10b171b-3bc5-4849-bb1f-61ed9ea1ec7c" bus3="f96d552a-618d-4d0c-a39a-2dea3c411dee" connectableBus3="f96d552a-618d-4d0c-a39a-2dea3c411dee" voltageLevelId3="929ba893-c9dc-44d7-b1fd-30834bd3ab85">
+            <iidm:alias type="CGMES.TransformerEnd2">e1f661c0-971d-4ce5-ad39-0ec427f288ab</iidm:alias>
+            <iidm:alias type="CGMES.TransformerEnd1">5f68a129-d5d8-4b71-9743-9ca2572ba26b</iidm:alias>
+            <iidm:alias type="CGMES.Terminal3">ca0f7e2e-3442-4ada-a704-91f319c0ebe3</iidm:alias>
+            <iidm:alias type="CGMES.TransformerEnd3">2e21d1ef-2287-434c-a767-1ca807cf2478</iidm:alias>
+            <iidm:alias type="CGMES.RatioTapChanger2">fe25f43a-7341-446e-a71a-8ab7119ba806</iidm:alias>
+            <iidm:alias type="CGMES.Terminal1">76e9ca77-f805-40ea-8120-5a6d58416d34</iidm:alias>
+            <iidm:alias type="CGMES.Terminal2">53fd6693-57e6-482e-8fbe-dcf3531a7ce0</iidm:alias>
+            <iidm:property name="v" value="412.44265244763574"/>
+            <iidm:property name="angle" value="-5.814073624987445"/>
+            <iidm:ratioTapChanger2 lowTapPosition="1" tapPosition="17" targetDeadband="0.5" loadTapChangingCapabilities="true" regulating="false" targetV="0.0">
+                <iidm:terminalRef id="84ed55f4-61f5-4d9d-8755-bba7b877a246" side="TWO"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.1111111111111112"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.103448275862069"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.095890410958904"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.08843537414966"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.081081081081081"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0738255033557047"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0666666666666667"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0596026490066226"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0526315789473684"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0457516339869282"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0389610389610389"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.032258064516129"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0256410256410258"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.019108280254777"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0126582278481011"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0062893081761006"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="1.0"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9937888198757763"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9876543209876544"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9815950920245399"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9756097560975611"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9696969696969697"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9638554216867469"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9580838323353293"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9523809523809523"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9467455621301776"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9411764705882353"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.935672514619883"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9302325581395349"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9248554913294798"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9195402298850576"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9142857142857143"/>
+                <iidm:step r="0.0" x="0.0" g="0.0" b="0.0" rho="0.9090909090909091"/>
+            </iidm:ratioTapChanger2>
+            <iidm:currentLimits1 permanentLimit="938.2">
+                <iidm:temporaryLimit name="5b7c968c-6e54-45af-a2f8-ee8839ffc44f" acceptableDuration="20" value="968.2"/>
+                <iidm:temporaryLimit name="d1eb3530-5f0e-4864-a449-27b4e6232b79" acceptableDuration="10" value="998.2"/>
+            </iidm:currentLimits1>
+            <iidm:currentLimits2 permanentLimit="1705.8">
+                <iidm:temporaryLimit name="9384feb4-8f1c-4cba-8831-43cf7f641b5e" acceptableDuration="20" value="1805.8"/>
+                <iidm:temporaryLimit name="3974cff1-568e-4ab9-a502-ae7b07118c52" acceptableDuration="10" value="1905.8"/>
+            </iidm:currentLimits2>
+            <iidm:currentLimits3 permanentLimit="17870.4">
+                <iidm:temporaryLimit name="cbc1020c-190b-4298-8382-00bd6983b3f5" acceptableDuration="20" value="18870.4"/>
+                <iidm:temporaryLimit name="cc915cb4-186e-4104-8b28-8ca14ee7f580" acceptableDuration="10" value="19870.4"/>
+            </iidm:currentLimits3>
+        </iidm:threeWindingsTransformer>
+    </iidm:substation>
+    <iidm:line id="b58bf21a-096a-4dae-9a01-3f03b60c24c7" name="BE-Line_2" r="1.935" x="34.2" g1="3.375E-5" b1="2.120575E-5" g2="3.375E-5" b2="2.120575E-5" bus1="99b219f3-4593-428b-a4da-124a54630178" connectableBus1="99b219f3-4593-428b-a4da-124a54630178" voltageLevelId1="b10b171b-3bc5-4849-bb1f-61ed9ea1ec7c" bus2="f70f6bad-eb8d-4b8f-8431-4ab93581514e" connectableBus2="f70f6bad-eb8d-4b8f-8431-4ab93581514e" voltageLevelId2="d0486169-2205-40b2-895e-b672ecb9e5fc">
+        <iidm:alias type="CGMES.Terminal1">699545b9-82b9-4331-bc80-538d73b4ba56</iidm:alias>
+        <iidm:alias type="CGMES.Terminal2">77f04391-aa23-49b6-b3e9-6089130bb5d5</iidm:alias>
+        <iidm:currentLimits1 permanentLimit="1443.0">
+            <iidm:temporaryLimit name="6b3f7df3-5f6f-48fb-a1b9-bd9e4d497cb9" acceptableDuration="20" value="1574.0"/>
+            <iidm:temporaryLimit name="d1417273-9324-400b-b5c3-25a3c4db92d7" acceptableDuration="10" value="1705.0"/>
+        </iidm:currentLimits1>
+        <iidm:currentLimits2 permanentLimit="1443.0">
+            <iidm:temporaryLimit name="a0049abb-0390-45f9-b1c7-5d5b30d39d3c" acceptableDuration="20" value="1574.0"/>
+            <iidm:temporaryLimit name="b55b8502-f954-4ca7-99be-531e2a29a865" acceptableDuration="10" value="1705.0"/>
+        </iidm:currentLimits2>
+    </iidm:line>
+    <iidm:line id="ffbabc27-1ccd-4fdc-b037-e341706c8d29" name="BE-Line_6" r="5.203" x="71.0" g1="6.0E-5" b1="1.000595E-5" g2="6.0E-5" b2="1.000595E-5" bus1="99b219f3-4593-428b-a4da-124a54630178" connectableBus1="99b219f3-4593-428b-a4da-124a54630178" voltageLevelId1="b10b171b-3bc5-4849-bb1f-61ed9ea1ec7c" bus2="f70f6bad-eb8d-4b8f-8431-4ab93581514e" connectableBus2="f70f6bad-eb8d-4b8f-8431-4ab93581514e" voltageLevelId2="d0486169-2205-40b2-895e-b672ecb9e5fc">
+        <iidm:alias type="CGMES.Terminal1">05a17350-55f5-4a00-9a50-8c0048a25495</iidm:alias>
+        <iidm:alias type="CGMES.Terminal2">a4d42d33-ae54-4fe9-ad59-f30da0dfb809</iidm:alias>
+        <iidm:currentLimits1 permanentLimit="1180.0">
+            <iidm:temporaryLimit name="e901ed5e-f3b2-4ac5-aba1-be7c0f041d7c" acceptableDuration="20" value="1312.0"/>
+            <iidm:temporaryLimit name="ce9c05fa-f5dd-4ad5-8a00-d4194ded9f3e" acceptableDuration="10" value="1443.0"/>
+        </iidm:currentLimits1>
+        <iidm:currentLimits2 permanentLimit="1180.0">
+            <iidm:temporaryLimit name="d0e2a6f1-d24d-4add-863f-821d156afbfa" acceptableDuration="20" value="1312.0"/>
+            <iidm:temporaryLimit name="60016757-8416-4c0d-9217-aec83fbf7b99" acceptableDuration="10" value="1443.0"/>
+        </iidm:currentLimits2>
+    </iidm:line>
+    <iidm:line id="561c8177-0033-4d95-a02e-44b478a0d625" name="L1230813983" r="0.1" x="0.1" g1="0.0" b1="0.0" g2="0.0" b2="0.0" bus1="99b219f3-4593-428b-a4da-124a54630178" connectableBus1="99b219f3-4593-428b-a4da-124a54630178" voltageLevelId1="b10b171b-3bc5-4849-bb1f-61ed9ea1ec7c" bus2="d4a4a5d7-8391-4afd-898d-f34fee81136f" connectableBus2="d4a4a5d7-8391-4afd-898d-f34fee81136f" voltageLevelId2="f43c6bf6-487d-49aa-8b8b-e87be99e14ec">
+        <iidm:alias type="CGMES.Terminal2">115125f9-24db-495f-b5b3-3269d3001a7d</iidm:alias>
+        <iidm:alias type="CGMES.Terminal1">7ed3835d-5e55-4c24-b70c-f9fe8e71f827</iidm:alias>
+        <iidm:currentLimits1 permanentLimit="1000.0">
+            <iidm:temporaryLimit name="f5f6dab9-73ef-463d-8fb4-b7b6343e8cb4" acceptableDuration="20" value="1200.0"/>
+            <iidm:temporaryLimit name="d8a8a7e5-0e81-4cd1-b8ca-9477916543dc" acceptableDuration="10" value="1300.0"/>
+        </iidm:currentLimits1>
+        <iidm:currentLimits2 permanentLimit="1000.0">
+            <iidm:temporaryLimit name="b04866ba-a127-4a29-837d-dd4114d91aee" acceptableDuration="20" value="1200.0"/>
+            <iidm:temporaryLimit name="10b5aa92-41eb-4237-a980-aae09a9de6be" acceptableDuration="10" value="1300.0"/>
+        </iidm:currentLimits2>
+    </iidm:line>
+    <iidm:line id="49bc162b-c206-40f7-acfb-051973aafe74" name="L1230814041" r="0.1" x="0.1" g1="0.0" b1="0.0" g2="0.0" b2="0.0" bus1="3f8ff03c-11fb-4325-8f60-4459c1b1cc1d" connectableBus1="3f8ff03c-11fb-4325-8f60-4459c1b1cc1d" voltageLevelId1="a7b130d2-2fb4-497e-a93e-2625f25d7b65" bus2="f70f6bad-eb8d-4b8f-8431-4ab93581514e" connectableBus2="f70f6bad-eb8d-4b8f-8431-4ab93581514e" voltageLevelId2="d0486169-2205-40b2-895e-b672ecb9e5fc">
+        <iidm:alias type="CGMES.Terminal2">56ce08b1-65ee-4b9a-adbe-874310d60f52</iidm:alias>
+        <iidm:alias type="CGMES.Terminal1">b2fade60-3a94-473e-8a2d-ae139984b90b</iidm:alias>
+        <iidm:currentLimits1 permanentLimit="1200.0">
+            <iidm:temporaryLimit name="3ad38aaf-57c8-4db2-af8b-4b4be06843da" acceptableDuration="20" value="1300.0"/>
+            <iidm:temporaryLimit name="7b872fe4-a7b8-4ea6-bb2b-6f9a09ef0adb" acceptableDuration="10" value="1400.0"/>
+        </iidm:currentLimits1>
+        <iidm:currentLimits2 permanentLimit="1200.0">
+            <iidm:temporaryLimit name="07d80d1d-48fc-4c20-9cbb-3309db4d2793" acceptableDuration="20" value="1300.0"/>
+            <iidm:temporaryLimit name="3ee8411c-6207-4ab7-8880-ee5575382439" acceptableDuration="10" value="1400.0"/>
+        </iidm:currentLimits2>
+    </iidm:line>
+    <iidm:tieLine id="17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13" name="BE-Line_1 + NL-Line_4" ucteXnodeCode="TN_Border_ST23" bus1="f70f6bad-eb8d-4b8f-8431-4ab93581514e" connectableBus1="f70f6bad-eb8d-4b8f-8431-4ab93581514e" voltageLevelId1="d0486169-2205-40b2-895e-b672ecb9e5fc" bus2="795a117d-7caf-4fc2-a8d9-dc8f4cf2344a" connectableBus2="795a117d-7caf-4fc2-a8d9-dc8f4cf2344a" voltageLevelId2="c1d5bfea8f8011e08e4d00247eb1f55e" id_1="17086487-56ba-4979-b8de-064025a6b4da" name_1="BE-Line_1" r_1="2.2" x_1="68.2" g1_1="1.54E-5" b1_1="4.1469E-5" g2_1="1.54E-5" b2_1="4.1469E-5" id_2="8fdc7abd-3746-481a-a65e-3df56acd8b13" name_2="NL-Line_4" r_2="2.2" x_2="66.0" g1_2="1.21E-5" b1_2="4.492475E-5" g2_2="1.21E-5" b2_2="4.492475E-5">
+        <iidm:alias type="CGMES.Terminal1">70d962fb-a492-4c36-8cad-b5c584df53bd</iidm:alias>
+        <iidm:alias type="CGMES.HALF1.Terminal_Boundary">1ef0715a-d5a9-477b-b6e7-b635529ac140</iidm:alias>
+        <iidm:alias type="CGMES.HALF2.Terminal_Boundary">57979d14-d1d8-4311-ae53-aa8890423885</iidm:alias>
+        <iidm:alias type="CGMES.Terminal2">653bc4b8-518b-4adc-9d68-012fb641fb1d</iidm:alias>
+        <iidm:currentLimits1 permanentLimit="1443.0">
+            <iidm:temporaryLimit name="ddc57aa5-514f-46eb-a9cb-b921d384d637" acceptableDuration="20" value="1574.0"/>
+            <iidm:temporaryLimit name="c91d03c7-5093-4f0a-bb2d-cf9f9701bfa5" acceptableDuration="10" value="1705.0"/>
+        </iidm:currentLimits1>
+        <iidm:currentLimits2 permanentLimit="1443.0">
+            <iidm:temporaryLimit name="f572f5bf-a87c-437c-abde-b21021489b40" acceptableDuration="20" value="1574.0"/>
+            <iidm:temporaryLimit name="31f44cd5-a6ad-4be3-a5ac-0ff5aed1473e" acceptableDuration="10" value="1705.0"/>
+        </iidm:currentLimits2>
+    </iidm:tieLine>
+    <iidm:tieLine id="78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49" name="BE-Line_3 + NL-Line_1" ucteXnodeCode="TN_Border_AL11" bus1="e44141af-f1dc-44d3-bfa4-b674e5c953d7" connectableBus1="e44141af-f1dc-44d3-bfa4-b674e5c953d7" voltageLevelId1="469df5f7-058f-4451-a998-57a48e8a56fe" bus2="81b0e447-181e-4aec-8921-f1dd7813bebc" connectableBus2="81b0e447-181e-4aec-8921-f1dd7813bebc" voltageLevelId2="c1d5bfde8f8011e08e4d00247eb1f55e" id_1="78736387-5f60-4832-b3fe-d50daf81b0a6" name_1="BE-Line_3" r_1="1.05" x_1="12.0" g1_1="3.0E-5" b1_1="7.4927E-5" g2_1="3.0E-5" b2_1="7.4927E-5" id_2="7f43f508-2496-4b64-9146-0a40406cbe49" name_2="NL-Line_1" r_2="1.02" x_2="12.0" g1_2="1.5E-5" b1_2="7.068585E-5" g2_2="1.5E-5" b2_2="7.068585E-5">
+        <iidm:alias type="CGMES.Terminal2">357e3e14-c38e-4a7e-9c95-b3dbe158f5f3</iidm:alias>
+        <iidm:alias type="CGMES.Terminal1">231a4cf8-5069-4d53-96e4-e839f073f1ea</iidm:alias>
+        <iidm:alias type="CGMES.HALF2.Terminal_Boundary">6b1cd30c-19ba-44e1-9447-d01db6b1ef9d</iidm:alias>
+        <iidm:alias type="CGMES.HALF1.Terminal_Boundary">f3b56334-4638-49d3-a6a0-3f417422b8f5</iidm:alias>
+        <iidm:currentLimits1 permanentLimit="1371.0">
+            <iidm:temporaryLimit name="d2689570-2130-40a2-a1cf-0801064bfc50" acceptableDuration="20" value="1443.0"/>
+            <iidm:temporaryLimit name="e78bc96f-d475-40d7-984d-922b8af41a80" acceptableDuration="10" value="1515.0"/>
+        </iidm:currentLimits1>
+        <iidm:currentLimits2 permanentLimit="1371.0">
+            <iidm:temporaryLimit name="0d2f15d9-2b8e-4bf8-a55f-1d3e52cc029e" acceptableDuration="20" value="1443.0"/>
+            <iidm:temporaryLimit name="9f2bb8a6-c16e-4fc6-999d-903986f52fc3" acceptableDuration="10" value="1515.0"/>
+        </iidm:currentLimits2>
+    </iidm:tieLine>
+    <iidm:tieLine id="6052bacf-9eaa-4217-be91-4c7c89e92a52 + 882271f9-1793-4fc2-8b2e-12a37292f364" name="L1230542424 + L1230812310" ucteXnodeCode="Border_HVDC-AC" bus1="c142012a-b652-4c03-9c35-aa0833e71831" connectableBus1="c142012a-b652-4c03-9c35-aa0833e71831" voltageLevelId1="613bf445-d1a8-409a-95f8-45b41f9a2eec" bus2="795a117d-7caf-4fc2-a8d9-dc8f4cf2344a" connectableBus2="795a117d-7caf-4fc2-a8d9-dc8f4cf2344a" voltageLevelId2="c1d5bfea8f8011e08e4d00247eb1f55e" id_1="6052bacf-9eaa-4217-be91-4c7c89e92a52" name_1="L1230542424" r_1="0.1" x_1="0.3" g1_1="0.0" b1_1="0.0" g2_1="0.0" b2_1="0.0" id_2="882271f9-1793-4fc2-8b2e-12a37292f364" name_2="L1230812310" r_2="0.1" x_2="0.1" g1_2="0.0" b1_2="0.0" g2_2="0.0" b2_2="0.0">
+        <iidm:alias type="CGMES.Terminal2">b7a26740-334e-46d4-a98d-303fa6fad2d3</iidm:alias>
+        <iidm:alias type="CGMES.Terminal1">b67eba20-5e8e-4d1a-954d-fa7938de74a3</iidm:alias>
+        <iidm:alias type="CGMES.HALF2.Terminal_Boundary">e22768d9-7ccf-44a5-b364-d13afe6a5d01</iidm:alias>
+        <iidm:alias type="CGMES.HALF1.Terminal_Boundary">2e47e822-459d-41fc-babd-bfa083d91e69</iidm:alias>
+        <iidm:currentLimits1 permanentLimit="200.0">
+            <iidm:temporaryLimit name="a1cf6211-0e05-49b8-92b8-3355155cf872" acceptableDuration="20" value="2100.0"/>
+            <iidm:temporaryLimit name="ee826a3f-b99b-466d-8799-3bdac2d04754" acceptableDuration="10" value="2200.0"/>
+        </iidm:currentLimits1>
+        <iidm:currentLimits2 permanentLimit="1000.0">
+            <iidm:temporaryLimit name="962e8149-1462-4797-a7b0-3764f7237047" acceptableDuration="20" value="1300.0"/>
+            <iidm:temporaryLimit name="13b0828c-7e4d-495c-beac-c8432ac447c8" acceptableDuration="10" value="1500.0"/>
+        </iidm:currentLimits2>
+    </iidm:tieLine>
+    <iidm:tieLine id="b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc" name="BE-Line_5 + NL-Line_5" ucteXnodeCode="TN_Border_GY11" bus1="e44141af-f1dc-44d3-bfa4-b674e5c953d7" connectableBus1="e44141af-f1dc-44d3-bfa4-b674e5c953d7" voltageLevelId1="469df5f7-058f-4451-a998-57a48e8a56fe" bus2="81b0e447-181e-4aec-8921-f1dd7813bebc" connectableBus2="81b0e447-181e-4aec-8921-f1dd7813bebc" voltageLevelId2="c1d5bfde8f8011e08e4d00247eb1f55e" id_1="b18cd1aa-7808-49b9-a7cf-605eaf07b006" name_1="BE-Line_5" r_1="0.42" x_1="6.3" g1_1="2.1E-5" b1_1="3.29867E-5" g2_1="2.1E-5" b2_1="3.29867E-5" id_2="e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc" name_2="NL-Line_5" r_2="0.42" x_2="6.3" g1_2="1.75E-5" b1_2="3.243695E-5" g2_2="1.75E-5" b2_2="3.243695E-5">
+        <iidm:alias type="CGMES.Terminal1">051d49ba-4360-4372-86bf-50eb8cf29778</iidm:alias>
+        <iidm:alias type="CGMES.HALF2.Terminal_Boundary">ae588863-b154-451d-978a-7ab08ac50fb6</iidm:alias>
+        <iidm:alias type="CGMES.Terminal2">757d4f50-707b-47a0-891c-cbaefd649631</iidm:alias>
+        <iidm:alias type="CGMES.HALF1.Terminal_Boundary">02a244ca-8bcb-4e25-8613-e948b8ba1f22</iidm:alias>
+        <iidm:currentLimits1 permanentLimit="1804.0">
+            <iidm:temporaryLimit name="0e82b0dc-938a-4fa4-bf7f-6f5839390078" acceptableDuration="20" value="1876.0"/>
+            <iidm:temporaryLimit name="f6bce7ce-d3e1-4aa7-aaf5-27743f0c9b05" acceptableDuration="10" value="1948.0"/>
+        </iidm:currentLimits1>
+        <iidm:currentLimits2 permanentLimit="1804.0">
+            <iidm:temporaryLimit name="752d8c91-c3ae-47c2-8ab6-adb14a888396" acceptableDuration="20" value="1876.0"/>
+            <iidm:temporaryLimit name="353ea6c9-8e25-4217-9ce1-01efa628ce59" acceptableDuration="10" value="1948.0"/>
+        </iidm:currentLimits2>
+    </iidm:tieLine>
+    <iidm:tieLine id="63f6d38b-56fb-4dae-804d-9777d5f30f80 + a16b4a6c-70b1-4abf-9a9d-bd0fa47f9fe4" name="L1230542419 + BE-Line_7" ucteXnodeCode="TN_Border_ST24" bus1="9f1860f9-2110-4a36-b0a0-f75126040d29" connectableBus1="9f1860f9-2110-4a36-b0a0-f75126040d29" voltageLevelId1="613bf445-d1a8-409a-95f8-45b41f9a0eec" bus2="f70f6bad-eb8d-4b8f-8431-4ab93581514e" connectableBus2="f70f6bad-eb8d-4b8f-8431-4ab93581514e" voltageLevelId2="d0486169-2205-40b2-895e-b672ecb9e5fc" id_1="63f6d38b-56fb-4dae-804d-9777d5f30f80" name_1="L1230542419" r_1="0.1" x_1="0.3" g1_1="0.0" b1_1="0.0" g2_1="0.0" b2_1="0.0" id_2="a16b4a6c-70b1-4abf-9a9d-bd0fa47f9fe4" name_2="BE-Line_7" r_2="4.6" x_2="69.0" g1_2="2.875E-5" b1_2="1.08385E-5" g2_2="2.875E-5" b2_2="1.08385E-5">
+        <iidm:alias type="CGMES.HALF1.Terminal_Boundary">f5cfda4b-3087-4bd3-9752-7a6b4f1bec2d</iidm:alias>
+        <iidm:alias type="CGMES.Terminal2">5b2c65b0-68ce-4530-85b7-385346a3b5e1</iidm:alias>
+        <iidm:alias type="CGMES.HALF2.Terminal_Boundary">57ae9251-c022-4c67-a8eb-611ad54c963c</iidm:alias>
+        <iidm:alias type="CGMES.Terminal1">608ea2f0-a506-4c39-904a-3f5b726dfe3f</iidm:alias>
+        <iidm:currentLimits1 permanentLimit="2000.0">
+            <iidm:temporaryLimit name="2406804d-e027-448c-998f-a3dec61735fd" acceptableDuration="20" value="2100.0"/>
+            <iidm:temporaryLimit name="57150ea8-4e77-4b3f-b347-7b13226972c1" acceptableDuration="10" value="2200.0"/>
+        </iidm:currentLimits1>
+        <iidm:currentLimits2 permanentLimit="1180.0">
+            <iidm:temporaryLimit name="0bc69f62-30b1-4515-ba5f-fd71f418394d" acceptableDuration="20" value="1312.0"/>
+            <iidm:temporaryLimit name="48d00c96-c8f7-4c2c-9883-6738fab88d5f" acceptableDuration="10" value="1443.0"/>
+        </iidm:currentLimits2>
+    </iidm:tieLine>
+    <iidm:tieLine id="dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b" name="NL-Line_2 + BE-Line_4" ucteXnodeCode="TN_Border_MA11" bus1="81b0e447-181e-4aec-8921-f1dd7813bebc" connectableBus1="81b0e447-181e-4aec-8921-f1dd7813bebc" voltageLevelId1="c1d5bfde8f8011e08e4d00247eb1f55e" bus2="e44141af-f1dc-44d3-bfa4-b674e5c953d7" connectableBus2="e44141af-f1dc-44d3-bfa4-b674e5c953d7" voltageLevelId2="469df5f7-058f-4451-a998-57a48e8a56fe" id_1="dad02278-bd25-476f-8f58-dbe44be72586" name_1="NL-Line_2" r_1="2.32" x_1="20.24" g1_1="2.0E-5" b1_1="1.256635E-5" g2_1="2.0E-5" b2_1="1.256635E-5" id_2="ed0c5d75-4a54-43c8-b782-b20d7431630b" name_2="BE-Line_4" r_2="0.24" x_2="2.0" g1_2="2.0E-5" b1_2="1.25978E-5" g2_2="2.0E-5" b2_2="1.25978E-5">
+        <iidm:alias type="CGMES.Terminal1">c557146e-dfc4-4020-9738-d592b188338b</iidm:alias>
+        <iidm:alias type="CGMES.HALF2.Terminal_Boundary">f9f29835-8a31-4310-9780-b1ad26f3cbb0</iidm:alias>
+        <iidm:alias type="CGMES.Terminal2">c14d2036-72ec-4df3-b1b7-75d8afd9a1fe</iidm:alias>
+        <iidm:alias type="CGMES.HALF1.Terminal_Boundary">8f308117-8bbd-4798-b145-4e78f7d049e7</iidm:alias>
+        <iidm:currentLimits1 permanentLimit="1226.0">
+            <iidm:temporaryLimit name="4bd8fe51-2bfe-42b5-b1a6-54fce5471502" acceptableDuration="20" value="1299.0"/>
+            <iidm:temporaryLimit name="4a1ef614-0dcf-478c-8eb0-84805b800bdb" acceptableDuration="10" value="1371.0"/>
+        </iidm:currentLimits1>
+        <iidm:currentLimits2 permanentLimit="1226.0">
+            <iidm:temporaryLimit name="6e49fde6-7dbe-41ce-ab74-4befabb63639" acceptableDuration="20" value="1299.0"/>
+            <iidm:temporaryLimit name="2bfd5d5c-83d7-48c6-95cb-b0b41f8e7a11" acceptableDuration="10" value="1371.0"/>
+        </iidm:currentLimits2>
+    </iidm:tieLine>
+    <iidm:hvdcLine id="d7693c6d-58bd-49da-bb24-973a63f9faf1" name="LDC-1230531185" r="2.5" nominalV="160.0" convertersMode="SIDE_1_INVERTER_SIDE_2_RECTIFIER" activePowerSetpoint="150.0" maxP="180.0" converterStation1="0f05e270-37ea-471d-89fe-aee8a55b932b" converterStation2="76eeb38f-a3ef-4444-9c65-6cb46a7a94da">
+        <iidm:alias type="CGMES.DCTerminal1">3ed56d3d-f113-4b51-b45a-fb681ae880a5</iidm:alias>
+        <iidm:alias type="CGMES.DCNode1">8e17e2d1-8b97-492f-a5bd-65b1b350f40f</iidm:alias>
+        <iidm:alias type="CGMES.DCTerminal2">5da31c8a-9f57-46d4-947d-49faa64d6c1d</iidm:alias>
+        <iidm:alias type="CGMES.DCNode2">e468941a-d3ca-4cdc-909d-1005000d52fe</iidm:alias>
+    </iidm:hvdcLine>
+    <iidm:extension id="84ed55f4-61f5-4d9d-8755-bba7b877a246">
+        <ctc:cgmesTapChangers>
+            <ctc:tapChanger id="fe25f43a-7341-446e-a71a-8ab7119ba806" controlId="38f972bc-b7fd-4e75-8c24-379a86fbb506"></ctc:tapChanger>
+        </ctc:cgmesTapChangers>
+    </iidm:extension>
+    <iidm:extension id="17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13">
+        <clbn:cgmesLineBoundaryNode isHvdc="false" lineEnergyIdentificationCodeEic="10T-AT-DE-00016Z"/>
+    </iidm:extension>
+    <iidm:extension id="dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b">
+        <clbn:cgmesLineBoundaryNode isHvdc="false" lineEnergyIdentificationCodeEic="10T-AT-SI-00001T"/>
+    </iidm:extension>
+    <iidm:extension id="2844585c-0d35-488d-a449-685bcd57afbf">
+        <crc:coordinatedReactiveControl qPercent="100.0"/>
+    </iidm:extension>
+    <iidm:extension id="1dc9afba-23b5-41a0-8540-b479ed8baf4b">
+        <crc:coordinatedReactiveControl qPercent="100.0"/>
+    </iidm:extension>
+    <iidm:extension id="9c3b8f97-7972-477d-9dc8-87365cc0ad0e">
+        <crc:coordinatedReactiveControl qPercent="100.0"/>
+    </iidm:extension>
+    <iidm:extension id="6052bacf-9eaa-4217-be91-4c7c89e92a52 + 882271f9-1793-4fc2-8b2e-12a37292f364">
+        <clbn:cgmesLineBoundaryNode isHvdc="true" lineEnergyIdentificationCodeEic="10T-DC-NL-00082X"/>
+    </iidm:extension>
+    <iidm:extension id="69a301e8-f6b2-47ad-9f65-52f2eabc9917">
+        <ctc:cgmesTapChangers>
+            <ctc:tapChanger id="f11b9b1d-96df-4f20-af1c-a51d4cdb7467" controlId="40f04fde-8eb3-413b-a594-c4b3eb16b69f"></ctc:tapChanger>
+        </ctc:cgmesTapChangers>
+    </iidm:extension>
+    <iidm:extension id="b59c4282-a1f7-4ed2-a6de-2a5b97c03f64">
+        <ctc:cgmesTapChangers>
+            <ctc:tapChanger id="012bc254-6e99-4bf3-993f-228f2bfbe3d2" controlId="88f57746-894f-4176-8fe1-38a46e2737bd"></ctc:tapChanger>
+        </ctc:cgmesTapChangers>
+    </iidm:extension>
+    <iidm:extension id="2a37dc57-2faf-464a-8175-bc415f9a635f">
+        <slt:slackTerminal id="9c3b8f97-7972-477d-9dc8-87365cc0ad0e"/>
+    </iidm:extension>
+    <iidm:extension id="550ebe0d-f2b2-48c1-991f-cebea43a21aa">
+        <crc:coordinatedReactiveControl qPercent="100.0"/>
+    </iidm:extension>
+    <iidm:extension id="d1494778-e194-4ee5-84ec-ac8024375e4f">
+        <ctc:cgmesTapChangers>
+            <ctc:tapChanger id="078aad2d-c132-42fc-8b55-952d4f53f29d" controlId="9e7605ea-9c95-4945-b26c-dbedca6287b5"></ctc:tapChanger>
+        </ctc:cgmesTapChangers>
+    </iidm:extension>
+    <iidm:extension id="3a3b27be-b18b-4385-b557-6735d733baf0">
+        <crc:coordinatedReactiveControl qPercent="50.0"/>
+    </iidm:extension>
+    <iidm:extension id="urn:uuid:3f7cf068-a142-49eb-8718-36cb6e4ede6b">
+        <csshm:cgmesSshMetadata description="CGMES Conformity Assessment: MicroGridTestConfiguration T2 (MAS BE). The model is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall  include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model." sshVersion="4" modelingAuthoritySet="http://elia.be/CAS2.0/MicroGridTestConfiguration">
+            <csshm:dependentOn>urn:uuid:3f7cf068-a142-49eb-8718-36cb6e4ede6b</csshm:dependentOn>
+            <csshm:dependentOn>urn:uuid:deb5887f-a132-4002-a47d-00a737f01c68</csshm:dependentOn>
+            <csshm:dependentOn>urn:uuid:eaa2449e-f8f5-4ce2-a228-80fb84e45126</csshm:dependentOn>
+        </csshm:cgmesSshMetadata>
+        <bv:baseVoltageMapping>
+            <bv:baseVoltage nominalVoltage="10.5" source="IGM" id="862a4658-6b03-4550-9de2-b5c413912b75"/>
+            <bv:baseVoltage nominalVoltage="15.75" source="IGM" id="c1d5bff18f8011e08e4d00247eb1f55e"/>
+            <bv:baseVoltage nominalVoltage="21.0" source="IGM" id="1cefd53a-79bd-4ad4-aa9a-5a4ad0191ce2"/>
+            <bv:baseVoltage nominalVoltage="110.0" source="IGM" id="00b17311-075f-48f6-a79b-597f42af4694"/>
+            <bv:baseVoltage nominalVoltage="123.9" source="IGM" id="39100880-cb7a-4a8d-9ac0-de8c6a35eb7e"/>
+            <bv:baseVoltage nominalVoltage="124.0" source="IGM" id="d1165f73-3a8c-475a-bbd6-0e1f82f3a44f"/>
+            <bv:baseVoltage nominalVoltage="220.0" source="BOUNDARY" id="7891a026ba2c42098556665efd13ba94"/>
+            <bv:baseVoltage nominalVoltage="225.0" source="BOUNDARY" id="63893f24-5b4e-407c-9a1e-4ff71121f33c"/>
+            <bv:baseVoltage nominalVoltage="380.0" source="BOUNDARY" id="35cf638d-9a9d-4ae5-ae90-2f01ef898cb6"/>
+            <bv:baseVoltage nominalVoltage="400.0" source="BOUNDARY" id="65dd04e792584b3b912374e35dec032e"/>
+        </bv:baseVoltageMapping>
+        <cc:cimCharacteristics topologyKind="BUS_BRANCH" cimVersion="16"/>
+    </iidm:extension>
+    <iidm:extension id="b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc">
+        <clbn:cgmesLineBoundaryNode isHvdc="false" lineEnergyIdentificationCodeEic="10T-AT-HU-00002U"/>
+    </iidm:extension>
+    <iidm:extension id="2184f365-8cd5-4b5d-8a28-9d68603bb6a4">
+        <ctc:cgmesTapChangers>
+            <ctc:tapChanger id="c1d5c1588f8011e08e4d00247eb1f55e" controlId="aae0af33-62c8-4062-8364-885d3372f808"></ctc:tapChanger>
+        </ctc:cgmesTapChangers>
+    </iidm:extension>
+    <iidm:extension id="e8a7eaec-51d6-4571-b3d9-c36d52073c33">
+        <ctc:cgmesTapChangers>
+            <ctc:tapChanger id="c1d5c14b8f8011e08e4d00247eb1f55e" controlId="1aaa0997-7715-4400-9435-ce74a8f67a24"></ctc:tapChanger>
+        </ctc:cgmesTapChangers>
+    </iidm:extension>
+    <iidm:extension id="4ebd554c-1cdb-4f3d-8dd0-dfd4bda8e18c">
+        <ctc:cgmesTapChangers>
+            <ctc:tapChanger id="f6b6428b-d201-4170-89f3-4f630c662b7c" controlId="da7fa470-044a-42e6-afb7-c6c01e028a07"></ctc:tapChanger>
+        </ctc:cgmesTapChangers>
+    </iidm:extension>
+    <iidm:extension id="78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49">
+        <clbn:cgmesLineBoundaryNode isHvdc="false" lineEnergyIdentificationCodeEic="10T-ES-PT-10004U"/>
+    </iidm:extension>
+    <iidm:extension id="63f6d38b-56fb-4dae-804d-9777d5f30f80 + a16b4a6c-70b1-4abf-9a9d-bd0fa47f9fe4">
+        <clbn:cgmesLineBoundaryNode isHvdc="false" lineEnergyIdentificationCodeEic="10T-AT-DE-00017X"/>
+    </iidm:extension>
+    <iidm:extension id="b94318f6-6d24-4f56-96b9-df2531ad6543">
+        <ctc:cgmesTapChangers>
+            <ctc:tapChanger id="955d9cd0-4a10-4031-b008-60c0dc340a07" controlId="ee42c6c2-39e7-43c2-9bdd-d397c5dc980b"></ctc:tapChanger>
+        </ctc:cgmesTapChangers>
+    </iidm:extension>
+    <iidm:extension id="a708c3bc-465d-4fe7-b6ef-6fa6408a62b0">
+        <ctc:cgmesTapChangers>
+            <ctc:tapChanger id="6ebbef67-3061-4236-a6fd-6ccc4595f6c3" type="PhaseTapChangerAsymmetrical" controlId="5fc492ab-fe33-423b-84f1-a47f87552427"></ctc:tapChanger>
+        </ctc:cgmesTapChangers>
+    </iidm:extension>
+    <iidm:extension id="80016742-31b3-432a-b00a-300667a1e572">
+        <ctc:cgmesTapChangers>
+            <ctc:tapChanger id="c1d5c1658f8011e08e4d00247eb1f55e" controlId="76971b35-279e-4d3c-8873-76c6abde82c4"></ctc:tapChanger>
+        </ctc:cgmesTapChangers>
+    </iidm:extension>
+    <iidm:extension id="e482b89a-fa84-4ea9-8e70-a83d44790957">
+        <ctc:cgmesTapChangers>
+            <ctc:tapChanger id="83cc66dd-8d93-4a2c-8103-f1f5a9cf7e2e" controlId="97110e84-7da6-479c-846c-696fdaa83d56"></ctc:tapChanger>
+        </ctc:cgmesTapChangers>
+    </iidm:extension>
+</iidm:network>
