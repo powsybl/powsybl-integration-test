@@ -118,6 +118,21 @@ public class SATestcaseCreatorParameters {
         }
     }
 
+    static class Provider {
+        @JsonProperty
+        private String name;
+        @JsonProperty
+        private Rate rate;
+
+        public Rate getRate() {
+            return rate;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+
     static class Parameters {
         @JsonProperty
         private String testCaseName;
@@ -132,7 +147,7 @@ public class SATestcaseCreatorParameters {
         @JsonProperty
         private Path outputPath;
         @JsonProperty
-        private Rate rate;
+        private List<Provider> providers;
 
         public String getTestCaseName() {
             return testCaseName;
@@ -188,8 +203,8 @@ public class SATestcaseCreatorParameters {
             this.outputPath = outputPath;
         }
 
-        public Rate getRate() {
-            return rate;
+        public List<Provider> getProviders() {
+            return providers;
         }
     }
 
