@@ -13,7 +13,7 @@ import com.powsybl.contingency.contingency.list.DefaultContingencyList;
 import com.powsybl.contingency.json.ContingencyJsonModule;
 import com.powsybl.iidm.network.*;
 import com.powsybl.iidm.xml.XMLExporter;
-import com.powsybl.integrationtest.creation.security.contingencies.EfficientContingenciesProvider;
+import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesProviderFactory;
 import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsProvider;
 import com.powsybl.integrationtest.creation.security.statemonitors.DefaultStateMonitorsProvider;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationParameters;
@@ -94,21 +94,24 @@ public class SATestcaseCreator {
         }
         SATestcaseCreatorParameters params = SATestcaseCreatorParameters.load(parametersFilePath);
         for (SATestcaseCreatorParameters.Parameters parameters : params.getParameters()) {
-            SATestcaseCreatorParameters.Rate rate = parameters.getRate();
-            SATestcaseCreatorParameters.StateMonitorsRate stateMonitorsRate = rate.getStateMonitorsRate();
-            SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), new EfficientContingenciesProvider(rate.getContingenciesRate().getRates()), new DefaultStateMonitorsProvider(rate.getStateMonitorsRate().getRates()));
+            for (SATestcaseCreatorParameters.Provider provider : parameters.getProviders()) {
+                ContingenciesProviderFactory contingenciesProviderFactory = new ContingenciesProviderFactory();
+                SATestcaseCreatorParameters.Rate rate = provider.getRate();
+                SATestcaseCreatorParameters.StateMonitorsRate stateMonitorsRate = rate.getStateMonitorsRate();
+                SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), contingenciesProviderFactory.createContingenciesProvider(provider.getName(), rate.getContingenciesRate().getRates()), new DefaultStateMonitorsProvider(rate.getStateMonitorsRate().getRates()));
 
-            Network network = Network.read(parameters.getNetworkPath());
-            SecurityAnalysisParameters saParams = JsonSecurityAnalysisParameters.read(parameters.getSAParametersPath());
+                Network network = Network.read(parameters.getNetworkPath());
+                SecurityAnalysisParameters saParams = JsonSecurityAnalysisParameters.read(parameters.getSAParametersPath());
 
-            String testCaseName = parameters.getTestCaseName();
-            Path outputDir = parameters.getOutputPath();
-            Path outputDirContingencies = parameters.getContingenciesOutputPath();
-            Path outputDirStateMonitors = parameters.getStateMonitorsOutputPath();
-            Files.createDirectories(outputDir);
-            Files.createDirectories(outputDirContingencies);
-            Files.createDirectories(outputDirStateMonitors);
-            creator.createResults(testCaseName, network, saParams, outputDir, outputDirContingencies, outputDirStateMonitors);
+                String testCaseName = parameters.getTestCaseName() + "_" + provider.getName();
+                Path outputDir = parameters.getOutputPath();
+                Path outputDirContingencies = parameters.getContingenciesOutputPath();
+                Path outputDirStateMonitors = parameters.getStateMonitorsOutputPath();
+                Files.createDirectories(outputDir);
+                Files.createDirectories(outputDirContingencies);
+                Files.createDirectories(outputDirStateMonitors);
+                creator.createResults(testCaseName, network, saParams, outputDir, outputDirContingencies, outputDirStateMonitors);
+            }
         }
     }
 }
