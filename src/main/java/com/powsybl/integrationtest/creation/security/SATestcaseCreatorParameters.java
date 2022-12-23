@@ -9,7 +9,10 @@ package com.powsybl.integrationtest.creation.security;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.powsybl.contingency.ContingenciesProvider;
 import com.powsybl.iidm.network.*;
+import com.powsybl.integrationtest.creation.security.contingencies.RandomContingenciesProvider;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -63,73 +66,18 @@ public class SATestcaseCreatorParameters {
         }
     }
 
-    static class ContingenciesRate {
-        @JsonProperty
-        private double generators;
-        @JsonProperty
-        private double staticVarCompensators;
-        @JsonProperty
-        private double shuntCompensators;
-        @JsonProperty
-        private double branches;
-        @JsonProperty
-        private double hvdcLines;
-        @JsonProperty
-        private double busbarSections;
-        @JsonProperty
-        private double danglingLines;
-        @JsonProperty
-        private double threeWindingsTransformers;
-        @JsonProperty
-        private double loads;
-        @JsonProperty
-        private double switches;
-
-        public HashMap<Class, Double> getRates() {
-            HashMap<Class, Double> classRateHashMap = new HashMap<>();
-            classRateHashMap.put(Generator.class, generators);
-            classRateHashMap.put(StaticVarCompensator.class, staticVarCompensators);
-            classRateHashMap.put(ShuntCompensator.class, shuntCompensators);
-            classRateHashMap.put(Branch.class, branches);
-            classRateHashMap.put(HvdcLine.class, hvdcLines);
-            classRateHashMap.put(BusbarSection.class, busbarSections);
-            classRateHashMap.put(DanglingLine.class, danglingLines);
-            classRateHashMap.put(ThreeWindingsTransformer.class, threeWindingsTransformers);
-            classRateHashMap.put(Load.class, loads);
-            classRateHashMap.put(Switch.class, switches);
-
-            return classRateHashMap;
-        }
-    }
-
-    static class Rate {
-        @JsonProperty
-        private StateMonitorsRate stateMonitors;
-
-        @JsonProperty
-        private ContingenciesRate contingencies;
-
-        public StateMonitorsRate getStateMonitorsRate() {
-            return stateMonitors;
-        }
-
-        public ContingenciesRate getContingenciesRate() {
-            return contingencies;
-        }
-    }
-
-    static class Provider {
+    static class contingenciesProvider {
         @JsonProperty
         private String name;
         @JsonProperty
-        private Rate rate;
-
-        public Rate getRate() {
-            return rate;
-        }
+        private ContingenciesProvider configuration;
 
         public String getName() {
             return name;
+        }
+
+        public ContingenciesProvider getConfiguration() {
+            return configuration;
         }
     }
 
@@ -147,7 +95,9 @@ public class SATestcaseCreatorParameters {
         @JsonProperty
         private Path outputPath;
         @JsonProperty
-        private List<Provider> providers;
+        private List<contingenciesProvider> contingenciesProviders;
+        @JsonProperty
+        private StateMonitorsRate stateMonitorsRate;
 
         public String getTestCaseName() {
             return testCaseName;
@@ -203,8 +153,12 @@ public class SATestcaseCreatorParameters {
             this.outputPath = outputPath;
         }
 
-        public List<Provider> getProviders() {
-            return providers;
+        public List<contingenciesProvider> getContingenciesProviders() {
+            return contingenciesProviders;
+        }
+
+        public StateMonitorsRate getStateMonitorsRate() {
+            return stateMonitorsRate;
         }
     }
 
@@ -216,6 +170,9 @@ public class SATestcaseCreatorParameters {
      */
     static SATestcaseCreatorParameters load(Path inputFilePath) throws IOException {
         final ObjectMapper mapper = new ObjectMapper(new JsonFactory());
+        SimpleModule deserialization = new SimpleModule();
+        deserialization.addDeserializer(ContingenciesProvider.class, new RandomContingenciesProvider());
+        mapper.registerModule(deserialization);
         return mapper.readValue(inputFilePath.toFile(), SATestcaseCreatorParameters.class);
     }
 
