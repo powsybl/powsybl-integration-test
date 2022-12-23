@@ -9,10 +9,7 @@ package com.powsybl.integrationtest.creation.security;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.powsybl.contingency.ContingenciesProvider;
 import com.powsybl.iidm.network.*;
-import com.powsybl.integrationtest.creation.security.contingencies.RandomContingenciesProvider;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -70,13 +67,13 @@ public class SATestcaseCreatorParameters {
         @JsonProperty
         private String name;
         @JsonProperty
-        private ContingenciesProvider configuration;
+        private Object configuration;
 
         public String getName() {
             return name;
         }
 
-        public ContingenciesProvider getConfiguration() {
+        public Object getConfiguration() {
             return configuration;
         }
     }
@@ -170,9 +167,6 @@ public class SATestcaseCreatorParameters {
      */
     static SATestcaseCreatorParameters load(Path inputFilePath) throws IOException {
         final ObjectMapper mapper = new ObjectMapper(new JsonFactory());
-        SimpleModule deserialization = new SimpleModule();
-        deserialization.addDeserializer(ContingenciesProvider.class, new RandomContingenciesProvider());
-        mapper.registerModule(deserialization);
         return mapper.readValue(inputFilePath.toFile(), SATestcaseCreatorParameters.class);
     }
 
