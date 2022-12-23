@@ -6,14 +6,18 @@
  */
 package com.powsybl.integrationtest.creation.security.contingencies;
 
+import com.fasterxml.jackson.core.JacksonException;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import com.google.auto.service.AutoService;
 import com.powsybl.contingency.ContingenciesProvider;
 import com.powsybl.contingency.Contingency;
-import com.powsybl.contingency.ContingencyElement;
-import com.powsybl.contingency.LineContingency;
 import com.powsybl.iidm.network.*;
 
+import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static com.powsybl.contingency.Contingency.builder;
 import static com.powsybl.integrationtest.utils.SampleUtils.createSamples;
@@ -26,17 +30,54 @@ import static com.powsybl.integrationtest.utils.SampleUtils.createSamples;
  *
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
-public class EfficientContingenciesProvider implements ContingenciesProvider {
+@AutoService(ContingenciesProvider.class)
+public class RandomContingenciesProvider extends StdDeserializer<ContingenciesProvider> implements ContingenciesProvider  {
 
     private HashMap<Class, Double> contingenciesRate;
 
     private Random r;
 
-    public EfficientContingenciesProvider(final HashMap<Class, Double> contingenciesRate) {
-        this.contingenciesRate = contingenciesRate;
+    public RandomContingenciesProvider() {
+        this(null);
+    }
+
+    protected RandomContingenciesProvider(Class<?> vc) {
+        super(vc);
+    }
+
+    @Override
+    public ContingenciesProvider deserialize(final JsonParser jsonParser, final DeserializationContext deserializationContext) throws IOException, JacksonException
+    {
+        JsonNode node = jsonParser.readValueAsTree();
+        Double generators = node.get("generators").asDouble();
+        Double staticVarCompensators = node.get("staticVarCompensators").asDouble();
+        Double shuntCompensators = node.get("shuntCompensators").asDouble();
+        Double branches = node.get("branches").asDouble();
+        Double hvdcLines = node.get("hvdcLines").asDouble();
+        Double busbarSections = node.get("busbarSections").asDouble();
+        Double danglingLines = node.get("danglingLines").asDouble();
+        Double threeWindingsTransformers = node.get("threeWindingsTransformers").asDouble();
+        Double loads = node.get("loads").asDouble();
+        Double switches = node.get("switches").asDouble();
+
+        HashMap<Class, Double> classRateHashMap = new HashMap<>();
+        classRateHashMap.put(Generator.class, generators);
+        classRateHashMap.put(StaticVarCompensator.class, staticVarCompensators);
+        classRateHashMap.put(ShuntCompensator.class, shuntCompensators);
+        classRateHashMap.put(Branch.class, branches);
+        classRateHashMap.put(HvdcLine.class, hvdcLines);
+        classRateHashMap.put(BusbarSection.class, busbarSections);
+        classRateHashMap.put(DanglingLine.class, danglingLines);
+        classRateHashMap.put(ThreeWindingsTransformer.class, threeWindingsTransformers);
+        classRateHashMap.put(Load.class, loads);
+        classRateHashMap.put(Switch.class, switches);
+
+        this.contingenciesRate = classRateHashMap;
 
         this.r = new Random();
         this.r.setSeed(0);
+
+        return this;
     }
 
     @Override
@@ -57,31 +98,6 @@ public class EfficientContingenciesProvider implements ContingenciesProvider {
 
         HashMap<Class, Set<Contingency>> contingenciesSampleByClass = createSamples(contingenciesByClass, contingenciesRate, r);
         contingenciesSampleByClass.forEach((c, contingenciesList) -> contingencies.addAll(contingenciesList));
-
-        // Create pairs of line for every parallel lines
-        // For each set of voltage level, we store the list of lines with those voltage levels
-        HashMap<Set<VoltageLevel>, List<Line>> voltageLevelListHashMap = new HashMap<>();
-        Set<Set<Line>> pairLine = new HashSet<>();
-        for (Line line : network.getLines()) {
-            // Get line's voltage levels
-            Set<VoltageLevel> voltageLevelSet = line.getTerminals().stream().map(t -> t.getVoltageLevel()).collect(Collectors.toSet());
-            List<Line> lineList = new ArrayList<>();
-            if (voltageLevelListHashMap.containsKey(voltageLevelSet)) {
-                lineList = voltageLevelListHashMap.get(voltageLevelSet);
-                // Create new pair with all lines in the list
-                lineList.forEach(l -> pairLine.add(Set.of(line, l)));
-            }
-            // Add line to the list of lines with those same voltage levels
-            lineList.add(line);
-            voltageLevelListHashMap.put(voltageLevelSet, lineList);
-        }
-
-        // Add all N-2 contingencies to the list of contingencies
-        pairLine.forEach(pl -> {
-            List<ContingencyElement> contingencyElements = new ArrayList<>();
-            pl.forEach(p -> contingencyElements.add(new LineContingency(p.getId())));
-            contingencies.add(new Contingency(String.valueOf(pl), contingencyElements));
-        });
 
         return contingencies;
     }
