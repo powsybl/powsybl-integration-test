@@ -13,7 +13,6 @@ import com.powsybl.contingency.contingency.list.DefaultContingencyList;
 import com.powsybl.contingency.json.ContingencyJsonModule;
 import com.powsybl.iidm.network.*;
 import com.powsybl.iidm.xml.XMLExporter;
-import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesProviderFactory;
 import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsProvider;
 import com.powsybl.integrationtest.creation.security.statemonitors.DefaultStateMonitorsProvider;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationParameters;
@@ -93,12 +92,15 @@ public class SATestcaseCreator {
             throw new IOException("Invalid parameters file : " + args[0]);
         }
         SATestcaseCreatorParameters params = SATestcaseCreatorParameters.load(parametersFilePath);
+        ServiceLoader<ContingenciesProvider> loader = ServiceLoader.load(ContingenciesProvider.class);
         for (SATestcaseCreatorParameters.Parameters parameters : params.getParameters()) {
-            for (SATestcaseCreatorParameters.Provider provider : parameters.getProviders()) {
-                ContingenciesProviderFactory contingenciesProviderFactory = new ContingenciesProviderFactory();
-                SATestcaseCreatorParameters.Rate rate = provider.getRate();
-                SATestcaseCreatorParameters.StateMonitorsRate stateMonitorsRate = rate.getStateMonitorsRate();
-                SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), contingenciesProviderFactory.createContingenciesProvider(provider.getName(), rate.getContingenciesRate().getRates()), new DefaultStateMonitorsProvider(rate.getStateMonitorsRate().getRates()));
+            for (SATestcaseCreatorParameters.contingenciesProvider provider : parameters.getContingenciesProviders()) {
+                SATestcaseCreatorParameters.StateMonitorsRate stateMonitorsRate = parameters.getStateMonitorsRate();
+//                ContingenciesProvider contingenciesProvider = (ContingenciesProvider) StreamSupport.stream(loader.spliterator(), false)
+//                                                                                            .filter(p -> p.getClass().getSimpleName().equals(provider.getName()))
+//                                                                                            .findFirst()
+//                                                                                            .get();
+                SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), provider.getConfiguration(), new DefaultStateMonitorsProvider(stateMonitorsRate.getRates()));
 
                 Network network = Network.read(parameters.getNetworkPath());
                 SecurityAnalysisParameters saParams = JsonSecurityAnalysisParameters.read(parameters.getSAParametersPath());
