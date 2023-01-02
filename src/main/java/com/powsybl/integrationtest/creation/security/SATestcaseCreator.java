@@ -13,6 +13,8 @@ import com.powsybl.contingency.contingency.list.DefaultContingencyList;
 import com.powsybl.contingency.json.ContingencyJsonModule;
 import com.powsybl.iidm.network.*;
 import com.powsybl.iidm.xml.XMLExporter;
+import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesProviders;
+import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesSupplier;
 import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsProvider;
 import com.powsybl.integrationtest.creation.security.statemonitors.DefaultStateMonitorsProvider;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationParameters;
@@ -44,20 +46,20 @@ public class SATestcaseCreator {
 
     private final SecurityAnalysisComputationRunner runner;
 
-    private final ContingenciesProvider contingenciesProvider;
+    private final ContingenciesSupplier contingenciesSupplier;
 
     private final StateMonitorsProvider stateMonitorsProvider;
 
-    public SATestcaseCreator(SecurityAnalysisComputationRunner runner, ContingenciesProvider contingenciesProvider, StateMonitorsProvider stateMonitorsProvider) {
+    public SATestcaseCreator(SecurityAnalysisComputationRunner runner, ContingenciesSupplier contingenciesSupplier, StateMonitorsProvider stateMonitorsProvider) {
         this.runner = runner;
-        this.contingenciesProvider = contingenciesProvider;
+        this.contingenciesSupplier = contingenciesSupplier;
         this.stateMonitorsProvider = stateMonitorsProvider;
     }
 
     public void createResults(String exportName, Network network, SecurityAnalysisParameters saParams, Path outputDir, Path outputDirContingencies, Path outputDirStateMonitors)
             throws IOException {
         // Create a list of contingencies
-        final List<Contingency> contingencies = contingenciesProvider.getContingencies(network);
+        final List<Contingency> contingencies = contingenciesSupplier.getContingencies(network);
         // Create a list of stateMonitors based on those contingencies
         final List<StateMonitor> stateMonitors = stateMonitorsProvider.createStateMonitorList(network, contingencies);
 
@@ -94,13 +96,11 @@ public class SATestcaseCreator {
         SATestcaseCreatorParameters params = SATestcaseCreatorParameters.load(parametersFilePath);
         ServiceLoader<ContingenciesProvider> loader = ServiceLoader.load(ContingenciesProvider.class);
         for (SATestcaseCreatorParameters.Parameters parameters : params.getParameters()) {
-            for (SATestcaseCreatorParameters.contingenciesProvider provider : parameters.getContingenciesProviders()) {
+            for (SATestcaseCreatorParameters.ContingenciesProvider provider : parameters.getContingenciesProviders()) {
                 SATestcaseCreatorParameters.StateMonitorsRate stateMonitorsRate = parameters.getStateMonitorsRate();
-//                ContingenciesProvider contingenciesProvider = (ContingenciesProvider) StreamSupport.stream(loader.spliterator(), false)
-//                                                                                            .filter(p -> p.getClass().getSimpleName().equals(provider.getName()))
-//                                                                                            .findFirst()
-//                                                                                            .get();
-                SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), provider.getConfiguration(), new DefaultStateMonitorsProvider(stateMonitorsRate.getRates()));
+                ContingenciesSupplier contingenciesSupplier = ContingenciesProviders.getInstance(provider.getName());
+                contingenciesSupplier.setConfiguration(provider.getConfiguration());
+                SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), contingenciesSupplier, new DefaultStateMonitorsProvider(stateMonitorsRate.getRates()));
 
                 Network network = Network.read(parameters.getNetworkPath());
                 SecurityAnalysisParameters saParams = JsonSecurityAnalysisParameters.read(parameters.getSAParametersPath());
