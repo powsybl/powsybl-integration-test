@@ -6,78 +6,34 @@
  */
 package com.powsybl.integrationtest.creation.security.contingencies;
 
-import com.fasterxml.jackson.core.JacksonException;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.google.auto.service.AutoService;
-import com.powsybl.contingency.ContingenciesProvider;
 import com.powsybl.contingency.Contingency;
 import com.powsybl.iidm.network.*;
 
-import java.io.IOException;
 import java.util.*;
 
 import static com.powsybl.contingency.Contingency.builder;
 import static com.powsybl.integrationtest.utils.SampleUtils.createSamples;
 
 /**
- * Efficient implementation for ContingenciesProvider.
- * Creates a list of contingencies with the following rules:
+ * Implementation of {@link ContingenciesSupplier} which creates a list of contingencies with the following rules:
  * N-1 contingencies: Create contingencies for a subset of elements for each {@link com.powsybl.contingency.ContingencyElementType} in the network, where the subset size is given for each class of element.
  * N-2 contingencies: Create a contingency for each pair of line with same voltage levels.
  *
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
-@AutoService(ContingenciesProvider.class)
-public class RandomContingenciesProvider extends StdDeserializer<ContingenciesProvider> implements ContingenciesProvider  {
+@AutoService(ContingenciesSupplier.class)
+public class RandomContingenciesProvider implements ContingenciesSupplier {
 
     private HashMap<Class, Double> contingenciesRate;
 
     private Random r;
 
-    public RandomContingenciesProvider() {
-        this(null);
-    }
-
-    protected RandomContingenciesProvider(Class<?> vc) {
-        super(vc);
-    }
-
     @Override
-    public ContingenciesProvider deserialize(final JsonParser jsonParser, final DeserializationContext deserializationContext) throws IOException, JacksonException
-    {
-        JsonNode node = jsonParser.readValueAsTree();
-        Double generators = node.get("generators").asDouble();
-        Double staticVarCompensators = node.get("staticVarCompensators").asDouble();
-        Double shuntCompensators = node.get("shuntCompensators").asDouble();
-        Double branches = node.get("branches").asDouble();
-        Double hvdcLines = node.get("hvdcLines").asDouble();
-        Double busbarSections = node.get("busbarSections").asDouble();
-        Double danglingLines = node.get("danglingLines").asDouble();
-        Double threeWindingsTransformers = node.get("threeWindingsTransformers").asDouble();
-        Double loads = node.get("loads").asDouble();
-        Double switches = node.get("switches").asDouble();
-
-        HashMap<Class, Double> classRateHashMap = new HashMap<>();
-        classRateHashMap.put(Generator.class, generators);
-        classRateHashMap.put(StaticVarCompensator.class, staticVarCompensators);
-        classRateHashMap.put(ShuntCompensator.class, shuntCompensators);
-        classRateHashMap.put(Branch.class, branches);
-        classRateHashMap.put(HvdcLine.class, hvdcLines);
-        classRateHashMap.put(BusbarSection.class, busbarSections);
-        classRateHashMap.put(DanglingLine.class, danglingLines);
-        classRateHashMap.put(ThreeWindingsTransformer.class, threeWindingsTransformers);
-        classRateHashMap.put(Load.class, loads);
-        classRateHashMap.put(Switch.class, switches);
-
-        this.contingenciesRate = classRateHashMap;
-
+    public void setConfiguration(Object configuration) {
+        this.contingenciesRate = (HashMap<Class, Double>) configuration;
         this.r = new Random();
         this.r.setSeed(0);
-
-        return this;
     }
 
     @Override

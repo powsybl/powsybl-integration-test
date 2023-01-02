@@ -7,12 +7,7 @@
 
 package com.powsybl.integrationtest.creation.security.contingencies;
 
-import com.fasterxml.jackson.core.JacksonException;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.google.auto.service.AutoService;
-import com.powsybl.contingency.ContingenciesProvider;
 import com.powsybl.contingency.Contingency;
 import com.powsybl.contingency.ContingencyElement;
 import com.powsybl.contingency.LineContingency;
@@ -20,30 +15,20 @@ import com.powsybl.iidm.network.Line;
 import com.powsybl.iidm.network.Network;
 import com.powsybl.iidm.network.VoltageLevel;
 
-import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@AutoService(ContingenciesProvider.class)
-public class PairOfLinesContingenciesProvider extends StdDeserializer<ContingenciesProvider> implements ContingenciesProvider {
 
-    public PairOfLinesContingenciesProvider() {
-        this(null);
-    }
-
-    protected PairOfLinesContingenciesProvider(Class<?> vc) {
-        super(vc);
-    }
+/**
+ * Implementation of {@link ContingenciesSupplier} which creates contingencies for every pair of lines that are parallel.
+ *
+ * @author Théo Le Colleter <theo.le-colleter at artelys.com>
+ */
+@AutoService(ContingenciesSupplier.class)
+public class PairOfLinesContingenciesProvider implements ContingenciesSupplier {
 
     @Override
-    public ContingenciesProvider deserialize(final JsonParser jsonParser, final DeserializationContext deserializationContext) throws IOException, JacksonException
-    {
-        return this;
-    }
-
-    @Override
-    public List<Contingency> getContingencies(final Network network)
-    {
+    public List<Contingency> getContingencies(final Network network) {
         List<Contingency> contingencies = new ArrayList<>();
         // Create pairs of line for every parallel lines
         // For each set of voltage level, we store the list of lines with those voltage levels
@@ -71,5 +56,10 @@ public class PairOfLinesContingenciesProvider extends StdDeserializer<Contingenc
         });
 
         return contingencies;
+    }
+
+    @Override
+    public void setConfiguration(Object configuration) {
+
     }
 }
