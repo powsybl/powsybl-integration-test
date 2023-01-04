@@ -29,18 +29,17 @@ public class SecurityAnalysisTestCaseJson {
     private final String expectedResults;
     private final String inputStateMonitors;
 
-    public SecurityAnalysisTestCaseJson(String id, String inputNetwork, String inputParameters,
-                                        String inputContingencies, String inputStateMonitors, String expectedNetwork,
-                                        String expectedResults) {
-        this.id = id;
+    public SecurityAnalysisTestCaseJson(String id, String inputNetwork, String inputParameters) {
+        this.id = Objects.requireNonNull(id);
         this.inputNetwork = Objects.requireNonNull(inputNetwork);
         this.inputParameters = Objects.requireNonNull(inputParameters);
-        this.inputContingencies = Objects.requireNonNull(inputContingencies);
-        this.inputStateMonitors = inputStateMonitors;
-        this.expectedNetwork = Objects.requireNonNull(expectedNetwork);
-        this.expectedResults = Objects.requireNonNull(expectedResults);
+        this.inputContingencies = "contingencies/" + id + ".json";
+        this.inputStateMonitors = "statemonitors/" + id + ".json";
+        this.expectedNetwork = "sareferences/" + id + ".xiidm";
+        this.expectedResults = "sareferences/" + id + ".json";
     }
 
+    @Nonnull
     public String getId() {
         return id;
     }

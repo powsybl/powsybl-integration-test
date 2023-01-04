@@ -2,22 +2,19 @@
   "version" : "1.0",
   "testCases" : [
     {
-      "id" : "6-noeuds-dummy_default",
+      "id" : "6noeuds",
       "inputNetwork" : "networks/reseau_6noeuds.xiidm",
-      "inputParameters" : "parameters/SAParametersBasic.json",
-      "inputContingencies": "contingencies/6noeuds_dummy_RandomContingenciesProvider.json",
-      "inputStateMonitors": "statemonitors/6noeuds_dummy_RandomContingenciesProvider.json",
-      "expectedNetwork" : "sareferences/6noeuds_dummy_RandomContingenciesProvider.xiidm",
-      "expectedResults" : "sareferences/6noeuds_dummy_RandomContingenciesProvider.json"
+      "inputParameters" : "parameters/SAParametersBasic.json"
     },
     {
-      "id" : "case1888rte_default",
+      "id" : "case1888rte",
       "inputNetwork" : "networks/case1888rte.mat",
-      "inputParameters" : "parameters/SAParametersBasic.json",
-      "inputContingencies": "contingencies/case1888rte_PairOfLinesContingenciesProvider.json",
-      "inputStateMonitors": "statemonitors/case1888rte_PairOfLinesContingenciesProvider.json",
-      "expectedNetwork" : "sareferences/case1888rte_PairOfLinesContingenciesProvider.xiidm",
-      "expectedResults" : "sareferences/case1888rte_PairOfLinesContingenciesProvider.json"
+      "inputParameters" : "parameters/SAParametersBasic.json"
+    },
+    {
+      "id" : "micro-t1",
+      "inputNetwork" : "networks/CGMES_v2.4.15_MicroGridTestConfiguration_T1_Assembled_Complete_v2.zip",
+      "inputParameters" : "parameters/SAParametersBasic.json"
     }
   ]
 }

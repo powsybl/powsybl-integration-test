@@ -33,10 +33,6 @@ public class SecurityAnalysisTestCaseJsonDeserializer extends StdDeserializer<Se
         String id = null;
         String inputNetwork = null;
         String inputParameters = null;
-        String inputContingencies = null;
-        String inputStateMonitors = null;
-        String expectedNetwork = null;
-        String expectedResults = null;
         while ((token = parser.nextToken()) != null) {
             if (token == JsonToken.FIELD_NAME) {
                 switch (parser.getCurrentName()) {
@@ -52,28 +48,11 @@ public class SecurityAnalysisTestCaseJsonDeserializer extends StdDeserializer<Se
                         parser.nextToken();
                         inputParameters = parser.getText();
                         break;
-                    case "inputContingencies":
-                        parser.nextToken();
-                        inputContingencies = parser.getText();
-                        break;
-                    case "inputStateMonitors":
-                        parser.nextToken();
-                        inputStateMonitors = parser.getText();
-                        break;
-                    case "expectedNetwork":
-                        parser.nextToken();
-                        expectedNetwork = parser.getText();
-                        break;
-                    case "expectedResults":
-                        parser.nextToken();
-                        expectedResults = parser.getText();
-                        break;
                     default:
                         throw new AssertionError("Unexpected field: " + parser.getCurrentName());
                 }
             } else if (token == JsonToken.END_OBJECT) {
-                return new SecurityAnalysisTestCaseJson(id, inputNetwork, inputParameters,
-                        inputContingencies, inputStateMonitors, expectedNetwork, expectedResults);
+                return new SecurityAnalysisTestCaseJson(id, inputNetwork, inputParameters);
             }
         }
         throw new PowsyblException("Parsing error");
