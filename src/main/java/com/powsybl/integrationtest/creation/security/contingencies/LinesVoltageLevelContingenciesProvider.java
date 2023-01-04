@@ -35,13 +35,13 @@ public class LinesVoltageLevelContingenciesProvider implements ContingenciesSupp
         List<Contingency> contingencies = new ArrayList<>();
         // Find lines with different voltage levels and save their id
         Set<String> vlChangesLines = new HashSet<>();
-        for(Line line: network.getLines()) {
+        for (Line line : network.getLines()) {
             if (!(line.getTerminal1().getVoltageLevel().getNominalV() == line.getTerminal2().getVoltageLevel().getNominalV())) {
                 vlChangesLines.add(line.getId());
             }
         }
 
-        for(String line: vlChangesLines) {
+        for (String line : vlChangesLines) {
             contingencies.add(Contingency.line(line));
         }
 
