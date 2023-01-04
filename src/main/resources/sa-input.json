@@ -1,7 +1,7 @@
 {
   "parameters": [
     {
-      "testCaseName": "6noeuds_dummy",
+      "testCaseName": "6noeuds",
       "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\reseau_6noeuds.xiidm",
       "saParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\SAParametersBasic.json",
       "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
@@ -40,6 +40,27 @@
       "contingenciesProviders": [
         {
           "name": "PairOfLinesContingenciesProvider",
+          "configuration": {
+
+          }
+        }
+      ],
+      "stateMonitorsRate": {
+        "branches": 5,
+        "threeWindingsTransformers": 5,
+        "voltageLevels": 5
+      }
+    },
+    {
+      "testCaseName": "micro-t1",
+      "networkPath": "D:\\powsybl-integration-test\\src\\test\\resources\\networks\\CGMES_v2.4.15_MicroGridTestConfiguration_T1_Assembled_Complete_v2.zip",
+      "saParametersPath": "D:\\powsybl-integration-test\\src\\test\\resources\\parameters\\SAParametersBasic.json",
+      "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
+      "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
+      "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
+      "contingenciesProviders": [
+        {
+          "name": "LinesVoltageLevelContingenciesProvider",
           "configuration": {
 
           }

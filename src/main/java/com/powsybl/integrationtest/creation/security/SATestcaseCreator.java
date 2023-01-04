@@ -105,7 +105,7 @@ public class SATestcaseCreator {
                 Network network = Network.read(parameters.getNetworkPath());
                 SecurityAnalysisParameters saParams = JsonSecurityAnalysisParameters.read(parameters.getSAParametersPath());
 
-                String testCaseName = parameters.getTestCaseName() + "_" + provider.getName();
+                String testCaseName = parameters.getTestCaseName();
                 Path outputDir = parameters.getOutputPath();
                 Path outputDirContingencies = parameters.getContingenciesOutputPath();
                 Path outputDirStateMonitors = parameters.getStateMonitorsOutputPath();
