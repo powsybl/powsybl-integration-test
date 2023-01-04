@@ -1,0 +1,90 @@
+{
+  "version" : "1.3",
+  "preContingencyResult" : {
+    "status" : "CONVERGED",
+    "limitViolationsResult" : {
+      "limitViolations" : [ {
+        "subjectId" : "S_SE_1",
+        "limitType" : "CURRENT",
+        "acceptableDuration" : 1,
+        "limit" : 600.0,
+        "limitReduction" : 1.0,
+        "value" : 1344.0262687101026,
+        "side" : "ONE"
+      }, {
+        "subjectId" : "S_SE_1",
+        "limitType" : "CURRENT",
+        "limit" : 500.00006103515625,
+        "limitReduction" : 1.0,
+        "value" : 1344.0262687101067,
+        "side" : "TWO"
+      }, {
+        "subjectId" : "S_SE_2",
+        "limitType" : "CURRENT",
+        "acceptableDuration" : 1,
+        "limit" : 600.0,
+        "limitReduction" : 1.0,
+        "value" : 1030.8210921918185,
+        "side" : "ONE"
+      }, {
+        "subjectId" : "S_SE_2",
+        "limitType" : "CURRENT",
+        "limit" : 500.00006103515625,
+        "limitReduction" : 1.0,
+        "value" : 1030.8210921918205,
+        "side" : "TWO"
+      }, {
+        "subjectId" : "S_SO_2",
+        "limitType" : "CURRENT",
+        "acceptableDuration" : 1,
+        "limit" : 600.0,
+        "limitReduction" : 1.0,
+        "value" : 1082.3130587734233,
+        "side" : "ONE"
+      }, {
+        "subjectId" : "S_SO_2",
+        "limitType" : "CURRENT",
+        "limit" : 500.00006103515625,
+        "limitReduction" : 1.0,
+        "value" : 1082.3130587734242,
+        "side" : "TWO"
+      }, {
+        "subjectId" : "S_SO_1",
+        "limitType" : "CURRENT",
+        "acceptableDuration" : 1,
+        "limit" : 600.0,
+        "limitReduction" : 1.0,
+        "value" : 1291.1214209730913,
+        "side" : "ONE"
+      }, {
+        "subjectId" : "S_SO_1",
+        "limitType" : "CURRENT",
+        "limit" : 500.00006103515625,
+        "limitReduction" : 1.0,
+        "value" : 1291.1214209730904,
+        "side" : "TWO"
+      } ],
+      "actionsTaken" : [ ]
+    },
+    "networkResult" : {
+      "branchResults" : [ {
+        "branchId" : "NO_N_2",
+        "p1" : 6.377640235215938,
+        "q1" : -80.91154695769318,
+        "i1" : 115.33660651626077,
+        "p2" : -6.2978250383959296,
+        "q2" : 80.95145455610107,
+        "i2" : 115.33660651626938
+      } ],
+      "busResults" : [ {
+        "voltageLevelId" : "NO_poste",
+        "busId" : "NO_poste_0",
+        "v" : 406.28207585355057,
+        "angle" : 0.8341558024705844
+      } ],
+      "threeWindingsTransformerResults" : [ ]
+    }
+  },
+  "postContingencyResults" : [ ],
+  "operatorStrategyResults" : [ ]
+}
