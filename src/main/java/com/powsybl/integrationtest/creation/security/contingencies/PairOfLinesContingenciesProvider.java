@@ -18,9 +18,10 @@ import com.powsybl.iidm.network.VoltageLevel;
 import java.util.*;
 import java.util.stream.Collectors;
 
-
 /**
  * Implementation of {@link ContingenciesSupplier} which creates contingencies for every pair of lines that are parallel.
+ * Two lines are parallel when they share the same voltage levels.
+ * The contingencies created here are N-2 contingencies since they are created from two lines.
  *
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */

@@ -16,15 +16,21 @@ import static com.powsybl.contingency.Contingency.builder;
 import static com.powsybl.integrationtest.utils.SampleUtils.createSamples;
 
 /**
- * Implementation of {@link ContingenciesSupplier} which creates a list of contingencies with the following rules:
- * N-1 contingencies: Create contingencies for a subset of elements for each {@link com.powsybl.contingency.ContingencyElementType} in the network, where the subset size is given for each class of element.
- * N-2 contingencies: Create a contingency for each pair of line with same voltage levels.
+ * Implementation of {@link ContingenciesSupplier} which creates a list of contingencies with the following rule:
+ * <p> Create N-1 contingencies for a subset of elements for each {@link com.powsybl.contingency.ContingencyElementType} in the network, where the subset size is determined from a rate associated to each class of element in {@link #contingenciesRate}.
  *
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
 @AutoService(ContingenciesSupplier.class)
 public class RandomContingenciesProvider implements ContingenciesSupplier {
 
+    /**
+     * Hashmap associating:
+     * <ul>
+     *     <li> Class of the {@link Network}'s element (e.g. {@link Line}, {@link Branch},...)
+     *     <li> to a rate, which is a percentage (from 0 to 100) indicating the size of the subset of elements of the corresponding <i>Class</i> we want to select (randomly here) to create contingencies.
+     * </ul>
+     */
     private HashMap<Class, Double> contingenciesRate;
 
     private Random r;

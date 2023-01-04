@@ -21,8 +21,8 @@ import java.util.Set;
  * Creates and returns a list of contingencies of lines with two different voltage levels.
  * <p> <u><i>Example:</i></u>
  * <ul>
- *     <li>LineA with voltage levels with nominalV values 400kv and 220kv, create a contingency with LineA</li>
- *     <li>LineB with voltage levels with nominalV values 400kv and 400kv, same values then no contingency</li>
+ *     <li>LineA with voltage levels with nominal voltage values 400kv and 220kv, create a contingency with LineA</li>
+ *     <li>LineB with voltage levels with nominal voltage values 400kv and 400kv, same values then no contingency</li>
  * </ul>
  *
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
