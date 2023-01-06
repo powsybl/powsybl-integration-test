@@ -67,7 +67,7 @@ public class RandomStateMonitorsProvider implements StateMonitorsProvider {
 
     public void setConfiguration(Object configuration) {
         this.stateMonitorsRate = new HashMap<>();
-        ((HashMap<String, Integer>) configuration).forEach((element, rate) -> this.stateMonitorsRate.put(element, Double.valueOf(rate)));
+        ((HashMap<String, Number>) configuration).forEach((element, rate) -> this.stateMonitorsRate.put(element, rate.doubleValue()));
         this.r = new Random();
         this.r.setSeed(0);
     }

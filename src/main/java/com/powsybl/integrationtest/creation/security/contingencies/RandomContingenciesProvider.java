@@ -31,13 +31,14 @@ public class RandomContingenciesProvider implements ContingenciesSupplier {
      *     <li> to a rate, which is a percentage (from 0 to 100) indicating the size of the subset of elements of the corresponding <i>Class</i> we want to select (randomly here) to create contingencies.
      * </ul>
      */
-    private HashMap<Class, Double> contingenciesRate;
+    private HashMap<String, Double> contingenciesRate;
 
     private Random r;
 
     @Override
     public void setConfiguration(Object configuration) {
-        this.contingenciesRate = (HashMap<Class, Double>) configuration;
+        this.contingenciesRate = new HashMap<>();
+        ((HashMap<String, Number>) configuration).forEach((element, rate) -> this.contingenciesRate.put(element, rate.doubleValue()));
         this.r = new Random();
         this.r.setSeed(0);
     }
@@ -45,21 +46,21 @@ public class RandomContingenciesProvider implements ContingenciesSupplier {
     @Override
     public List<Contingency> getContingencies(final Network network) {
         List<Contingency> contingencies = new ArrayList<>();
-        HashMap<Class, List<Contingency>> contingenciesByClass = new HashMap<>();
+        HashMap<String, List<Contingency>> contingenciesByClass = new HashMap<>();
         // Get and add every element of the network in a list of contingencies (N-1)
-        network.getGenerators().forEach(e -> contingenciesByClass.computeIfAbsent(Generator.class, k -> new ArrayList<>()).add(Contingency.generator(e.getId())));
-        network.getStaticVarCompensators().forEach(e -> contingenciesByClass.computeIfAbsent(StaticVarCompensator.class, k -> new ArrayList<>()).add(Contingency.staticVarCompensator(e.getId())));
-        network.getShuntCompensators().forEach(e -> contingenciesByClass.computeIfAbsent(ShuntCompensator.class, k -> new ArrayList<>()).add(Contingency.shuntCompensator(e.getId())));
-        network.getBranches().forEach(e -> contingenciesByClass.computeIfAbsent(Branch.class, k -> new ArrayList<>()).add(Contingency.branch(e.getId())));
-        network.getHvdcLines().forEach(e -> contingenciesByClass.computeIfAbsent(HvdcLine.class, k -> new ArrayList<>()).add(Contingency.hvdcLine(e.getId())));
-        network.getBusbarSections().forEach(e -> contingenciesByClass.computeIfAbsent(BusbarSection.class, k -> new ArrayList<>()).add(Contingency.busbarSection(e.getId())));
-        network.getDanglingLines().forEach(e -> contingenciesByClass.computeIfAbsent(DanglingLine.class, k -> new ArrayList<>()).add(Contingency.danglingLine(e.getId())));
-        network.getThreeWindingsTransformers().forEach(e -> contingenciesByClass.computeIfAbsent(ThreeWindingsTransformer.class, k -> new ArrayList<>()).add(Contingency.threeWindingsTransformer(e.getId())));
-        network.getLoads().forEach(e -> contingenciesByClass.computeIfAbsent(Load.class, k -> new ArrayList<>()).add(Contingency.load(e.getId())));
-        network.getSwitches().forEach(e -> contingenciesByClass.computeIfAbsent(Switch.class, k -> new ArrayList<>()).add(builder(e.getId()).addSwitch(e.getId()).build()));
+        network.getGenerators().forEach(e -> contingenciesByClass.computeIfAbsent(Generator.class.getSimpleName(), k -> new ArrayList<>()).add(Contingency.generator(e.getId())));
+        network.getStaticVarCompensators().forEach(e -> contingenciesByClass.computeIfAbsent(StaticVarCompensator.class.getSimpleName(), k -> new ArrayList<>()).add(Contingency.staticVarCompensator(e.getId())));
+        network.getShuntCompensators().forEach(e -> contingenciesByClass.computeIfAbsent(ShuntCompensator.class.getSimpleName(), k -> new ArrayList<>()).add(Contingency.shuntCompensator(e.getId())));
+        network.getBranches().forEach(e -> contingenciesByClass.computeIfAbsent(Branch.class.getSimpleName(), k -> new ArrayList<>()).add(Contingency.branch(e.getId())));
+        network.getHvdcLines().forEach(e -> contingenciesByClass.computeIfAbsent(HvdcLine.class.getSimpleName(), k -> new ArrayList<>()).add(Contingency.hvdcLine(e.getId())));
+        network.getBusbarSections().forEach(e -> contingenciesByClass.computeIfAbsent(BusbarSection.class.getSimpleName(), k -> new ArrayList<>()).add(Contingency.busbarSection(e.getId())));
+        network.getDanglingLines().forEach(e -> contingenciesByClass.computeIfAbsent(DanglingLine.class.getSimpleName(), k -> new ArrayList<>()).add(Contingency.danglingLine(e.getId())));
+        network.getThreeWindingsTransformers().forEach(e -> contingenciesByClass.computeIfAbsent(ThreeWindingsTransformer.class.getSimpleName(), k -> new ArrayList<>()).add(Contingency.threeWindingsTransformer(e.getId())));
+        network.getLoads().forEach(e -> contingenciesByClass.computeIfAbsent(Load.class.getSimpleName(), k -> new ArrayList<>()).add(Contingency.load(e.getId())));
+        network.getSwitches().forEach(e -> contingenciesByClass.computeIfAbsent(Switch.class.getSimpleName(), k -> new ArrayList<>()).add(builder(e.getId()).addSwitch(e.getId()).build()));
 
-        HashMap<Class, Set<Contingency>> contingenciesSampleByClass = createSamples(contingenciesByClass, contingenciesRate, r);
-        contingenciesSampleByClass.forEach((c, contingenciesList) -> contingencies.addAll(contingenciesList));
+        HashMap<String, Set<Contingency>> contingenciesSampleByClass = createSamples(contingenciesByClass, contingenciesRate, r);
+        contingenciesSampleByClass.forEach((clazz, contingencySet) -> contingencies.addAll(contingencySet));
 
         return contingencies;
     }
