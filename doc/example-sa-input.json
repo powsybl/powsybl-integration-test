@@ -1,36 +1,36 @@
 {
   "parameters": [
     {
-      "testCaseName": "6noeuds_dummy",
+      "testCaseName": "6noeuds",
       "networkPath": "<path-to-your-workspace>/src/test/resources/networks/reseau_6noeuds.xiidm",
       "saParametersPath": "<path-to-your-workspace>/src/test/resources/parameters/SAParametersBasic.json",
       "contingenciesOutputPath": "<path-to-your-workspace>/src/test/resources/contingencies/6noeuds-dummy.json",
       "stateMonitorsOutputPath": "<path-to-your-workspace>/src/test/resources/statemonitors/6noeuds-dummy.json",
       "outputPath": "<path-to-where-you-want-to-output>",
-      "providers": [
-        {
-          "name": "default",
-          "rate": {
-            "stateMonitors": {
-              "branches": 5,
-              "threeWindingsTransformers": 5,
-              "voltageLevels": 5
-            },
-            "contingencies": {
-              "generators": 10,
-              "staticVarCompensators": 0,
-              "shuntCompensators": 10,
-              "branches": 10,
-              "hvdcLines": 10,
-              "busbarSections": 0,
-              "danglingLines": 10,
-              "threeWindingsTransformers": 10,
-              "loads": 10,
-              "switches": 0
-            }
-          }
+      "contingenciesProvider": {
+        "name": "RandomContingenciesProvider",
+        "configuration": {
+          "Generator": 100,
+          "StaticVarCompensator": 0,
+          "ShuntCompensator": 10,
+          "Branch": 10,
+          "HvdcLine": 10,
+          "BusbarSection": 0,
+          "DanglingLine": 10,
+          "ThreeWindingsTransformer": 10,
+          "Load": 10,
+          "Switch": 0
         }
-      ]
+      },
+      "stateMonitorsProvider": {
+        "name": "RandomStateMonitorsProvider",
+        "configuration": {
+          "Branch": 5,
+          "ThreeWindingsTransformer": 5,
+          "VoltageLevel": 5
+        }
+      }
+    },
     }
   ]
 }
