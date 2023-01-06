@@ -61,6 +61,6 @@ public class PairOfLinesContingenciesProvider implements ContingenciesSupplier {
 
     @Override
     public void setConfiguration(Object configuration) {
-
+        // Empty because no parameters are needed here, we just select every pair of parallel lines
     }
 }

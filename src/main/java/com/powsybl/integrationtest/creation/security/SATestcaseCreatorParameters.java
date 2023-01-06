@@ -13,11 +13,10 @@ import com.powsybl.iidm.network.*;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.HashMap;
 import java.util.List;
 
 /**
- * Parameters used by the SA test cases creator. Made to be loaded from a JSON file
+ * Parameters used by the SA test cases' creator. Made to be loaded from a JSON file
  *
  * @author Arthur Michaut <arthur.michaut at artelys.com>
  */
@@ -31,36 +30,6 @@ public class SATestcaseCreatorParameters {
 
     public void setParameters(List<Parameters> parameters) {
         this.parameters = parameters;
-    }
-
-    static class StateMonitorsRate {
-        @JsonProperty
-        private double branches;
-        @JsonProperty
-        private double voltageLevels;
-        @JsonProperty
-        private double threeWindingsTransformers;
-
-        public double getBranchesRate() {
-            return  branches;
-        }
-
-        public double getVoltageLevelsRate() {
-            return voltageLevels;
-        }
-
-        public double getThreeWindingsTransformersRate() {
-            return threeWindingsTransformers;
-        }
-
-        public HashMap<Class, Double> getRates() {
-            HashMap<Class, Double> classRateHashMap = new HashMap<>();
-            classRateHashMap.put(Branch.class, branches);
-            classRateHashMap.put(VoltageLevel.class, voltageLevels);
-            classRateHashMap.put(ThreeWindingsTransformer.class, threeWindingsTransformers);
-
-            return classRateHashMap;
-        }
     }
 
     static class ContingenciesProvider {

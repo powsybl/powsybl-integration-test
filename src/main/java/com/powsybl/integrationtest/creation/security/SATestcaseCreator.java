@@ -94,7 +94,6 @@ public class SATestcaseCreator {
             throw new IOException("Invalid parameters file : " + args[0]);
         }
         SATestcaseCreatorParameters params = SATestcaseCreatorParameters.load(parametersFilePath);
-        ServiceLoader<ContingenciesProvider> loader = ServiceLoader.load(ContingenciesProvider.class);
         for (SATestcaseCreatorParameters.Parameters parameters : params.getParameters()) {
             // Get state monitors provider parameters
             SATestcaseCreatorParameters.StateMonitorsProvider stateMonitorsProviderParam = parameters.getStateMonitorsProvider();

@@ -65,6 +65,7 @@ public class RandomStateMonitorsProvider implements StateMonitorsSupplier {
         return stateMonitors;
     }
 
+    @Override
     public void setConfiguration(Object configuration) {
         this.stateMonitorsRate = new HashMap<>();
         ((HashMap<String, Number>) configuration).forEach((element, rate) -> this.stateMonitorsRate.put(element, rate.doubleValue()));
