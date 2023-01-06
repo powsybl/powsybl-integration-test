@@ -7,27 +7,28 @@
       "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
       "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
       "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
-      "contingenciesProviders": [
-        {
-          "name": "RandomContingenciesProvider",
-          "configuration": {
-            "generators": 100,
-            "staticVarCompensators": 0,
-            "shuntCompensators": 10,
-            "branches": 10,
-            "hvdcLines": 10,
-            "busbarSections": 0,
-            "danglingLines": 10,
-            "threeWindingsTransformers": 10,
-            "loads": 10,
-            "switches": 0
-          }
+      "contingenciesProvider": {
+        "name": "RandomContingenciesProvider",
+        "configuration": {
+          "Generator": 100,
+          "StaticVarCompensator": 0,
+          "ShuntCompensator": 10,
+          "Branch": 10.0,
+          "HvdcLine": 10,
+          "BusbarSection": 0,
+          "DanglingLine": 10,
+          "ThreeWindingsTransformer": 10,
+          "Load": 10,
+          "Switch": 0
         }
-      ],
-      "stateMonitorsRate": {
-        "branches": 5,
-        "threeWindingsTransformers": 5,
-        "voltageLevels": 5
+      },
+      "stateMonitorsProvider": {
+        "name": "RandomStateMonitorsProvider",
+        "configuration": {
+          "Branch": 5,
+          "ThreeWindingsTransformer": 5,
+          "VoltageLevel": 5
+        }
       }
     },
     {
@@ -37,18 +38,19 @@
       "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
       "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
       "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
-      "contingenciesProviders": [
-        {
-          "name": "PairOfLinesContingenciesProvider",
-          "configuration": {
+      "contingenciesProvider": {
+        "name": "PairOfLinesContingenciesProvider",
+        "configuration": {
 
-          }
         }
-      ],
-      "stateMonitorsRate": {
-        "branches": 5,
-        "threeWindingsTransformers": 5,
-        "voltageLevels": 5
+      },
+      "stateMonitorsProvider": {
+        "name": "RandomStateMonitorsProvider",
+        "configuration": {
+          "Branch": 5,
+          "ThreeWindingsTransformer": 5,
+          "VoltageLevel": 5
+        }
       }
     },
     {
@@ -58,18 +60,19 @@
       "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
       "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
       "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
-      "contingenciesProviders": [
-        {
-          "name": "LinesVoltageLevelContingenciesProvider",
-          "configuration": {
+      "contingenciesProvider": {
+        "name": "LinesVoltageLevelContingenciesProvider",
+        "configuration": {
 
-          }
         }
-      ],
-      "stateMonitorsRate": {
-        "branches": 5,
-        "threeWindingsTransformers": 5,
-        "voltageLevels": 5
+      },
+      "stateMonitorsProvider": {
+        "name": "RandomStateMonitorsProvider",
+        "configuration": {
+          "Branch": 5,
+          "ThreeWindingsTransformer": 5,
+          "VoltageLevel": 5
+        }
       }
     }
   ]
