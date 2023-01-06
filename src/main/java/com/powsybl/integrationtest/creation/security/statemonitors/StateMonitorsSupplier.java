@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
-public interface StateMonitorsProvider {
+public interface StateMonitorsSupplier {
 
     /**
      * Create and return a list of StateMonitor with every element that can be monitored (branches, voltage levels, three windings transformers).
@@ -26,7 +26,7 @@ public interface StateMonitorsProvider {
      * @param network, list of contingencies
      * @return a list of StateMonitor
      */
-    List<StateMonitor> createStateMonitorList(Network network, List<Contingency> contingencies);
+    List<StateMonitor> getStateMonitors(Network network, List<Contingency> contingencies);
 
     public void setConfiguration(Object configuration);
 }

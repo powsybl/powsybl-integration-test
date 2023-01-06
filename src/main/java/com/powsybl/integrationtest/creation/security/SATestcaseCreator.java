@@ -15,7 +15,7 @@ import com.powsybl.iidm.network.*;
 import com.powsybl.iidm.xml.XMLExporter;
 import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesProviders;
 import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesSupplier;
-import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsProvider;
+import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsSupplier;
 import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsProviders;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationParameters;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationResults;
@@ -48,12 +48,12 @@ public class SATestcaseCreator {
 
     private final ContingenciesSupplier contingenciesSupplier;
 
-    private final StateMonitorsProvider stateMonitorsProvider;
+    private final StateMonitorsSupplier stateMonitorsSupplier;
 
-    public SATestcaseCreator(SecurityAnalysisComputationRunner runner, ContingenciesSupplier contingenciesSupplier, StateMonitorsProvider stateMonitorsProvider) {
+    public SATestcaseCreator(SecurityAnalysisComputationRunner runner, ContingenciesSupplier contingenciesSupplier, StateMonitorsSupplier stateMonitorsSupplier) {
         this.runner = runner;
         this.contingenciesSupplier = contingenciesSupplier;
-        this.stateMonitorsProvider = stateMonitorsProvider;
+        this.stateMonitorsSupplier = stateMonitorsSupplier;
     }
 
     public void createResults(String exportName, Network network, SecurityAnalysisParameters saParams, Path outputDir, Path outputDirContingencies, Path outputDirStateMonitors)
@@ -61,7 +61,7 @@ public class SATestcaseCreator {
         // Create a list of contingencies
         final List<Contingency> contingencies = contingenciesSupplier.getContingencies(network);
         // Create a list of stateMonitors based on those contingencies
-        final List<StateMonitor> stateMonitors = stateMonitorsProvider.createStateMonitorList(network, contingencies);
+        final List<StateMonitor> stateMonitors = stateMonitorsSupplier.getStateMonitors(network, contingencies);
 
         // Export contingencies in a .json file
         ObjectMapper mapper = JsonUtil.createObjectMapper();
@@ -99,15 +99,15 @@ public class SATestcaseCreator {
             // Get state monitors provider parameters
             SATestcaseCreatorParameters.StateMonitorsProvider stateMonitorsProviderParam = parameters.getStateMonitorsProvider();
             // Fetch and set chosen implementation
-            StateMonitorsProvider stateMonitorsProvider = StateMonitorsProviders.getInstance(stateMonitorsProviderParam.getName());
-            stateMonitorsProvider.setConfiguration(stateMonitorsProviderParam.getConfiguration());
+            StateMonitorsSupplier stateMonitorsSupplier = StateMonitorsProviders.getInstance(stateMonitorsProviderParam.getName());
+            stateMonitorsSupplier.setConfiguration(stateMonitorsProviderParam.getConfiguration());
             // Get contingencies provider parameters
             SATestcaseCreatorParameters.ContingenciesProvider contingenciesProviderParam = parameters.getContingenciesProvider();
             // Fetch and set chosen implementation
             ContingenciesSupplier contingenciesSupplier = ContingenciesProviders.getInstance(contingenciesProviderParam.getName());
             contingenciesSupplier.setConfiguration(contingenciesProviderParam.getConfiguration());
 
-            SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), contingenciesSupplier, stateMonitorsProvider);
+            SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), contingenciesSupplier, stateMonitorsSupplier);
 
             Network network = Network.read(parameters.getNetworkPath());
             SecurityAnalysisParameters saParams = JsonSecurityAnalysisParameters.read(parameters.getSAParametersPath());

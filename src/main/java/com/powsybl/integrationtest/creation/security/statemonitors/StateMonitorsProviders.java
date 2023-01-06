@@ -7,26 +7,23 @@
 
 package com.powsybl.integrationtest.creation.security.statemonitors;
 
-import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsProvider;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ServiceLoader;
 
-
-public class StateMonitorsProviders {
+public final class StateMonitorsProviders {
     private StateMonitorsProviders() {
 
     }
 
-    private static final Map<String, StateMonitorsProvider> PROVIDERS = new HashMap<>();
+    private static final Map<String, StateMonitorsSupplier> PROVIDERS = new HashMap<>();
 
     static {
-        ServiceLoader<StateMonitorsProvider> loader = ServiceLoader.load(StateMonitorsProvider.class);
+        ServiceLoader<StateMonitorsSupplier> loader = ServiceLoader.load(StateMonitorsSupplier.class);
         loader.forEach(p -> PROVIDERS.put(p.getClass().getSimpleName(), p));
     }
 
-    public static StateMonitorsProvider getInstance(String providerName) {
+    public static StateMonitorsSupplier getInstance(String providerName) {
         return PROVIDERS.get(providerName);
     }
 }

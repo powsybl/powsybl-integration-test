@@ -24,15 +24,15 @@ import static com.powsybl.integrationtest.utils.SampleUtils.createSamples;
  *
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
-@AutoService(StateMonitorsProvider.class)
-public class RandomStateMonitorsProvider implements StateMonitorsProvider {
+@AutoService(StateMonitorsSupplier.class)
+public class RandomStateMonitorsProvider implements StateMonitorsSupplier {
 
     private HashMap<String, Double> stateMonitorsRate;
 
     private Random r;
 
     @Override
-    public List<StateMonitor> createStateMonitorList(Network network, List<Contingency> contingencies) {
+    public List<StateMonitor> getStateMonitors(Network network, List<Contingency> contingencies) {
         // Get and create a list for each type of elements that can be monitored (branches, voltage levels and three windings transformers)
         List<String> voltageLevelIds = new ArrayList<>();
         List<String> threeWindingsTransformerIds = new ArrayList<>();
