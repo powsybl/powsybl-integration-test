@@ -13,7 +13,7 @@
           "Generator": 100,
           "StaticVarCompensator": 0,
           "ShuntCompensator": 10,
-          "Branch": 10.0,
+          "Branch": 10,
           "HvdcLine": 10,
           "BusbarSection": 0,
           "DanglingLine": 10,
