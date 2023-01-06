@@ -7,6 +7,7 @@
 
 package com.powsybl.integrationtest.creation.security.statemonitors;
 
+import com.google.auto.service.AutoService;
 import com.powsybl.contingency.Contingency;
 import com.powsybl.contingency.ContingencyContext;
 import com.powsybl.contingency.ContingencyContextType;
@@ -23,18 +24,12 @@ import static com.powsybl.integrationtest.utils.SampleUtils.createSamples;
  *
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
-public class DefaultStateMonitorsProvider implements StateMonitorsProvider {
+@AutoService(StateMonitorsProvider.class)
+public class RandomStateMonitorsProvider implements StateMonitorsProvider {
 
-    private HashMap<Class, Double> stateMonitorsRate;
+    private HashMap<String, Double> stateMonitorsRate;
 
     private Random r;
-
-    public DefaultStateMonitorsProvider(HashMap<Class, Double> stateMonitorsRate) {
-        this.stateMonitorsRate = stateMonitorsRate;
-
-        this.r = new Random();
-        this.r.setSeed(0);
-    }
 
     @Override
     public List<StateMonitor> createStateMonitorList(Network network, List<Contingency> contingencies) {
@@ -47,18 +42,18 @@ public class DefaultStateMonitorsProvider implements StateMonitorsProvider {
         network.getBranches().forEach(branch -> branchIds.add(branch.getId()));
 
         // Add those lists in a list
-        HashMap<Class, List<String>> elementsList = new HashMap<>();
-        elementsList.put(VoltageLevel.class, voltageLevelIds);
-        elementsList.put(ThreeWindingsTransformer.class, threeWindingsTransformerIds);
-        elementsList.put(Branch.class, branchIds);
+        HashMap<String, List<String>> elementsList = new HashMap<>();
+        elementsList.put(VoltageLevel.class.getSimpleName(), voltageLevelIds);
+        elementsList.put(ThreeWindingsTransformer.class.getSimpleName(), threeWindingsTransformerIds);
+        elementsList.put(Branch.class.getSimpleName(), branchIds);
 
-        HashMap<Class, Set<String>> sample = createSamples(elementsList, stateMonitorsRate, r);
+        HashMap<String, Set<String>> sample = createSamples(elementsList, stateMonitorsRate, r);
 
         // Create state monitors from this sample
         List<StateMonitor> stateMonitors = new ArrayList<>();
-        Set<String> sampleBranchIds = sample.getOrDefault(Branch.class, Collections.emptySet());
-        Set<String> sampleVoltageLevelIds = sample.getOrDefault(VoltageLevel.class, Collections.emptySet());
-        Set<String> sampleThreeWindingsTransformer = sample.getOrDefault(ThreeWindingsTransformer.class, Collections.emptySet());
+        Set<String> sampleBranchIds = sample.getOrDefault(Branch.class.getSimpleName(), Collections.emptySet());
+        Set<String> sampleVoltageLevelIds = sample.getOrDefault(VoltageLevel.class.getSimpleName(), Collections.emptySet());
+        Set<String> sampleThreeWindingsTransformer = sample.getOrDefault(ThreeWindingsTransformer.class.getSimpleName(), Collections.emptySet());
         StateMonitor stateMonitor = new StateMonitor(
                 new ContingencyContext(null, ContingencyContextType.ALL),
                 sampleBranchIds,
@@ -68,5 +63,12 @@ public class DefaultStateMonitorsProvider implements StateMonitorsProvider {
         stateMonitors.add(stateMonitor);
 
         return stateMonitors;
+    }
+
+    public void setConfiguration(Object configuration) {
+        this.stateMonitorsRate = new HashMap<>();
+        ((HashMap<String, Integer>) configuration).forEach((element, rate) -> this.stateMonitorsRate.put(element, Double.valueOf(rate)));
+        this.r = new Random();
+        this.r.setSeed(0);
     }
 }

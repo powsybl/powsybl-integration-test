@@ -16,7 +16,7 @@ import com.powsybl.iidm.xml.XMLExporter;
 import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesProviders;
 import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesSupplier;
 import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsProvider;
-import com.powsybl.integrationtest.creation.security.statemonitors.DefaultStateMonitorsProvider;
+import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsProviders;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationParameters;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationResults;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationRunner;
@@ -96,24 +96,31 @@ public class SATestcaseCreator {
         SATestcaseCreatorParameters params = SATestcaseCreatorParameters.load(parametersFilePath);
         ServiceLoader<ContingenciesProvider> loader = ServiceLoader.load(ContingenciesProvider.class);
         for (SATestcaseCreatorParameters.Parameters parameters : params.getParameters()) {
-            for (SATestcaseCreatorParameters.ContingenciesProvider provider : parameters.getContingenciesProviders()) {
-                SATestcaseCreatorParameters.StateMonitorsRate stateMonitorsRate = parameters.getStateMonitorsRate();
-                ContingenciesSupplier contingenciesSupplier = ContingenciesProviders.getInstance(provider.getName());
-                contingenciesSupplier.setConfiguration(provider.getConfiguration());
-                SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), contingenciesSupplier, new DefaultStateMonitorsProvider(stateMonitorsRate.getRates()));
+            // Get state monitors provider parameters
+            SATestcaseCreatorParameters.StateMonitorsProvider stateMonitorsProviderParam = parameters.getStateMonitorsProvider();
+            // Fetch and set chosen implementation
+            StateMonitorsProvider stateMonitorsProvider = StateMonitorsProviders.getInstance(stateMonitorsProviderParam.getName());
+            stateMonitorsProvider.setConfiguration(stateMonitorsProviderParam.getConfiguration());
+            // Get contingencies provider parameters
+            SATestcaseCreatorParameters.ContingenciesProvider contingenciesProviderParam = parameters.getContingenciesProvider();
+            // Fetch and set chosen implementation
+            ContingenciesSupplier contingenciesSupplier = ContingenciesProviders.getInstance(contingenciesProviderParam.getName());
+            contingenciesSupplier.setConfiguration(contingenciesProviderParam.getConfiguration());
 
-                Network network = Network.read(parameters.getNetworkPath());
-                SecurityAnalysisParameters saParams = JsonSecurityAnalysisParameters.read(parameters.getSAParametersPath());
+            SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), contingenciesSupplier, stateMonitorsProvider);
 
-                String testCaseName = parameters.getTestCaseName();
-                Path outputDir = parameters.getOutputPath();
-                Path outputDirContingencies = parameters.getContingenciesOutputPath();
-                Path outputDirStateMonitors = parameters.getStateMonitorsOutputPath();
-                Files.createDirectories(outputDir);
-                Files.createDirectories(outputDirContingencies);
-                Files.createDirectories(outputDirStateMonitors);
-                creator.createResults(testCaseName, network, saParams, outputDir, outputDirContingencies, outputDirStateMonitors);
-            }
+            Network network = Network.read(parameters.getNetworkPath());
+            SecurityAnalysisParameters saParams = JsonSecurityAnalysisParameters.read(parameters.getSAParametersPath());
+
+            String testCaseName = parameters.getTestCaseName();
+            Path outputDir = parameters.getOutputPath();
+            Path outputDirContingencies = parameters.getContingenciesOutputPath();
+            Path outputDirStateMonitors = parameters.getStateMonitorsOutputPath();
+            Files.createDirectories(outputDir);
+            Files.createDirectories(outputDirContingencies);
+            Files.createDirectories(outputDirStateMonitors);
+            creator.createResults(testCaseName, network, saParams, outputDir, outputDirContingencies, outputDirStateMonitors);
+
         }
     }
 }
