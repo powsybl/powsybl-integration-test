@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ServiceLoader;
 
-
 /**
  * This class allows to select an implementation of {@link StateMonitorsSupplier} with a given name.
  *
