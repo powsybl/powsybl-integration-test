@@ -22,7 +22,7 @@ import static com.powsybl.integrationtest.utils.SampleUtils.createSamples;
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
 @AutoService(ContingenciesSupplier.class)
-public class RandomContingenciesProvider implements ContingenciesSupplier {
+public class RandomContingenciesSupplier implements ContingenciesSupplier {
 
     /**
      * Hashmap associating:

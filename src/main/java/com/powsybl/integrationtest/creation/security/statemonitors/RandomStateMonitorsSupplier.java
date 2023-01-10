@@ -33,7 +33,7 @@ import static com.powsybl.integrationtest.utils.SampleUtils.createSamples;
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
 @AutoService(StateMonitorsSupplier.class)
-public class RandomStateMonitorsProvider implements StateMonitorsSupplier {
+public class RandomStateMonitorsSupplier implements StateMonitorsSupplier {
 
     private HashMap<String, Double> stateMonitorsRate;
 

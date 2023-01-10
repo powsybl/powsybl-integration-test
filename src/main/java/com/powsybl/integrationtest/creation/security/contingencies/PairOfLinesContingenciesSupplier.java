@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
 @AutoService(ContingenciesSupplier.class)
-public class PairOfLinesContingenciesProvider implements ContingenciesSupplier {
+public class PairOfLinesContingenciesSupplier implements ContingenciesSupplier {
 
     @Override
     public List<Contingency> getContingencies(final Network network, Object configuration) {

@@ -28,7 +28,7 @@ import java.util.Set;
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
 @AutoService(ContingenciesSupplier.class)
-public class LinesVoltageLevelContingenciesProvider implements ContingenciesSupplier {
+public class LinesVoltageLevelContingenciesSupplier implements ContingenciesSupplier {
 
     @Override
     public List<Contingency> getContingencies(final Network network, Object configuration) {
