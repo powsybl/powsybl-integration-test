@@ -32,7 +32,13 @@ public class RandomStateMonitorsProvider implements StateMonitorsSupplier {
     private Random r;
 
     @Override
-    public List<StateMonitor> getStateMonitors(Network network, List<Contingency> contingencies) {
+    public List<StateMonitor> getStateMonitors(Network network, List<Contingency> contingencies, Object configuration) {
+        // Set configuration
+        this.stateMonitorsRate = new HashMap<>();
+        ((HashMap<String, Number>) configuration).forEach((element, rate) -> this.stateMonitorsRate.put(element, rate.doubleValue()));
+        this.r = new Random();
+        this.r.setSeed(0);
+
         // Get and create a list for each type of elements that can be monitored (branches, voltage levels and three windings transformers)
         List<String> voltageLevelIds = new ArrayList<>();
         List<String> threeWindingsTransformerIds = new ArrayList<>();
@@ -63,13 +69,5 @@ public class RandomStateMonitorsProvider implements StateMonitorsSupplier {
         stateMonitors.add(stateMonitor);
 
         return stateMonitors;
-    }
-
-    @Override
-    public void setConfiguration(Object configuration) {
-        this.stateMonitorsRate = new HashMap<>();
-        ((HashMap<String, Number>) configuration).forEach((element, rate) -> this.stateMonitorsRate.put(element, rate.doubleValue()));
-        this.r = new Random();
-        this.r.setSeed(0);
     }
 }

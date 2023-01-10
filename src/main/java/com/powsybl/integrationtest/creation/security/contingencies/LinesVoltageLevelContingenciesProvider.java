@@ -31,7 +31,7 @@ import java.util.Set;
 public class LinesVoltageLevelContingenciesProvider implements ContingenciesSupplier {
 
     @Override
-    public List<Contingency> getContingencies(final Network network) {
+    public List<Contingency> getContingencies(final Network network, Object configuration) {
         List<Contingency> contingencies = new ArrayList<>();
         // Find lines with different voltage levels and save their id
         Set<String> vlChangesLines = new HashSet<>();
@@ -46,10 +46,5 @@ public class LinesVoltageLevelContingenciesProvider implements ContingenciesSupp
         }
 
         return contingencies;
-    }
-
-    @Override
-    public void setConfiguration(final Object configuration) {
-        // Empty because no parameters are needed here, we just select lines that have voltage levels with different nominal voltage
     }
 }

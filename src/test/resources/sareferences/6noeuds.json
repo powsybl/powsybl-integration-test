@@ -211,40 +211,9 @@
     }
   }, {
     "contingency" : {
-      "id" : "SE_G",
+      "id" : "SO_G2",
       "elements" : [ {
-        "id" : "SE_G",
-        "type" : "GENERATOR"
-      } ]
-    },
-    "status" : "CONVERGED",
-    "limitViolationsResult" : {
-      "limitViolations" : [ ],
-      "actionsTaken" : [ ]
-    },
-    "networkResult" : {
-      "branchResults" : [ {
-        "branchId" : "NO_N_2",
-        "p1" : -2.152139563222063,
-        "q1" : -213.33461507560494,
-        "i1" : 303.4522391572143,
-        "p2" : 2.704639131916549,
-        "q2" : 213.61086485993272,
-        "i2" : 303.4522391572145
-      } ],
-      "busResults" : [ {
-        "voltageLevelId" : "NO_poste",
-        "busId" : "NO_poste_0",
-        "v" : 405.91252529764455,
-        "angle" : -0.060225062939162
-      } ],
-      "threeWindingsTransformerResults" : [ ]
-    }
-  }, {
-    "contingency" : {
-      "id" : "SO_G1",
-      "elements" : [ {
-        "id" : "SO_G1",
+        "id" : "SO_G2",
         "type" : "GENERATOR"
       } ]
     },
@@ -288,9 +257,9 @@
     }
   }, {
     "contingency" : {
-      "id" : "SO_G2",
+      "id" : "SO_G1",
       "elements" : [ {
-        "id" : "SO_G2",
+        "id" : "SO_G1",
         "type" : "GENERATOR"
       } ]
     },
@@ -360,6 +329,37 @@
         "busId" : "NO_poste_0",
         "v" : 406.42402343172085,
         "angle" : 0.7518218411857553
+      } ],
+      "threeWindingsTransformerResults" : [ ]
+    }
+  }, {
+    "contingency" : {
+      "id" : "SE_G",
+      "elements" : [ {
+        "id" : "SE_G",
+        "type" : "GENERATOR"
+      } ]
+    },
+    "status" : "CONVERGED",
+    "limitViolationsResult" : {
+      "limitViolations" : [ ],
+      "actionsTaken" : [ ]
+    },
+    "networkResult" : {
+      "branchResults" : [ {
+        "branchId" : "NO_N_2",
+        "p1" : -2.152139563222063,
+        "q1" : -213.33461507560494,
+        "i1" : 303.4522391572143,
+        "p2" : 2.704639131916549,
+        "q2" : 213.61086485993272,
+        "i2" : 303.4522391572145
+      } ],
+      "busResults" : [ {
+        "voltageLevelId" : "NO_poste",
+        "busId" : "NO_poste_0",
+        "v" : 405.91252529764455,
+        "angle" : -0.060225062939162
       } ],
       "threeWindingsTransformerResults" : [ ]
     }

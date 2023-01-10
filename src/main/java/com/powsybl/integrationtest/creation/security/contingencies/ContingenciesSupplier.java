@@ -20,7 +20,5 @@ import java.util.List;
  */
 public interface ContingenciesSupplier {
 
-    List<Contingency> getContingencies(Network network);
-
-    public void setConfiguration(Object configuration);
+    List<Contingency> getContingencies(Network network, Object configuration);
 }

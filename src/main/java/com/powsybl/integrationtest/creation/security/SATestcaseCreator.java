@@ -56,12 +56,12 @@ public class SATestcaseCreator {
         this.stateMonitorsSupplier = stateMonitorsSupplier;
     }
 
-    public void createResults(String exportName, Network network, SecurityAnalysisParameters saParams, Path outputDir, Path outputDirContingencies, Path outputDirStateMonitors)
+    public void createResults(String exportName, Network network, SecurityAnalysisParameters saParams, Path outputDir, Path outputDirContingencies, Path outputDirStateMonitors, final Object contingenciesConfiguration, final Object stateMonitorsConfiguration)
             throws IOException {
         // Create a list of contingencies
-        final List<Contingency> contingencies = contingenciesSupplier.getContingencies(network);
+        final List<Contingency> contingencies = contingenciesSupplier.getContingencies(network, contingenciesConfiguration);
         // Create a list of stateMonitors based on those contingencies
-        final List<StateMonitor> stateMonitors = stateMonitorsSupplier.getStateMonitors(network, contingencies);
+        final List<StateMonitor> stateMonitors = stateMonitorsSupplier.getStateMonitors(network, contingencies, stateMonitorsConfiguration);
 
         // Export contingencies in a .json file
         ObjectMapper mapper = JsonUtil.createObjectMapper();
@@ -99,12 +99,10 @@ public class SATestcaseCreator {
             SATestcaseCreatorParameters.StateMonitorsSupplierParameters stateMonitorsSupplierParameters = parameters.getStateMonitorsSupplierParameters();
             // Fetch and set chosen implementation
             StateMonitorsSupplier stateMonitorsSupplier = StateMonitorsSuppliers.getInstance(stateMonitorsSupplierParameters.getName());
-            stateMonitorsSupplier.setConfiguration(stateMonitorsSupplierParameters.getConfiguration());
             // Get contingencies provider parameters
             SATestcaseCreatorParameters.ContingenciesSupplierParameters contingenciesSupplierParameters = parameters.getContingenciesSupplierParameters();
             // Fetch and set chosen implementation
             ContingenciesSupplier contingenciesSupplier = ContingenciesSuppliers.getInstance(contingenciesSupplierParameters.getName());
-            contingenciesSupplier.setConfiguration(contingenciesSupplierParameters.getConfiguration());
 
             SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), contingenciesSupplier, stateMonitorsSupplier);
 
@@ -112,13 +110,15 @@ public class SATestcaseCreator {
             SecurityAnalysisParameters saParams = JsonSecurityAnalysisParameters.read(parameters.getSAParametersPath());
 
             String testCaseName = parameters.getTestCaseName();
+            Object contingenciesConfiguration = contingenciesSupplierParameters.getConfiguration();
+            Object stateMonitorsConfiguration = stateMonitorsSupplierParameters.getConfiguration();
             Path outputDir = parameters.getOutputPath();
             Path outputDirContingencies = parameters.getContingenciesOutputPath();
             Path outputDirStateMonitors = parameters.getStateMonitorsOutputPath();
             Files.createDirectories(outputDir);
             Files.createDirectories(outputDirContingencies);
             Files.createDirectories(outputDirStateMonitors);
-            creator.createResults(testCaseName, network, saParams, outputDir, outputDirContingencies, outputDirStateMonitors);
+            creator.createResults(testCaseName, network, saParams, outputDir, outputDirContingencies, outputDirStateMonitors, contingenciesConfiguration, stateMonitorsConfiguration);
 
         }
     }

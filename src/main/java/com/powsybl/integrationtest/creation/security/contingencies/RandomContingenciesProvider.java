@@ -36,15 +36,13 @@ public class RandomContingenciesProvider implements ContingenciesSupplier {
     private Random r;
 
     @Override
-    public void setConfiguration(Object configuration) {
+    public List<Contingency> getContingencies(final Network network, Object configuration) {
+        // Set configuration
         this.contingenciesRate = new HashMap<>();
         ((HashMap<String, Number>) configuration).forEach((element, rate) -> this.contingenciesRate.put(element, rate.doubleValue()));
         this.r = new Random();
         this.r.setSeed(0);
-    }
 
-    @Override
-    public List<Contingency> getContingencies(final Network network) {
         List<Contingency> contingencies = new ArrayList<>();
         HashMap<String, List<Contingency>> contingenciesByClass = new HashMap<>();
         // Get and add every element of the network in a list of contingencies (N-1)

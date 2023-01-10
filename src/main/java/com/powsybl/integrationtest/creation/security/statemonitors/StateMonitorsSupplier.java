@@ -26,7 +26,5 @@ public interface StateMonitorsSupplier {
      * @param network, list of contingencies
      * @return a list of StateMonitor
      */
-    List<StateMonitor> getStateMonitors(Network network, List<Contingency> contingencies);
-
-    public void setConfiguration(Object configuration);
+    List<StateMonitor> getStateMonitors(Network network, List<Contingency> contingencies, Object configuration);
 }

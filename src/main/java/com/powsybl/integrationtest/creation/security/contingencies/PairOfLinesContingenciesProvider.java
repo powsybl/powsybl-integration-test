@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 public class PairOfLinesContingenciesProvider implements ContingenciesSupplier {
 
     @Override
-    public List<Contingency> getContingencies(final Network network) {
+    public List<Contingency> getContingencies(final Network network, Object configuration) {
         List<Contingency> contingencies = new ArrayList<>();
         // Create pairs of line for every parallel lines
         // For each set of voltage level, we store the list of lines with those voltage levels
@@ -57,10 +57,5 @@ public class PairOfLinesContingenciesProvider implements ContingenciesSupplier {
         });
 
         return contingencies;
-    }
-
-    @Override
-    public void setConfiguration(Object configuration) {
-        // Empty because no parameters are needed here, we just select every pair of parallel lines
     }
 }
