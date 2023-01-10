@@ -11,8 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ServiceLoader;
 
-public final class StateMonitorsProviders {
-    private StateMonitorsProviders() {
+public final class StateMonitorsSuppliers
+{
+    private StateMonitorsSuppliers() {
 
     }
 

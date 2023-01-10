@@ -13,10 +13,10 @@ import com.powsybl.contingency.contingency.list.DefaultContingencyList;
 import com.powsybl.contingency.json.ContingencyJsonModule;
 import com.powsybl.iidm.network.*;
 import com.powsybl.iidm.xml.XMLExporter;
-import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesProviders;
+import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesSuppliers;
 import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesSupplier;
 import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsSupplier;
-import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsProviders;
+import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsSuppliers;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationParameters;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationResults;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationRunner;
@@ -98,12 +98,12 @@ public class SATestcaseCreator {
             // Get state monitors provider parameters
             SATestcaseCreatorParameters.StateMonitorsSupplierParameters stateMonitorsSupplierParameters = parameters.getStateMonitorsSupplierParameters();
             // Fetch and set chosen implementation
-            StateMonitorsSupplier stateMonitorsSupplier = StateMonitorsProviders.getInstance(stateMonitorsSupplierParameters.getName());
+            StateMonitorsSupplier stateMonitorsSupplier = StateMonitorsSuppliers.getInstance(stateMonitorsSupplierParameters.getName());
             stateMonitorsSupplier.setConfiguration(stateMonitorsSupplierParameters.getConfiguration());
             // Get contingencies provider parameters
             SATestcaseCreatorParameters.ContingenciesSupplierParameters contingenciesSupplierParameters = parameters.getContingenciesSupplierParameters();
             // Fetch and set chosen implementation
-            ContingenciesSupplier contingenciesSupplier = ContingenciesProviders.getInstance(contingenciesSupplierParameters.getName());
+            ContingenciesSupplier contingenciesSupplier = ContingenciesSuppliers.getInstance(contingenciesSupplierParameters.getName());
             contingenciesSupplier.setConfiguration(contingenciesSupplierParameters.getConfiguration());
 
             SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), contingenciesSupplier, stateMonitorsSupplier);

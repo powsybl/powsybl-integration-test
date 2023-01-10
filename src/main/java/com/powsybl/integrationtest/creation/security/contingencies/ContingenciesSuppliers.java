@@ -16,8 +16,9 @@ import java.util.ServiceLoader;
  *
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
-public final class ContingenciesProviders {
-    private ContingenciesProviders() {
+public final class ContingenciesSuppliers
+{
+    private ContingenciesSuppliers() {
 
     }
 
