@@ -32,7 +32,7 @@ public class SATestcaseCreatorParameters {
         this.parameters = parameters;
     }
 
-    static class ContingenciesProvider {
+    static class ContingenciesSupplierParameters {
         @JsonProperty
         private String name;
         @JsonProperty
@@ -47,7 +47,7 @@ public class SATestcaseCreatorParameters {
         }
     }
 
-    static class StateMonitorsProvider {
+    static class StateMonitorsSupplierParameters {
         @JsonProperty
         private String name;
         @JsonProperty
@@ -75,10 +75,10 @@ public class SATestcaseCreatorParameters {
         private Path stateMonitorsOutputPath;
         @JsonProperty
         private Path outputPath;
-        @JsonProperty
-        private ContingenciesProvider contingenciesProvider;
-        @JsonProperty
-        private StateMonitorsProvider stateMonitorsProvider;
+        @JsonProperty("contingenciesProvider")
+        private ContingenciesSupplierParameters contingenciesSupplierParameters;
+        @JsonProperty("stateMonitorsProvider")
+        private StateMonitorsSupplierParameters stateMonitorsSupplierParameters;
 
         public String getTestCaseName() {
             return testCaseName;
@@ -134,12 +134,12 @@ public class SATestcaseCreatorParameters {
             this.outputPath = outputPath;
         }
 
-        public ContingenciesProvider getContingenciesProvider() {
-            return contingenciesProvider;
+        public ContingenciesSupplierParameters getContingenciesSupplierParameters() {
+            return contingenciesSupplierParameters;
         }
 
-        public StateMonitorsProvider getStateMonitorsProvider() {
-            return stateMonitorsProvider;
+        public StateMonitorsSupplierParameters getStateMonitorsSupplierParameters() {
+            return stateMonitorsSupplierParameters;
         }
     }
 

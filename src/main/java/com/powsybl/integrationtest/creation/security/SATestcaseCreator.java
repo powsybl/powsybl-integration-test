@@ -96,15 +96,15 @@ public class SATestcaseCreator {
         SATestcaseCreatorParameters params = SATestcaseCreatorParameters.load(parametersFilePath);
         for (SATestcaseCreatorParameters.Parameters parameters : params.getParameters()) {
             // Get state monitors provider parameters
-            SATestcaseCreatorParameters.StateMonitorsProvider stateMonitorsProviderParam = parameters.getStateMonitorsProvider();
+            SATestcaseCreatorParameters.StateMonitorsSupplierParameters stateMonitorsSupplierParameters = parameters.getStateMonitorsSupplierParameters();
             // Fetch and set chosen implementation
-            StateMonitorsSupplier stateMonitorsSupplier = StateMonitorsProviders.getInstance(stateMonitorsProviderParam.getName());
-            stateMonitorsSupplier.setConfiguration(stateMonitorsProviderParam.getConfiguration());
+            StateMonitorsSupplier stateMonitorsSupplier = StateMonitorsProviders.getInstance(stateMonitorsSupplierParameters.getName());
+            stateMonitorsSupplier.setConfiguration(stateMonitorsSupplierParameters.getConfiguration());
             // Get contingencies provider parameters
-            SATestcaseCreatorParameters.ContingenciesProvider contingenciesProviderParam = parameters.getContingenciesProvider();
+            SATestcaseCreatorParameters.ContingenciesSupplierParameters contingenciesSupplierParameters = parameters.getContingenciesSupplierParameters();
             // Fetch and set chosen implementation
-            ContingenciesSupplier contingenciesSupplier = ContingenciesProviders.getInstance(contingenciesProviderParam.getName());
-            contingenciesSupplier.setConfiguration(contingenciesProviderParam.getConfiguration());
+            ContingenciesSupplier contingenciesSupplier = ContingenciesProviders.getInstance(contingenciesSupplierParameters.getName());
+            contingenciesSupplier.setConfiguration(contingenciesSupplierParameters.getConfiguration());
 
             SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), contingenciesSupplier, stateMonitorsSupplier);
 
