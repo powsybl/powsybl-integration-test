@@ -21,14 +21,14 @@ public final class ContingenciesSuppliers {
 
     }
 
-    private static final Map<String, ContingenciesSupplier> PROVIDERS = new HashMap<>();
+    private static final Map<String, ContingenciesSupplier> SUPPLIERS = new HashMap<>();
 
     static {
         ServiceLoader<ContingenciesSupplier> loader = ServiceLoader.load(ContingenciesSupplier.class);
-        loader.forEach(p -> PROVIDERS.put(p.getClass().getSimpleName(), p));
+        loader.forEach(p -> SUPPLIERS.put(p.getClass().getSimpleName(), p));
     }
 
-    public static ContingenciesSupplier getInstance(String providerName) {
-        return PROVIDERS.get(providerName);
+    public static ContingenciesSupplier getInstance(String supplierName) {
+        return SUPPLIERS.get(supplierName);
     }
 }

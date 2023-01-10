@@ -20,5 +20,12 @@ import java.util.List;
  */
 public interface ContingenciesSupplier {
 
+    /**
+     * Set the configuration according to the input.
+     * <p>Create and return a list of {@link Contingency} which is created according to different strategy, depending on the implementation used.</p>
+     * @param network
+     * @param configuration
+     * @return a list of {@link Contingency}
+     */
     List<Contingency> getContingencies(Network network, Object configuration);
 }

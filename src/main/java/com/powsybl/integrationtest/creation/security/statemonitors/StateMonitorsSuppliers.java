@@ -11,19 +11,25 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ServiceLoader;
 
+
+/**
+ * This class allows to select an implementation of {@link StateMonitorsSupplier} with a given name.
+ *
+ * @author Théo Le Colleter <theo.le-colleter at artelys.com>
+ */
 public final class StateMonitorsSuppliers {
     private StateMonitorsSuppliers() {
 
     }
 
-    private static final Map<String, StateMonitorsSupplier> PROVIDERS = new HashMap<>();
+    private static final Map<String, StateMonitorsSupplier> SUPPLIERS = new HashMap<>();
 
     static {
         ServiceLoader<StateMonitorsSupplier> loader = ServiceLoader.load(StateMonitorsSupplier.class);
-        loader.forEach(p -> PROVIDERS.put(p.getClass().getSimpleName(), p));
+        loader.forEach(p -> SUPPLIERS.put(p.getClass().getSimpleName(), p));
     }
 
-    public static StateMonitorsSupplier getInstance(String providerName) {
-        return PROVIDERS.get(providerName);
+    public static StateMonitorsSupplier getInstance(String supplierName) {
+        return SUPPLIERS.get(supplierName);
     }
 }

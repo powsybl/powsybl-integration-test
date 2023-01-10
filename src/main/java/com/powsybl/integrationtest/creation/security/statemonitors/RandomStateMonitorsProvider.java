@@ -17,10 +17,18 @@ import com.powsybl.security.monitor.StateMonitor;
 import java.util.*;
 
 import static com.powsybl.integrationtest.utils.SampleUtils.createSamples;
+
 /**
- * Default implementation for the StateMonitorsProvider.
- * Select elements randomly in network's elements, to create a sample with a size determined by a given percentage.
- * A seed is used for reproducibility.
+ * Implementation of {@link StateMonitorsSupplier} which creates a list of {@link StateMonitor} with the following rule:
+ * <p>Create stateMonitors for a subset of elements of the following classes in the network:
+ *  *
+ * <ul>
+ *     <li> {@link Branch}</li>
+ *     <li> {@link VoltageLevel}</li>
+ *     <li> {@link ThreeWindingsTransformer}</li>
+ * </ul>
+ * where the subset size is determined from a rate associated to each class of element in {@link #stateMonitorsRate}.
+ * <p>A seed is used for reproducibility.
  *
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
