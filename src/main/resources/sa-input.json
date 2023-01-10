@@ -7,8 +7,8 @@
       "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
       "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
       "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
-      "contingenciesProvider": {
-        "name": "RandomContingenciesProvider",
+      "contingenciesSupplier": {
+        "name": "RandomContingenciesSupplier",
         "configuration": {
           "Generator": 100,
           "StaticVarCompensator": 0,
@@ -22,8 +22,8 @@
           "Switch": 0
         }
       },
-      "stateMonitorsProvider": {
-        "name": "RandomStateMonitorsProvider",
+      "stateMonitorsSupplier": {
+        "name": "RandomStateMonitorsSupplier",
         "configuration": {
           "Branch": 5,
           "ThreeWindingsTransformer": 5,
@@ -38,14 +38,14 @@
       "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
       "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
       "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
-      "contingenciesProvider": {
-        "name": "PairOfLinesContingenciesProvider",
+      "contingenciesSupplier": {
+        "name": "PairOfLinesContingenciesSupplier",
         "configuration": {
 
         }
       },
-      "stateMonitorsProvider": {
-        "name": "RandomStateMonitorsProvider",
+      "stateMonitorsSupplier": {
+        "name": "RandomStateMonitorsSupplier",
         "configuration": {
           "Branch": 5,
           "ThreeWindingsTransformer": 5,
@@ -60,14 +60,14 @@
       "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
       "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
       "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
-      "contingenciesProvider": {
-        "name": "LinesVoltageLevelContingenciesProvider",
+      "contingenciesSupplier": {
+        "name": "LinesVoltageLevelContingenciesSupplier",
         "configuration": {
 
         }
       },
-      "stateMonitorsProvider": {
-        "name": "RandomStateMonitorsProvider",
+      "stateMonitorsSupplier": {
+        "name": "RandomStateMonitorsSupplier",
         "configuration": {
           "Branch": 5,
           "ThreeWindingsTransformer": 5,

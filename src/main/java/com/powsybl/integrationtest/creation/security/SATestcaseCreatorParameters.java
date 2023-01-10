@@ -75,9 +75,9 @@ public class SATestcaseCreatorParameters {
         private Path stateMonitorsOutputPath;
         @JsonProperty
         private Path outputPath;
-        @JsonProperty("contingenciesProvider")
+        @JsonProperty("contingenciesSupplier")
         private ContingenciesSupplierParameters contingenciesSupplierParameters;
-        @JsonProperty("stateMonitorsProvider")
+        @JsonProperty("stateMonitorsSupplier")
         private StateMonitorsSupplierParameters stateMonitorsSupplierParameters;
 
         public String getTestCaseName() {
