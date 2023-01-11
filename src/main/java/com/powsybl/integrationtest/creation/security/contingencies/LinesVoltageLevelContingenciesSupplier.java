@@ -12,10 +12,8 @@ import com.powsybl.contingency.Contingency;
 import com.powsybl.iidm.network.Line;
 import com.powsybl.iidm.network.Network;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
 
 /**
  * Creates and returns a list of contingencies of lines with two different voltage levels.
@@ -31,7 +29,7 @@ import java.util.Set;
 public class LinesVoltageLevelContingenciesSupplier implements ContingenciesSupplier {
 
     @Override
-    public List<Contingency> getContingencies(final Network network, Object configuration) {
+    public List<Contingency> getContingencies(final Network network, HashMap<String, ?> configuration) {
         List<Contingency> contingencies = new ArrayList<>();
         // Find lines with different voltage levels and save their id
         Set<String> vlChangesLines = new HashSet<>();

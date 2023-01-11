@@ -40,7 +40,7 @@ public class RandomStateMonitorsSupplier implements StateMonitorsSupplier {
     private Random r;
 
     @Override
-    public List<StateMonitor> getStateMonitors(Network network, List<Contingency> contingencies, Object configuration) {
+    public List<StateMonitor> getStateMonitors(Network network, List<Contingency> contingencies, HashMap<String, ?> configuration) {
         // Set configuration
         this.stateMonitorsRate = new HashMap<>();
         ((HashMap<String, Number>) configuration).forEach((element, rate) -> this.stateMonitorsRate.put(element, rate.doubleValue()));

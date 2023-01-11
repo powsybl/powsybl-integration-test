@@ -10,6 +10,7 @@ package com.powsybl.integrationtest.creation.security.contingencies;
 import com.powsybl.contingency.Contingency;
 import com.powsybl.iidm.network.Network;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -27,5 +28,5 @@ public interface ContingenciesSupplier {
      * @param configuration
      * @return a list of {@link Contingency}
      */
-    List<Contingency> getContingencies(Network network, Object configuration);
+    List<Contingency> getContingencies(Network network, HashMap<String, ?> configuration);
 }

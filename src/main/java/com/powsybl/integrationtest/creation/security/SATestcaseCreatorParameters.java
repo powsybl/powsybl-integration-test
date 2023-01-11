@@ -13,6 +13,7 @@ import com.powsybl.iidm.network.*;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -36,13 +37,13 @@ public class SATestcaseCreatorParameters {
         @JsonProperty
         private String name;
         @JsonProperty
-        private Object configuration;
+        private HashMap<String, ?> configuration;
 
         public String getName() {
             return name;
         }
 
-        public Object getConfiguration() {
+        public HashMap<String, ?> getConfiguration() {
             return configuration;
         }
     }
@@ -51,13 +52,13 @@ public class SATestcaseCreatorParameters {
         @JsonProperty
         private String name;
         @JsonProperty
-        private Object configuration;
+        private HashMap<String, ?> configuration;
 
         public String getName() {
             return name;
         }
 
-        public Object getConfiguration() {
+        public HashMap<String, ?> getConfiguration() {
             return configuration;
         }
     }

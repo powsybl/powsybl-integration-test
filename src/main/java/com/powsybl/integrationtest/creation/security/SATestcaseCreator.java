@@ -56,7 +56,7 @@ public class SATestcaseCreator {
         this.stateMonitorsSupplier = stateMonitorsSupplier;
     }
 
-    public void createResults(String exportName, Network network, SecurityAnalysisParameters saParams, Path outputDir, Path outputDirContingencies, Path outputDirStateMonitors, final Object contingenciesConfiguration, final Object stateMonitorsConfiguration)
+    public void createResults(String exportName, Network network, SecurityAnalysisParameters saParams, Path outputDir, Path outputDirContingencies, Path outputDirStateMonitors, final HashMap<String, ?> contingenciesConfiguration, final HashMap<String, ?> stateMonitorsConfiguration)
             throws IOException {
         // Create a list of contingencies
         final List<Contingency> contingencies = contingenciesSupplier.getContingencies(network, contingenciesConfiguration);
@@ -110,8 +110,8 @@ public class SATestcaseCreator {
             SecurityAnalysisParameters saParams = JsonSecurityAnalysisParameters.read(parameters.getSAParametersPath());
 
             String testCaseName = parameters.getTestCaseName();
-            Object contingenciesConfiguration = contingenciesSupplierParameters.getConfiguration();
-            Object stateMonitorsConfiguration = stateMonitorsSupplierParameters.getConfiguration();
+            HashMap<String, ?> contingenciesConfiguration = contingenciesSupplierParameters.getConfiguration();
+            HashMap<String, ?> stateMonitorsConfiguration = stateMonitorsSupplierParameters.getConfiguration();
             Path outputDir = parameters.getOutputPath();
             Path outputDirContingencies = parameters.getContingenciesOutputPath();
             Path outputDirStateMonitors = parameters.getStateMonitorsOutputPath();
