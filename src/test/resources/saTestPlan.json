@@ -4,7 +4,8 @@
     {
       "id" : "6noeuds",
       "inputNetwork" : "networks/reseau_6noeuds.xiidm",
-      "inputParameters" : "parameters/SAParametersBasic.json"
+      "inputParameters" : "parameters/SAParametersBasic.json",
+      "inputContingencies" : "contingencies/6noeuds.json"
     },
     {
       "id" : "case1888rte",

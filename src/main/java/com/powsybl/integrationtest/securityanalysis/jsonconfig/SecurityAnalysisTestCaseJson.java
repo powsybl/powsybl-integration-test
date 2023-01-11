@@ -22,21 +22,54 @@ public class SecurityAnalysisTestCaseJson {
 
     private final String inputParameters;
 
-    private final String inputContingencies;
+    private String inputContingencies;
 
-    private final String expectedNetwork;
+    private String expectedNetwork;
 
-    private final String expectedResults;
-    private final String inputStateMonitors;
+    private String expectedResults;
+    private String inputStateMonitors;
 
-    public SecurityAnalysisTestCaseJson(String id, String inputNetwork, String inputParameters) {
+    public SecurityAnalysisTestCaseJson(String id, String inputNetwork, String inputParameters, String inputContingencies, String inputStateMonitors, String expectedNetwork,
+                                        String expectedResults) {
         this.id = Objects.requireNonNull(id);
         this.inputNetwork = Objects.requireNonNull(inputNetwork);
         this.inputParameters = Objects.requireNonNull(inputParameters);
-        this.inputContingencies = "contingencies/" + id + ".json";
-        this.inputStateMonitors = "statemonitors/" + id + ".json";
-        this.expectedNetwork = "sareferences/" + id + ".xiidm";
-        this.expectedResults = "sareferences/" + id + ".json";
+        setInputContingencies(inputContingencies);
+        setInputStateMonitors(inputStateMonitors);
+        setExpectedNetwork(expectedNetwork);
+        setExpectedResults(expectedResults);
+    }
+
+    private void setInputContingencies(String inputContingencies) {
+        if (inputContingencies != null) {
+            this.inputContingencies = inputContingencies;
+        } else {
+            this.inputContingencies = "contingencies/" + id + ".json";
+        }
+    }
+
+    private void setInputStateMonitors(String inputStateMonitors) {
+        if (inputStateMonitors != null) {
+            this.inputStateMonitors = inputStateMonitors;
+        } else {
+            this.inputStateMonitors = "statemonitors/" + id + ".json";
+        }
+    }
+
+    private void setExpectedNetwork(String expectedNetwork) {
+        if (expectedNetwork != null) {
+            this.expectedNetwork = expectedNetwork;
+        } else {
+            this.expectedNetwork = "sareferences/" + id + ".xiidm";
+        }
+    }
+
+    private void setExpectedResults(String expectedResults) {
+        if (expectedResults != null) {
+            this.expectedResults = expectedResults;
+        } else {
+            this.expectedResults = "sareferences/" + id + ".json";
+        }
     }
 
     @Nonnull
