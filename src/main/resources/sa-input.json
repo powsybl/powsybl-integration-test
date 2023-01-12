@@ -7,29 +7,33 @@
       "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
       "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
       "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
-      "contingenciesSupplier": {
-        "name": "RandomContingenciesSupplier",
-        "configuration": {
-          "Generator": 100,
-          "StaticVarCompensator": 0,
-          "ShuntCompensator": 10,
-          "Branch": 10,
-          "HvdcLine": 10,
-          "BusbarSection": 0,
-          "DanglingLine": 10,
-          "ThreeWindingsTransformer": 10,
-          "Load": 10,
-          "Switch": 0
+      "contingenciesSuppliers": [
+        {
+          "name": "RandomContingenciesSupplier",
+          "configuration": {
+            "Generator": 100,
+            "StaticVarCompensator": 0,
+            "ShuntCompensator": 10,
+            "Branch": 10,
+            "HvdcLine": 10,
+            "BusbarSection": 0,
+            "DanglingLine": 10,
+            "ThreeWindingsTransformer": 10,
+            "Load": 10,
+            "Switch": 0
+          }
         }
-      },
-      "stateMonitorsSupplier": {
-        "name": "RandomStateMonitorsSupplier",
-        "configuration": {
-          "Branch": 5,
-          "ThreeWindingsTransformer": 5,
-          "VoltageLevel": 5
+      ],
+      "stateMonitorsSuppliers": [
+        {
+          "name": "RandomStateMonitorsSupplier",
+          "configuration": {
+            "Branch": 5,
+            "ThreeWindingsTransformer": 5,
+            "VoltageLevel": 5
+          }
         }
-      }
+      ]
     },
     {
       "testCaseName": "case1888rte",
@@ -38,20 +42,24 @@
       "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
       "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
       "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
-      "contingenciesSupplier": {
-        "name": "PairOfLinesContingenciesSupplier",
-        "configuration": {
+      "contingenciesSuppliers": [
+        {
+          "name": "PairOfLinesContingenciesSupplier",
+          "configuration": {
 
+          }
         }
-      },
-      "stateMonitorsSupplier": {
-        "name": "RandomStateMonitorsSupplier",
-        "configuration": {
-          "Branch": 5,
-          "ThreeWindingsTransformer": 5,
-          "VoltageLevel": 5
+      ],
+      "stateMonitorsSuppliers": [
+        {
+          "name": "RandomStateMonitorsSupplier",
+          "configuration": {
+            "Branch": 5,
+            "ThreeWindingsTransformer": 5,
+            "VoltageLevel": 5
+          }
         }
-      }
+      ]
     },
     {
       "testCaseName": "micro-t1",
@@ -60,20 +68,30 @@
       "contingenciesOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\contingencies",
       "stateMonitorsOutputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\statemonitors",
       "outputPath": "D:\\powsybl-integration-test\\src\\test\\resources\\sareferences",
-      "contingenciesSupplier": {
-        "name": "LinesVoltageLevelContingenciesSupplier",
-        "configuration": {
+      "contingenciesSuppliers": [
+        {
+          "name": "LinesVoltageLevelContingenciesSupplier",
+          "configuration": {
 
+          }
+        },
+        {
+          "name": "PairOfLinesContingenciesSupplier",
+          "configuration": {
+
+          }
         }
-      },
-      "stateMonitorsSupplier": {
-        "name": "RandomStateMonitorsSupplier",
-        "configuration": {
-          "Branch": 5,
-          "ThreeWindingsTransformer": 5,
-          "VoltageLevel": 5
+      ],
+      "stateMonitorsSuppliers": [
+        {
+          "name": "RandomStateMonitorsSupplier",
+          "configuration": {
+            "Branch": 5,
+            "ThreeWindingsTransformer": 5,
+            "VoltageLevel": 5
+          }
         }
-      }
+      ]
     }
   ]
 }
