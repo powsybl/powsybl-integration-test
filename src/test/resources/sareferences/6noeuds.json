@@ -211,68 +211,6 @@
     }
   }, {
     "contingency" : {
-      "id" : "SE_G",
-      "elements" : [ {
-        "id" : "SE_G",
-        "type" : "GENERATOR"
-      } ]
-    },
-    "status" : "CONVERGED",
-    "limitViolationsResult" : {
-      "limitViolations" : [ ],
-      "actionsTaken" : [ ]
-    },
-    "networkResult" : {
-      "branchResults" : [ {
-        "branchId" : "NO_N_2",
-        "p1" : -2.152139563222063,
-        "q1" : -213.33461507560494,
-        "i1" : 303.4522391572143,
-        "p2" : 2.704639131916549,
-        "q2" : 213.61086485993272,
-        "i2" : 303.4522391572145
-      } ],
-      "busResults" : [ {
-        "voltageLevelId" : "NO_poste",
-        "busId" : "NO_poste_0",
-        "v" : 405.91252529764455,
-        "angle" : -0.060225062939162
-      } ],
-      "threeWindingsTransformerResults" : [ ]
-    }
-  }, {
-    "contingency" : {
-      "id" : "N_G",
-      "elements" : [ {
-        "id" : "N_G",
-        "type" : "GENERATOR"
-      } ]
-    },
-    "status" : "CONVERGED",
-    "limitViolationsResult" : {
-      "limitViolations" : [ ],
-      "actionsTaken" : [ ]
-    },
-    "networkResult" : {
-      "branchResults" : [ {
-        "branchId" : "NO_N_2",
-        "p1" : -4.875393715034618,
-        "q1" : -153.81177951602587,
-        "i1" : 218.60880927151484,
-        "p2" : 5.162132583977674,
-        "q2" : 153.9551489504857,
-        "i2" : 218.6088092715062
-      } ],
-      "busResults" : [ {
-        "voltageLevelId" : "NO_poste",
-        "busId" : "NO_poste_0",
-        "v" : 406.42402343172085,
-        "angle" : 0.7518218411857553
-      } ],
-      "threeWindingsTransformerResults" : [ ]
-    }
-  }, {
-    "contingency" : {
       "id" : "SO_G1",
       "elements" : [ {
         "id" : "SO_G1",
@@ -360,6 +298,68 @@
         "busId" : "NO_poste_0",
         "v" : 407.26197132161735,
         "angle" : 0.6433972691080914
+      } ],
+      "threeWindingsTransformerResults" : [ ]
+    }
+  }, {
+    "contingency" : {
+      "id" : "SE_G",
+      "elements" : [ {
+        "id" : "SE_G",
+        "type" : "GENERATOR"
+      } ]
+    },
+    "status" : "CONVERGED",
+    "limitViolationsResult" : {
+      "limitViolations" : [ ],
+      "actionsTaken" : [ ]
+    },
+    "networkResult" : {
+      "branchResults" : [ {
+        "branchId" : "NO_N_2",
+        "p1" : -2.152139563222063,
+        "q1" : -213.33461507560494,
+        "i1" : 303.4522391572143,
+        "p2" : 2.704639131916549,
+        "q2" : 213.61086485993272,
+        "i2" : 303.4522391572145
+      } ],
+      "busResults" : [ {
+        "voltageLevelId" : "NO_poste",
+        "busId" : "NO_poste_0",
+        "v" : 405.91252529764455,
+        "angle" : -0.060225062939162
+      } ],
+      "threeWindingsTransformerResults" : [ ]
+    }
+  }, {
+    "contingency" : {
+      "id" : "N_G",
+      "elements" : [ {
+        "id" : "N_G",
+        "type" : "GENERATOR"
+      } ]
+    },
+    "status" : "CONVERGED",
+    "limitViolationsResult" : {
+      "limitViolations" : [ ],
+      "actionsTaken" : [ ]
+    },
+    "networkResult" : {
+      "branchResults" : [ {
+        "branchId" : "NO_N_2",
+        "p1" : -4.875393715034618,
+        "q1" : -153.81177951602587,
+        "i1" : 218.60880927151484,
+        "p2" : 5.162132583977674,
+        "q2" : 153.9551489504857,
+        "i2" : 218.6088092715062
+      } ],
+      "busResults" : [ {
+        "voltageLevelId" : "NO_poste",
+        "busId" : "NO_poste_0",
+        "v" : 406.42402343172085,
+        "angle" : 0.7518218411857553
       } ],
       "threeWindingsTransformerResults" : [ ]
     }

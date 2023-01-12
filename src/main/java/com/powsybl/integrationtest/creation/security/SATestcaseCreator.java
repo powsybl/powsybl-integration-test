@@ -109,7 +109,6 @@ public class SATestcaseCreator {
                 stateMonitorsSuppliersHashMap.put(stateMonitorsSupplier, stateMonitorsSupplierParameters.getConfiguration());
             }
 
-
             SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), contingenciesSuppliersHashMap, stateMonitorsSuppliersHashMap);
 
             Network network = Network.read(parameters.getNetworkPath());
