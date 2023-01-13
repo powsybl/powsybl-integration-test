@@ -58,12 +58,17 @@ public class SATestcaseCreator {
 
     public void createResults(String exportName, Network network, SecurityAnalysisParameters saParams, Path outputDir, Path outputDirContingencies, Path outputDirStateMonitors)
             throws IOException {
-        List<Contingency> contingencies = new ArrayList<>();
+        Set<Contingency> contingenciesSet = new HashSet<>();
         // Union of contingencies' list created by each ContingenciesSupplier
-        contingenciesSuppliersHashMap.forEach((supplier, conf) -> contingencies.addAll(supplier.getContingencies(network, conf)));
+        contingenciesSuppliersHashMap.forEach((supplier, conf) -> contingenciesSet.addAll(supplier.getContingencies(network, conf)));
+        List<Contingency> contingencies = new ArrayList<>();
+        contingenciesSet.forEach(contingency -> contingencies.add(contingency));
+
         // Create a list of stateMonitors based on those contingencies
+        Set<StateMonitor> stateMonitorsSet = new HashSet<>();
+        stateMonitorsSuppliersHashMap.forEach((supplier, conf) -> stateMonitorsSet.addAll(supplier.getStateMonitors(network, contingencies, conf)));
         List<StateMonitor> stateMonitors = new ArrayList<>();
-        stateMonitorsSuppliersHashMap.forEach((supplier, conf) -> stateMonitors.addAll(supplier.getStateMonitors(network, contingencies, conf)));
+        stateMonitorsSet.forEach(stateMonitor -> stateMonitors.add(stateMonitor));
 
         // Export contingencies in a .json file
         ObjectMapper mapper = JsonUtil.createObjectMapper();
