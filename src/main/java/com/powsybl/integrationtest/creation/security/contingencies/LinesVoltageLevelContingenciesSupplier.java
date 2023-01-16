@@ -14,20 +14,22 @@ import com.powsybl.iidm.network.Network;
 
 import java.util.*;
 
-
 /**
- * Creates and returns a list of contingencies of lines with two different voltage levels.
- * <p> <u><i>Example:</i></u>
- * <ul>
- *     <li>LineA with voltage levels with nominal voltage values 400kv and 220kv, create a contingency with LineA</li>
- *     <li>LineB with voltage levels with nominal voltage values 400kv and 400kv, same values then no contingency</li>
- * </ul>
+ * Implementation of {@link ContingenciesSupplier} which creates and returns a list of contingencies of lines with voltage levels with different nominal voltage values.
  *
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
 @AutoService(ContingenciesSupplier.class)
 public class LinesVoltageLevelContingenciesSupplier implements ContingenciesSupplier {
 
+    /**
+     * Creates and returns a list of contingencies of lines with voltage levels with different nominal voltage values.
+     * <p> <u><i>Example:</i></u>
+     *  <ul>
+     *      <li>LineA with voltage levels with nominal voltage values 400kv and 220kv, create a contingency with LineA</li>
+     *      <li>LineB with voltage levels with nominal voltage values 400kv and 400kv, same values then no contingency</li>
+     * </ul>
+     */
     @Override
     public List<Contingency> getContingencies(final Network network, HashMap<String, ?> configuration) {
         List<Contingency> contingencies = new ArrayList<>();

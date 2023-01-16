@@ -20,14 +20,17 @@ import java.util.stream.Collectors;
 
 /**
  * Implementation of {@link ContingenciesSupplier} which creates contingencies for every pair of lines that are parallel.
- * Two lines are parallel when they share the same voltage levels.
- * The contingencies created here are N-2 contingencies since they are created from two lines.
  *
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
 @AutoService(ContingenciesSupplier.class)
 public class PairOfLinesContingenciesSupplier implements ContingenciesSupplier {
 
+    /**
+     * Creates contingencies for every pair of lines that are parallel.
+     * Two lines are parallel when they share the same voltage levels.
+     * The contingencies created here are N-2 contingencies since they are created with two lines.
+     */
     @Override
     public List<Contingency> getContingencies(final Network network, HashMap<String, ?> configuration) {
         List<Contingency> contingencies = new ArrayList<>();

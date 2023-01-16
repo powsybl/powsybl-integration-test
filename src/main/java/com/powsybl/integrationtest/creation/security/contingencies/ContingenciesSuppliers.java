@@ -28,6 +28,10 @@ public final class ContingenciesSuppliers {
         loader.forEach(p -> SUPPLIERS.put(p.getClass().getSimpleName(), p));
     }
 
+    /**
+     * @param supplierName
+     * @return the {@link ContingenciesSupplier}'s implementation where the class name is supplierName
+     */
     public static ContingenciesSupplier getInstance(String supplierName) {
         return SUPPLIERS.get(supplierName);
     }
