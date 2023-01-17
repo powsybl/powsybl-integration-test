@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Interface allowing to implement different contingencies' provider.
+ * Interface allowing to implement different contingencies' supplier (i.e. different strategies to create contingencies).
  *
  * Different from {@link com.powsybl.contingency.ContingenciesProvider} since we need to set the configuration according to the input.
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
@@ -26,7 +26,7 @@ public interface ContingenciesSupplier {
      * <p>Create and return a list of {@link Contingency} which is created according to different strategy, depending on the implementation used.</p>
      * @param network create contingencies from and for a given {@link Network}
      * @param configuration set parameters according to a given configuration. Can be empty if no parameter is needed.
-     * @return a list of {@link Contingency}, where a contingency's id is the concatenation of all the contingency's elements' names (ordered lexicographically to avoid duplication when comparing two contingencies)
+     * @return a list of {@link Contingency}, where a contingency's id is the concatenation of all the contingency's elements' names
      */
     List<Contingency> getContingencies(Network network, HashMap<String, ?> configuration);
 }

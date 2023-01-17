@@ -16,7 +16,7 @@ import static com.powsybl.contingency.Contingency.builder;
 import static com.powsybl.integrationtest.utils.SampleUtils.createSamples;
 
 /**
- * Implementation of {@link ContingenciesSupplier} which creates a list of contingencies for subset of elements in the network.
+ * Implementation of {@link ContingenciesSupplier} which creates a list of {@link Contingency} for subsets of elements in the network.
  *
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
@@ -35,7 +35,7 @@ public class RandomContingenciesSupplier implements ContingenciesSupplier {
     private Random r;
 
     /**
-     * Creates N-1 contingencies for a subset of elements, for each {@link com.powsybl.contingency.ContingencyElementType} in the network,
+     * Creates N-1 contingencies for subsets of elements, for each {@link com.powsybl.contingency.ContingencyElementType} in the network,
      * where the subset size is determined from a rate associated to each class of element in {@link #contingenciesRate}.
      */
     @Override

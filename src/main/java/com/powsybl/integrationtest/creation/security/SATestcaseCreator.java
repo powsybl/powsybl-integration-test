@@ -34,7 +34,6 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 
-
 /**
  * A component that creates SA test cases reference files.
  * Use the main method, linking to a parameters file to output your own reference files (network and results).
@@ -69,7 +68,7 @@ public class SATestcaseCreator {
             String contingencyId = String.valueOf(contingency.getElements().stream().map(elt -> elt.getId()).sorted().collect(Collectors.toList()));
             contingencyMap.put(contingencyId, contingency);
         }
-        List<Contingency> contingencies = new ArrayList<>(contingencyMap.values()) ;
+        List<Contingency> contingencies = new ArrayList<>(contingencyMap.values());
 
         Map<String, StateMonitor> stateMonitorsMap = new HashMap<>();
         List<StateMonitor> allStateMonitors = new ArrayList<>();

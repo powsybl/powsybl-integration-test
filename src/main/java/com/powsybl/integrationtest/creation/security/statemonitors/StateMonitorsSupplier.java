@@ -15,17 +15,20 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Component used to create security analysis test cases, as it provides a list of StateMonitors.
+ * Interface allowing to implement different stateMonitors' supplier (i.e. different strategies to create stateMonitors).
  *
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
 public interface StateMonitorsSupplier {
 
     /**
-     * Create and return a list of StateMonitor with every element that can be monitored (branches, voltage levels, three windings transformers).
+     * Set the configuration according to the input.
+     * <p> Create and return a list of {@link StateMonitor} with every element that can be monitored (branches, voltage levels, three windings transformers).
      * Based on a list of contingencies, since at the creation of a StateMonitor, a contingency id must be given.
-     * @param network, list of contingencies
-     * @return a list of StateMonitor
+     * @param network create stateMonitors from and for a given {@link Network}
+     * @param contingencies a list of {@link Contingency} can be used depending on the {@link com.powsybl.contingency.ContingencyContext} used when creating stateMonitors
+     * @param configuration set parameters according to a given configuration. Can be empty if no parameter is needed.
+     * @return a list of {@link StateMonitor}
      */
     List<StateMonitor> getStateMonitors(Network network, List<Contingency> contingencies, HashMap<String, ?> configuration);
 }
