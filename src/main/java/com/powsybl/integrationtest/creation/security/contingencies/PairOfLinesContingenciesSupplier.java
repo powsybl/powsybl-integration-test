@@ -56,9 +56,7 @@ public class PairOfLinesContingenciesSupplier implements ContingenciesSupplier {
         pairLine.forEach(pl -> {
             List<ContingencyElement> contingencyElements = new ArrayList<>();
             pl.forEach(p -> contingencyElements.add(new LineContingency(p.getId())));
-            // In order to avoid duplications if this implementation is combined with another N-2 contingencies, we need to write IDs lexicographically
-            String contingencyID = String.valueOf(pl.stream().sorted(Comparator.comparing(Line::getId)).collect(Collectors.toList()));
-            contingencies.add(new Contingency(contingencyID, contingencyElements));
+            contingencies.add(new Contingency(String.valueOf(pl), contingencyElements));
         });
 
         return contingencies;
