@@ -72,8 +72,7 @@ public class SecurityAnalysisTestCaseJsonDeserializer extends StdDeserializer<Se
                         throw new AssertionError("Unexpected field: " + parser.getCurrentName());
                 }
             } else if (token == JsonToken.END_OBJECT) {
-                return new SecurityAnalysisTestCaseJson(id, inputNetwork, inputParameters,
-                        inputContingencies, inputStateMonitors, expectedNetwork, expectedResults);
+                return new SecurityAnalysisTestCaseJson(id, inputNetwork, inputParameters, inputContingencies, inputStateMonitors, expectedNetwork, expectedResults);
             }
         }
         throw new PowsyblException("Parsing error");

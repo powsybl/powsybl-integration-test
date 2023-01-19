@@ -8,14 +8,16 @@ package com.powsybl.integrationtest.creation.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.powsybl.commons.json.JsonUtil;
-import com.powsybl.contingency.*;
+import com.powsybl.contingency.Contingency;
+import com.powsybl.contingency.ContingencyElement;
 import com.powsybl.contingency.contingency.list.DefaultContingencyList;
 import com.powsybl.contingency.json.ContingencyJsonModule;
-import com.powsybl.iidm.network.*;
+import com.powsybl.iidm.network.Network;
 import com.powsybl.iidm.xml.XMLExporter;
-import com.powsybl.integrationtest.creation.security.contingencies.EfficientContingenciesProvider;
-import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsProvider;
-import com.powsybl.integrationtest.creation.security.statemonitors.DefaultStateMonitorsProvider;
+import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesSupplier;
+import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesSuppliers;
+import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsSupplier;
+import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsSuppliers;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationParameters;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationResults;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationRunner;
@@ -31,6 +33,8 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * A component that creates SA test cases reference files.
@@ -45,22 +49,43 @@ public class SATestcaseCreator {
 
     private final SecurityAnalysisComputationRunner runner;
 
-    private final ContingenciesProvider contingenciesProvider;
+    private final HashMap<ContingenciesSupplier, HashMap<String, ?>> contingenciesSuppliersHashMap;
 
-    private final StateMonitorsProvider stateMonitorsProvider;
+    private final HashMap<StateMonitorsSupplier, HashMap<String, ?>> stateMonitorsSuppliersHashMap;
 
-    public SATestcaseCreator(SecurityAnalysisComputationRunner runner, ContingenciesProvider contingenciesProvider, StateMonitorsProvider stateMonitorsProvider) {
+    public SATestcaseCreator(SecurityAnalysisComputationRunner runner, HashMap<ContingenciesSupplier, HashMap<String, ?>> contingenciesSuppliersHashMap, HashMap<StateMonitorsSupplier, HashMap<String, ?>> stateMonitorsSuppliersHashMap) {
         this.runner = runner;
-        this.contingenciesProvider = contingenciesProvider;
-        this.stateMonitorsProvider = stateMonitorsProvider;
+        this.contingenciesSuppliersHashMap = contingenciesSuppliersHashMap;
+        this.stateMonitorsSuppliersHashMap = stateMonitorsSuppliersHashMap;
     }
 
     public void createResults(String exportName, Network network, SecurityAnalysisParameters saParams, Path outputDir, Path outputDirContingencies, Path outputDirStateMonitors)
             throws IOException {
-        // Create a list of contingencies
-        final List<Contingency> contingencies = contingenciesProvider.getContingencies(network);
-        // Create a list of stateMonitors based on those contingencies
-        final List<StateMonitor> stateMonitors = stateMonitorsProvider.createStateMonitorList(network, contingencies);
+        List<Contingency> allContingencies = new ArrayList<>();
+        // Add all contingencies in a list, regardless of contingencies' duplications
+        contingenciesSuppliersHashMap.forEach((supplier, conf) -> allContingencies.addAll(supplier.getContingencies(network, conf)));
+        // Avoid duplications by adding contingency in a map with a unique id based on the sorted elements' id
+        Collection<Contingency> uniqueContingencies = allContingencies.stream()
+                .collect(Collectors.toMap(
+                    contingency -> contingency.getElements().stream().map(ContingencyElement::getId).sorted().collect(Collectors.joining("/")),
+                    Function.identity()
+                ))
+                .values();
+        List<Contingency> contingencies = new ArrayList<>(uniqueContingencies);
+
+        List<StateMonitor> allStateMonitors = new ArrayList<>();
+        // Add all stateMonitors in a list, regardless of stateMonitors' duplications
+        stateMonitorsSuppliersHashMap.forEach((supplier, conf) -> allStateMonitors.addAll(supplier.getStateMonitors(network, contingencies, conf)));
+        // Avoid duplications by adding stateMonitors in a map with a unique id based on the sorted ids
+        Collection<StateMonitor> uniqueStateMonitors = allStateMonitors.stream()
+                .collect(Collectors.toMap(
+                    stateMonitor -> stateMonitor.getBranchIds().stream().sorted().collect(Collectors.joining(","))
+                            + "/" + stateMonitor.getVoltageLevelIds().stream().sorted().collect(Collectors.joining(","))
+                            + "/" + stateMonitor.getThreeWindingsTransformerIds().stream().sorted().collect(Collectors.joining(",")),
+                    Function.identity()
+                ))
+                .values();
+        List<StateMonitor> stateMonitors = new ArrayList<>(uniqueStateMonitors);
 
         // Export contingencies in a .json file
         ObjectMapper mapper = JsonUtil.createObjectMapper();
@@ -73,8 +98,7 @@ public class SATestcaseCreator {
         OutputStream outputStreamStateMonitors = Files.newOutputStream(outputDirStateMonitors.resolve(exportName + ".json"));
         mapper.writeValue(outputStreamStateMonitors, stateMonitors);
 
-        SecurityAnalysisComputationParameters parameters = new SecurityAnalysisComputationParameters(network, saParams,
-                contingencies, stateMonitors);
+        SecurityAnalysisComputationParameters parameters = new SecurityAnalysisComputationParameters(network, saParams, contingencies, stateMonitors);
         SecurityAnalysisComputationResults results = runner.computeResults(parameters);
         // Export network
         Properties properties = new Properties();
@@ -94,9 +118,20 @@ public class SATestcaseCreator {
         }
         SATestcaseCreatorParameters params = SATestcaseCreatorParameters.load(parametersFilePath);
         for (SATestcaseCreatorParameters.Parameters parameters : params.getParameters()) {
-            SATestcaseCreatorParameters.Rate rate = parameters.getRate();
-            SATestcaseCreatorParameters.StateMonitorsRate stateMonitorsRate = rate.getStateMonitorsRate();
-            SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), new EfficientContingenciesProvider(rate.getContingenciesRate().getRates()), new DefaultStateMonitorsProvider(rate.getStateMonitorsRate().getRates()));
+            HashMap<ContingenciesSupplier, HashMap<String, ?>> contingenciesSuppliersHashMap = new HashMap<>();
+            for (SATestcaseCreatorParameters.ContingenciesSupplierParameters contingenciesSupplierParameters : parameters.getContingenciesSuppliersParameters()) {
+                // Fetch and associate configuration to implementation
+                ContingenciesSupplier contingenciesSupplier = ContingenciesSuppliers.getInstance(contingenciesSupplierParameters.getName());
+                contingenciesSuppliersHashMap.put(contingenciesSupplier, contingenciesSupplierParameters.getConfiguration());
+            }
+            HashMap<StateMonitorsSupplier, HashMap<String, ?>> stateMonitorsSuppliersHashMap = new HashMap<>();
+            for (SATestcaseCreatorParameters.StateMonitorsSupplierParameters stateMonitorsSupplierParameters : parameters.getStateMonitorsSuppliersParameters()) {
+                // Fetch and set chosen implementation
+                StateMonitorsSupplier stateMonitorsSupplier = StateMonitorsSuppliers.getInstance(stateMonitorsSupplierParameters.getName());
+                stateMonitorsSuppliersHashMap.put(stateMonitorsSupplier, stateMonitorsSupplierParameters.getConfiguration());
+            }
+
+            SATestcaseCreator creator = new SATestcaseCreator(new SecurityAnalysisComputationRunner(), contingenciesSuppliersHashMap, stateMonitorsSuppliersHashMap);
 
             Network network = Network.read(parameters.getNetworkPath());
             SecurityAnalysisParameters saParams = JsonSecurityAnalysisParameters.read(parameters.getSAParametersPath());
@@ -109,6 +144,7 @@ public class SATestcaseCreator {
             Files.createDirectories(outputDirContingencies);
             Files.createDirectories(outputDirStateMonitors);
             creator.createResults(testCaseName, network, saParams, outputDir, outputDirContingencies, outputDirStateMonitors);
+
         }
     }
 }

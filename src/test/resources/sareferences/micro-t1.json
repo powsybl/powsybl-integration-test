@@ -9,7 +9,7 @@
         "acceptableDuration" : 0,
         "limit" : 491.9,
         "limitReduction" : 1.0,
-        "value" : 612.851094100623,
+        "value" : 612.8510941006231,
         "side" : "ONE"
       }, {
         "subjectId" : "e8a7eaec-51d6-4571-b3d9-c36d52073c33",
@@ -17,7 +17,7 @@
         "acceptableDuration" : 0,
         "limit" : 859.8,
         "limitReduction" : 1.0,
-        "value" : 1096.180396346683,
+        "value" : 1096.1803963466832,
         "side" : "TWO"
       } ],
       "actionsTaken" : [ ]
@@ -25,185 +25,42 @@
     "networkResult" : {
       "branchResults" : [ {
         "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
-        "p1" : -11.110736147715905,
-        "q1" : -1.8982595744665036,
+        "p1" : -11.110736147715924,
+        "q1" : -1.898259574466591,
         "i1" : 29.194081800020317,
-        "p2" : 17.116513580139948,
-        "q2" : 1.1867621657658047,
-        "i2" : 44.275883704545656
+        "p2" : 17.116513580139962,
+        "q2" : 1.1867621657658929,
+        "i2" : 44.275883704545706
       } ],
       "busResults" : [ {
         "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
         "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
         "v" : 115.5,
-        "angle" : -8.116277078713981
+        "angle" : -8.116277078713992
       } ],
       "threeWindingsTransformerResults" : [ {
         "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
-        "p1" : 48.304272698883516,
+        "p1" : 48.30427269888379,
         "q1" : 66.88437017237871,
-        "i1" : 115.74520299620292,
-        "p2" : -48.22449189146635,
-        "q2" : -65.80326790421425,
-        "i2" : 211.30037809063296,
-        "p3" : 0.0,
+        "i1" : 115.74520299620302,
+        "p2" : -48.22449189146653,
+        "q2" : -65.80326790421711,
+        "i2" : 211.3003780906361,
+        "p3" : 1.814647055944549E-13,
         "q3" : 0.0,
-        "i3" : 3.906971807255495E-11
+        "i3" : 3.914595174128374E-11
       } ]
     }
   },
   "postContingencyResults" : [ {
     "contingency" : {
-      "id" : "1c6beed6-1acf-42e7-ba55-0cc9f04bddd8",
+      "id" : "[78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49, dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b]",
       "elements" : [ {
-        "id" : "1c6beed6-1acf-42e7-ba55-0cc9f04bddd8",
-        "type" : "LOAD"
-      } ]
-    },
-    "status" : "CONVERGED",
-    "limitViolationsResult" : {
-      "limitViolations" : [ ],
-      "actionsTaken" : [ ]
-    },
-    "networkResult" : {
-      "branchResults" : [ {
-        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
-        "p1" : 0.003362638980302842,
-        "q1" : 4.657766258462323E-4,
-        "i1" : 0.008607813992793704,
-        "p2" : 6.216611537353323,
-        "q2" : -1.02398668987661,
-        "i2" : 15.981665605387208
-      } ],
-      "busResults" : [ {
-        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
-        "v" : 115.5,
-        "angle" : -4.310352783448299
-      } ],
-      "threeWindingsTransformerResults" : [ ]
-    }
-  }, {
-    "contingency" : {
-      "id" : "a16b4a6c-70b1-4abf-9a9d-bd0fa47f9fe4 + a279a3dc-550b-426c-af3a-61b7be508dcc",
-      "elements" : [ {
-        "id" : "a16b4a6c-70b1-4abf-9a9d-bd0fa47f9fe4 + a279a3dc-550b-426c-af3a-61b7be508dcc",
-        "type" : "BRANCH"
-      } ]
-    },
-    "status" : "CONVERGED",
-    "limitViolationsResult" : {
-      "limitViolations" : [ ],
-      "actionsTaken" : [ ]
-    },
-    "networkResult" : {
-      "branchResults" : [ {
-        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
-        "p1" : -5.207142661693256,
-        "q1" : -2.0323005163695407,
-        "i1" : 14.480018406091052,
-        "p2" : 11.193717456912026,
-        "q2" : 1.1343430705179554,
-        "i2" : 29.055104844328074
-      } ],
-      "busResults" : [ {
-        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
-        "v" : 115.5,
-        "angle" : -8.345686037524397
-      } ],
-      "threeWindingsTransformerResults" : [ {
-        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
-        "p1" : 58.753217182654396,
-        "q1" : 66.82051981562775,
-        "i1" : 124.83859043528535,
-        "p2" : -58.66050400429679,
-        "q2" : -65.49737214848932,
-        "i2" : 227.7710346470685,
-        "p3" : 3.628797342608765E-13,
-        "q3" : 0.0,
-        "i3" : 1.098835820790608E-11
-      } ]
-    }
-  }, {
-    "contingency" : {
-      "id" : "17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13",
-      "elements" : [ {
-        "id" : "17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13",
-        "type" : "BRANCH"
-      } ]
-    },
-    "status" : "CONVERGED",
-    "limitViolationsResult" : {
-      "limitViolations" : [ ],
-      "actionsTaken" : [ ]
-    },
-    "networkResult" : {
-      "branchResults" : [ {
-        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
-        "p1" : -4.671274725412655,
-        "q1" : -0.8759877173269622,
-        "i1" : 12.317664812581826,
-        "p2" : 10.640823824513701,
-        "q2" : -0.03459467873816867,
-        "i2" : 27.53950206010823
-      } ],
-      "busResults" : [ {
-        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
-        "v" : 115.5,
-        "angle" : -8.380732167719184
-      } ],
-      "threeWindingsTransformerResults" : [ {
-        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
-        "p1" : 59.714434707142495,
-        "q1" : 68.2384715440029,
-        "i1" : 127.24229518977839,
-        "p2" : -59.618127897305115,
-        "q2" : -66.84792468315321,
-        "i2" : 232.14290570069002,
-        "p3" : 1.8138553924178054E-13,
-        "q3" : 0.0,
-        "i3" : 3.906971807255495E-11
-      } ]
-    }
-  }, {
-    "contingency" : {
-      "id" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
-      "elements" : [ {
-        "id" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
-        "type" : "THREE_WINDINGS_TRANSFORMER"
-      } ]
-    },
-    "status" : "CONVERGED",
-    "limitViolationsResult" : {
-      "limitViolations" : [ ],
-      "actionsTaken" : [ ]
-    },
-    "networkResult" : {
-      "branchResults" : [ {
-        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
-        "p1" : 0.003362638980302842,
-        "q1" : 4.657766258462323E-4,
-        "i1" : 0.008607813992793704,
-        "p2" : 6.216611537353323,
-        "q2" : -1.02398668987661,
-        "i2" : 15.981665605387208
-      } ],
-      "busResults" : [ {
-        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
-        "v" : 115.5,
-        "angle" : -4.310352783448299
-      } ],
-      "threeWindingsTransformerResults" : [ ]
-    }
-  }, {
-    "contingency" : {
-      "id" : "002b0a40-3957-46db-b84a-30420083558f",
-      "elements" : [ {
-        "id" : "002b0a40-3957-46db-b84a-30420083558f",
-        "type" : "SHUNT_COMPENSATOR"
+        "id" : "78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49",
+        "type" : "LINE"
+      }, {
+        "id" : "dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b",
+        "type" : "LINE"
       } ]
     },
     "status" : "CONVERGED",
@@ -220,30 +77,72 @@
     "networkResult" : {
       "branchResults" : [ {
         "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
-        "p1" : -99.22654799688513,
-        "q1" : 38.238152191863115,
-        "i1" : 285.84548572410637,
-        "p2" : 105.91701414956323,
-        "q2" : -20.814473037242298,
-        "i2" : 300.51815068844513
+        "p1" : -99.22350996168659,
+        "q1" : 38.79557020512154,
+        "i1" : 286.49436258948583,
+        "p2" : 105.91100562848376,
+        "q2" : -21.290559728986416,
+        "i2" : 301.14640931978556
       } ],
       "busResults" : [ {
         "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
         "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
         "v" : 115.5,
-        "angle" : -44.873914003053706
+        "angle" : -44.95545637569438
       } ],
       "threeWindingsTransformerResults" : [ {
         "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
-        "p1" : 2.613858459415094E-4,
-        "q1" : 4.899743975453273E-5,
-        "i1" : 3.9313539574863164E-4,
-        "p2" : -1.9171101394549375E-4,
-        "q2" : -0.37181914686201917,
-        "i2" : 0.9994682780488774,
-        "p3" : 3.4686502950690737E-13,
+        "p1" : 2.7218807345223727E-4,
+        "q1" : 5.0961571485126056E-5,
+        "i1" : 4.0952921109300744E-4,
+        "p2" : -2.0031720871290385E-4,
+        "q2" : -0.3715249267402668,
+        "i2" : 0.9990759271807641,
+        "p3" : 1.040180012613989E-12,
         "q3" : 0.0,
         "i3" : 1.9534859036277476E-11
+      } ]
+    }
+  }, {
+    "contingency" : {
+      "id" : "17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13",
+      "elements" : [ {
+        "id" : "17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13",
+        "type" : "LINE"
+      } ]
+    },
+    "status" : "CONVERGED",
+    "limitViolationsResult" : {
+      "limitViolations" : [ ],
+      "actionsTaken" : [ ]
+    },
+    "networkResult" : {
+      "branchResults" : [ {
+        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
+        "p1" : -4.671274725412611,
+        "q1" : -0.8759877173269622,
+        "i1" : 12.317664812581773,
+        "p2" : 10.640823824513662,
+        "q2" : -0.03459467873816867,
+        "i2" : 27.539502060108145
+      } ],
+      "busResults" : [ {
+        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
+        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "v" : 115.5,
+        "angle" : -8.380732167719172
+      } ],
+      "threeWindingsTransformerResults" : [ {
+        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
+        "p1" : 59.71443470714222,
+        "q1" : 68.2384715440029,
+        "i1" : 127.24229518977812,
+        "p2" : -59.618127897305115,
+        "q2" : -66.84792468315321,
+        "i2" : 232.14290570069025,
+        "p3" : 1.8138553924178054E-13,
+        "q3" : 0.0,
+        "i3" : 3.9373767156787005E-11
       } ]
     }
   }, {
@@ -271,30 +170,162 @@
     "networkResult" : {
       "branchResults" : [ {
         "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
-        "p1" : -99.22523404390303,
-        "q1" : 38.48079734310082,
-        "i1" : 286.12704731714894,
-        "p2" : 105.91439719946287,
+        "p1" : -99.22523404390317,
+        "q1" : 38.48079734310099,
+        "i1" : 286.1270473171492,
+        "p2" : 105.91439719946302,
         "q2" : -21.021845608981057,
-        "i2" : 300.7907719771971
+        "i2" : 300.7907719771974
       } ],
       "busResults" : [ {
         "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
         "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
         "v" : 115.5,
-        "angle" : -44.8738828029232
+        "angle" : -44.873882802923276
       } ],
       "threeWindingsTransformerResults" : [ {
         "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
         "p1" : 2.6582255464070774E-4,
-        "q1" : 4.980078410276174E-5,
-        "i1" : 3.998700911620366E-4,
-        "p2" : -1.9527765950937674E-4,
-        "q2" : -0.3716910241640421,
-        "i2" : 0.9992973555331268,
-        "p3" : 1.2138168548996743E-12,
+        "q1" : 4.980078549003921E-5,
+        "i1" : 3.998700944792149E-4,
+        "p2" : -1.9527765959607383E-4,
+        "q2" : -0.37169102416542926,
+        "i2" : 0.9992973555344834,
+        "p3" : 1.0404144470568639E-12,
         "q3" : -1.387219262742485E-12,
+        "i3" : 1.9534859036277476E-11
+      } ]
+    }
+  }, {
+    "contingency" : {
+      "id" : "a16b4a6c-70b1-4abf-9a9d-bd0fa47f9fe4 + a279a3dc-550b-426c-af3a-61b7be508dcc",
+      "elements" : [ {
+        "id" : "a16b4a6c-70b1-4abf-9a9d-bd0fa47f9fe4 + a279a3dc-550b-426c-af3a-61b7be508dcc",
+        "type" : "LINE"
+      } ]
+    },
+    "status" : "CONVERGED",
+    "limitViolationsResult" : {
+      "limitViolations" : [ ],
+      "actionsTaken" : [ ]
+    },
+    "networkResult" : {
+      "branchResults" : [ {
+        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
+        "p1" : -5.207142661693256,
+        "q1" : -2.0323005163694523,
+        "i1" : 14.480018406090958,
+        "p2" : 11.193717456912024,
+        "q2" : 1.134343070517867,
+        "i2" : 29.055104844328014
+      } ],
+      "busResults" : [ {
+        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
+        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "v" : 115.5,
+        "angle" : -8.345686037524398
+      } ],
+      "threeWindingsTransformerResults" : [ {
+        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
+        "p1" : 58.753217182654396,
+        "q1" : 66.82051981562775,
+        "i1" : 124.83859043528548,
+        "p2" : -58.66050400429679,
+        "q2" : -65.49737214848932,
+        "i2" : 227.7710346470685,
+        "p3" : 0.0,
+        "q3" : 0.0,
         "i3" : 0.0
+      } ]
+    }
+  }, {
+    "contingency" : {
+      "id" : "78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49",
+      "elements" : [ {
+        "id" : "78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49",
+        "type" : "LINE"
+      } ]
+    },
+    "status" : "CONVERGED",
+    "limitViolationsResult" : {
+      "limitViolations" : [ ],
+      "actionsTaken" : [ ]
+    },
+    "networkResult" : {
+      "branchResults" : [ {
+        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
+        "p1" : -11.320039408526911,
+        "q1" : -1.7921647705260793,
+        "i1" : 29.71148393954896,
+        "p2" : 17.314822649244196,
+        "q2" : 1.0910054781642142,
+        "i2" : 44.81626691650729
+      } ],
+      "busResults" : [ {
+        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
+        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "v" : 115.5,
+        "angle" : -8.115137265495319
+      } ],
+      "threeWindingsTransformerResults" : [ {
+        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
+        "p1" : 48.432967437831685,
+        "q1" : 62.608232345564076,
+        "i1" : 111.24850064418584,
+        "p2" : -48.359249677075894,
+        "q2" : -61.63932084461459,
+        "i2" : 203.10239677719906,
+        "p3" : 1.8121221480020736E-13,
+        "q3" : 0.0,
+        "i3" : 2.4418573795346844E-12
+      } ]
+    }
+  }, {
+    "contingency" : {
+      "id" : "dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b",
+      "elements" : [ {
+        "id" : "dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b",
+        "type" : "LINE"
+      } ]
+    },
+    "status" : "CONVERGED",
+    "limitViolationsResult" : {
+      "limitViolations" : [ {
+        "subjectId" : "469df5f7-058f-4451-a998-57a48e8a56fe",
+        "limitType" : "HIGH_VOLTAGE",
+        "limit" : 418.00000000000006,
+        "limitReduction" : 1.0,
+        "value" : 420.295208752362
+      } ],
+      "actionsTaken" : [ ]
+    },
+    "networkResult" : {
+      "branchResults" : [ {
+        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
+        "p1" : -99.22654799688566,
+        "q1" : 38.2381521918637,
+        "i1" : 285.84548572410813,
+        "p2" : 105.91701414956363,
+        "q2" : -20.81447303724269,
+        "i2" : 300.51815068844667
+      } ],
+      "busResults" : [ {
+        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
+        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "v" : 115.5,
+        "angle" : -44.87391400305397
+      } ],
+      "threeWindingsTransformerResults" : [ {
+        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
+        "p1" : 2.613858460282293E-4,
+        "q1" : 4.8997441142051035E-5,
+        "i1" : 3.931353945420428E-4,
+        "p2" : -1.917110121245396E-4,
+        "q2" : -0.3718191468620191,
+        "i2" : 0.9994682780473662,
+        "p3" : 0.0,
+        "q3" : 1.3874601180276295E-12,
+        "i3" : 4.368127273599247E-11
       } ]
     }
   }, {
@@ -319,64 +350,19 @@
         "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
         "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
         "v" : 115.5,
-        "angle" : -8.597450554301869
+        "angle" : -8.597450554301876
       } ],
       "threeWindingsTransformerResults" : [ {
         "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
         "p1" : 70.54597788868905,
         "q1" : 69.9449140786448,
         "i1" : 139.40747235725783,
-        "p2" : -70.43049094473048,
+        "p2" : -70.43049094473022,
         "q2" : -68.1952299778527,
-        "i2" : 254.21042738496104,
-        "p3" : -5.440158318011586E-13,
+        "i2" : 254.21042738496075,
+        "p3" : -3.626772212007724E-13,
         "q3" : 0.0,
-        "i3" : 6.1046434488367115E-12
-      } ]
-    }
-  }, {
-    "contingency" : {
-      "id" : "[78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49, b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc]",
-      "elements" : [ {
-        "id" : "78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49",
-        "type" : "LINE"
-      }, {
-        "id" : "b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc",
-        "type" : "LINE"
-      } ]
-    },
-    "status" : "CONVERGED",
-    "limitViolationsResult" : {
-      "limitViolations" : [ ],
-      "actionsTaken" : [ ]
-    },
-    "networkResult" : {
-      "branchResults" : [ {
-        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
-        "p1" : -14.89773347969265,
-        "q1" : -0.4073408907768598,
-        "i1" : 38.602643906326634,
-        "p2" : 20.905547942956375,
-        "q2" : -0.13216763348360247,
-        "i2" : 54.03892890689113
-      } ],
-      "busResults" : [ {
-        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
-        "v" : 115.5,
-        "angle" : -9.298634387895355
-      } ],
-      "threeWindingsTransformerResults" : [ {
-        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
-        "p1" : 41.410000374319175,
-        "q1" : 70.50879577526247,
-        "i1" : 114.64188874719865,
-        "p2" : -41.33170354056951,
-        "q2" : -69.45569741456632,
-        "i2" : 209.34908863607515,
-        "p3" : 1.815221532016499E-13,
-        "q3" : 0.0,
-        "i3" : 3.906971807255495E-11
+        "i3" : 7.325572138604053E-12
       } ]
     }
   }, {
@@ -398,18 +384,18 @@
     "networkResult" : {
       "branchResults" : [ {
         "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
-        "p1" : 4.807142438667391,
-        "q1" : -1.01513446791754,
-        "i1" : 12.73762165508971,
-        "p2" : 1.1477392159333721,
-        "q2" : 0.02731506984298608,
-        "i2" : 2.9747684566938886
+        "p1" : 4.807142438667396,
+        "q1" : -1.015134467917452,
+        "i1" : 12.73762165508956,
+        "p2" : 1.147739215933394,
+        "q2" : 0.027315069842898127,
+        "i2" : 2.9747684566939534
       } ],
       "busResults" : [ {
         "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
         "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
         "v" : 115.5,
-        "angle" : -8.76489425952639
+        "angle" : -8.764894259526393
       } ],
       "threeWindingsTransformerResults" : [ {
         "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
@@ -418,61 +404,97 @@
         "i1" : 143.9604272713414,
         "p2" : -76.36861183740702,
         "q2" : -66.45076721984104,
-        "i2" : 262.448714598793,
-        "p3" : -3.6268408753355187E-13,
+        "i2" : 262.44871459879016,
+        "p3" : 0.0,
+        "q3" : 0.0,
+        "i3" : 3.9088790428132E-11
+      } ]
+    }
+  }, {
+    "contingency" : {
+      "id" : "[78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49, b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc]",
+      "elements" : [ {
+        "id" : "78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49",
+        "type" : "LINE"
+      }, {
+        "id" : "b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc",
+        "type" : "LINE"
+      } ]
+    },
+    "status" : "CONVERGED",
+    "limitViolationsResult" : {
+      "limitViolations" : [ ],
+      "actionsTaken" : [ ]
+    },
+    "networkResult" : {
+      "branchResults" : [ {
+        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
+        "p1" : -14.89773347969261,
+        "q1" : -0.4073408907767718,
+        "i1" : 38.60264390632661,
+        "p2" : 20.90554794295637,
+        "q2" : -0.13216763348369065,
+        "i2" : 54.03892890689112
+      } ],
+      "busResults" : [ {
+        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
+        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "v" : 115.5,
+        "angle" : -9.298634387895365
+      } ],
+      "threeWindingsTransformerResults" : [ {
+        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
+        "p1" : 41.410000374319175,
+        "q1" : 70.50879577526247,
+        "i1" : 114.64188874719865,
+        "p2" : -41.33170354056915,
+        "q2" : -69.45569741456488,
+        "i2" : 209.34908863607163,
+        "p3" : 0.0,
         "q3" : 0.0,
         "i3" : 3.9543767421761316E-11
       } ]
     }
   }, {
     "contingency" : {
-      "id" : "[78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49, dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b]",
+      "id" : "b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc",
       "elements" : [ {
-        "id" : "78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49",
-        "type" : "LINE"
-      }, {
-        "id" : "dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b",
+        "id" : "b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc",
         "type" : "LINE"
       } ]
     },
     "status" : "CONVERGED",
     "limitViolationsResult" : {
-      "limitViolations" : [ {
-        "subjectId" : "469df5f7-058f-4451-a998-57a48e8a56fe",
-        "limitType" : "HIGH_VOLTAGE",
-        "limit" : 418.00000000000006,
-        "limitReduction" : 1.0,
-        "value" : 420.295208752362
-      } ],
+      "limitViolations" : [ ],
       "actionsTaken" : [ ]
     },
     "networkResult" : {
       "branchResults" : [ {
         "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
-        "p1" : -99.22350996168723,
-        "q1" : 38.795570205122196,
-        "i1" : 286.4943625894883,
-        "p2" : 105.91100562848455,
-        "q2" : -21.290559728986715,
-        "i2" : 301.1464093197882
+        "p1" : -12.378064764745426,
+        "q1" : -1.3570733831201642,
+        "i1" : 32.24751713358896,
+        "p2" : 18.385538304177533,
+        "q2" : 0.6974532696615522,
+        "i2" : 47.501200074089205
       } ],
       "busResults" : [ {
         "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
         "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
         "v" : 115.5,
-        "angle" : -44.95545637569479
+        "angle" : -8.487606740795576
       } ],
       "threeWindingsTransformerResults" : [ {
         "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
-        "p1" : 2.7218807371229303E-4,
-        "q1" : 5.0961575646020606E-5,
-        "i1" : 4.0952921426645923E-4,
-        "p2" : -2.00317206892676E-4,
-        "q2" : -0.37152492673887977,
-        "i2" : 0.9990759271766995,
-        "p3" : -1.0401800126139883E-12,
+        "p1" : 45.90332559959055,
+        "q1" : 68.98497432185262,
+        "i1" : 116.18352032678891,
+        "p2" : -45.82291860967156,
+        "q2" : -67.8927114320893,
+        "i2" : 212.12071501370517,
+        "p3" : -1.8152936937352076E-13,
         "q3" : 0.0,
-        "i3" : 1.9534859036277476E-11
+        "i3" : 1.2209286897673422E-12
       } ]
     }
   } ],

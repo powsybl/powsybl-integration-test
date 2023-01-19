@@ -21,7 +21,7 @@ A test case is the base input of all tests. It contains:
 Obviously, a test case actual form depends on the calculation that you want to run. For instance, a test case for Load 
 Flow calculations will contain:
 - **Load flow calculation parameters**
-  - A network, defining the problem topology. A
+  - A network, defining the problem topology.
   - A LoadFlowParameters object, defining the parameters to apply to the calculation 
     (See Java class [com.powsybl.loadflow.LoadFlowParameters](https://github.com/powsybl/powsybl-core/blob/main/loadflow/loadflow-api/src/main/java/com/powsybl/loadflow/LoadFlowParameters.java)).
 - **Load flow calculation results**
@@ -55,9 +55,58 @@ In this file, you will see that each link must be provided as an absolute path. 
 each test case is the following:
 - **testCaseName**: the name that will be given to the generated files (excluding the file extension).
 - **networkPath**: path to the input network file (xiidm, cgmes or matpower).
-- **lfParametersPath**: path to the JSON serialization if the loadflow parameters.
+- **lfParametersPath**: path to the JSON serialization of the loadflow parameters.
 - **outputPath**: path to the output directory.
 
 After running the creator, the testcase reference files will be located in the **outputPath** directory.
 - A network file, in XIIDM format.
 - A result file (JSON serialization).
+
+## Security analysis test cases creation
+
+To create new security analysis test cases, you will need to fill an input file like this one: [example-sa-input.json](example-sa-input.json). 
+The structure is very similar to the one for the loadflow, except for:
+- **saParametersPath**: path to the JSON serialization of the security analysis parameters.
+- **contingenciesOutputPath**: path to the contingencies' directory.
+- **stateMonitorsOutputPath**: path to the state monitors' directory.
+- **contingenciesSuppliers**: the list of *ContingenciesSupplier* implementation you want to use for this test case.
+- **sateMonitorsSuppliers**: the list of *StateMonitorsSupplier* implementation you want to use for this test case.
+
+### Contingencies and StateMonitors suppliers
+
+It is possible to use and/or create implementations of the interfaces [ContingenciesSupplier](../src/main/java/com/powsybl/integrationtest/creation/security/contingencies/ContingenciesSupplier.java) and [StateMonitorsSuppliers](../src/main/java/com/powsybl/integrationtest/creation/security/statemonitors/StateMonitorsSupplier.java).
+These implementations are different strategies to create contingencies and state monitors.
+
+There is some implementations already existing and ready to use:
+
+Contingencies:
+- [RandomContingenciesSupplier](../src/main/java/com/powsybl/integrationtest/creation/security/contingencies/RandomContingenciesSupplier.java)
+- [LinesVoltageLevelContingenciesSupplier](../src/main/java/com/powsybl/integrationtest/creation/security/contingencies/ContingenciesSupplier.java)
+- [PairOfLinesContingenciesSupplier](../src/main/java/com/powsybl/integrationtest/creation/security/contingencies/ContingenciesSupplier.java)
+
+StateMonitors:
+- [RandomStateMonitorsSupplier](../src/main/java/com/powsybl/integrationtest/creation/security/contingencies/ContingenciesSupplier.java)
+
+## How to use an existing implementation
+
+To use an already existing implementation of one of these interfaces, you need to provide the name of the chosen implementation
+and its configuration (i.e. *ContingenciesSupplierParameters*, an inner class in [SATestcaseCreatorParameters](../src/main/java/com/powsybl/integrationtest/creation/security/SATestcaseCreatorParameters.java))
+
+The configuration's parameters can be different from an implementation to another, here's how it works:
+- **name**: implementation's name (e.g. "RandomContingenciesSupplier")
+- **configuration**: set configuration's parameters values (e.g. "Generator": 100) 
+
+
+## How to create a new implementation
+
+Once you know how to use an existing implementation, you can create a new implementation that fits your needs. 
+
+Let's say you want to create a new [ContingenciesSupplier](../src/main/java/com/powsybl/integrationtest/creation/security/contingencies/ContingenciesSupplier.java)
+you will need to:
+1. Create a new class `YourImplementationContingenciesSupplier.java`
+2. Which `implements ContingenciesSupplier`
+3. Add `@AutoService(ContingenciesSupplier.class)` to be able to choose this implementation to create new test cases
+4. Implement the method `getContingencies(network, configuration)` which returns a `List<Contingency>`
+   1. First in this method you can set your parameters with `configuration`
+   2. Then you can use these parameters to implement the contingencies selection's strategy you want
+

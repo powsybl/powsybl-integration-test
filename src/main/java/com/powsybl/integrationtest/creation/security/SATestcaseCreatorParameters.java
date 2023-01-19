@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Parameters used by the SA test cases creator. Made to be loaded from a JSON file
+ * Parameters used by the SA test cases' creator. Made to be loaded from a JSON file
  *
  * @author Arthur Michaut <arthur.michaut at artelys.com>
  */
@@ -33,88 +33,33 @@ public class SATestcaseCreatorParameters {
         this.parameters = parameters;
     }
 
-    static class StateMonitorsRate {
+    static class ContingenciesSupplierParameters {
         @JsonProperty
-        private double branches;
+        private String name;
         @JsonProperty
-        private double voltageLevels;
-        @JsonProperty
-        private double threeWindingsTransformers;
+        private HashMap<String, ?> configuration;
 
-        public double getBranchesRate() {
-            return  branches;
+        public String getName() {
+            return name;
         }
 
-        public double getVoltageLevelsRate() {
-            return voltageLevels;
-        }
-
-        public double getThreeWindingsTransformersRate() {
-            return threeWindingsTransformers;
-        }
-
-        public HashMap<Class, Double> getRates() {
-            HashMap<Class, Double> classRateHashMap = new HashMap<>();
-            classRateHashMap.put(Branch.class, branches);
-            classRateHashMap.put(VoltageLevel.class, voltageLevels);
-            classRateHashMap.put(ThreeWindingsTransformer.class, threeWindingsTransformers);
-
-            return classRateHashMap;
+        public HashMap<String, ?> getConfiguration() {
+            return configuration;
         }
     }
 
-    static class ContingenciesRate {
+    static class StateMonitorsSupplierParameters {
         @JsonProperty
-        private double generators;
+        private String name;
         @JsonProperty
-        private double staticVarCompensators;
-        @JsonProperty
-        private double shuntCompensators;
-        @JsonProperty
-        private double branches;
-        @JsonProperty
-        private double hvdcLines;
-        @JsonProperty
-        private double busbarSections;
-        @JsonProperty
-        private double danglingLines;
-        @JsonProperty
-        private double threeWindingsTransformers;
-        @JsonProperty
-        private double loads;
-        @JsonProperty
-        private double switches;
+        private HashMap<String, ?> configuration;
 
-        public HashMap<Class, Double> getRates() {
-            HashMap<Class, Double> classRateHashMap = new HashMap<>();
-            classRateHashMap.put(Generator.class, generators);
-            classRateHashMap.put(StaticVarCompensator.class, staticVarCompensators);
-            classRateHashMap.put(ShuntCompensator.class, shuntCompensators);
-            classRateHashMap.put(Branch.class, branches);
-            classRateHashMap.put(HvdcLine.class, hvdcLines);
-            classRateHashMap.put(BusbarSection.class, busbarSections);
-            classRateHashMap.put(DanglingLine.class, danglingLines);
-            classRateHashMap.put(ThreeWindingsTransformer.class, threeWindingsTransformers);
-            classRateHashMap.put(Load.class, loads);
-            classRateHashMap.put(Switch.class, switches);
-
-            return classRateHashMap;
-        }
-    }
-
-    static class Rate {
-        @JsonProperty
-        private StateMonitorsRate stateMonitors;
-
-        @JsonProperty
-        private ContingenciesRate contingencies;
-
-        public StateMonitorsRate getStateMonitorsRate() {
-            return stateMonitors;
+        public String getName() {
+            return name;
         }
 
-        public ContingenciesRate getContingenciesRate() {
-            return contingencies;
+        public HashMap<String, ?> getConfiguration() {
+            return configuration;
         }
     }
 
@@ -131,8 +76,10 @@ public class SATestcaseCreatorParameters {
         private Path stateMonitorsOutputPath;
         @JsonProperty
         private Path outputPath;
-        @JsonProperty
-        private Rate rate;
+        @JsonProperty("contingenciesSuppliers")
+        private List<ContingenciesSupplierParameters> contingenciesSuppliersParameters;
+        @JsonProperty("stateMonitorsSuppliers")
+        private List<StateMonitorsSupplierParameters> stateMonitorsSuppliersParameters;
 
         public String getTestCaseName() {
             return testCaseName;
@@ -188,8 +135,12 @@ public class SATestcaseCreatorParameters {
             this.outputPath = outputPath;
         }
 
-        public Rate getRate() {
-            return rate;
+        public List<ContingenciesSupplierParameters> getContingenciesSuppliersParameters() {
+            return contingenciesSuppliersParameters;
+        }
+
+        public List<StateMonitorsSupplierParameters> getStateMonitorsSuppliersParameters() {
+            return stateMonitorsSuppliersParameters;
         }
     }
 
