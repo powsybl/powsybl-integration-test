@@ -8,13 +8,14 @@ package com.powsybl.integrationtest.creation.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.powsybl.commons.json.JsonUtil;
-import com.powsybl.contingency.*;
+import com.powsybl.contingency.Contingency;
+import com.powsybl.contingency.ContingencyElement;
 import com.powsybl.contingency.contingency.list.DefaultContingencyList;
 import com.powsybl.contingency.json.ContingencyJsonModule;
-import com.powsybl.iidm.network.*;
+import com.powsybl.iidm.network.Network;
 import com.powsybl.iidm.xml.XMLExporter;
-import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesSuppliers;
 import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesSupplier;
+import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesSuppliers;
 import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsSupplier;
 import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsSuppliers;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationParameters;
@@ -32,6 +33,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -59,30 +61,31 @@ public class SATestcaseCreator {
 
     public void createResults(String exportName, Network network, SecurityAnalysisParameters saParams, Path outputDir, Path outputDirContingencies, Path outputDirStateMonitors)
             throws IOException {
-        Map<String, Contingency> contingencyMap = new HashMap<>();
         List<Contingency> allContingencies = new ArrayList<>();
         // Add all contingencies in a list, regardless of contingencies' duplications
         contingenciesSuppliersHashMap.forEach((supplier, conf) -> allContingencies.addAll(supplier.getContingencies(network, conf)));
         // Avoid duplications by adding contingency in a map with a unique id based on the sorted elements' id
-        for (Contingency contingency : allContingencies) {
-            String contingencyId = String.valueOf(contingency.getElements().stream().map(elt -> elt.getId()).sorted().collect(Collectors.toList()));
-            contingencyMap.put(contingencyId, contingency);
-        }
-        List<Contingency> contingencies = new ArrayList<>(contingencyMap.values());
+        Collection<Contingency> uniqueContingencies = allContingencies.stream()
+                .collect(Collectors.toMap(
+                    contingency -> contingency.getElements().stream().map(ContingencyElement::getId).sorted().collect(Collectors.joining("/")),
+                    Function.identity()
+                ))
+                .values();
+        List<Contingency> contingencies = new ArrayList<>(uniqueContingencies);
 
-        Map<String, StateMonitor> stateMonitorsMap = new HashMap<>();
         List<StateMonitor> allStateMonitors = new ArrayList<>();
         // Add all stateMonitors in a list, regardless of stateMonitors' duplications
         stateMonitorsSuppliersHashMap.forEach((supplier, conf) -> allStateMonitors.addAll(supplier.getStateMonitors(network, contingencies, conf)));
         // Avoid duplications by adding stateMonitors in a map with a unique id based on the sorted ids
-        for (StateMonitor stateMonitor : allStateMonitors) {
-            String sortedBranchIds = String.valueOf(stateMonitor.getBranchIds().stream().sorted().collect(Collectors.toList()));
-            String sortedVoltageLevelIds = String.valueOf(stateMonitor.getVoltageLevelIds().stream().sorted().collect(Collectors.toList()));
-            String sortedThreeWindingsTransformerIds = String.valueOf(stateMonitor.getThreeWindingsTransformerIds().stream().sorted().collect(Collectors.toList()));
-            String stateMonitorId = sortedBranchIds + sortedVoltageLevelIds + sortedThreeWindingsTransformerIds;
-            stateMonitorsMap.put(stateMonitorId, stateMonitor);
-        }
-        List<StateMonitor> stateMonitors = new ArrayList<>(stateMonitorsMap.values());
+        Collection<StateMonitor> uniqueStateMonitors = allStateMonitors.stream()
+                .collect(Collectors.toMap(
+                    stateMonitor -> stateMonitor.getBranchIds().stream().sorted().collect(Collectors.joining(","))
+                            + "/" + stateMonitor.getVoltageLevelIds().stream().sorted().collect(Collectors.joining(","))
+                            + "/" + stateMonitor.getThreeWindingsTransformerIds().stream().sorted().collect(Collectors.joining(",")),
+                    Function.identity()
+                ))
+                .values();
+        List<StateMonitor> stateMonitors = new ArrayList<>(uniqueStateMonitors);
 
         // Export contingencies in a .json file
         ObjectMapper mapper = JsonUtil.createObjectMapper();
