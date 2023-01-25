@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.powsybl.integrationtest.utils.CompareUtils.assertDeltaMax;
+import static com.powsybl.integrationtest.utils.CompareUtils.assertEquals;
 
 /**
  * A component that can compare two provided networks and return a list of string containing a message for each
@@ -46,6 +47,7 @@ public class NetworksComparator {
         errorMessages.addAll(compareLccConverterStations(logPrefix, aNetwork.getNetwork(), anotherNetwork.getNetwork()));
         errorMessages.addAll(compareTwoWindingTransformers(logPrefix, aNetwork.getNetwork(), anotherNetwork.getNetwork()));
         errorMessages.addAll(compareThreeWindingTransformers(logPrefix, aNetwork.getNetwork(), anotherNetwork.getNetwork()));
+        errorMessages.addAll(compareShuntCompensators(logPrefix, aNetwork.getNetwork(), anotherNetwork.getNetwork()));
         return errorMessages;
     }
 
@@ -179,6 +181,20 @@ public class NetworksComparator {
                     logPrefix + "Unexpected RatedS for Leg2 in 3W transformer id : " + test3WT.getId(), errors);
             assertDeltaMax(test3WT.getLeg3().getRatedS(), ref3WT.getLeg3().getRatedS(), deltaP,
                     logPrefix + "Unexpected RatedS for Leg3 in 3W transformer id : " + test3WT.getId(), errors);
+        }
+        return errors;
+    }
+
+    private List<String> compareShuntCompensators(String logPrefix, Network test, Network reference) {
+        ArrayList<String> errors = new ArrayList<>();
+        for (ShuntCompensator testSC : test.getShuntCompensators()) {
+            ShuntCompensator refSC = reference.getShuntCompensator(testSC.getId());
+            assertEquals(testSC.getSectionCount(), refSC.getSectionCount(),
+                    logPrefix + "Unexpected section count for shunt compensator id : " + testSC.getId(), errors);
+            assertDeltaMax(testSC.getTerminal().getQ(), refSC.getTerminal().getQ(), deltaQ,
+                    logPrefix + "Unexpected Q for shunt compensator terminal id : " + testSC.getId(), errors);
+            assertDeltaMax(testSC.getTerminal().getP(), refSC.getTerminal().getP(), deltaP,
+                    logPrefix + "Unexpected P for shunt compensator terminal id : " + testSC.getId(), errors);
         }
         return errors;
     }
