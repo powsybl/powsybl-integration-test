@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.powsybl.integrationtest.utils.CompareUtils.assertDeltaMax;
+import static com.powsybl.integrationtest.utils.CompareUtils.assertEquals;
 
 /**
  * A component that can compare two provided networks and return a list of string containing a message for each
@@ -45,6 +46,8 @@ public class NetworksComparator {
         errorMessages.addAll(compareVcsConverterStations(logPrefix, aNetwork.getNetwork(), anotherNetwork.getNetwork()));
         errorMessages.addAll(compareLccConverterStations(logPrefix, aNetwork.getNetwork(), anotherNetwork.getNetwork()));
         errorMessages.addAll(compareTwoWindingTransformers(logPrefix, aNetwork.getNetwork(), anotherNetwork.getNetwork()));
+        errorMessages.addAll(compareThreeWindingTransformers(logPrefix, aNetwork.getNetwork(), anotherNetwork.getNetwork()));
+        errorMessages.addAll(compareShuntCompensators(logPrefix, aNetwork.getNetwork(), anotherNetwork.getNetwork()));
         return errorMessages;
     }
 
@@ -140,20 +143,58 @@ public class NetworksComparator {
 
     private List<String> compareTwoWindingTransformers(String logPrefix, Network test, Network reference) {
         List<String> errors = new ArrayList<>();
-        for (TwoWindingsTransformer testTwt : test.getTwoWindingsTransformers()) {
-            TwoWindingsTransformer refTwt = reference.getTwoWindingsTransformer(testTwt.getId());
-            if (testTwt.getRatioTapChanger() != null
-                    && testTwt.getRatioTapChanger().isRegulating() && testTwt.getRatioTapChanger().getRegulationTerminal() != null
-                    && testTwt.getRatioTapChanger().getRegulationTerminal().isConnected()) {
-                assertDeltaMax(testTwt.getRatioTapChanger().getTapPosition(), refTwt.getRatioTapChanger().getTapPosition(), 0,
-                        logPrefix + "Unexpected LCC Converter P for LCC converter id: " + testTwt.getId(), errors);
+        for (TwoWindingsTransformer test2WT : test.getTwoWindingsTransformers()) {
+            TwoWindingsTransformer ref2WT = reference.getTwoWindingsTransformer(test2WT.getId());
+            if (test2WT.getRatioTapChanger() != null
+                    && test2WT.getRatioTapChanger().isRegulating() && test2WT.getRatioTapChanger().getRegulationTerminal() != null
+                    && test2WT.getRatioTapChanger().getRegulationTerminal().isConnected()) {
+                assertDeltaMax(test2WT.getRatioTapChanger().getTapPosition(), ref2WT.getRatioTapChanger().getTapPosition(), 0,
+                        logPrefix + "Unexpected LCC Converter P for LCC converter id: " + test2WT.getId(), errors);
             }
-            if (testTwt.getPhaseTapChanger() != null
-                    && testTwt.getPhaseTapChanger().isRegulating() && testTwt.getPhaseTapChanger().getRegulationTerminal() != null
-                    && testTwt.getPhaseTapChanger().getRegulationTerminal().isConnected()) {
-                assertDeltaMax(testTwt.getPhaseTapChanger().getTapPosition(), refTwt.getPhaseTapChanger().getTapPosition(), 0,
-                        logPrefix + "Unexpected LCC Converter Q for LCC converter id: " + testTwt.getId(), errors);
+            if (test2WT.getPhaseTapChanger() != null
+                    && test2WT.getPhaseTapChanger().isRegulating() && test2WT.getPhaseTapChanger().getRegulationTerminal() != null
+                    && test2WT.getPhaseTapChanger().getRegulationTerminal().isConnected()) {
+                assertDeltaMax(test2WT.getPhaseTapChanger().getTapPosition(), ref2WT.getPhaseTapChanger().getTapPosition(), 0,
+                        logPrefix + "Unexpected LCC Converter Q for LCC converter id: " + test2WT.getId(), errors);
             }
+        }
+        return errors;
+    }
+
+    private List<String> compareThreeWindingTransformers(String logPrefix, Network test, Network reference) {
+        List<String> errors = new ArrayList<>();
+        for (ThreeWindingsTransformer test3WT : test.getThreeWindingsTransformers()) {
+            ThreeWindingsTransformer ref3WT = reference.getThreeWindingsTransformer(test3WT.getId());
+            assertDeltaMax(test3WT.getRatedU0(), ref3WT.getRatedU0(), deltaV,
+                    logPrefix + "Unexpected RatedU0 for 3W transformer id : " + test3WT.getId(), errors);
+
+            assertDeltaMax(test3WT.getLeg1().getRatedU(), ref3WT.getLeg1().getRatedU(), deltaV,
+                    logPrefix + "Unexpected RatedU for Leg1 in 3W transformer id : " + test3WT.getId(), errors);
+            assertDeltaMax(test3WT.getLeg2().getRatedU(), ref3WT.getLeg2().getRatedU(), deltaV,
+                    logPrefix + "Unexpected RatedU for Leg2 in 3W transformer id : " + test3WT.getId(), errors);
+            assertDeltaMax(test3WT.getLeg2().getRatedU(), ref3WT.getLeg2().getRatedU(), deltaV,
+                    logPrefix + "Unexpected RatedU for Leg3 in 3W transformer id : " + test3WT.getId(), errors);
+
+            assertDeltaMax(test3WT.getLeg1().getRatedS(), ref3WT.getLeg1().getRatedS(), deltaP,
+                    logPrefix + "Unexpected RatedS for Leg1 in 3W transformer id : " + test3WT.getId(), errors);
+            assertDeltaMax(test3WT.getLeg2().getRatedS(), ref3WT.getLeg2().getRatedS(), deltaP,
+                    logPrefix + "Unexpected RatedS for Leg2 in 3W transformer id : " + test3WT.getId(), errors);
+            assertDeltaMax(test3WT.getLeg3().getRatedS(), ref3WT.getLeg3().getRatedS(), deltaP,
+                    logPrefix + "Unexpected RatedS for Leg3 in 3W transformer id : " + test3WT.getId(), errors);
+        }
+        return errors;
+    }
+
+    private List<String> compareShuntCompensators(String logPrefix, Network test, Network reference) {
+        ArrayList<String> errors = new ArrayList<>();
+        for (ShuntCompensator testSC : test.getShuntCompensators()) {
+            ShuntCompensator refSC = reference.getShuntCompensator(testSC.getId());
+            assertEquals(testSC.getSectionCount(), refSC.getSectionCount(),
+                    logPrefix + "Unexpected section count for shunt compensator id : " + testSC.getId(), errors);
+            assertDeltaMax(testSC.getTerminal().getQ(), refSC.getTerminal().getQ(), deltaQ,
+                    logPrefix + "Unexpected Q for shunt compensator terminal id : " + testSC.getId(), errors);
+            assertDeltaMax(testSC.getTerminal().getP(), refSC.getTerminal().getP(), deltaP,
+                    logPrefix + "Unexpected P for shunt compensator terminal id : " + testSC.getId(), errors);
         }
         return errors;
     }
