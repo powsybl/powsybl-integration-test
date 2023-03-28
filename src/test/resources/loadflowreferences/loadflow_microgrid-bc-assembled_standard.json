@@ -8,7 +8,7 @@
     "status" : "CONVERGED",
     "iterationCount" : 6,
     "slackBusId" : "8d8a82ba-b5b0-4e94-861a-192af055f2b8_0",
-    "slackBusActivePowerMismatch" : 0.08446778753343764,
-    "distributedActivePower" : -45.49728643408386
+    "slackBusActivePowerMismatch" : 0.09581713440534045,
+    "distributedActivePower" : -45.579393897585604
   } ]
 }
