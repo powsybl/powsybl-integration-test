@@ -54,12 +54,119 @@
   },
   "postContingencyResults" : [ {
     "contingency" : {
-      "id" : "[b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc, dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b]",
+      "id" : "[78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49, dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b]",
       "elements" : [ {
-        "id" : "b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc",
+        "id" : "78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49",
         "type" : "LINE"
       }, {
         "id" : "dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b",
+        "type" : "LINE"
+      } ]
+    },
+    "status" : "CONVERGED",
+    "limitViolationsResult" : {
+      "limitViolations" : [ {
+        "subjectId" : "469df5f7-058f-4451-a998-57a48e8a56fe",
+        "limitType" : "HIGH_VOLTAGE",
+        "limit" : 418.00000000000006,
+        "limitReduction" : 1.0,
+        "value" : 420.2952087523626
+      } ],
+      "actionsTaken" : [ ]
+    },
+    "networkResult" : {
+      "branchResults" : [ {
+        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
+        "p1" : -99.22232500999687,
+        "q1" : 39.09727341911398,
+        "i1" : 286.8498287268694,
+        "p2" : 105.90825877300243,
+        "q2" : -21.547643216111958,
+        "i2" : 301.4906026024453
+      } ],
+      "busResults" : [ {
+        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
+        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "v" : 115.5,
+        "angle" : -44.834694813469476
+      } ],
+      "threeWindingsTransformerResults" : [ {
+        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
+        "p1" : 2.6663282629101976E-4,
+        "q1" : 5.1393243040425215E-5,
+        "i1" : 4.0166396225096724E-4,
+        "p2" : -1.9601777887518556E-4,
+        "q2" : -0.37136446858757566,
+        "i2" : 0.998860313582209,
+        "p3" : 3.466517327121544E-13,
+        "q3" : 0.0,
+        "i3" : 0.0
+      } ]
+    },
+    "connectivityResult" : {
+      "createdSynchronousComponentCount" : 4,
+      "createdConnectedComponentCount" : 0,
+      "disconnectedLoadActivePower" : 0.0,
+      "disconnectedGenerationActivePower" : 0.0,
+      "disconnectedElements" : [ "96c2b5c8-8e28-4b08-96d2-ca9b09cdbd83", "bac0aa59-1318-4032-b192-15a8d49283ee", "0e8cd279-ad5d-485a-b3a9-093ae8714b72", "78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49", "14d55344-c118-4f54-a430-72f16d12bf7b", "b1fc12ae-ba9f-42ee-9558-3d432cc58fbf", "dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b", "002b0a40-3957-46db-b84a-30420083558f", "6b564930-b5e2-49d3-9d06-e1de28d6fd65" ]
+    }
+  }, {
+    "contingency" : {
+      "id" : "17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13",
+      "elements" : [ {
+        "id" : "17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13",
+        "type" : "LINE"
+      } ]
+    },
+    "status" : "CONVERGED",
+    "limitViolationsResult" : {
+      "limitViolations" : [ ],
+      "actionsTaken" : [ ]
+    },
+    "networkResult" : {
+      "branchResults" : [ {
+        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
+        "p1" : -4.917188726381124,
+        "q1" : -0.7425478398621491,
+        "i1" : 12.889005689612313,
+        "p2" : 10.885666541463847,
+        "q2" : -0.16243928181393663,
+        "i2" : 28.181886305516898
+      } ],
+      "busResults" : [ {
+        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
+        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "v" : 115.5,
+        "angle" : -8.366829205683562
+      } ],
+      "threeWindingsTransformerResults" : [ {
+        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
+        "p1" : 59.28035791246634,
+        "q1" : 68.39776504033284,
+        "i1" : 127.0121710812925,
+        "p2" : -59.184395332402865,
+        "q2" : -67.01365269455202,
+        "i2" : 231.72777708607285,
+        "p3" : -3.627620107140244E-13,
+        "q3" : 0.0,
+        "i3" : 3.662786069302026E-12
+      } ]
+    },
+    "connectivityResult" : {
+      "createdSynchronousComponentCount" : 2,
+      "createdConnectedComponentCount" : 0,
+      "disconnectedLoadActivePower" : 0.0,
+      "disconnectedGenerationActivePower" : 0.0,
+      "disconnectedElements" : [ "484536e9-762a-49a3-9970-d60b9fae03fe", "88a19e5c-6885-4e6e-8d30-c5442444b309", "17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13" ]
+    }
+  }, {
+    "contingency" : {
+      "id" : "[dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b, b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc]",
+      "elements" : [ {
+        "id" : "dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b",
+        "type" : "LINE"
+      }, {
+        "id" : "b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc",
         "type" : "LINE"
       } ]
     },
@@ -108,51 +215,7 @@
       "createdConnectedComponentCount" : 0,
       "disconnectedLoadActivePower" : 0.0,
       "disconnectedGenerationActivePower" : 0.0,
-      "disconnectedElements" : [ "b5a26150-429d-4acb-b45b-055e42c79055", "96c2b5c8-8e28-4b08-96d2-ca9b09cdbd83", "bac0aa59-1318-4032-b192-15a8d49283ee", "0e8cd279-ad5d-485a-b3a9-093ae8714b72", "14d55344-c118-4f54-a430-72f16d12bf7b", "dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b", "002b0a40-3957-46db-b84a-30420083558f", "b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc", "6b564930-b5e2-49d3-9d06-e1de28d6fd65" ]
-    }
-  }, {
-    "contingency" : {
-      "id" : "[b58bf21a-096a-4dae-9a01-3f03b60c24c7, ffbabc27-1ccd-4fdc-b037-e341706c8d29]",
-      "elements" : [ {
-        "id" : "b58bf21a-096a-4dae-9a01-3f03b60c24c7",
-        "type" : "LINE"
-      }, {
-        "id" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
-        "type" : "LINE"
-      } ]
-    },
-    "status" : "CONVERGED",
-    "limitViolationsResult" : {
-      "limitViolations" : [ ],
-      "actionsTaken" : [ ]
-    },
-    "networkResult" : {
-      "branchResults" : [ ],
-      "busResults" : [ {
-        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
-        "v" : 115.5,
-        "angle" : -8.59409774124509
-      } ],
-      "threeWindingsTransformerResults" : [ {
-        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
-        "p1" : 70.5483624532124,
-        "q1" : 69.92293095813142,
-        "i1" : 139.38937935047338,
-        "p2" : -70.43290583610359,
-        "q2" : -68.1738015774086,
-        "i2" : 254.1773957009151,
-        "p3" : 0.0,
-        "q3" : 0.0,
-        "i3" : 0.0
-      } ]
-    },
-    "connectivityResult" : {
-      "createdSynchronousComponentCount" : 4,
-      "createdConnectedComponentCount" : 0,
-      "disconnectedLoadActivePower" : 0.0,
-      "disconnectedGenerationActivePower" : 0.0,
-      "disconnectedElements" : [ "0a84038e-1952-4d9d-9909-3b49c364a1ac", "ddc148fc-3abd-459d-aec1-396283e0def6", "fd136c65-d001-41a1-adc7-c5430b5c5e72", "b58bf21a-096a-4dae-9a01-3f03b60c24c7", "3b394dab-ab47-4022-98be-8123c6dfe7d4", "ffbabc27-1ccd-4fdc-b037-e341706c8d29" ]
+      "disconnectedElements" : [ "96c2b5c8-8e28-4b08-96d2-ca9b09cdbd83", "b5a26150-429d-4acb-b45b-055e42c79055", "bac0aa59-1318-4032-b192-15a8d49283ee", "0e8cd279-ad5d-485a-b3a9-093ae8714b72", "14d55344-c118-4f54-a430-72f16d12bf7b", "dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b", "002b0a40-3957-46db-b84a-30420083558f", "6b564930-b5e2-49d3-9d06-e1de28d6fd65", "b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc" ]
     }
   }, {
     "contingency" : {
@@ -205,168 +268,6 @@
     }
   }, {
     "contingency" : {
-      "id" : "[a16b4a6c-70b1-4abf-9a9d-bd0fa47f9fe4 + a279a3dc-550b-426c-af3a-61b7be508dcc, 17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13]",
-      "elements" : [ {
-        "id" : "a16b4a6c-70b1-4abf-9a9d-bd0fa47f9fe4 + a279a3dc-550b-426c-af3a-61b7be508dcc",
-        "type" : "LINE"
-      }, {
-        "id" : "17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13",
-        "type" : "LINE"
-      } ]
-    },
-    "status" : "CONVERGED",
-    "limitViolationsResult" : {
-      "limitViolations" : [ ],
-      "actionsTaken" : [ ]
-    },
-    "networkResult" : {
-      "branchResults" : [ {
-        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
-        "p1" : 4.807113303038154,
-        "q1" : -1.0151296896772724,
-        "i1" : 12.737600226758891,
-        "p2" : 1.1477169234423008,
-        "q2" : 0.027318894537182347,
-        "i2" : 2.974723786395316
-      } ],
-      "busResults" : [ {
-        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
-        "v" : 115.5,
-        "angle" : -8.761785228002786
-      } ],
-      "threeWindingsTransformerResults" : [ {
-        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
-        "p1" : 76.49399610391556,
-        "q1" : 68.32136721547157,
-        "i1" : 143.94389450947978,
-        "p2" : -76.37092158891356,
-        "q2" : -66.42970021189711,
-        "i2" : 262.4185177426353,
-        "p3" : 0.0,
-        "q3" : 0.0,
-        "i3" : 0.0
-      } ]
-    },
-    "connectivityResult" : {
-      "createdSynchronousComponentCount" : 4,
-      "createdConnectedComponentCount" : 0,
-      "disconnectedLoadActivePower" : 0.0,
-      "disconnectedGenerationActivePower" : 0.0,
-      "disconnectedElements" : [ "484536e9-762a-49a3-9970-d60b9fae03fe", "a16b4a6c-70b1-4abf-9a9d-bd0fa47f9fe4 + a279a3dc-550b-426c-af3a-61b7be508dcc", "88a19e5c-6885-4e6e-8d30-c5442444b309", "21ec578c-689f-4130-80de-fd0fb5a30ed8", "17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13", "925a3a38-cd26-4f89-8891-c5bc8494e1ae" ]
-    }
-  }, {
-    "contingency" : {
-      "id" : "[b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc, 78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49]",
-      "elements" : [ {
-        "id" : "b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc",
-        "type" : "LINE"
-      }, {
-        "id" : "78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49",
-        "type" : "LINE"
-      } ]
-    },
-    "status" : "CONVERGED",
-    "limitViolationsResult" : {
-      "limitViolations" : [ ],
-      "actionsTaken" : [ ]
-    },
-    "networkResult" : {
-      "branchResults" : [ {
-        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
-        "p1" : -15.145439515340536,
-        "q1" : 0.16913901434270046,
-        "i1" : 39.24046776438985,
-        "p2" : 21.14705686947597,
-        "q2" : -0.6939495077690059,
-        "i2" : 54.745905168472746
-      } ],
-      "busResults" : [ {
-        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
-        "v" : 115.5,
-        "angle" : -9.255626385420115
-      } ],
-      "threeWindingsTransformerResults" : [ {
-        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
-        "p1" : 40.97424455322917,
-        "q1" : 71.24810040193634,
-        "i1" : 115.2366098947566,
-        "p2" : -40.89513169412549,
-        "q2" : -70.17970721936291,
-        "i2" : 210.43516146893117,
-        "p3" : 0.0,
-        "q3" : 0.0,
-        "i3" : 3.906971807255495E-11
-      } ]
-    },
-    "connectivityResult" : {
-      "createdSynchronousComponentCount" : 4,
-      "createdConnectedComponentCount" : 0,
-      "disconnectedLoadActivePower" : 0.0,
-      "disconnectedGenerationActivePower" : 0.0,
-      "disconnectedElements" : [ "b5a26150-429d-4acb-b45b-055e42c79055", "0e8cd279-ad5d-485a-b3a9-093ae8714b72", "14d55344-c118-4f54-a430-72f16d12bf7b", "78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49", "b1fc12ae-ba9f-42ee-9558-3d432cc58fbf", "b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc" ]
-    }
-  }, {
-    "contingency" : {
-      "id" : "[dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b, 78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49]",
-      "elements" : [ {
-        "id" : "dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b",
-        "type" : "LINE"
-      }, {
-        "id" : "78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49",
-        "type" : "LINE"
-      } ]
-    },
-    "status" : "CONVERGED",
-    "limitViolationsResult" : {
-      "limitViolations" : [ {
-        "subjectId" : "469df5f7-058f-4451-a998-57a48e8a56fe",
-        "limitType" : "HIGH_VOLTAGE",
-        "limit" : 418.00000000000006,
-        "limitReduction" : 1.0,
-        "value" : 420.2952087523626
-      } ],
-      "actionsTaken" : [ ]
-    },
-    "networkResult" : {
-      "branchResults" : [ {
-        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
-        "p1" : -99.22232500999687,
-        "q1" : 39.09727341911398,
-        "i1" : 286.8498287268694,
-        "p2" : 105.90825877300243,
-        "q2" : -21.547643216111958,
-        "i2" : 301.4906026024453
-      } ],
-      "busResults" : [ {
-        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
-        "v" : 115.5,
-        "angle" : -44.834694813469476
-      } ],
-      "threeWindingsTransformerResults" : [ {
-        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
-        "p1" : 2.6663282629101976E-4,
-        "q1" : 5.1393243040425215E-5,
-        "i1" : 4.0166396225096724E-4,
-        "p2" : -1.9601777887518556E-4,
-        "q2" : -0.37136446858757566,
-        "i2" : 0.998860313582209,
-        "p3" : 3.466517327121544E-13,
-        "q3" : 0.0,
-        "i3" : 0.0
-      } ]
-    },
-    "connectivityResult" : {
-      "createdSynchronousComponentCount" : 4,
-      "createdConnectedComponentCount" : 0,
-      "disconnectedLoadActivePower" : 0.0,
-      "disconnectedGenerationActivePower" : 0.0,
-      "disconnectedElements" : [ "96c2b5c8-8e28-4b08-96d2-ca9b09cdbd83", "bac0aa59-1318-4032-b192-15a8d49283ee", "0e8cd279-ad5d-485a-b3a9-093ae8714b72", "14d55344-c118-4f54-a430-72f16d12bf7b", "78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49", "b1fc12ae-ba9f-42ee-9558-3d432cc58fbf", "dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b", "002b0a40-3957-46db-b84a-30420083558f", "6b564930-b5e2-49d3-9d06-e1de28d6fd65" ]
-    }
-  }, {
-    "contingency" : {
       "id" : "78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49",
       "elements" : [ {
         "id" : "78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49",
@@ -413,55 +314,6 @@
       "disconnectedLoadActivePower" : 0.0,
       "disconnectedGenerationActivePower" : 0.0,
       "disconnectedElements" : [ "0e8cd279-ad5d-485a-b3a9-093ae8714b72", "78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49", "b1fc12ae-ba9f-42ee-9558-3d432cc58fbf" ]
-    }
-  }, {
-    "contingency" : {
-      "id" : "17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13",
-      "elements" : [ {
-        "id" : "17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13",
-        "type" : "LINE"
-      } ]
-    },
-    "status" : "CONVERGED",
-    "limitViolationsResult" : {
-      "limitViolations" : [ ],
-      "actionsTaken" : [ ]
-    },
-    "networkResult" : {
-      "branchResults" : [ {
-        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
-        "p1" : -4.917188726381124,
-        "q1" : -0.7425478398621491,
-        "i1" : 12.889005689612313,
-        "p2" : 10.885666541463847,
-        "q2" : -0.16243928181393663,
-        "i2" : 28.181886305516898
-      } ],
-      "busResults" : [ {
-        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
-        "v" : 115.5,
-        "angle" : -8.366829205683562
-      } ],
-      "threeWindingsTransformerResults" : [ {
-        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
-        "p1" : 59.28035791246634,
-        "q1" : 68.39776504033284,
-        "i1" : 127.0121710812925,
-        "p2" : -59.184395332402865,
-        "q2" : -67.01365269455202,
-        "i2" : 231.72777708607285,
-        "p3" : -3.627620107140244E-13,
-        "q3" : 0.0,
-        "i3" : 3.662786069302026E-12
-      } ]
-    },
-    "connectivityResult" : {
-      "createdSynchronousComponentCount" : 2,
-      "createdConnectedComponentCount" : 0,
-      "disconnectedLoadActivePower" : 0.0,
-      "disconnectedGenerationActivePower" : 0.0,
-      "disconnectedElements" : [ "484536e9-762a-49a3-9970-d60b9fae03fe", "88a19e5c-6885-4e6e-8d30-c5442444b309", "17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13" ]
     }
   }, {
     "contingency" : {
@@ -517,6 +369,154 @@
       "disconnectedLoadActivePower" : 0.0,
       "disconnectedGenerationActivePower" : 0.0,
       "disconnectedElements" : [ "96c2b5c8-8e28-4b08-96d2-ca9b09cdbd83", "bac0aa59-1318-4032-b192-15a8d49283ee", "0e8cd279-ad5d-485a-b3a9-093ae8714b72", "14d55344-c118-4f54-a430-72f16d12bf7b", "dad02278-bd25-476f-8f58-dbe44be72586 + ed0c5d75-4a54-43c8-b782-b20d7431630b", "002b0a40-3957-46db-b84a-30420083558f", "6b564930-b5e2-49d3-9d06-e1de28d6fd65" ]
+    }
+  }, {
+    "contingency" : {
+      "id" : "[ffbabc27-1ccd-4fdc-b037-e341706c8d29, b58bf21a-096a-4dae-9a01-3f03b60c24c7]",
+      "elements" : [ {
+        "id" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
+        "type" : "LINE"
+      }, {
+        "id" : "b58bf21a-096a-4dae-9a01-3f03b60c24c7",
+        "type" : "LINE"
+      } ]
+    },
+    "status" : "CONVERGED",
+    "limitViolationsResult" : {
+      "limitViolations" : [ ],
+      "actionsTaken" : [ ]
+    },
+    "networkResult" : {
+      "branchResults" : [ ],
+      "busResults" : [ {
+        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
+        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "v" : 115.5,
+        "angle" : -8.59409774124509
+      } ],
+      "threeWindingsTransformerResults" : [ {
+        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
+        "p1" : 70.5483624532124,
+        "q1" : 69.92293095813142,
+        "i1" : 139.38937935047338,
+        "p2" : -70.43290583610359,
+        "q2" : -68.1738015774086,
+        "i2" : 254.1773957009151,
+        "p3" : 0.0,
+        "q3" : 0.0,
+        "i3" : 0.0
+      } ]
+    },
+    "connectivityResult" : {
+      "createdSynchronousComponentCount" : 4,
+      "createdConnectedComponentCount" : 0,
+      "disconnectedLoadActivePower" : 0.0,
+      "disconnectedGenerationActivePower" : 0.0,
+      "disconnectedElements" : [ "0a84038e-1952-4d9d-9909-3b49c364a1ac", "ddc148fc-3abd-459d-aec1-396283e0def6", "fd136c65-d001-41a1-adc7-c5430b5c5e72", "b58bf21a-096a-4dae-9a01-3f03b60c24c7", "3b394dab-ab47-4022-98be-8123c6dfe7d4", "ffbabc27-1ccd-4fdc-b037-e341706c8d29" ]
+    }
+  }, {
+    "contingency" : {
+      "id" : "[17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13, a16b4a6c-70b1-4abf-9a9d-bd0fa47f9fe4 + a279a3dc-550b-426c-af3a-61b7be508dcc]",
+      "elements" : [ {
+        "id" : "17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13",
+        "type" : "LINE"
+      }, {
+        "id" : "a16b4a6c-70b1-4abf-9a9d-bd0fa47f9fe4 + a279a3dc-550b-426c-af3a-61b7be508dcc",
+        "type" : "LINE"
+      } ]
+    },
+    "status" : "CONVERGED",
+    "limitViolationsResult" : {
+      "limitViolations" : [ ],
+      "actionsTaken" : [ ]
+    },
+    "networkResult" : {
+      "branchResults" : [ {
+        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
+        "p1" : 4.807113303038154,
+        "q1" : -1.0151296896772724,
+        "i1" : 12.737600226758891,
+        "p2" : 1.1477169234423008,
+        "q2" : 0.027318894537182347,
+        "i2" : 2.974723786395316
+      } ],
+      "busResults" : [ {
+        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
+        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "v" : 115.5,
+        "angle" : -8.761785228002786
+      } ],
+      "threeWindingsTransformerResults" : [ {
+        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
+        "p1" : 76.49399610391556,
+        "q1" : 68.32136721547157,
+        "i1" : 143.94389450947978,
+        "p2" : -76.37092158891356,
+        "q2" : -66.42970021189711,
+        "i2" : 262.4185177426353,
+        "p3" : 0.0,
+        "q3" : 0.0,
+        "i3" : 0.0
+      } ]
+    },
+    "connectivityResult" : {
+      "createdSynchronousComponentCount" : 4,
+      "createdConnectedComponentCount" : 0,
+      "disconnectedLoadActivePower" : 0.0,
+      "disconnectedGenerationActivePower" : 0.0,
+      "disconnectedElements" : [ "484536e9-762a-49a3-9970-d60b9fae03fe", "a16b4a6c-70b1-4abf-9a9d-bd0fa47f9fe4 + a279a3dc-550b-426c-af3a-61b7be508dcc", "88a19e5c-6885-4e6e-8d30-c5442444b309", "21ec578c-689f-4130-80de-fd0fb5a30ed8", "17086487-56ba-4979-b8de-064025a6b4da + 8fdc7abd-3746-481a-a65e-3df56acd8b13", "925a3a38-cd26-4f89-8891-c5bc8494e1ae" ]
+    }
+  }, {
+    "contingency" : {
+      "id" : "[78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49, b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc]",
+      "elements" : [ {
+        "id" : "78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49",
+        "type" : "LINE"
+      }, {
+        "id" : "b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc",
+        "type" : "LINE"
+      } ]
+    },
+    "status" : "CONVERGED",
+    "limitViolationsResult" : {
+      "limitViolations" : [ ],
+      "actionsTaken" : [ ]
+    },
+    "networkResult" : {
+      "branchResults" : [ {
+        "branchId" : "ffbabc27-1ccd-4fdc-b037-e341706c8d29",
+        "p1" : -15.145439515340536,
+        "q1" : 0.16913901434270046,
+        "i1" : 39.24046776438985,
+        "p2" : 21.14705686947597,
+        "q2" : -0.6939495077690059,
+        "i2" : 54.745905168472746
+      } ],
+      "busResults" : [ {
+        "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
+        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "v" : 115.5,
+        "angle" : -9.255626385420115
+      } ],
+      "threeWindingsTransformerResults" : [ {
+        "threeWindingsTransformerId" : "84ed55f4-61f5-4d9d-8755-bba7b877a246",
+        "p1" : 40.97424455322917,
+        "q1" : 71.24810040193634,
+        "i1" : 115.2366098947566,
+        "p2" : -40.89513169412549,
+        "q2" : -70.17970721936291,
+        "i2" : 210.43516146893117,
+        "p3" : 0.0,
+        "q3" : 0.0,
+        "i3" : 3.906971807255495E-11
+      } ]
+    },
+    "connectivityResult" : {
+      "createdSynchronousComponentCount" : 4,
+      "createdConnectedComponentCount" : 0,
+      "disconnectedLoadActivePower" : 0.0,
+      "disconnectedGenerationActivePower" : 0.0,
+      "disconnectedElements" : [ "b5a26150-429d-4acb-b45b-055e42c79055", "0e8cd279-ad5d-485a-b3a9-093ae8714b72", "78736387-5f60-4832-b3fe-d50daf81b0a6 + 7f43f508-2496-4b64-9146-0a40406cbe49", "14d55344-c118-4f54-a430-72f16d12bf7b", "b1fc12ae-ba9f-42ee-9558-3d432cc58fbf", "b18cd1aa-7808-49b9-a7cf-605eaf07b006 + e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc" ]
     }
   }, {
     "contingency" : {
