@@ -118,10 +118,10 @@ public class SecurityAnalysisTestRunner
         Map<String, ThreeWindingsTransformerResult> expected3Wtransfos
                 = extractIndexedResults(expectedNResult.getThreeWindingsTransformerResults(),
                 ThreeWindingsTransformerResult::getThreeWindingsTransformerId);
-        assertEquals(actual3WTransfos, expected3Wtransfos,
+        assertEquals(actual3WTransfos.keySet(), expected3Wtransfos.keySet(),
                 logPrefix + " Unexpected 3W transformers in results. " +
-                "Expected [" + String.join(", ", actualBuses) + "] " +
-                "but was [" + String.join(", ", expectedBuses) + "]", errorMessages);
+                "Expected [" + actual3WTransfos.keySet() + "] " +
+                "but was [" + expected3Wtransfos.keySet() + "]", errorMessages);
         if (actual3WTransfos.equals(expected3Wtransfos)) {
             for (ThreeWindingsTransformerResult actualPreCont3WTransfoResults :
                     actualNResult.getThreeWindingsTransformerResults()) {
