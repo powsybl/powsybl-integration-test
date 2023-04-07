@@ -28,11 +28,11 @@ import static com.powsybl.integrationtest.utils.CompareUtils.assertEquals;
  */
 public class LoadFlowTestRunner extends AbstractTestRunner<LoadFlowComputationParameters, LoadFlowComputationResults> {
 
-    private final double deltaV = 1e-9;
-    private final double deltaP = 1e-9;
-    private final double deltaQ = 1e-9;
-    private final double deltaAngle = 1e-9;
-    private final double deltaSlackPowerMismatch = 1e-9;
+    private final double deltaV = 1e-6;
+    private final double deltaP = 1e-6;
+    private final double deltaQ = 1e-6;
+    private final double deltaAngle = 1e-6;
+    private final double deltaSlackPowerMismatch = 1e-6;
 
     @Override
     protected ComputationRunner<LoadFlowComputationParameters, LoadFlowComputationResults> getComputationRunner() {

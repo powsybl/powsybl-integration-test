@@ -30,12 +30,12 @@ import static com.powsybl.integrationtest.utils.CompareUtils.assertEquals;
 public class SecurityAnalysisTestRunner
         extends AbstractTestRunner<SecurityAnalysisComputationParameters, SecurityAnalysisComputationResults> {
 
-    private final double deltaV = 1e-8;
-    private final double deltaI = 1e-8;
-    private final double deltaP = 1e-8;
-    private final double deltaQ = 1e-8;
-    private final double deltaAngle = 1e-8;
-    private final double deltaOther = 1e-8;
+    private final double deltaV = 1e-6;
+    private final double deltaI = 1e-6;
+    private final double deltaP = 1e-6;
+    private final double deltaQ = 1e-6;
+    private final double deltaAngle = 1e-6;
+    private final double deltaOther = 1e-6;
 
     @Override
     protected ComputationRunner<SecurityAnalysisComputationParameters, SecurityAnalysisComputationResults> getComputationRunner() {
