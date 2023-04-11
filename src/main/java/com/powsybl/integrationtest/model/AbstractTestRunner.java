@@ -26,16 +26,16 @@ public abstract class AbstractTestRunner<P extends ComputationParameters, R exte
 
     @Override
     public List<String> runTests(TestCase<P, R> testCase) {
-        LOGGER.debug("Running calculation on testcase [" + testCase.getId()  + "]");
+        LOGGER.debug("Running calculation on testcase [{}]", testCase.getId());
         R actualResults = getComputationRunner().computeResults(testCase.getParameters());
-        LOGGER.debug("Now comparing results and expectations for testcase [" + testCase.getId()  + "] ...");
+        LOGGER.debug("Now comparing results and expectations for testcase [{}] ...", testCase.getId());
         List<String> errors = performIdentityChecks("[" + testCase.getId() + "] ", actualResults,
                 testCase.getExpectedResults());
         if (LOGGER.isDebugEnabled()) {
             if (errors.isEmpty()) {
                 LOGGER.debug("... OK");
             } else {
-                LOGGER.error("... KO (" + errors.size() + " errors)");
+                LOGGER.error("... KO ({} errors)", errors.size());
             }
         }
         return errors;

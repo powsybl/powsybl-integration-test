@@ -253,7 +253,7 @@ public class SecurityAnalysisTestRunner
                         prefix + " Unexpected LV limit reduction for LV: " + key, errorMessages);
                 assertEquals(lv.getLimitName(), refLv.getLimitName(),
                         prefix + " Unexpected limit name for LV: " + key + ". Expected "
-                                + lv.getSide() + " but was " + refLv.getSide(), errorMessages);
+                                + lv.getLimitName() + " but was " + refLv.getLimitName(), errorMessages);
 
                 assertEquals(lv.getSide(), refLv.getSide(),
                         prefix + " Unexpected side for LV: " + key + ". Expected "
@@ -261,14 +261,14 @@ public class SecurityAnalysisTestRunner
 
                 assertEquals(lv.getSubjectId(), refLv.getSubjectId(),
                         prefix + " Unexpected subjectId for LV: " + key + ". Expected "
-                                + lv.getSide() + " but was " + refLv.getSide(), errorMessages);
+                                + lv.getSubjectId() + " but was " + refLv.getSubjectId(), errorMessages);
                 assertEquals(lv.getSubjectName(), refLv.getSubjectName(),
-                        prefix + " Unexpected limit name for LV: " + key + ". Expected "
-                                + lv.getSide() + " but was " + refLv.getSide(), errorMessages);
+                        prefix + " Unexpected subjectName for LV: " + key + ". Expected "
+                                + lv.getSubjectName() + " but was " + refLv.getSubjectName(), errorMessages);
 
                 assertEquals(lv.getAcceptableDuration(), refLv.getAcceptableDuration(),
                         prefix + " Unexpected acceptable duration for LV: " + key + ". Expected "
-                                + lv.getSide() + " but was " + refLv.getSide(), errorMessages);
+                                + lv.getAcceptableDuration() + " but was " + refLv.getAcceptableDuration(), errorMessages);
             }
         }
         return errorMessages;
