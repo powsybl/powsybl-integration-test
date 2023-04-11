@@ -8,6 +8,7 @@
         "limitType" : "CURRENT",
         "acceptableDuration" : 0,
         "limit" : 491.9,
+        "limitName": "553477f0-ed39-499b-a07d-3c602bd8a13d",
         "limitReduction" : 1.0,
         "value" : 613.3981375559292,
         "side" : "ONE"
@@ -16,6 +17,7 @@
         "limitType" : "CURRENT",
         "acceptableDuration" : 0,
         "limit" : 859.8,
+        "limitName": "8122651e-22ba-4320-9032-c59969020565",
         "limitReduction" : 1.0,
         "value" : 1097.1588457647786,
         "side" : "TWO"

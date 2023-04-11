@@ -8,6 +8,7 @@
         "limitType" : "CURRENT",
         "acceptableDuration" : 1,
         "limit" : 600.0,
+        "limitName": "IT10",
         "limitReduction" : 1.0,
         "value" : 1344.0262687101026,
         "side" : "ONE"
@@ -23,6 +24,7 @@
         "limitType" : "CURRENT",
         "acceptableDuration" : 1,
         "limit" : 600.0,
+        "limitName": "IT10",
         "limitReduction" : 1.0,
         "value" : 1030.8210921918185,
         "side" : "ONE"
@@ -38,6 +40,7 @@
         "limitType" : "CURRENT",
         "acceptableDuration" : 1,
         "limit" : 600.0,
+        "limitName": "IT10",
         "limitReduction" : 1.0,
         "value" : 1082.3130587734233,
         "side" : "ONE"
@@ -53,6 +56,7 @@
         "limitType" : "CURRENT",
         "acceptableDuration" : 1,
         "limit" : 600.0,
+        "limitName": "IT10",
         "limitReduction" : 1.0,
         "value" : 1291.1214209730913,
         "side" : "ONE"
@@ -176,6 +180,7 @@
         "limitType" : "CURRENT",
         "acceptableDuration" : 1,
         "limit" : 700.0,
+        "limitName": "IT10",
         "limitReduction" : 1.0,
         "value" : 715.3523959781604,
         "side" : "ONE"
@@ -229,6 +234,7 @@
         "limitType" : "CURRENT",
         "acceptableDuration" : 1,
         "limit" : 700.0,
+        "limitName": "IT10",
         "limitReduction" : 1.0,
         "value" : 715.3523959781604,
         "side" : "ONE"
