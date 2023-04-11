@@ -253,22 +253,22 @@ public class SecurityAnalysisTestRunner
                         prefix + " Unexpected LV limit reduction for LV: " + key, errorMessages);
                 assertEquals(lv.getLimitName(), refLv.getLimitName(),
                         prefix + " Unexpected limit name for LV: " + key + ". Expected "
-                                + lv.getLimitName() + " but was " + refLv.getLimitName(), errorMessages);
+                                + refLv.getLimitName() + " but was " + lv.getLimitName(), errorMessages);
 
                 assertEquals(lv.getSide(), refLv.getSide(),
                         prefix + " Unexpected side for LV: " + key + ". Expected "
-                                + lv.getSide() + " but was " + refLv.getSide(), errorMessages);
+                                + refLv.getSide() + " but was " + lv.getSide(), errorMessages);
 
                 assertEquals(lv.getSubjectId(), refLv.getSubjectId(),
                         prefix + " Unexpected subjectId for LV: " + key + ". Expected "
-                                + lv.getSubjectId() + " but was " + refLv.getSubjectId(), errorMessages);
+                                + refLv.getSubjectId() + " but was " + lv.getSubjectId(), errorMessages);
                 assertEquals(lv.getSubjectName(), refLv.getSubjectName(),
                         prefix + " Unexpected subjectName for LV: " + key + ". Expected "
-                                + lv.getSubjectName() + " but was " + refLv.getSubjectName(), errorMessages);
+                                + refLv.getSubjectName() + " but was " + lv.getSubjectName(), errorMessages);
 
                 assertEquals(lv.getAcceptableDuration(), refLv.getAcceptableDuration(),
                         prefix + " Unexpected acceptable duration for LV: " + key + ". Expected "
-                                + lv.getAcceptableDuration() + " but was " + refLv.getAcceptableDuration(), errorMessages);
+                                + refLv.getAcceptableDuration() + " but was " + lv.getAcceptableDuration(), errorMessages);
             }
         }
         return errorMessages;
