@@ -6,16 +6,12 @@
  */
 package com.powsybl.integrationtest;
 
-import com.powsybl.integrationtest.loadflow.jsonconfig.LoadFlowTestCaseJson;
-import com.powsybl.integrationtest.loadflow.jsonconfig.LoadFlowTestPlanJson;
 import com.powsybl.integrationtest.loadflow.jsonconfig.LoadFlowTestPlanReader;
 import com.powsybl.integrationtest.loadflow.model.LoadFlowComputationParameters;
 import com.powsybl.integrationtest.loadflow.model.LoadFlowComputationResults;
 import com.powsybl.integrationtest.loadflow.model.LoadFlowTestCase;
 import com.powsybl.integrationtest.loadflow.model.LoadFlowTestRunner;
 import com.powsybl.integrationtest.model.TestPlan;
-import com.powsybl.loadflow.json.LoadFlowResultSerializer;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -25,6 +21,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.StringJoiner;
 
 /**
@@ -39,7 +36,8 @@ public class LoadFlowIntegrationTest {
         LoadFlowTestRunner runner = new LoadFlowTestRunner();
         LoadFlowTestPlanReader reader = new LoadFlowTestPlanReader();
         try (InputStream res = getClass().getClassLoader().getResourceAsStream("loadFlowTestPlan.json")) {
-            TestPlan<LoadFlowComputationParameters, LoadFlowComputationResults, LoadFlowTestCase> testPlan = reader.extractTestPlan(res);
+            Path resourcePath = Paths.get(Objects.requireNonNull(getClass().getClassLoader().getResource("loadFlowTestPlan.json")).toURI()).getParent();
+            TestPlan<LoadFlowComputationParameters, LoadFlowComputationResults, LoadFlowTestCase> testPlan = reader.extractTestPlan(res, resourcePath);
             List<String> errors = new ArrayList<>();
             for (LoadFlowTestCase testCase : testPlan.getTestCases()) {
                 errors.addAll(runner.runTests(testCase));
@@ -48,29 +46,6 @@ public class LoadFlowIntegrationTest {
                 StringJoiner joiner = new StringJoiner("\n");
                 errors.forEach(joiner::add);
                 throw new IllegalStateException(joiner.toString());
-            }
-        }
-    }
-
-    /**
-     * Update load flow test plan references by running the test cases and overriding the references with the results.
-     * This test is disabled and should only be used to update the references when you know what you are doing.
-     * @throws IOException
-     * @throws URISyntaxException
-     */
-    @Test @Disabled("See test description")
-    void updateLoadFlowReference() throws IOException, URISyntaxException {
-        LoadFlowTestPlanReader reader = new LoadFlowTestPlanReader();
-        LoadFlowTestRunner runner = new LoadFlowTestRunner();
-        try (InputStream res = getClass().getClassLoader().getResourceAsStream("loadFlowTestPlan.json")) {
-            LoadFlowTestPlanJson jsonPlan = reader.readTestPlan(res);
-
-            for (LoadFlowTestCaseJson testCaseJson : jsonPlan.getTestCases()) {
-                LoadFlowTestCase testCase = LoadFlowTestPlanReader.buildFromJson(testCaseJson);
-                LoadFlowComputationResults results = runner.runTestsWithoutChecks(testCase);
-                Path resourceDirectory = Paths.get("src", "test", "resources");
-                results.getNetwork().write("XIIDM", null, resourceDirectory.resolve(testCaseJson.getExpectedNetwork()));
-                LoadFlowResultSerializer.write(results.getResult(), resourceDirectory.resolve(testCaseJson.getExpectedResults()));
             }
         }
     }

@@ -27,6 +27,7 @@ import com.powsybl.security.monitor.StateMonitor;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,37 +47,36 @@ public class SecurityAnalysisTestPlanReader implements
         objectMapper = JsonUtil.createObjectMapper().registerModule(new SATestCaseModule());
     }
 
-    public static SecurityAnalysisTestCase buildFromJson(SecurityAnalysisTestCaseJson testCaseJson)
+    public static SecurityAnalysisTestCase buildFromJson(SecurityAnalysisTestCaseJson testCaseJson, Path resourcePath)
             throws IOException, URISyntaxException {
         Class<SecurityAnalysisTestPlanReader> cls = SecurityAnalysisTestPlanReader.class;
 
         // Load network from resources
         String network = testCaseJson.getInputNetwork();
-        Path networkPath = Path.of(Objects.requireNonNull(cls.getResource("/" + network)).toURI());
-        Network iNetwork = Network.read(Objects.requireNonNull(networkPath));
+        Network iNetwork = Network.read(Objects.requireNonNull(resourcePath.resolve(network)));
         // Load input params from resources
         String parameters = testCaseJson.getInputParameters();
-        Path paramPath = Path.of(Objects.requireNonNull(cls.getResource("/" + parameters)).toURI());
+        Path paramPath = Objects.requireNonNull(resourcePath.resolve(parameters));
         SecurityAnalysisParameters iParameters = JsonSecurityAnalysisParameters.read(paramPath);
         // Load contingencies from resources
         String contingencies = testCaseJson.getInputContingencies();
         ObjectMapper mapper = JsonUtil.createObjectMapper();
         mapper.registerModule(new ContingencyJsonModule());
         DefaultContingencyList contingencyList =
-                mapper.readValue(cls.getResourceAsStream("/" + contingencies), DefaultContingencyList.class);
+                mapper.readValue(Files.newInputStream(resourcePath.resolve(contingencies)), DefaultContingencyList.class);
         List<Contingency> iContingencies = contingencyList.getContingencies();
         // Load state monitors from resources
         String stateMonitors = testCaseJson.getInputStateMonitors();
-        Path stateMonitorsPath = Path.of(Objects.requireNonNull(cls.getResource("/" + stateMonitors)).toURI());
+        Path stateMonitorsPath = Objects.requireNonNull(resourcePath.resolve(stateMonitors));
         List<StateMonitor> iStateMonitors = StateMonitor.read(stateMonitorsPath);
 
         // Load reference network from resources
         network = testCaseJson.getExpectedNetwork();
-        networkPath = Path.of(Objects.requireNonNull(cls.getResource("/" + network)).toURI());
+        Path networkPath = Objects.requireNonNull(resourcePath.resolve(network));
         Network refNetwork = Network.read(Objects.requireNonNull(networkPath));
         // Load reference results from resources
         String results = testCaseJson.getExpectedResults();
-        Path resultsPath = Path.of(Objects.requireNonNull(cls.getResource("/" + results)).toURI());
+        Path resultsPath = Objects.requireNonNull(resourcePath.resolve(results));
         SecurityAnalysisResult refResults = SecurityAnalysisResultDeserializer.read(resultsPath);
 
         // Build test case
@@ -92,12 +92,12 @@ public class SecurityAnalysisTestPlanReader implements
     }
 
     @Override
-    public TestPlan<SecurityAnalysisComputationParameters, SecurityAnalysisComputationResults, SecurityAnalysisTestCase> extractTestPlan(InputStream input)
+    public TestPlan<SecurityAnalysisComputationParameters, SecurityAnalysisComputationResults, SecurityAnalysisTestCase> extractTestPlan(InputStream input, Path resourcePath)
             throws IOException, URISyntaxException {
         SecurityAnalysisTestPlanJson satpJson = objectMapper.readValue(input, SecurityAnalysisTestPlanJson.class);
         List<SecurityAnalysisTestCase> testCases = new ArrayList<>();
         for (SecurityAnalysisTestCaseJson testCaseJson : satpJson.getTestCases()) {
-            testCases.add(buildFromJson(testCaseJson));
+            testCases.add(buildFromJson(testCaseJson, resourcePath));
         }
         return new TestPlan<>(testCases);
     }
