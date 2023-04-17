@@ -47,10 +47,7 @@ public class SecurityAnalysisTestPlanReader implements
         objectMapper = JsonUtil.createObjectMapper().registerModule(new SATestCaseModule());
     }
 
-    public static SecurityAnalysisTestCase buildFromJson(SecurityAnalysisTestCaseJson testCaseJson, Path resourcePath)
-            throws IOException, URISyntaxException {
-        Class<SecurityAnalysisTestPlanReader> cls = SecurityAnalysisTestPlanReader.class;
-
+    public static SecurityAnalysisTestCase buildFromJson(SecurityAnalysisTestCaseJson testCaseJson, Path resourcePath) throws IOException {
         // Load network from resources
         String network = testCaseJson.getInputNetwork();
         Network iNetwork = Network.read(Objects.requireNonNull(resourcePath.resolve(network)));

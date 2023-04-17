@@ -61,7 +61,7 @@ public class LoadFlowTestPlanReader implements TestPlanReader<LoadFlowComputatio
      * @return the built LoadFlowTestCase
      * @throws IOException if provided information is not reachable for some reason
      */
-    public static LoadFlowTestCase buildFromJson(LoadFlowTestCaseJson testCaseJson, Path resourcePath) throws IOException, URISyntaxException {
+    public static LoadFlowTestCase buildFromJson(LoadFlowTestCaseJson testCaseJson, Path resourcePath) {
 
         LoadFlowParameters inputParameters = JsonLoadFlowParameters.read(
                 Objects.requireNonNull(resourcePath.resolve(testCaseJson.getInputParameters())));
