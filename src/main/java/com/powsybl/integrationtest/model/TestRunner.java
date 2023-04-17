@@ -24,4 +24,6 @@ public interface TestRunner<P extends ComputationParameters, R extends Computati
      * @return a list containing all error messages. Empty if no error was found.
      */
     List<String> runTests(TestCase<P, R> testCase);
+
+    R runTestsWithoutChecks(TestCase<P, R> testCase);
 }

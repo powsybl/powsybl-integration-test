@@ -17,8 +17,11 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.StringJoiner;
 
 /**
@@ -33,7 +36,8 @@ public class LoadFlowIntegrationTest {
         LoadFlowTestRunner runner = new LoadFlowTestRunner();
         LoadFlowTestPlanReader reader = new LoadFlowTestPlanReader();
         try (InputStream res = getClass().getClassLoader().getResourceAsStream("loadFlowTestPlan.json")) {
-            TestPlan<LoadFlowComputationParameters, LoadFlowComputationResults, LoadFlowTestCase> testPlan = reader.extractTestPlan(res);
+            Path resourcePath = Paths.get(Objects.requireNonNull(getClass().getClassLoader().getResource("loadFlowTestPlan.json")).toURI()).getParent();
+            TestPlan<LoadFlowComputationParameters, LoadFlowComputationResults, LoadFlowTestCase> testPlan = reader.extractTestPlan(res, resourcePath);
             List<String> errors = new ArrayList<>();
             for (LoadFlowTestCase testCase : testPlan.getTestCases()) {
                 errors.addAll(runner.runTests(testCase));

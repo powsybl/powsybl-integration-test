@@ -39,13 +39,17 @@ public class LoadFlowTestPlanReader implements TestPlanReader<LoadFlowComputatio
         objectMapper = JsonUtil.createObjectMapper().registerModule(new LoadFlowTestCaseModule());
     }
 
+    public LoadFlowTestPlanJson readTestPlan(InputStream input) throws IOException {
+        return objectMapper.readValue(input, LoadFlowTestPlanJson.class);
+    }
+
     @Override
-    public TestPlan<LoadFlowComputationParameters, LoadFlowComputationResults, LoadFlowTestCase> extractTestPlan(InputStream input)
+    public TestPlan<LoadFlowComputationParameters, LoadFlowComputationResults, LoadFlowTestCase> extractTestPlan(InputStream input, Path resourcePath)
             throws IOException, URISyntaxException {
-        LoadFlowTestPlanJson lftpJson = objectMapper.readValue(input, LoadFlowTestPlanJson.class);
+        LoadFlowTestPlanJson lftpJson = readTestPlan(input);
         List<LoadFlowTestCase> testCases = new ArrayList<>();
         for (LoadFlowTestCaseJson testCaseJson : lftpJson.getTestCases()) {
-            testCases.add(buildFromJson(testCaseJson));
+            testCases.add(buildFromJson(testCaseJson, resourcePath));
         }
         return new TestPlan<>(testCases);
     }
@@ -57,18 +61,16 @@ public class LoadFlowTestPlanReader implements TestPlanReader<LoadFlowComputatio
      * @return the built LoadFlowTestCase
      * @throws IOException if provided information is not reachable for some reason
      */
-    private static LoadFlowTestCase buildFromJson(LoadFlowTestCaseJson testCaseJson) throws IOException, URISyntaxException {
-        Class<LoadFlowTestPlanReader> cls = LoadFlowTestPlanReader.class;
+    public static LoadFlowTestCase buildFromJson(LoadFlowTestCaseJson testCaseJson, Path resourcePath) {
 
         LoadFlowParameters inputParameters = JsonLoadFlowParameters.read(
-                Objects.requireNonNull(cls.getResourceAsStream("/" + testCaseJson.getInputParameters())));
-        Path networkFilePath = Path.of(Objects.requireNonNull(
-                cls.getResource("/" + testCaseJson.getInputNetwork())).toURI());
+                Objects.requireNonNull(resourcePath.resolve(testCaseJson.getInputParameters())));
+        Path networkFilePath = Objects.requireNonNull(resourcePath.resolve(testCaseJson.getInputNetwork()));
         Network inputNetwork = Network.read(Objects.requireNonNull(networkFilePath));
         LoadFlowResult expectedResults = LoadFlowResultDeserializer.read(
-                Objects.requireNonNull(cls.getResourceAsStream("/" + testCaseJson.getExpectedResults())));
-        Path expectedNetworkPath = Path.of(Objects.requireNonNull(
-                cls.getResource("/" + testCaseJson.getExpectedNetwork())).toURI());
+                Objects.requireNonNull(resourcePath.resolve(testCaseJson.getExpectedResults())));
+        Path expectedNetworkPath = Objects.requireNonNull(
+                resourcePath.resolve(testCaseJson.getExpectedNetwork()));
         Network expectedNetwork = Network.read(Objects.requireNonNull(expectedNetworkPath));
 
         return new LoadFlowTestCase(testCaseJson.getId(),

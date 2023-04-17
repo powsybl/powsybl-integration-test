@@ -27,7 +27,7 @@ public abstract class AbstractTestRunner<P extends ComputationParameters, R exte
     @Override
     public List<String> runTests(TestCase<P, R> testCase) {
         LOGGER.debug("Running calculation on testcase [" + testCase.getId()  + "]");
-        R actualResults = getComputationRunner().computeResults(testCase.getParameters());
+        R actualResults = runTestsWithoutChecks(testCase);
         LOGGER.debug("Now comparing results and expectations for testcase [" + testCase.getId()  + "] ...");
         List<String> errors = performIdentityChecks("[" + testCase.getId() + "] ", actualResults,
                 testCase.getExpectedResults());
@@ -39,6 +39,11 @@ public abstract class AbstractTestRunner<P extends ComputationParameters, R exte
             }
         }
         return errors;
+    }
+
+    @Override
+    public R runTestsWithoutChecks(TestCase<P, R> testCase) {
+        return getComputationRunner().computeResults(testCase.getParameters());
     }
 
     /**

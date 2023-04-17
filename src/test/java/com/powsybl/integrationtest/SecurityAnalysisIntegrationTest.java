@@ -17,8 +17,11 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.StringJoiner;
 
 /**
@@ -33,7 +36,8 @@ public class SecurityAnalysisIntegrationTest {
         SecurityAnalysisTestRunner runner = new SecurityAnalysisTestRunner();
         SecurityAnalysisTestPlanReader reader = new SecurityAnalysisTestPlanReader();
         try (InputStream res = getClass().getClassLoader().getResourceAsStream("saTestPlan.json")) {
-            TestPlan<SecurityAnalysisComputationParameters, SecurityAnalysisComputationResults, SecurityAnalysisTestCase> testPlan = reader.extractTestPlan(res);
+            Path resourcePath = Paths.get(Objects.requireNonNull(getClass().getClassLoader().getResource("saTestPlan.json")).toURI()).getParent();
+            TestPlan<SecurityAnalysisComputationParameters, SecurityAnalysisComputationResults, SecurityAnalysisTestCase> testPlan = reader.extractTestPlan(res, resourcePath);
             List<String> errors = new ArrayList<>();
             for (SecurityAnalysisTestCase testCase : testPlan.getTestCases()) {
                 errors.addAll(runner.runTests(testCase));
