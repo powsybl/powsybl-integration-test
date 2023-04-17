@@ -46,7 +46,7 @@ public class SecurityAnalysisTestPlanReader implements
         objectMapper = JsonUtil.createObjectMapper().registerModule(new SATestCaseModule());
     }
 
-    private static SecurityAnalysisTestCase buildFromJson(SecurityAnalysisTestCaseJson testCaseJson)
+    public static SecurityAnalysisTestCase buildFromJson(SecurityAnalysisTestCaseJson testCaseJson)
             throws IOException, URISyntaxException {
         Class<SecurityAnalysisTestPlanReader> cls = SecurityAnalysisTestPlanReader.class;
 
@@ -85,6 +85,10 @@ public class SecurityAnalysisTestPlanReader implements
                 iStateMonitors);
         SecurityAnalysisComputationResults sacResults = new SecurityAnalysisComputationResults(refNetwork, refResults);
         return new SecurityAnalysisTestCase(testCaseJson.getId(), sacParameters, sacResults);
+    }
+
+    public SecurityAnalysisTestPlanJson readTestPlan(InputStream input) throws IOException {
+        return objectMapper.readValue(input, SecurityAnalysisTestPlanJson.class);
     }
 
     @Override

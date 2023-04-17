@@ -7,16 +7,26 @@
 package com.powsybl.integrationtest;
 
 import com.powsybl.integrationtest.model.TestPlan;
+import com.powsybl.integrationtest.securityanalysis.jsonconfig.SecurityAnalysisTestCaseJson;
+import com.powsybl.integrationtest.securityanalysis.jsonconfig.SecurityAnalysisTestPlanJson;
 import com.powsybl.integrationtest.securityanalysis.jsonconfig.SecurityAnalysisTestPlanReader;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationParameters;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisComputationResults;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisTestCase;
 import com.powsybl.integrationtest.securityanalysis.model.SecurityAnalysisTestRunner;
+import com.powsybl.security.converter.SecurityAnalysisResultExporter;
+import com.powsybl.security.converter.SecurityAnalysisResultExporters;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UncheckedIOException;
+import java.io.Writer;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
@@ -50,6 +60,34 @@ public class SecurityAnalysisIntegrationTest {
                     errors.forEach(joiner::add);
                 }
                 throw new IllegalStateException(joiner.toString());
+            }
+        }
+    }
+
+    /**
+     * Update security analysis test plan references by running the test cases and overriding the references with the results.
+     * This test is disabled and should only be used to update the references when you know what you are doing.
+     * @throws IOException
+     * @throws URISyntaxException
+     */
+    @Test @Disabled("See test description")
+    void updateSaReference() throws IOException, URISyntaxException {
+        SecurityAnalysisTestRunner runner = new SecurityAnalysisTestRunner();
+        SecurityAnalysisTestPlanReader reader = new SecurityAnalysisTestPlanReader();
+        try (InputStream res = getClass().getClassLoader().getResourceAsStream("saTestPlan.json")) {
+            SecurityAnalysisTestPlanJson jsonPlan = reader.readTestPlan(res);
+
+            for (SecurityAnalysisTestCaseJson testCaseJson : jsonPlan.getTestCases()) {
+                SecurityAnalysisTestCase testCase = SecurityAnalysisTestPlanReader.buildFromJson(testCaseJson);
+                SecurityAnalysisComputationResults results = runner.runTestsWithoutChecks(testCase);
+                Path resourceDirectory = Paths.get("src", "test", "resources");
+                results.getNetwork().write("XIIDM", null, resourceDirectory.resolve(testCaseJson.getExpectedNetwork()));
+                SecurityAnalysisResultExporter exporter = SecurityAnalysisResultExporters.getExporter("JSON");
+                try (Writer writer = Files.newBufferedWriter(resourceDirectory.resolve(testCaseJson.getExpectedResults()))) {
+                    exporter.export(results.getResults(), writer);
+                } catch (IOException e) {
+                    throw new UncheckedIOException(e);
+                }
             }
         }
     }

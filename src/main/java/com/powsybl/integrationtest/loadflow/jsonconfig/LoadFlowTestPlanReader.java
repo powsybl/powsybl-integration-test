@@ -39,10 +39,14 @@ public class LoadFlowTestPlanReader implements TestPlanReader<LoadFlowComputatio
         objectMapper = JsonUtil.createObjectMapper().registerModule(new LoadFlowTestCaseModule());
     }
 
+    public LoadFlowTestPlanJson readTestPlan(InputStream input) throws IOException {
+        return objectMapper.readValue(input, LoadFlowTestPlanJson.class);
+    }
+
     @Override
     public TestPlan<LoadFlowComputationParameters, LoadFlowComputationResults, LoadFlowTestCase> extractTestPlan(InputStream input)
             throws IOException, URISyntaxException {
-        LoadFlowTestPlanJson lftpJson = objectMapper.readValue(input, LoadFlowTestPlanJson.class);
+        LoadFlowTestPlanJson lftpJson = readTestPlan(input);
         List<LoadFlowTestCase> testCases = new ArrayList<>();
         for (LoadFlowTestCaseJson testCaseJson : lftpJson.getTestCases()) {
             testCases.add(buildFromJson(testCaseJson));
@@ -57,7 +61,7 @@ public class LoadFlowTestPlanReader implements TestPlanReader<LoadFlowComputatio
      * @return the built LoadFlowTestCase
      * @throws IOException if provided information is not reachable for some reason
      */
-    private static LoadFlowTestCase buildFromJson(LoadFlowTestCaseJson testCaseJson) throws IOException, URISyntaxException {
+    public static LoadFlowTestCase buildFromJson(LoadFlowTestCaseJson testCaseJson) throws IOException, URISyntaxException {
         Class<LoadFlowTestPlanReader> cls = LoadFlowTestPlanReader.class;
 
         LoadFlowParameters inputParameters = JsonLoadFlowParameters.read(
