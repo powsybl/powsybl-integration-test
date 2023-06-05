@@ -47,7 +47,8 @@
 
     <properties>
         <java.version>11</java.version>
-        <powsybl-dependencies.version>2023.1.0</powsybl-dependencies.version>
+        <powsybl-core.version>5.3.0-alpha-2</powsybl-core.version>
+        <powsybl-open-loadflow.version>1.2.0-SNAPSHOT</powsybl-open-loadflow.version>
         <junit-jupiter.version>5.5.2</junit-jupiter.version>
     </properties>
 
@@ -103,10 +104,16 @@
         <dependencies>
             <dependency>
                 <groupId>com.powsybl</groupId>
-                <artifactId>powsybl-dependencies</artifactId>
-                <version>${powsybl-dependencies.version}</version>
+                <artifactId>powsybl-core</artifactId>
+                <version>${powsybl-core.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.powsybl</groupId>
+                <artifactId>powsybl-open-loadflow</artifactId>
+                <version>${powsybl-open-loadflow.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
