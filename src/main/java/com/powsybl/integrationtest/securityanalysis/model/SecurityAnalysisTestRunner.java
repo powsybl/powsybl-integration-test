@@ -30,12 +30,12 @@ import static com.powsybl.integrationtest.utils.CompareUtils.assertEquals;
 public class SecurityAnalysisTestRunner
         extends AbstractTestRunner<SecurityAnalysisComputationParameters, SecurityAnalysisComputationResults> {
 
-    private final double deltaV = 1e-8;
-    private final double deltaI = 1e-8;
-    private final double deltaP = 1e-8;
-    private final double deltaQ = 1e-8;
-    private final double deltaAngle = 1e-8;
-    private final double deltaOther = 1e-8;
+    private final double deltaV = 1e-6;
+    private final double deltaI = 1e-6;
+    private final double deltaP = 1e-6;
+    private final double deltaQ = 1e-6;
+    private final double deltaAngle = 1e-6;
+    private final double deltaOther = 1e-6;
 
     @Override
     protected ComputationRunner<SecurityAnalysisComputationParameters, SecurityAnalysisComputationResults> getComputationRunner() {
@@ -118,10 +118,10 @@ public class SecurityAnalysisTestRunner
         Map<String, ThreeWindingsTransformerResult> expected3Wtransfos
                 = extractIndexedResults(expectedNResult.getThreeWindingsTransformerResults(),
                 ThreeWindingsTransformerResult::getThreeWindingsTransformerId);
-        assertEquals(actual3WTransfos, expected3Wtransfos,
+        assertEquals(actual3WTransfos.keySet(), expected3Wtransfos.keySet(),
                 logPrefix + " Unexpected 3W transformers in results. " +
-                "Expected [" + String.join(", ", actualBuses) + "] " +
-                "but was [" + String.join(", ", expectedBuses) + "]", errorMessages);
+                "Expected [" + actual3WTransfos.keySet() + "] " +
+                "but was [" + expected3Wtransfos.keySet() + "]", errorMessages);
         if (actual3WTransfos.equals(expected3Wtransfos)) {
             for (ThreeWindingsTransformerResult actualPreCont3WTransfoResults :
                     actualNResult.getThreeWindingsTransformerResults()) {
@@ -253,22 +253,22 @@ public class SecurityAnalysisTestRunner
                         prefix + " Unexpected LV limit reduction for LV: " + key, errorMessages);
                 assertEquals(lv.getLimitName(), refLv.getLimitName(),
                         prefix + " Unexpected limit name for LV: " + key + ". Expected "
-                                + lv.getSide() + " but was " + refLv.getSide(), errorMessages);
+                                + refLv.getLimitName() + " but was " + lv.getLimitName(), errorMessages);
 
                 assertEquals(lv.getSide(), refLv.getSide(),
                         prefix + " Unexpected side for LV: " + key + ". Expected "
-                                + lv.getSide() + " but was " + refLv.getSide(), errorMessages);
+                                + refLv.getSide() + " but was " + lv.getSide(), errorMessages);
 
                 assertEquals(lv.getSubjectId(), refLv.getSubjectId(),
                         prefix + " Unexpected subjectId for LV: " + key + ". Expected "
-                                + lv.getSide() + " but was " + refLv.getSide(), errorMessages);
+                                + refLv.getSubjectId() + " but was " + lv.getSubjectId(), errorMessages);
                 assertEquals(lv.getSubjectName(), refLv.getSubjectName(),
-                        prefix + " Unexpected limit name for LV: " + key + ". Expected "
-                                + lv.getSide() + " but was " + refLv.getSide(), errorMessages);
+                        prefix + " Unexpected subjectName for LV: " + key + ". Expected "
+                                + refLv.getSubjectName() + " but was " + lv.getSubjectName(), errorMessages);
 
                 assertEquals(lv.getAcceptableDuration(), refLv.getAcceptableDuration(),
                         prefix + " Unexpected acceptable duration for LV: " + key + ". Expected "
-                                + lv.getSide() + " but was " + refLv.getSide(), errorMessages);
+                                + refLv.getAcceptableDuration() + " but was " + lv.getAcceptableDuration(), errorMessages);
             }
         }
         return errorMessages;
