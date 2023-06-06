@@ -16,16 +16,16 @@
       "expectedResults" : "loadflowreferences/loadflow_6n_standard.json"
     },
     {
-      "id" : "CASE6515_BASIC",
+      "id" : "CASE6515_BASIC_V_INIT_DC",
       "inputNetwork" : "networks/case6515rte.mat",
-      "inputParameters" : "parameters/LoadFlowParametersBasic.json",
+      "inputParameters" : "parameters/LoadFlowParametersBasicVInitDc.json",
       "expectedNetwork" : "loadflowreferences/loadflow_6515rte_basic.xiidm",
       "expectedResults" : "loadflowreferences/loadflow_6515rte_basic.json"
     },
     {
-      "id" : "CASE6515_STANDARD",
+      "id" : "CASE6515_STANDARD_V_INIT_DC",
       "inputNetwork" : "networks/case6515rte.mat",
-      "inputParameters" : "parameters/LoadFlowParametersStandard.json",
+      "inputParameters" : "parameters/LoadFlowParametersStandardVInitDc.json",
       "expectedNetwork" : "loadflowreferences/loadflow_6515rte_standard.xiidm",
       "expectedResults" : "loadflowreferences/loadflow_6515rte_standard.json"
     },
