@@ -10,7 +10,7 @@
     {
       "id" : "case1888rte",
       "inputNetwork" : "networks/case1888rte.mat",
-      "inputParameters" : "parameters/SAParametersBasic.json"
+      "inputParameters" : "parameters/SAParametersBasicVInitDc.json"
     },
     {
       "id" : "micro-t1",

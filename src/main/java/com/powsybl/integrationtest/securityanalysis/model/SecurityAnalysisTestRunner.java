@@ -9,6 +9,7 @@ package com.powsybl.integrationtest.securityanalysis.model;
 import com.powsybl.integrationtest.model.AbstractTestRunner;
 import com.powsybl.integrationtest.model.ComputationRunner;
 import com.powsybl.integrationtest.model.TestRunner;
+import com.powsybl.integrationtest.utils.NetworksComparator;
 import com.powsybl.security.LimitViolation;
 import com.powsybl.security.LimitViolationsResult;
 import com.powsybl.security.SecurityAnalysisResult;
@@ -45,7 +46,11 @@ public class SecurityAnalysisTestRunner
     @Override
     protected List<String> performIdentityChecks(String logPrefix, SecurityAnalysisComputationResults actual,
                                                  SecurityAnalysisComputationResults expected) {
-        return new ArrayList<>(compareResults(logPrefix, actual.getResults(), expected.getResults()));
+        List<String> errors = new ArrayList<>();
+        NetworksComparator nComparator = new NetworksComparator(deltaV, deltaAngle, deltaP, deltaQ);
+        errors.addAll(nComparator.compareNetworks(logPrefix, actual.getNetwork(), expected.getNetwork()));
+        errors.addAll(compareResults(logPrefix, actual.getResults(), expected.getResults()));
+        return errors;
     }
 
     @Nonnull
@@ -57,8 +62,7 @@ public class SecurityAnalysisTestRunner
         PreContingencyResult actPreRes = actualResults.getPreContingencyResult();
         PreContingencyResult expPreRes = expectedResults.getPreContingencyResult();
         assertEquals(actPreRes.getStatus(), expPreRes.getStatus(),
-                preLF + " Unexpected pre-contingencies result status. Expected [" + actPreRes.getStatus()
-                        + "], but was [" + expPreRes.getStatus() + "]", errorMessages);
+                preLF + " Unexpected pre-contingencies result status", errorMessages);
         errorMessages.addAll(compareNetworkResults(preLF, actPreRes.getNetworkResult(), expPreRes.getNetworkResult()));
         errorMessages.addAll(compareLimitViolations(preLF, actPreRes.getLimitViolationsResult(), expPreRes.getLimitViolationsResult()));
         // Compare post-contingency results
@@ -66,17 +70,17 @@ public class SecurityAnalysisTestRunner
                 extractIndexedResults(actualResults.getPostContingencyResults(), r -> r.getContingency().getId());
         Map<String, PostContingencyResult> expectedPCResults =
                 extractIndexedResults(expectedResults.getPostContingencyResults(), r -> r.getContingency().getId());
-        assertEquals(actualPCResults.keySet(), expectedPCResults.keySet(),
-                logPrefix + " Unexpected contingencies in results. Expected ["
-                        + String.join(",", actualPCResults.keySet()) + "], but was ["
-                        + String.join(",", expectedPCResults.keySet()) + "]", errorMessages);
+        assertEquals(
+                actualPCResults.keySet(),
+                expectedPCResults.keySet(),
+                logPrefix + " Unexpected contingencies in results",
+                errorMessages);
         for (String contingencyId : actualPCResults.keySet()) {
             final String postLF = logPrefix + " [contingency " + contingencyId + "]";
             PostContingencyResult actPostRes = actualPCResults.get(contingencyId);
             PostContingencyResult expPostRes = expectedPCResults.get(contingencyId);
             assertEquals(actPostRes.getStatus(), expPostRes.getStatus(),
-                    postLF + " Unexpected post-contingencies result status. Expected ["
-                            + actPostRes.getStatus() + "], but was [" + expPostRes.getStatus() + "]", errorMessages);
+                    postLF + " Unexpected post-contingencies result status", errorMessages);
             errorMessages.addAll(compareNetworkResults(postLF, actPostRes.getNetworkResult(), expPostRes.getNetworkResult()));
             errorMessages.addAll(compareLimitViolations(postLF, actPostRes.getLimitViolationsResult(), expPostRes.getLimitViolationsResult()));
         }
@@ -90,9 +94,8 @@ public class SecurityAnalysisTestRunner
                 = extractIndexedResults(actualNResult.getBranchResults(), BranchResult::getBranchId).keySet();
         Set<String> expectedBranches
                 = extractIndexedResults(expectedNResult.getBranchResults(), BranchResult::getBranchId).keySet();
-        assertEquals(actualBranches, expectedBranches, logPrefix + " Unexpected branches in results. " +
-                "Expected [" + String.join(", ", actualBranches) + "] " +
-                "but was [" + String.join(", ", expectedBranches) + "]", errorMessages);
+        assertEquals(actualBranches, expectedBranches,
+                logPrefix + " Unexpected branches in results", errorMessages);
         if (actualBranches.equals(expectedBranches)) {
             for (BranchResult actPreContBranchRes : actualNResult.getBranchResults()) {
                 String branchId = actPreContBranchRes.getBranchId();
@@ -102,9 +105,8 @@ public class SecurityAnalysisTestRunner
         }
         Set<String> actualBuses = extractIndexedResults(actualNResult.getBusResults(), BusResult::getBusId).keySet();
         Set<String> expectedBuses = extractIndexedResults(expectedNResult.getBusResults(), BusResult::getBusId).keySet();
-        assertEquals(actualBuses, expectedBuses, logPrefix + " Unexpected buses in results. " +
-                "Expected [" + String.join(", ", actualBuses) + "] " +
-                "but was [" + String.join(", ", expectedBuses) + "]", errorMessages);
+        assertEquals(actualBuses, expectedBuses,
+                logPrefix + " Unexpected buses in results", errorMessages);
         if (actualBuses.equals(expectedBuses)) {
             for (BusResult actualPreContBusRes : actualNResult.getBusResults()) {
                 String busId = actualPreContBusRes.getBusId();
@@ -119,9 +121,8 @@ public class SecurityAnalysisTestRunner
                 = extractIndexedResults(expectedNResult.getThreeWindingsTransformerResults(),
                 ThreeWindingsTransformerResult::getThreeWindingsTransformerId);
         assertEquals(actual3WTransfos.keySet(), expected3Wtransfos.keySet(),
-                logPrefix + " Unexpected 3W transformers in results. " +
-                "Expected [" + actual3WTransfos.keySet() + "] " +
-                "but was [" + expected3Wtransfos.keySet() + "]", errorMessages);
+                logPrefix + " Unexpected 3W transformers in results",
+                errorMessages);
         if (actual3WTransfos.equals(expected3Wtransfos)) {
             for (ThreeWindingsTransformerResult actualPreCont3WTransfoResults :
                     actualNResult.getThreeWindingsTransformerResults()) {
@@ -217,9 +218,7 @@ public class SecurityAnalysisTestRunner
             lv -> lv.getSubjectId() + '/' + lv.getLimitType().toString() + lv.getSide());
         // Check that indexes are the same
         assertEquals(resultLimits.keySet(), referenceLimits.keySet(),
-                prefix + " Unexpected limit violations. Expected ["
-                        + String.join(",", resultLimits.keySet()) + "]" + " but was"
-                        + String.join(",", referenceLimits.keySet()), errorMessages);
+                prefix + " Unexpected limit violations", errorMessages);
         if (resultLimits.keySet().equals(referenceLimits.keySet())) {
             for (String key : resultLimits.keySet()) {
                 LimitViolation lv = resultLimits.get(key);
@@ -252,23 +251,18 @@ public class SecurityAnalysisTestRunner
                 assertDeltaMax(lv.getLimitReduction(), refLv.getLimitReduction(), delta,
                         prefix + " Unexpected LV limit reduction for LV: " + key, errorMessages);
                 assertEquals(lv.getLimitName(), refLv.getLimitName(),
-                        prefix + " Unexpected limit name for LV: " + key + ". Expected "
-                                + refLv.getLimitName() + " but was " + lv.getLimitName(), errorMessages);
+                        prefix + " Unexpected limit name for LV: " + key, errorMessages);
 
                 assertEquals(lv.getSide(), refLv.getSide(),
-                        prefix + " Unexpected side for LV: " + key + ". Expected "
-                                + refLv.getSide() + " but was " + lv.getSide(), errorMessages);
+                        prefix + " Unexpected side for LV: " + key, errorMessages);
 
                 assertEquals(lv.getSubjectId(), refLv.getSubjectId(),
-                        prefix + " Unexpected subjectId for LV: " + key + ". Expected "
-                                + refLv.getSubjectId() + " but was " + lv.getSubjectId(), errorMessages);
+                        prefix + " Unexpected subjectId for LV: " + key, errorMessages);
                 assertEquals(lv.getSubjectName(), refLv.getSubjectName(),
-                        prefix + " Unexpected subjectName for LV: " + key + ". Expected "
-                                + refLv.getSubjectName() + " but was " + lv.getSubjectName(), errorMessages);
+                        prefix + " Unexpected subjectName for LV: " + key, errorMessages);
 
                 assertEquals(lv.getAcceptableDuration(), refLv.getAcceptableDuration(),
-                        prefix + " Unexpected acceptable duration for LV: " + key + ". Expected "
-                                + refLv.getAcceptableDuration() + " but was " + lv.getAcceptableDuration(), errorMessages);
+                        prefix + " Unexpected acceptable duration for LV: " + key, errorMessages);
             }
         }
         return errorMessages;

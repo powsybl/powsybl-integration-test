@@ -149,13 +149,13 @@ public class NetworksComparator {
                     && test2WT.getRatioTapChanger().isRegulating() && test2WT.getRatioTapChanger().getRegulationTerminal() != null
                     && test2WT.getRatioTapChanger().getRegulationTerminal().isConnected()) {
                 assertDeltaMax(test2WT.getRatioTapChanger().getTapPosition(), ref2WT.getRatioTapChanger().getTapPosition(), 0,
-                        logPrefix + "Unexpected LCC Converter P for LCC converter id: " + test2WT.getId(), errors);
+                        logPrefix + "Unexpected ratio tap changer position for transformer id: " + test2WT.getId(), errors);
             }
             if (test2WT.getPhaseTapChanger() != null
                     && test2WT.getPhaseTapChanger().isRegulating() && test2WT.getPhaseTapChanger().getRegulationTerminal() != null
                     && test2WT.getPhaseTapChanger().getRegulationTerminal().isConnected()) {
                 assertDeltaMax(test2WT.getPhaseTapChanger().getTapPosition(), ref2WT.getPhaseTapChanger().getTapPosition(), 0,
-                        logPrefix + "Unexpected LCC Converter Q for LCC converter id: " + test2WT.getId(), errors);
+                        logPrefix + "Unexpected phase tap changer position for transformer id: " + test2WT.getId(), errors);
             }
         }
         return errors;

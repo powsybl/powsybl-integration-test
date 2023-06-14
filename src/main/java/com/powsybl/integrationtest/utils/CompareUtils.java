@@ -45,7 +45,7 @@ public final class CompareUtils {
      */
     public static <T> void assertEquals(T value1, T value2, String errMessage, List<String> errors) {
         if (!Objects.equals(value1, value2)) {
-            errors.add(errMessage);
+            errors.add(errMessage + " (expected " + value2 + " but was " + value1 + ")");
         }
     }
 }

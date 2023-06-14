@@ -1,0 +1,10 @@
+{
+  "version" : "1.7",
+  "voltageInitMode" : "DC_VALUES",
+  "distributedSlack" : false,
+  "noGeneratorReactiveLimits" : true,
+  "phaseShifterRegulationOn" : false,
+  "transformerVoltageControlOn" : false,
+  "connectedComponentMode" : "MAIN",
+  "dc" : false
+}
