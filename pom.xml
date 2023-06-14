@@ -47,8 +47,8 @@
 
     <properties>
         <java.version>11</java.version>
-        <powsybl-core.version>5.3.0-alpha-2</powsybl-core.version>
-        <powsybl-open-loadflow.version>1.2.0-SNAPSHOT</powsybl-open-loadflow.version>
+        <powsybl-core.version>5.3.1</powsybl-core.version>
+        <powsybl-open-loadflow.version>1.2.1</powsybl-open-loadflow.version>
         <junit-jupiter.version>5.5.2</junit-jupiter.version>
     </properties>
 
