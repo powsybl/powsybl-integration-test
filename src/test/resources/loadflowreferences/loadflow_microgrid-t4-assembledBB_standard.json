@@ -6,9 +6,9 @@
     "connectedComponentNum" : 0,
     "synchronousComponentNum" : 0,
     "status" : "CONVERGED",
-    "iterationCount" : 6,
+    "iterationCount" : 7,
     "slackBusId" : "8d8a82ba-b5b0-4e94-861a-192af055f2b8_0",
-    "slackBusActivePowerMismatch" : -0.6378264234264464,
-    "distributedActivePower" : -42.40069320034871
+    "slackBusActivePowerMismatch" : -0.6422024054016262,
+    "distributedActivePower" : -42.03068135827159
   } ]
 }

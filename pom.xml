@@ -13,7 +13,7 @@
     <parent>
         <groupId>com.powsybl</groupId>
         <artifactId>powsybl-parent</artifactId>
-        <version>4</version>
+        <version>10</version>
         <relativePath/>
     </parent>
 
@@ -47,8 +47,8 @@
 
     <properties>
         <java.version>11</java.version>
-        <powsybl-core.version>5.3.1</powsybl-core.version>
-        <powsybl-open-loadflow.version>1.2.1</powsybl-open-loadflow.version>
+        <powsybl-core.version>5.3.2</powsybl-core.version>
+        <powsybl-open-loadflow.version>1.2.3</powsybl-open-loadflow.version>
         <junit-jupiter.version>5.5.2</junit-jupiter.version>
     </properties>
 

@@ -15,7 +15,7 @@ import java.util.*;
  * @author Théo Le Colleter <theo.le-colleter at artelys.com>
  */
 public final class SampleUtils {
-    private  SampleUtils() {
+    private SampleUtils() {
     }
 
     /**
