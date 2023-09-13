@@ -59,8 +59,8 @@
                 <iidm:internalConnection node1="22" node2="5"/>
                 <iidm:internalConnection node1="23" node2="1"/>
                 <iidm:internalConnection node1="24" node2="2"/>
-                <iidm:bus v="223.34585870795183" angle="-16.311080729855853" nodes="0,2,3,4,6,7,8,9,10,13,14,15,16,17,18,19,20,21,24"/>
                 <iidm:bus v="226.23887178775087" angle="-19.826801654604477" nodes="1,5,11,12,22,23"/>
+                <iidm:bus v="223.34585870795183" angle="-16.311080729855853" nodes="0,2,3,4,6,7,8,9,10,13,14,15,16,17,18,19,20,21,24"/>
             </iidm:nodeBreakerTopology>
             <iidm:load id="b1480a00-b427-4001-a26c-51954d2bb7e9" name="L-1230804819" loadType="UNDEFINED" p0="1.0" q0="0.0" node="9" p="1.0" q="0.0">
                 <iidm:alias type="CGMES.Terminal1">b9376bea-c75d-49f3-94ca-6a71fa0086a5</iidm:alias>
@@ -555,8 +555,8 @@
                 <iidm:internalConnection node1="12" node2="1"/>
                 <iidm:internalConnection node1="15" node2="0"/>
                 <iidm:internalConnection node1="16" node2="3"/>
-                <iidm:bus v="16.01775" angle="-2.005672401225023" nodes="0,1,4,7,8,11,12,15"/>
                 <iidm:bus v="16.0335" angle="0.0" nodes="2,3,5,6,9,10,16"/>
+                <iidm:bus v="16.01775" angle="-2.005672401225023" nodes="0,1,4,7,8,11,12,15"/>
             </iidm:nodeBreakerTopology>
             <iidm:generator id="9c3b8f97-7972-477d-9dc8-87365cc0ad0e" name="NL-G1" energySource="OTHER" minP="300.0" maxP="1000.0" ratedS="1100.0" voltageRegulatorOn="true" targetP="600.492701" targetV="16.0335" targetQ="386.922556" node="6" p="-578.0332884928024" q="-220.01218348429776">
                 <iidm:alias type="CGMES.Terminal1">faab7959-f9bf-421b-bc3f-d364e0c1388b</iidm:alias>
