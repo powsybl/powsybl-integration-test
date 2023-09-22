@@ -29,6 +29,21 @@ jobs:
         with:
           java-version: 17
 
+      - name: Checkout powsybl-core latest sources
+        uses: actions/checkout@v1
+        with:
+          repository: powsybl/powsybl-core
+          ref: refs/heads/main
+        
+      - name: Build and install powsybl-core with Maven
+          run: mvn --batch-mode -DskipTests=true --file ../powsybl-core/pom.xml install
+
+      - name: Checkout powsybl-open-loadflow latest sources
+        uses: actions/checkout@v1
+        with:
+          repository: powsybl/powsybl-open-loadflow
+          ref: refs/heads/draft_dirty_bump_core_6.0.0
+        
       - name: Build with Maven
         run: mvn --batch-mode -Pjacoco install
 
