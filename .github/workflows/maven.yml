@@ -36,7 +36,7 @@ jobs:
           ref: refs/heads/main
         
       - name: Build and install powsybl-core with Maven
-          run: mvn --batch-mode -DskipTests=true --file ../powsybl-core/pom.xml install
+        run: mvn --batch-mode -DskipTests=true --file ../powsybl-core/pom.xml install
 
       - name: Checkout powsybl-open-loadflow latest sources
         uses: actions/checkout@v1
@@ -44,6 +44,9 @@ jobs:
           repository: powsybl/powsybl-open-loadflow
           ref: refs/heads/draft_dirty_bump_core_6.0.0
         
+      - name: Build and install powsybl-open-loadflow with Maven
+        run: mvn --batch-mode -DskipTests=true --file ../powsybl-open-loadflow/pom.xml install
+
       - name: Build with Maven
         run: mvn --batch-mode -Pjacoco install
 
