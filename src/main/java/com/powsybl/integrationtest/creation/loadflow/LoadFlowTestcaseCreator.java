@@ -7,7 +7,7 @@
 package com.powsybl.integrationtest.creation.loadflow;
 
 import com.powsybl.iidm.network.Network;
-import com.powsybl.iidm.xml.XMLExporter;
+import com.powsybl.iidm.serde.XMLExporter;
 import com.powsybl.integrationtest.loadflow.model.LoadFlowComputationParameters;
 import com.powsybl.integrationtest.loadflow.model.LoadFlowComputationResults;
 import com.powsybl.integrationtest.loadflow.model.LoadFlowComputationRunner;

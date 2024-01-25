@@ -13,7 +13,7 @@ import com.powsybl.contingency.ContingencyElement;
 import com.powsybl.contingency.contingency.list.DefaultContingencyList;
 import com.powsybl.contingency.json.ContingencyJsonModule;
 import com.powsybl.iidm.network.Network;
-import com.powsybl.iidm.xml.XMLExporter;
+import com.powsybl.iidm.serde.XMLExporter;
 import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesSupplier;
 import com.powsybl.integrationtest.creation.security.contingencies.ContingenciesSuppliers;
 import com.powsybl.integrationtest.creation.security.statemonitors.StateMonitorsSupplier;
