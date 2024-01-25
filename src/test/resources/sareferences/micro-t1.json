@@ -36,7 +36,7 @@
       } ],
       "busResults" : [ {
         "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "busId" : "364c9ca2-0d1d-4363-8f46-e586f8f66a8c",
         "v" : 115.5,
         "angle" : -8.11884530695139
       } ],
@@ -88,7 +88,7 @@
       } ],
       "busResults" : [ {
         "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "busId" : "364c9ca2-0d1d-4363-8f46-e586f8f66a8c",
         "v" : 115.5,
         "angle" : -45.10064083246836
       } ],
@@ -137,7 +137,7 @@
       } ],
       "busResults" : [ {
         "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "busId" : "364c9ca2-0d1d-4363-8f46-e586f8f66a8c",
         "v" : 115.5,
         "angle" : -8.382673643304331
       } ],
@@ -195,7 +195,7 @@
       } ],
       "busResults" : [ {
         "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "busId" : "364c9ca2-0d1d-4363-8f46-e586f8f66a8c",
         "v" : 115.5,
         "angle" : -45.01853495962268
       } ],
@@ -244,7 +244,7 @@
       } ],
       "busResults" : [ {
         "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "busId" : "364c9ca2-0d1d-4363-8f46-e586f8f66a8c",
         "v" : 115.5,
         "angle" : -8.344693401665431
       } ],
@@ -293,7 +293,7 @@
       } ],
       "busResults" : [ {
         "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "busId" : "364c9ca2-0d1d-4363-8f46-e586f8f66a8c",
         "v" : 115.5,
         "angle" : -8.11336192064182
       } ],
@@ -348,7 +348,7 @@
       } ],
       "busResults" : [ {
         "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "busId" : "364c9ca2-0d1d-4363-8f46-e586f8f66a8c",
         "v" : 115.5,
         "angle" : -45.01811008708234
       } ],
@@ -392,7 +392,7 @@
       "branchResults" : [ ],
       "busResults" : [ {
         "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "busId" : "364c9ca2-0d1d-4363-8f46-e586f8f66a8c",
         "v" : 115.5,
         "angle" : -8.59433037164498
       } ],
@@ -444,7 +444,7 @@
       } ],
       "busResults" : [ {
         "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "busId" : "364c9ca2-0d1d-4363-8f46-e586f8f66a8c",
         "v" : 115.5,
         "angle" : -8.761785228002786
       } ],
@@ -496,7 +496,7 @@
       } ],
       "busResults" : [ {
         "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "busId" : "364c9ca2-0d1d-4363-8f46-e586f8f66a8c",
         "v" : 115.5,
         "angle" : -9.283953189490807
       } ],
@@ -545,7 +545,7 @@
       } ],
       "busResults" : [ {
         "voltageLevelId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0",
-        "busId" : "8bbd7e74-ae20-4dce-8780-c20f8e18c2e0_0",
+        "busId" : "364c9ca2-0d1d-4363-8f46-e586f8f66a8c",
         "v" : 115.5,
         "angle" : -8.487633345768359
       } ],
