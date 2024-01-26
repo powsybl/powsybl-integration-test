@@ -16,6 +16,7 @@
         "subjectId" : "S_SE_1",
         "limitType" : "CURRENT",
         "limit" : 500.00006103515625,
+        "limitName": "permanent",
         "limitReduction" : 1.0,
         "value" : 1344.0262687101067,
         "side" : "TWO"
@@ -32,6 +33,7 @@
         "subjectId" : "S_SE_2",
         "limitType" : "CURRENT",
         "limit" : 500.00006103515625,
+        "limitName": "permanent",
         "limitReduction" : 1.0,
         "value" : 1030.8210921918205,
         "side" : "TWO"
@@ -48,6 +50,7 @@
         "subjectId" : "S_SO_2",
         "limitType" : "CURRENT",
         "limit" : 500.00006103515625,
+        "limitName": "permanent",
         "limitReduction" : 1.0,
         "value" : 1082.3130587734242,
         "side" : "TWO"
@@ -64,6 +67,7 @@
         "subjectId" : "S_SO_1",
         "limitType" : "CURRENT",
         "limit" : 500.00006103515625,
+        "limitName": "permanent",
         "limitReduction" : 1.0,
         "value" : 1291.1214209730904,
         "side" : "TWO"
@@ -188,6 +192,7 @@
         "subjectId" : "NO_N_1",
         "limitType" : "CURRENT",
         "limit" : 600.0,
+        "limitName": "permanent",
         "limitReduction" : 1.0,
         "value" : 715.3523959781604,
         "side" : "TWO"
@@ -242,6 +247,7 @@
         "subjectId" : "NO_N_1",
         "limitType" : "CURRENT",
         "limit" : 600.0,
+        "limitName": "permanent",
         "limitReduction" : 1.0,
         "value" : 715.3523959781604,
         "side" : "TWO"

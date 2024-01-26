@@ -6,6 +6,8 @@
  */
 package com.powsybl.integrationtest.securityanalysis.model;
 
+import com.google.common.collect.ImmutableListMultimap;
+import com.google.common.collect.Multimap;
 import com.powsybl.integrationtest.model.AbstractTestRunner;
 import com.powsybl.integrationtest.model.ComputationRunner;
 import com.powsybl.integrationtest.model.TestRunner;
@@ -212,60 +214,62 @@ public class SecurityAnalysisTestRunner
         ArrayList<String> errorMessages = new ArrayList<>();
         final String prefix = "[SA LV result]" + logPrefix;
         // Index limits to be able to compare them
-        Map<String, LimitViolation> resultLimits = extractIndexedResults(result.getLimitViolations(),
+        Multimap<String, LimitViolation> resultLimits = extractIndexedMultiResults(result.getLimitViolations(),
             lv -> lv.getSubjectId() + '/' + lv.getLimitType().toString() + lv.getSide());
-        Map<String, LimitViolation> referenceLimits = extractIndexedResults(reference.getLimitViolations(),
+        Multimap<String, LimitViolation> referenceLimits = extractIndexedMultiResults(reference.getLimitViolations(),
             lv -> lv.getSubjectId() + '/' + lv.getLimitType().toString() + lv.getSide());
         // Check that indexes are the same
         assertEquals(resultLimits.keySet(), referenceLimits.keySet(),
                 prefix + " Unexpected limit violations", errorMessages);
         if (resultLimits.keySet().equals(referenceLimits.keySet())) {
             for (String key : resultLimits.keySet()) {
-                LimitViolation lv = resultLimits.get(key);
-                LimitViolation refLv = referenceLimits.get(key);
-                // Find the right delta for the physical value of the limit violation
-                double delta;
-                switch (lv.getLimitType()) {
-                    case ACTIVE_POWER:
-                    case APPARENT_POWER:
-                        delta = deltaP;
-                        break;
-                    case CURRENT:
-                    case HIGH_SHORT_CIRCUIT_CURRENT:
-                    case LOW_SHORT_CIRCUIT_CURRENT:
-                        delta = deltaI;
-                        break;
-                    case HIGH_VOLTAGE:
-                    case LOW_VOLTAGE:
-                        delta = deltaV;
-                        break;
-                    case OTHER:
-                    default:
-                        delta = deltaOther;
-                        break;
+                Collection<LimitViolation> lvs = resultLimits.get(key);
+                Collection<LimitViolation> refLvs = referenceLimits.get(key);
+                // Check that there are the same number of limit violations for key
+                assertEquals(lvs.size(), refLvs.size(), prefix + " Unexpected number of limit violations", errorMessages);
+                if (lvs.size() == refLvs.size()) {
+                    List<LimitViolation> sortedLvs = getSortedList(lvs, Comparator.comparing(LimitViolation::getValue));
+                    List<LimitViolation> sortedRefLvs = getSortedList(refLvs, Comparator.comparing(LimitViolation::getValue));
+                    for (int i = 0; i < sortedLvs.size(); i++) {
+                        checkLimitViolation(sortedRefLvs.get(i), sortedLvs.get(i), key, prefix, errorMessages);
+                    }
                 }
-                assertDeltaMax(lv.getValue(), refLv.getValue(), delta,
-                        prefix + " Unexpected LV value for LV: " + key, errorMessages);
-                assertDeltaMax(lv.getLimit(), refLv.getLimit(), delta,
-                        prefix + " Unexpected LV limit for LV: " + key, errorMessages);
-                assertDeltaMax(lv.getLimitReduction(), refLv.getLimitReduction(), delta,
-                        prefix + " Unexpected LV limit reduction for LV: " + key, errorMessages);
-                assertEquals(lv.getLimitName(), refLv.getLimitName(),
-                        prefix + " Unexpected limit name for LV: " + key, errorMessages);
-
-                assertEquals(lv.getSide(), refLv.getSide(),
-                        prefix + " Unexpected side for LV: " + key, errorMessages);
-
-                assertEquals(lv.getSubjectId(), refLv.getSubjectId(),
-                        prefix + " Unexpected subjectId for LV: " + key, errorMessages);
-                assertEquals(lv.getSubjectName(), refLv.getSubjectName(),
-                        prefix + " Unexpected subjectName for LV: " + key, errorMessages);
-
-                assertEquals(lv.getAcceptableDuration(), refLv.getAcceptableDuration(),
-                        prefix + " Unexpected acceptable duration for LV: " + key, errorMessages);
             }
         }
         return errorMessages;
+    }
+
+    private void checkLimitViolation(LimitViolation refLv, LimitViolation lv, String key, String prefix, ArrayList<String> errorMessages) {
+        // Find the right delta for the physical value of the limit violation
+        double delta = switch (lv.getLimitType()) {
+            case ACTIVE_POWER, APPARENT_POWER -> deltaP;
+            case CURRENT, HIGH_SHORT_CIRCUIT_CURRENT, LOW_SHORT_CIRCUIT_CURRENT -> deltaI;
+            case HIGH_VOLTAGE, LOW_VOLTAGE -> deltaV;
+            default -> deltaOther;
+        };
+        assertDeltaMax(lv.getValue(), refLv.getValue(), delta,
+                prefix + " Unexpected LV value for LV: " + key, errorMessages);
+        assertDeltaMax(lv.getLimit(), refLv.getLimit(), delta,
+                prefix + " Unexpected LV limit for LV: " + key, errorMessages);
+        assertDeltaMax(lv.getLimitReduction(), refLv.getLimitReduction(), delta,
+                prefix + " Unexpected LV limit reduction for LV: " + key, errorMessages);
+        assertEquals(lv.getLimitName(), refLv.getLimitName(),
+                prefix + " Unexpected limit name for LV: " + key, errorMessages);
+
+        assertEquals(lv.getSide(), refLv.getSide(),
+                prefix + " Unexpected side for LV: " + key, errorMessages);
+
+        assertEquals(lv.getSubjectId(), refLv.getSubjectId(),
+                prefix + " Unexpected subjectId for LV: " + key, errorMessages);
+        assertEquals(lv.getSubjectName(), refLv.getSubjectName(),
+                prefix + " Unexpected subjectName for LV: " + key, errorMessages);
+
+        assertEquals(lv.getAcceptableDuration(), refLv.getAcceptableDuration(),
+                prefix + " Unexpected acceptable duration for LV: " + key, errorMessages);
+    }
+
+    private <A> List<A> getSortedList(Collection<A> collection, Comparator<A> comparator) {
+        return collection.stream().sorted(comparator).toList();
     }
 
     /**
@@ -273,5 +277,12 @@ public class SecurityAnalysisTestRunner
      */
     private <T, U> Map<T, U> extractIndexedResults(Collection<U> list, Function<U, T> keyExtractor) {
         return list.stream().collect(Collectors.toMap(keyExtractor, Function.identity()));
+    }
+
+    /**
+     * @return a multi-map from the provided list, using a key extractor to index each element
+     */
+    private <T, U> Multimap<T, U> extractIndexedMultiResults(Collection<U> list, Function<U, T> keyExtractor) {
+        return list.stream().collect(ImmutableListMultimap.toImmutableListMultimap(keyExtractor, Function.identity()));
     }
 }
