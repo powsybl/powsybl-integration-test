@@ -24,13 +24,13 @@ import static com.powsybl.integrationtest.utils.SampleUtils.createSamples;
 public class RandomContingenciesSupplier implements ContingenciesSupplier {
 
     /**
-     * Hashmap associating:
+     * Map associating:
      * <ul>
      *     <li> Class of the {@link Network}'s element (e.g. {@link Line}, {@link Branch},...)
      *     <li> to a rate, which is a percentage (from 0 to 100) indicating the size of the subset of elements of the corresponding <i>Class</i> we want to select (randomly here) to create contingencies.
      * </ul>
      */
-    private HashMap<String, Double> contingenciesRate;
+    private Map<String, Double> contingenciesRate;
 
     private Random r;
 
@@ -39,15 +39,15 @@ public class RandomContingenciesSupplier implements ContingenciesSupplier {
      * where the subset size is determined from a rate associated to each class of element in {@link #contingenciesRate}.
      */
     @Override
-    public List<Contingency> getContingencies(final Network network, HashMap<String, ?> configuration) {
+    public List<Contingency> getContingencies(final Network network, Map<String, ?> configuration) {
         // Set configuration
         this.contingenciesRate = new HashMap<>();
-        ((HashMap<String, Number>) configuration).forEach((element, rate) -> this.contingenciesRate.put(element, rate.doubleValue()));
+        ((Map<String, Number>) configuration).forEach((element, rate) -> this.contingenciesRate.put(element, rate.doubleValue()));
         this.r = new Random();
         this.r.setSeed(0);
 
         List<Contingency> contingencies = new ArrayList<>();
-        HashMap<String, List<Contingency>> contingenciesByClass = new HashMap<>();
+        Map<String, List<Contingency>> contingenciesByClass = new HashMap<>();
         // Get and add every element of the network in a list of contingencies (N-1)
         network.getGenerators().forEach(e -> contingenciesByClass.computeIfAbsent(Generator.class.getSimpleName(), k -> new ArrayList<>()).add(Contingency.generator(e.getId())));
         network.getStaticVarCompensators().forEach(e -> contingenciesByClass.computeIfAbsent(StaticVarCompensator.class.getSimpleName(), k -> new ArrayList<>()).add(Contingency.staticVarCompensator(e.getId())));
@@ -60,7 +60,7 @@ public class RandomContingenciesSupplier implements ContingenciesSupplier {
         network.getLoads().forEach(e -> contingenciesByClass.computeIfAbsent(Load.class.getSimpleName(), k -> new ArrayList<>()).add(Contingency.load(e.getId())));
         network.getSwitches().forEach(e -> contingenciesByClass.computeIfAbsent(Switch.class.getSimpleName(), k -> new ArrayList<>()).add(builder(e.getId()).addSwitch(e.getId()).build()));
 
-        HashMap<String, Set<Contingency>> contingenciesSampleByClass = createSamples(contingenciesByClass, contingenciesRate, r);
+        Map<String, Set<Contingency>> contingenciesSampleByClass = createSamples(contingenciesByClass, contingenciesRate, r);
         contingenciesSampleByClass.forEach((clazz, contingencySet) -> contingencies.addAll(contingencySet));
 
         return contingencies;

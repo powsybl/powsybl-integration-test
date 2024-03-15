@@ -21,6 +21,18 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
+      - name: Checkout sources for powsybl-core
+        uses: actions/checkout@v1
+        with:
+          repository: powsybl/powsybl-core
+          ref: refs/heads/main
+
+      - name: Checkout sources for powsybl-open-loadflow
+        uses: actions/checkout@v1
+        with:
+          repository: powsybl/powsybl-open-loadflow
+          ref: refs/heads/report_v2
+
       - name: Checkout sources
         uses: actions/checkout@v1
 
@@ -28,6 +40,12 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 17
+
+      - name: Build powsybl-core
+        run: mvn --batch-mode -Pjacoco --file ../powsybl-core/pom.xml install
+
+      - name: Build powsybl-open-loadflow
+        run: mvn --batch-mode -Pjacoco --file ../powsybl-open-loadflow/pom.xml install
 
       - name: Build with Maven
         run: mvn --batch-mode -Pjacoco install

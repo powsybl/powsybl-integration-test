@@ -68,7 +68,7 @@ public class SecurityAnalysisTestCaseJson {
         if (expectedResults != null) {
             this.expectedResults = expectedResults;
         } else {
-            this.expectedResults = "sareferences/" + id + ".json";
+            this.expectedResults = "sareferences/results/" + id + ".json";
         }
     }
 

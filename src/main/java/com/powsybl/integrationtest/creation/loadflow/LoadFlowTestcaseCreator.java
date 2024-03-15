@@ -7,7 +7,7 @@
 package com.powsybl.integrationtest.creation.loadflow;
 
 import com.powsybl.iidm.network.Network;
-import com.powsybl.iidm.xml.XMLExporter;
+import com.powsybl.iidm.serde.AbstractTreeDataExporter;
 import com.powsybl.integrationtest.loadflow.model.LoadFlowComputationParameters;
 import com.powsybl.integrationtest.loadflow.model.LoadFlowComputationResults;
 import com.powsybl.integrationtest.loadflow.model.LoadFlowComputationRunner;
@@ -38,16 +38,16 @@ public class LoadFlowTestcaseCreator {
         this.runner = runner;
     }
 
-    public void createResults(String exportName, Path outputDir, Network network, LoadFlowParameters lfParameters) {
+    public void createResults(String exportName, Path outputDir, Path outputDirResults, Network network, LoadFlowParameters lfParameters) {
         LoadFlowComputationParameters parameters = new LoadFlowComputationParameters(network, lfParameters);
         LoadFlowComputationResults results = runner.computeResults(parameters);
         // Export network
         Properties properties = new Properties();
-        properties.put(XMLExporter.ANONYMISED, "false");
+        properties.put(AbstractTreeDataExporter.ANONYMISED, "false");
         network.write("XIIDM", properties, outputDir.resolve(exportName));
         // Export results
-        LoadFlowResultSerializer.write(results.getResult(), outputDir.resolve(exportName + ".json"));
-        LOGGER.info("Exported results to [" + outputDir + "], with name [" + exportName + "]");
+        LoadFlowResultSerializer.write(results.getResult(), outputDirResults.resolve(exportName + ".json"));
+        LOGGER.info("Exported results to [{}], with name [{}}]", outputDirResults, exportName);
     }
 
     public static void main(String[] args) throws IOException {
@@ -66,7 +66,9 @@ public class LoadFlowTestcaseCreator {
 
             Path outputDir = parameters.getOutputPath();
             Files.createDirectories(outputDir);
-            creator.createResults(parameters.getTestCaseName(), outputDir, network, lfParams);
+            Path outputDirResults = outputDir.resolve("results");
+            Files.createDirectories(outputDirResults);
+            creator.createResults(parameters.getTestCaseName(), outputDir, outputDirResults, network, lfParams);
         }
     }
 
