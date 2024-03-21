@@ -32,24 +32,24 @@ public class PairOfLinesContingenciesSupplier implements ContingenciesSupplier {
      * The contingencies created here are N-2 contingencies since they are created with two lines.
      */
     @Override
-    public List<Contingency> getContingencies(final Network network, HashMap<String, ?> configuration) {
+    public List<Contingency> getContingencies(final Network network, Map<String, ?> configuration) {
         List<Contingency> contingencies = new ArrayList<>();
         // Create pairs of line for every parallel lines
         // For each set of voltage level, we store the list of lines with those voltage levels
-        HashMap<Set<VoltageLevel>, List<Line>> voltageLevelListHashMap = new HashMap<>();
+        Map<Set<VoltageLevel>, List<Line>> voltageLevelListMap = new HashMap<>();
         Set<Set<Line>> pairLine = new HashSet<>();
         for (Line line : network.getLines()) {
             // Get line's voltage levels
             Set<VoltageLevel> voltageLevelSet = line.getTerminals().stream().map(t -> t.getVoltageLevel()).collect(Collectors.toSet());
             List<Line> lineList = new ArrayList<>();
-            if (voltageLevelListHashMap.containsKey(voltageLevelSet)) {
-                lineList = voltageLevelListHashMap.get(voltageLevelSet);
+            if (voltageLevelListMap.containsKey(voltageLevelSet)) {
+                lineList = voltageLevelListMap.get(voltageLevelSet);
                 // Create new pair with all lines in the list
                 lineList.forEach(l -> pairLine.add(Set.of(line, l)));
             }
             // Add line to the list of lines with those same voltage levels
             lineList.add(line);
-            voltageLevelListHashMap.put(voltageLevelSet, lineList);
+            voltageLevelListMap.put(voltageLevelSet, lineList);
         }
 
         // Add all N-2 contingencies to the list of contingencies

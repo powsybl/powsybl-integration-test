@@ -31,7 +31,7 @@ public class LinesVoltageLevelContingenciesSupplier implements ContingenciesSupp
      * </ul>
      */
     @Override
-    public List<Contingency> getContingencies(final Network network, HashMap<String, ?> configuration) {
+    public List<Contingency> getContingencies(final Network network, Map<String, ?> configuration) {
         List<Contingency> contingencies = new ArrayList<>();
         // Find lines with different voltage levels and save their id
         Set<String> vlChangesLines = new HashSet<>();

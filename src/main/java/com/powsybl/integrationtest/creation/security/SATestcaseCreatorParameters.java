@@ -9,12 +9,11 @@ package com.powsybl.integrationtest.creation.security;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.powsybl.iidm.network.*;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Parameters used by the SA test cases' creator. Made to be loaded from a JSON file
@@ -37,13 +36,13 @@ public class SATestcaseCreatorParameters {
         @JsonProperty
         private String name;
         @JsonProperty
-        private HashMap<String, ?> configuration;
+        private Map<String, ?> configuration;
 
         public String getName() {
             return name;
         }
 
-        public HashMap<String, ?> getConfiguration() {
+        public Map<String, ?> getConfiguration() {
             return configuration;
         }
     }
@@ -52,13 +51,13 @@ public class SATestcaseCreatorParameters {
         @JsonProperty
         private String name;
         @JsonProperty
-        private HashMap<String, ?> configuration;
+        private Map<String, ?> configuration;
 
         public String getName() {
             return name;
         }
 
-        public HashMap<String, ?> getConfiguration() {
+        public Map<String, ?> getConfiguration() {
             return configuration;
         }
     }

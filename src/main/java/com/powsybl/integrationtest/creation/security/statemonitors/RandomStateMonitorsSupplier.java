@@ -26,7 +26,7 @@ import static com.powsybl.integrationtest.utils.SampleUtils.createSamples;
 @AutoService(StateMonitorsSupplier.class)
 public class RandomStateMonitorsSupplier implements StateMonitorsSupplier {
 
-    private HashMap<String, Double> stateMonitorsRate;
+    private Map<String, Double> stateMonitorsRate;
 
     private Random r;
 
@@ -41,10 +41,10 @@ public class RandomStateMonitorsSupplier implements StateMonitorsSupplier {
      * <p>A seed is used for reproducibility.
      */
     @Override
-    public List<StateMonitor> getStateMonitors(Network network, List<Contingency> contingencies, HashMap<String, ?> configuration) {
+    public List<StateMonitor> getStateMonitors(Network network, List<Contingency> contingencies, Map<String, ?> configuration) {
         // Set configuration
         this.stateMonitorsRate = new HashMap<>();
-        ((HashMap<String, Number>) configuration).forEach((element, rate) -> this.stateMonitorsRate.put(element, rate.doubleValue()));
+        ((Map<String, Number>) configuration).forEach((element, rate) -> this.stateMonitorsRate.put(element, rate.doubleValue()));
         this.r = new Random();
         this.r.setSeed(0);
 
@@ -57,12 +57,12 @@ public class RandomStateMonitorsSupplier implements StateMonitorsSupplier {
         network.getBranches().forEach(branch -> branchIds.add(branch.getId()));
 
         // Add those lists in a list
-        HashMap<String, List<String>> elementsList = new HashMap<>();
+        Map<String, List<String>> elementsList = new HashMap<>();
         elementsList.put(VoltageLevel.class.getSimpleName(), voltageLevelIds);
         elementsList.put(ThreeWindingsTransformer.class.getSimpleName(), threeWindingsTransformerIds);
         elementsList.put(Branch.class.getSimpleName(), branchIds);
 
-        HashMap<String, Set<String>> sample = createSamples(elementsList, stateMonitorsRate, r);
+        Map<String, Set<String>> sample = createSamples(elementsList, stateMonitorsRate, r);
 
         // Create state monitors from this sample
         List<StateMonitor> stateMonitors = new ArrayList<>();

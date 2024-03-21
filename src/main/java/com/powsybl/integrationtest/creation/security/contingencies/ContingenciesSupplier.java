@@ -10,8 +10,8 @@ package com.powsybl.integrationtest.creation.security.contingencies;
 import com.powsybl.contingency.Contingency;
 import com.powsybl.iidm.network.Network;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Interface allowing to implement different contingencies' supplier (i.e. different strategies to create contingencies).
@@ -28,5 +28,5 @@ public interface ContingenciesSupplier {
      * @param configuration set parameters according to a given configuration. Can be empty if no parameter is needed.
      * @return a list of {@link Contingency}, where a contingency's id is the concatenation of all the contingency's elements' names
      */
-    List<Contingency> getContingencies(Network network, HashMap<String, ?> configuration);
+    List<Contingency> getContingencies(Network network, Map<String, ?> configuration);
 }

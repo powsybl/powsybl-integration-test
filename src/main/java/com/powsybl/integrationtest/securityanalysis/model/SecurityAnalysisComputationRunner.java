@@ -6,7 +6,7 @@
  */
 package com.powsybl.integrationtest.securityanalysis.model;
 
-import com.powsybl.commons.reporter.Reporter;
+import com.powsybl.commons.report.ReportNode;
 import com.powsybl.computation.local.LocalComputationManager;
 import com.powsybl.iidm.network.Network;
 import com.powsybl.integrationtest.model.ComputationRunner;
@@ -31,7 +31,7 @@ public class SecurityAnalysisComputationRunner
             nwk -> parameters.getContingencies(), parameters.getSecurityAnalysisParameters(),
             LocalComputationManager.getDefault(), LimitViolationFilter.load(), new DefaultLimitViolationDetector(),
             Collections.emptyList(), Collections.emptyList(), Collections.emptyList(),
-            parameters.getStateMonitors(), Reporter.NO_OP);
+            parameters.getStateMonitors(), ReportNode.NO_OP);
         return new SecurityAnalysisComputationResults(parameters.getNetwork(), report.getResult());
     }
 }

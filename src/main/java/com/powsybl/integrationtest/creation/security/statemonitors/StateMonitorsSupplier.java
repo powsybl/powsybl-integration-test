@@ -11,8 +11,8 @@ import com.powsybl.contingency.Contingency;
 import com.powsybl.iidm.network.Network;
 import com.powsybl.security.monitor.StateMonitor;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Interface allowing to implement different stateMonitors' supplier (i.e. different strategies to create stateMonitors).
@@ -30,5 +30,5 @@ public interface StateMonitorsSupplier {
      * @param configuration set parameters according to a given configuration. Can be empty if no parameter is needed.
      * @return a list of {@link StateMonitor}
      */
-    List<StateMonitor> getStateMonitors(Network network, List<Contingency> contingencies, HashMap<String, ?> configuration);
+    List<StateMonitor> getStateMonitors(Network network, List<Contingency> contingencies, Map<String, ?> configuration);
 }

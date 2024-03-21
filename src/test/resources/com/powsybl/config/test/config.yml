@@ -1,0 +1,2 @@
+import-export-parameters-default-value:
+  iidm.import.cgmes.cgm-with-subnetworks: "false"
